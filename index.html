@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Spiel4Dich</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Spiel4Dich</h1>
+    </header>
+    <hr>
+    <section class="gameList">
+      <h2>Verfügbare Spiele</h2>
+      <div class="gameItem">
+        <h3>Doinks</h3>
+        <img src="img/games/doom.png" alt="Retro-Titel, der immer noch schick ist" width="300">
+        <br>
+        <span class="priceTag">3.99€</span>
+        <button class="btnAddToCart" type="button" id=btnDoinks>In den Einkaufswagen</button>
+      </div>
+      <hr>
+      <div class="gameItem">
+        <h3>Fortnite</h3>
+        <img src="img/games/fortnite.png" alt="Designer war zu arm für breitere Farbenpalette" width="300">
+        <br>
+        <span class="priceTag">24.99€</span>
+        <button class="btnAddToCart" type="button" id=btnFortnite>In den Einkaufswagen</button>
+      </div>
+      <hr>
+      <div class="gameItem">
+        <h3>Microsoft Edge</h3>
+        <img src="img/games/mirrorsEdge.png" alt="Frau mit Tatoos steht vor monochromen Menschen" width="300">
+        <br>
+        <span class="priceTag">0.99€</span>
+        <button class="btnAddToCart" type="button" id=btnMicrosoftEdge>In den Einkaufswagen</button>
+      </div>
+      <hr>
+      <div class="gameItem">
+        <h3>Rootin' Tootin' Cowboy Shootin' II</h3>
+        <img src="img/games/rdr2.png" alt="*cooler Cowboy schaut böse und zielt in die Kamera" width="300">
+        <br>
+        <span class="priceTag">59.99€</span>
+        <button class="btnAddToCart" type="button" id="btnRDR2">In den Einkaufswagen</button>
+      </div>
+    </section>
+    <hr>
+    <hr>
+    <section class="shoppingCart">
+      <h2>Einkaufswagen</h2>
+      <form action="index.html" method="post">
+        <select name="shoppingCartList" class="shoppingCartList" id="shoppingCartList" size="10" style="width:200px" multiple>
+          <option value="microsoftEdge" data-price="0.99">Microsoft Edge</option>
+          <option value="doinks" data-price="3.99">Doinks</option>
+        </select>
+        <br>
+        <input type="reset" value="Einkaufswagen leeren">
+        <hr>
+        <input type="submit" value="Zur Bezahlung">
+      </form>
+    </section>
+  </body>
+
+</html>
