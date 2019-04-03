@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>GenoChoice&trade; - GenoCheck&trade; Fortschritt</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Ihr GenoCheck&trade;-Fortschritt</h1>
+    </header>
+  </body>
+  <hr>
+  <p>
+    Hier können Sie den Fortschritt Ihres persönlichen GenoCheck&trade;-Tests verfolgen.<br>
+    Bei abgeschlossener Analyse werden Sie zu Ihren Ergebnissen weitergeleitet.
+  </p>
+  <section class="genoCheckStatus">
+    <form action="phase2.html">
+      <input type="radio" name="status" id="statusOrderConfirmed" disabled>
+      <label for="statusOrderConfirmed">Bestellung bestätigt</label><br>
+      <input type="radio" name="status" id="statusSent" disabled>
+      <label for="statusSent">GenoCheck&trade; versandt</label><br>
+      <input type="radio" name="status" id="statusLaboratory" disabled>
+      <label for="statusLaboratory">Labor-Analyse läuft</label><br>
+      <input type="radio" name="status" id="statusDone" checked disabled>
+      <label for="statusDone"><strong>Analyse fertiggestellt</strong></label><br>
+      <hr>
+      <button type="submit">Zu Ihren Ergebnissen</button>
+    </form>
+  </section>
+
+</html>
