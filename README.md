@@ -3,8 +3,9 @@
 ##### Professor:
   Stefan Zander
 ##### Studenten:
-  Max Klosterhalfen - 757740 @golleboy
-  Noah Kottenhahn - 757842 @stnokott
+  Max Klosterhalfen - 757740 (golleboy)
+  
+  Noah Kottenhahn - 757842 (stnokott)
 
 ##### Aufgabe:
   Entwicklung eines Webshops mit Warenkorb, Rollen und live Statusanzeige
