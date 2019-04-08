@@ -12,7 +12,9 @@
       <h1>GenoChoice&trade; - Bestellungsbearbeitung</h1>
       <hr>
     </header>
-    Bearbeiter: <strong>stnokott</strong>
+    <div class="agent">
+      Bearbeiter: <strong>stnokott</strong>
+    </div>
     <hr>
 
     <section class="genoCheckOrders">
@@ -21,8 +23,8 @@
       <form class="editGenoCheckOrders" action="https://enlx6f766q8jc.x.pipedream.net" method="post">
         <!-- "order443" könnte Key in Datenbank sein -->
         <select class="genoCheckOrdersSelect" name="genoCheckOrdersSelect">
-          <option value="order443">Max Mustermann - 06.04.19</option>
-          <option value="order444">Marina Musterfrau - 07.04.19</option>
+          <option value="order443">443 - Max Mustermann</option>
+          <option value="order444">444 - Marina Musterfrau</option>
         </select>
         <hr>
         <input type="radio" name="statusOrderConfirmed" id="statusOrderConfirmed">
@@ -34,7 +36,7 @@
         <input type="radio" name="statusDone" id="statusDone">
         <label for="statusDone"><strong>Analyse fertiggestellt</strong></label>
         <hr>
-        <button type="submit">Bestätigen</button>
+        <button type="submit">Änderung bestätigen</button>
       </form>
     </section>
   </body>

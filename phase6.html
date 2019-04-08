@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>GenoChoice&trade; - Bestellungsverfolgung</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+  </head>
+
+  <body>
+    <header>
+      <h1>GenoChoice&trade; - Bestellungsverfolgung</h1>
+    </header>
+  </body>
+  <hr>
+  <section class="orderStatus">
+    <div class="description">
+      Hier können Sie den Fortschritt Ihrer GenoChoice&trade;-Bestellung verfolgen.
+    </div>
+    <div class="orderId">
+      <strong>Auftragsnummer:</strong> 443
+    </div>
+    <br>
+    <!-- TODO: action hinzufügen -->
+    <form action="" action="post">
+      <u>Vorbereitung (fertiggestellt)</u><br>
+      <input type="checkbox" name="statusOrderConfirmed" id="statusOrderConfirmed" checked disabled>
+      <label for="statusOrderConfirmed">Bestellung bestätigt</label><br>
+      <input type="checkbox" name="statusExtraction" id="statusExtraction" checked disabled>
+      <label for="statusExtraction">DNA-Extraktion aus GenoCheck&trade;</label><br>
+      <input type="checkbox" name="statusIncubation" id="statusIncubation" checked disabled>
+      <label for="statusIncubation">Inkubationsbehälter füllen</label>
+      <strong>oder</strong>
+      <input type="checkbox" name="statusClinic" id="statusClinic" disabled>
+      <label for="statusClinic">Transfer zu Klinik</label><br>
+      <u>++ OPTIONAL ++</u><br>
+      <input type="checkbox" name="statusInsertion" id="statusInsertion" disabled>
+      <label for="statusInsertion">Merkmalinsertion (CRISPR-cas9)</label><br>
+      <input type="checkbox" name="statusDisease" id="statusDisease" checked disabled>
+      <label for="statusDisease">Krankheitspotential reduzieren (Immunomodifikation)</label><br>
+      <input type="checkbox" name="statusSocial" id="statusSocial" disabled>
+      <label for="statusSocial">Soziale Bereiche verbessern (kombinierte Methoden)</label><br>
+      <u>Produktion (aktiv)</u><br>
+      <input type="checkbox" name="statusMeiosis" id="statusMeiosis" checked disabled>
+      <label for="statusMeiosis">(Künstliche) Meiose initiieren</label><br>
+      <input type="checkbox" name="statusEmbryo" id="statusEmbryo" disabled>
+      <label for="statusEmbryo">Embryonalstatus erreicht</label><br>
+      <input type="checkbox" name="statusCheck" id="statusCheck" disabled>
+      <label for="statusCheck">Phänotypen prüfen</label><br>
+      <input type="checkbox" name="statusDone" id="statusDone" disabled>
+      <label for="statusDone"><strong>Produktion fertiggestellt</strong></label><br>
+      <button type="submit">Produkt abholen</button>
+    </form>
+
+    <div class="statistics">
+      <br>
+      <strong>Vorbereitung abgeschlossen am:</strong> 26.07.2066<br>
+      <strong>Zeit vergangen seit Produktionsstart:</strong> 5 Tage, 3 Stunden, 26 Minuten
+    </div>
+  </section>
+
+</html>
