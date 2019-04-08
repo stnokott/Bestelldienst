@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>GenoChoice&trade; - Bearbeiter</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+  </head>
+
+  <body>
+    <header>
+      <h1>GenoChoice&trade; - Bestellung bearbeiten</h1>
+      <hr>
+    </header>
+    <div class="agent">
+      Bearbeiter: <strong>stnokott</strong>
+    </div>
+    <hr>
+
+    <section class="orderStatus">
+      <h3>Offene Bestellungen:</h3>
+
+      <form class="editOrderStatus" action="https://enlx6f766q8jc.x.pipedream.net" action="post">
+        <select class="ordersSelect" name="ordersSelect">
+          <option value="order443">443 - Max Mustermann</option>
+          <option value="order444">444 - Marina Musterfrau</option>
+        </select>
+        <hr>
+        <u>Vorbereitung</u><br>
+        <input type="radio" name="statusOrderConfirmed" id="statusOrderConfirmed">
+        <label for="statusOrderConfirmed">Bestellung bestätigt</label><br>
+        <input type="radio" name="statusExtraction" id="statusExtraction">
+        <label for="statusExtraction">DNA-Extraktion aus GenoCheck&trade;</label><br>
+        <input type="radio" name="statusIncubation" id="statusIncubation">
+        <label for="statusIncubation">Inkubationsbehälter füllen</label>
+        <strong>oder</strong>
+        <input type="checkbox" name="statusClinic" id="statusClinic">
+        <label for="statusClinic">Transfer zu Klinik</label><br>
+        <u>++ OPTIONAL ++</u><br>
+        <input type="checkbox" name="statusInsertion" id="statusInsertion">
+        <label for="statusInsertion">Merkmalinsertion (CRISPR-cas9)</label><br>
+        <input type="checkbox" name="statusDisease" id="statusDisease" checked>
+        <label for="statusDisease">Krankheitspotential reduzieren (Immunomodifikation)</label><br>
+        <input type="checkbox" name="statusSocial" id="statusSocial">
+        <label for="statusSocial">Soziale Bereiche verbessern (kombinierte Methoden)</label><br>
+        <u>Produktion</u><br>
+        <input type="radio" name="statusMeiosis" id="statusMeiosis" checked>
+        <label for="statusMeiosis">(Künstliche) Meiose initiieren</label><br>
+        <input type="radio" name="statusEmbryo" id="statusEmbryo">
+        <label for="statusEmbryo">Embryonalstatus erreicht</label><br>
+        <input type="radio" name="statusCheck" id="statusCheck">
+        <label for="statusCheck">Phänotypen prüfen</label><br>
+        <input type="radio" name="statusDone" id="statusDone">
+        <label for="statusDone"><strong>Produktion fertiggestellt</strong></label><br>
+        <button type="submit">Änderung bestätigen</button>
+      </form>
+
+    </section>
+  </body>
+
+</html>
