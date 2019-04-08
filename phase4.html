@@ -13,15 +13,15 @@
       <hr>
     </header>
 
-    <!-- POST, damit bereits gewählte optionale Pakete an den Server übermittelt werden könnens -->
-    <form class="chosenKit" action="phase3.html" method="post">
+    <!-- POST, damit bereits gewählte optionale Pakete an den Server übermittelt werden können -->
+    <form class="changeKit" action="phase3.html" method="post">
       <label for="btnChangeKit"><strong>Gewähltes Kit: [GEWÄHLTES KIT]</strong></label>
       <button type="submit" id="btnChangeKit">Ändern</button>
     </form>
     <hr>
 
     <section class="optionalList">
-      <form action="https://echo.fbi.h-da.de/" method="post">
+      <form action="https://enlx6f766q8jc.x.pipedream.net/" method="post">
         <section class="optionalPackage">
           <h2>Klinische Geburt</h2>
           <ul>
@@ -58,9 +58,9 @@
 
         <!-- Warenkorb -->
         <h3>Warenkorb</h3>
-        <select class="list" id="shoppingCart" name="shoppingCart" size="5" style="width:200px" multiple>
-          <option value="kitChoice">[GEWÄHLTES KIT] - [PREIS]</option>
-          <option value="packageDelivery">Lieferung - 249.99€</option>
+        <select class="list" id="shoppingCart" name="shoppingCart[]" size="5" style="width:200px" multiple>
+          <option value="[chosenKit]" selected>[GEWÄHLTES KIT] - [PREIS]</option>
+          <option value="packageDelivery" selected>Lieferung - 249.99€</option>
         </select>
         <p>Gesamt: 123456.99€</p>
         <hr>
