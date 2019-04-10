@@ -21,18 +21,41 @@
       Ein Team aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die Stärken und Schwächen ihres zukünftigen Kindes.
       <section class="genoCheckOrder">
         <form action="phase1tophase2.html" method="post">
-          <label for="inputFirstName">Vorname</label>
-          <input type="text" id="inputFirstName" name="inputFirstName" value="Max" autofocus>
-          <label for="inputLastName">Name</label>
-          <input type="text" id="inputLastName" name="inputLastName" value="Mustermann"><br>
-          <label for="inputStreet">Straße und Hausnummer</label>
-          <input type="text" id="inputStreet" name="inputStreet" value="Musterstraße">
-          <input type="text" id="inputStreetNum" name="inputStreetNum" value="6" style="width:30px"><br>
-          <label for="inputCity">Stadt</label>
-          <input type="text" id="inputCity" name="inputCity" value="Musterstadt"><br>
-          <label for="inputZipcode">PLZ</label>
-          <input type="text" id="inputZipcode" name="inputZipcode" value="12345"><br>
-          <hr>
+          <fieldset>
+            <legend>Persönliche Daten</legend>
+            <p>
+              <label for="inputFirstName">
+                <span>Vorname</span>
+              </label>
+              <input type="text" id="inputFirstName" name="inputFirstName" value="Max" autofocus>
+            </p>
+            <p>
+              <label for="inputLastName">
+                <span>Name</span>
+              </label>
+              <input type="text" id="inputLastName" name="inputLastName" value="Mustermann">
+            </p>
+            <p>
+              <label for="inputStreet">
+                <span>Straße, Hausnummer</span>
+              </label>
+              <input type="text" id="inputStreet" name="inputStreet" value="Musterstraße">
+              <input type="text" id="inputStreetNum" name="inputStreetNum" value="6" style="width:30px">
+            </p>
+            <p>
+              <label for="inputCity">
+                <span>Stadt</span>
+              </label>
+              <input type="text" id="inputCity" name="inputCity" value="Musterstadt">
+            </p>
+            <p>
+              <label for="inputZipcode">
+                <span>PLZ</span>
+              </label>
+              <input type="text" id="inputZipcode" name="inputZipcode" value="12345">
+            </p>
+          </fieldset>
+          <!-- <hr> -->
           <button type="submit" onclick="alert('Bestellung aufgegeben!')">GenoCheck&trade; bestellen</button>
         </form>
       </section>
