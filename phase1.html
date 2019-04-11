@@ -7,58 +7,50 @@
     <title>GenoChoice&trade; - GenoCheck&trade; bestellen</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
 
   <body>
     <header>
-      <h1>GenoChoice</h1>
-      <hr>
+      <span class="headerTitle">Genochoice</span><br>
+      <span class="headerSubtitle">Legacy by Design</span>
     </header>
 
-    <h2>GenoCheck&trade; bestellen</h2>
-    <p>
-      Fordern Sie heute ihren <strong>kostenlosen</strong> GenoChoice&trade;-Gentest an.<br>
-      Ein Team aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die Stärken und Schwächen ihres zukünftigen Kindes.
-      <section class="genoCheckOrder">
-        <form action="phase1tophase2.html" method="post">
-          <fieldset>
-            <legend>Persönliche Daten</legend>
-            <p>
-              <label for="inputFirstName">
-                <span>Vorname</span>
-              </label>
-              <input type="text" id="inputFirstName" name="inputFirstName" value="Max" autofocus>
-            </p>
-            <p>
-              <label for="inputLastName">
-                <span>Name</span>
-              </label>
-              <input type="text" id="inputLastName" name="inputLastName" value="Mustermann">
-            </p>
-            <p>
-              <label for="inputStreet">
-                <span>Straße, Hausnummer</span>
-              </label>
-              <input type="text" id="inputStreet" name="inputStreet" value="Musterstraße">
-              <input type="text" id="inputStreetNum" name="inputStreetNum" value="6" style="width:30px">
-            </p>
-            <p>
-              <label for="inputCity">
-                <span>Stadt</span>
-              </label>
-              <input type="text" id="inputCity" name="inputCity" value="Musterstadt">
-            </p>
-            <p>
-              <label for="inputZipcode">
-                <span>PLZ</span>
-              </label>
-              <input type="text" id="inputZipcode" name="inputZipcode" value="12345">
-            </p>
-          </fieldset>
-          <!-- <hr> -->
-          <button type="submit" onclick="alert('Bestellung aufgegeben!')">GenoCheck&trade; bestellen</button>
-        </form>
-      </section>
+    <section>
+      <span class="sectionHeader">GenoCheck&trade; bestellen</span>
+      <p>
+        Fordern Sie heute ihren <strong>kostenlosen</strong> GenoChoice&trade;-Gentest an.<br> Ein Team
+        aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die
+        Stärken und Schwächen ihres zukünftigen Kindes.
+      </p>
+      <div class="imgPanorama">
+        <img src="img\family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
+      </div>
+    </section>
+    <section>
+      <span class="sectionHeader"><i class="material-icons md-36">person</i> Persönliche Daten</span>
+      <form class="genoCheckForm" action="phase1tophase2.html" method="post">
+        <label>Vorname</label>
+        <input type="text" id="inputFirstName" name="inputFirstName" value="Max" required autofocus>
+
+        <label>Name</label>
+        <input type="text" id="inputLastName" name="inputLastName" value="Mustermann" required>
+
+        <label>Straße & Hausnummer</label>
+        <input type="text" id="inputStreet" name="inputStreet" value="Musterstraße" required>
+
+        <label>Stadt</label>
+        <input type="text" id="inputCity" name="inputCity" value="Musterstadt" required>
+
+        <label>PLZ</label>
+        <input type="text" id="inputZipcode" name="inputZipcode" value="12345" required>
+
+        <button id="genoCheckSubmit" type="submit">
+          <i class="material-icons md-24">check</i>
+          GenoCheck&trade; bestellen
+        </button>
+      </form>
+    </section>
   </body>
 
 </html>
