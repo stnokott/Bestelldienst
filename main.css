@@ -1,10 +1,23 @@
 .material-icons {
   vertical-align: top;
 }
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; } /* Default */
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+/* Default */
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
 
 @font-face {
   font-family: alien;
@@ -32,8 +45,37 @@
 }
 
 body {
+  margin: 1em;
+  font-family: raleway-medium, sans-serif;
+
+}
+
+nav {
+  font-family: raleway-light, sans-serif;
   background-color: white;
-  font-family: raleway-medium;
+  border: 1px solid #81D4FA;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+
+nav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border-right: 1px solid #81D4FA;
+}
+
+nav a:hover {
+  background-color: #E1F5FE;
+}
+
+nav a.active {
+  font-weight: bold;
+  background-color: #81D4FA;
+  color: white;
 }
 
 header {
@@ -41,6 +83,21 @@ header {
   font-family: alien;
   text-align: center;
   border-bottom: 1px solid black;
+  position: relative;
+}
+
+header::after {
+  content: "";
+  background: url("./img/header_bg.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100px 100px;
+  opacity: .15;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
 }
 
 .headerTitle {
@@ -59,14 +116,18 @@ section {
   padding: 1em;
   margin: 1em 0 1em 0;
   border: 1px solid #bdbdbd;
-  box-shadow: 10px 10px 25px -15px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 25px -15px rgba(0, 0, 0, 0.75);
+}
+
+section>p {
+  margin: 1em;
 }
 
 .sectionHeader {
   padding: 1em 0 0 1em;
   font-family: raleway-light;
   font-weight: bold;
-  font-size: 36px;
+  font-size: 24px;
   border-bottom: 1px solid black;
 }
 
@@ -75,16 +136,15 @@ section {
   margin: 1em 0 1em 0;
 }
 
-.imgPanorama > img {
+.imgPanorama>img {
   display: block;
   width: 100%;
   margin: -10% 0 -10% 0%;
 }
 
 form {
-  overflow: hidden;
-  padding: .3em 1em 1em 1em;
-  margin-top: 1em;
+  padding: 1em;
+  margin: 1em;
 }
 
 fieldset {
@@ -105,17 +165,18 @@ fieldset {
 }
 
 fieldset label span {
-    display: inline-block;
-    width: 150px;
+  font-family: raleway-black;
+  display: inline-block;
+  width: 150px;
 }
 
 input {
+  font-family: raleway-medium;
   width: auto;
   box-sizing: content-box;
   margin: 3px;
   padding: 5px 3px 5px 3px;
   border: 1px solid #bdbdbd;
-
   transition: box-shadow 0.2s ease-in-out;
   transition: border 0.2s ease-in-out;
 }
@@ -128,7 +189,7 @@ input:invalid {
 input:focus {
   outline: none;
   border: 1px solid black;
-  box-shadow: inset 1px 1px 5px 0px rgba(0,0,0,0.2);
+  box-shadow: inset 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 button {
@@ -138,10 +199,9 @@ button {
   display: inline-block;
   width: 100%;
   border: 4px solid #81D4FA;
-  padding: 20px 32px;
+  padding: 1em;
   cursor: pointer;
   background-color: transparent;
-
   transition: background-color 0.2s, color 0.2s;
 }
 
@@ -161,4 +221,101 @@ button:hover {
 
 button[type=submit] {
   margin-top: .5em;
+}
+
+/* http://kodhus.com/newsite/step-progress-bar-css-only/ */
+.progresssteps-container {
+  display: block;
+  margin: 2em 1em 2em 1em;
+}
+
+.progresssteps {
+  padding: 0;
+  counter-reset: step;
+}
+
+.progresssteps li {
+  color: #bdbdbd;
+  list-style-type: none;
+  width: 25%;
+  float: left;
+  font-size: 15px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.progresssteps li:before {
+  width: 30px;
+  height: 30px;
+  content: counter(step);
+  counter-increment: step;
+  line-height: 30px;
+  border: 2px solid #bdbdbd;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: white;
+
+  transition: background-color 0.1s ease-in-out;
+}
+
+.progresssteps li:hover::before {
+  background-color: #bdbdbd;
+  color: white;
+}
+
+.progresssteps li#confirmed:before {
+  font-family: "Material Icons";
+  content: "\e5ca";
+}
+
+.progresssteps li#sent:before {
+  font-family: "Material Icons";
+  content: "\e558";
+}
+
+.progresssteps li#analysis:before {
+  font-family: "Material Icons";
+  content: "\e8b6";
+}
+
+.progresssteps li#done:before {
+  font-family: "Material Icons";
+  content: "\e7f2";
+}
+
+.progresssteps li:after {
+  /* Strich nach Punkt */
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: #bdbdbd;
+  top: 15px;
+  left: -50%;
+  z-index: -1;
+}
+
+.progresssteps li:first-child:after {
+  content: none;
+}
+
+.progresssteps li.active {
+  color: #81D4FA;
+}
+
+.progresssteps li.active:hover::before {
+  background-color: #81D4FA;
+}
+
+.progresssteps li.active:before {
+  /* Ring-Farbe */
+  border-color: #81D4FA;
+}
+
+.progresssteps li.active+li:after {
+  /* Strich nach active-Punkt */
+  background-color: #81D4FA;
 }
