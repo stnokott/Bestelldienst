@@ -14,30 +14,33 @@
       <span class="headerTitle">Genochoice</span><br>
       <span class="headerSubtitle">Legacy by Design</span>
     </header>
-    <div class="agent">
-      Bearbeiter: <strong>stnokott</strong>
+    <div class="currentAgent">
+      Bearbeiter: <div class="agentName">stnokott</div>
     </div>
-    <hr>
 
-    <section class="genoCheckOrders">
-      <h3>Offene Bestellungen:</h3>
-
-      <form class="editGenoCheckOrders" action="https://enlx6f766q8jc.x.pipedream.net" method="post">
+    <section>
+      <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
+      <form action="https://enlx6f766q8jc.x.pipedream.net" method="post">
         <!-- "order443" könnte Key in Datenbank sein -->
-        <select class="genoCheckOrdersSelect" name="genoCheckOrdersSelect">
-          <option value="order443">443 - Max Mustermann</option>
-          <option value="order444">444 - Marina Musterfrau</option>
-        </select>
-        <hr>
-        <input type="radio" name="statusOrderConfirmed" id="statusOrderConfirmed">
+        <div class="dropdownWrapper">
+          <select class="dropdown" name="genoCheckOrdersSelect">
+            <option value="order443">443 - Max Musterhalfen</option>
+            <option value="order444">444 - Erika Musterfrau</option>
+          </select>
+        </div>
+
+        <input type="radio" name="statusOrder" id="statusOrderConfirmed">
         <label for="statusOrderConfirmed">Bestellung bestätigt</label><br>
-        <input type="radio" name="statusSent" id="statusSent">
+
+        <input type="radio" name="statusOrder" id="statusSent">
         <label for="statusSent">GenoCheck&trade; versandt</label><br>
-        <input type="radio" name="statusLaboratory" id="statusLaboratory" checked>
+
+        <input type="radio" name="statusOrder" id="statusLaboratory" checked>
         <label for="statusLaboratory">Labor-Analyse läuft</label><br>
-        <input type="radio" name="statusDone" id="statusDone">
+
+        <input type="radio" name="statusOrder" id="statusDone">
         <label for="statusDone"><strong>Analyse fertiggestellt</strong></label>
-        <hr>
+
         <button type="submit">Änderung bestätigen</button>
       </form>
     </section>

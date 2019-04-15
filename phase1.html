@@ -10,11 +10,13 @@
   </head>
 
   <body>
-    <nav>
-      <a class="active" href="phase1.html">Phase 1</a>
-      <a href="phase2.html">Phase 2</a>
-      <a href="phase3.html">Phase 3</a>
-    </nav>
+    <div class="navbar">
+      <ul class="navlist">
+        <li class="active"><a href="#">Phase 1</a></li>
+        <li><a href="#">Phase 2</a></li>
+        <li><a href="#">Phase 3</a></li>
+      </ul>
+    </div>
 
     <header>
       <span class="headerTitle">Genochoice</span><br>
@@ -34,7 +36,7 @@
     </section>
     <section>
       <span class="sectionHeader"><i class="material-icons md-24">person</i> Persönliche Daten</span>
-      <form class="genoCheckForm" action="phase1tophase2.html" method="post">
+      <form id="genoCheckForm" action="phase1tophase2.html" method="post">
         <label>Vorname</label>
         <input type="text" id="inputFirstName" name="inputFirstName" value="Max" required autofocus>
 
@@ -54,7 +56,6 @@
         <input type="email" id="inputEmail" name="inputEmail" value="m.mustermann@gmail.com" required>
 
         <button id="genoCheckSubmit" type="submit">
-          <i class="material-icons md-24">check</i>
           GenoCheck&trade; bestellen
         </button>
       </form>
