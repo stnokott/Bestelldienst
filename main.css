@@ -169,18 +169,18 @@ input {
   box-sizing: content-box;
   margin: 3px;
   padding: 5px 3px 5px 3px;
-  border: 1px solid var(--accent-grey);
-  transition: box-shadow 0.1s ease-in-out, background-color 0.2s ease-in-out, border 0.2s ease-in-out;
+  border-width: 0;
+  border-bottom: 1px solid var(--accent-grey);
+  transition: background-color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
 }
 
 input:invalid {
-  border-right: 5px solid var(--accent-red);
   background-color: rgba(230, 57, 53, 0.1);
 }
 
 input:focus {
   outline: none;
-  box-shadow: inset 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid black;
 }
 
 button {
