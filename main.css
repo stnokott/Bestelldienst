@@ -325,6 +325,7 @@ button[type='submit'] {
 }
 
 .progresssteps li {
+  cursor: default;
   color: var(--accent-grey);
   list-style-type: none;
   width: 25%;
@@ -389,6 +390,7 @@ button[type='submit'] {
 }
 
 .progresssteps li:first-child:after {
+  /* Linie vor erstem Item verbergen */
   content: none;
 }
 
