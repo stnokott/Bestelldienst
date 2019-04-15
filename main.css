@@ -315,8 +315,8 @@ button[type='submit'] {
 
 /* http://kodhus.com/newsite/step-progress-bar-css-only/ */
 .progresssteps-container {
-  display: block;
-  margin: 2em 1em 2em 1em;
+  display: inline-block;
+  margin: 1em;
 }
 
 .progresssteps {
