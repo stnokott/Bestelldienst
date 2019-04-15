@@ -257,19 +257,60 @@ input:focus {
 select {
   font-family: Roboto, sans-serif;
   font-weight: 600;
-  -moz-appearance: none;      /* um eigenen Pfeil darstellen zu können */
-  -webkit-appearance: none;
-  appearance: none;
   border: 1px solid var(--accent-grey);
   margin-bottom: 1em;
 }
 
 select.dropdown {
+  -moz-appearance: none;      /* um eigenen Pfeil darstellen zu können */
+  -webkit-appearance: none;
+  appearance: none;
   outline: none;
   border: none;
   border-bottom: 1px solid var(--accent-grey);
   padding: 1em;
   width: 100%;
+}
+
+ul.list {
+  max-height: 150px;
+  overflow-y: auto;
+  width: 50%;
+  list-style-type: none;
+  position: relative;
+  padding: 0;
+  border: 1px solid black;
+  margin: .5em 0 .5em 0;
+}
+
+ul.list li {
+  padding: .5em .5em .5em 1em;
+  border-bottom: 1px solid black;
+}
+
+ul.list > :last-child {
+  border-bottom: none;
+}
+
+ul.list li.disabled {
+  color: var(--accent-grey);
+  background-color: transparent;
+}
+
+ul.list li.disabled::after {
+  font-family: "Material Icons";
+  content: "\e14b";
+  color: red;
+  position: absolute;
+  right: 10px;
+}
+
+ul.list li#green {
+  border-right: 5px solid var(--accent-green);
+}
+
+ul.list li#blue {
+  border-right: 5px solid var(--accent-blue);
 }
 
 button {
