@@ -6,20 +6,36 @@
     <meta charset="UTF-8">
     <title>GenoChoice&trade; - Ihre GenoCheck&trade;-Ergebnisse</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
   </head>
 
   <body>
+    <div>
+      <ul class="navlist">
+        <li class="active"><a href="#">Phase 1</a></li>
+        <li><a href="#">Phase 2</a></li>
+        <li><a href="#">Phase 3</a></li>
+      </ul>
+    </div>
+
     <header>
-      <h1>Ihre GenoCheck&trade;-Ergebnisse</h1>
-      <hr>
+      <span class="headerTitle">Genochoice</span><br>
+      <span class="headerSubtitle">Legacy by Design</span>
     </header>
 
-    <section class="genoCheckResultsGenotypes">
-      <h1>Genotypen</h1>
+    <section>
+      <span class="sectionHeader">Ihre GenoCheck&trade;-Ergebnisse</span>
       <p>
         Diese Übersicht zeigt die Ergebnisse der labortechnischen Untersuchung Ihres persönlichen GenoCheck&trade;-Tests.<br>
         Hier werden Ihnen die möglichen Genotypen eines auf Ihren Genen basierendem Baby angezeigt.
       </p>
+    </section>
+
+    <section class="genoCheckResultsGenotypes">
+      <span class="sectionHeader">GenoTypen&trade;</span>
+
       <h2>Augen</h2>
       <select class="list" id="listEyes" size="5" style="width:200px">
         <option value="green">Grün</option>
@@ -35,7 +51,6 @@
         <option value="red" disabled>Rot</option>
       </select>
     </section>
-    <hr>
 
     <section class="genoCheckResultsRisks">
       <h1>Risiken</h1>

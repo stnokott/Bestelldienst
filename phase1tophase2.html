@@ -11,41 +11,43 @@
   </head>
 
   <body>
-    <nav>
-      <a href="phase1.html">Phase 1</a>
-      <a class="active" href="phase2.html">Phase 2</a>
-      <a href="phase3.html">Phase 3</a>
-    </nav>
+    <div>
+      <ul class="navlist">
+        <li><a href="#">Phase 1</a></li>
+        <li class="active"><a href="#">Phase 2</a></li>
+        <li><a href="#">Phase 3</a></li>
+      </ul>
+    </div>
 
     <header>
       <span class="headerTitle">Genochoice</span><br>
       <span class="headerSubtitle">Legacy by Design</span>
     </header>
+
+    <section>
+      <p>
+        Hier können Sie den Fortschritt Ihres persönlichen GenoCheck&trade;-Tests verfolgen.<br>
+        Bei abgeschlossener Analyse werden Sie zu Ihren Ergebnissen weitergeleitet.
+      </p>
+    </section>
+
+    <section class="genoCheckStatus">
+      <span class="sectionHeader">GenoCheck&trade; - Bestellungsverfolgung</span>
+
+      <div class="progresssteps-container">
+        <ul class="progresssteps">
+          <li class="active" id="confirmed">Bestellung bestätigt</li>
+          <li id="sent">GenoCheck&trade; versandt</li>
+          <li id="analysis">Labor-Analyse läuft</li>
+          <li id="done">Analyse fertiggestellt</li>
+        </ul>
+      </div>
+
+
+      <form action="phase2.html" method="post">
+        <button type="submit">Zu Ihren Ergebnissen</button>
+      </form>
+    </section>
   </body>
-
-  <section>
-    <p>
-      Hier können Sie den Fortschritt Ihres persönlichen GenoCheck&trade;-Tests verfolgen.<br>
-      Bei abgeschlossener Analyse werden Sie zu Ihren Ergebnissen weitergeleitet.
-    </p>
-  </section>
-
-  <section class="genoCheckStatus">
-    <span class="sectionHeader">GenoCheck&trade; - Bestellungsverfolgung</span>
-
-    <div class="progresssteps-container">
-      <ul class="progresssteps">
-        <li class="active" id="confirmed">Bestellung bestätigt</li>
-        <li id="sent">GenoCheck&trade; versandt</li>
-        <li id="analysis">Labor-Analyse läuft</li>
-        <li id="done">Analyse fertiggestellt</li>
-      </ul>
-    </div>
-
-
-    <form action="phase2.html" method="post">
-      <button type="submit">Zu Ihren Ergebnissen</button>
-    </form>
-  </section>
 
 </html>
