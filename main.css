@@ -151,7 +151,7 @@ fieldset {
 }
 
 #genoCheckSubmit {
-  grid-row-start: 6;
+  grid-row-start: 7;
   grid-column: 1 / 3;
 }
 
@@ -170,8 +170,7 @@ input {
   margin: 3px;
   padding: 5px 3px 5px 3px;
   border: 1px solid var(--accent-grey);
-  transition: box-shadow 0.2s ease-in-out;
-  transition: border 0.2s ease-in-out;
+  transition: box-shadow 0.1s ease-in-out, background-color 0.2s ease-in-out, border 0.2s ease-in-out;
 }
 
 input:invalid {
@@ -179,13 +178,8 @@ input:invalid {
   background-color: rgba(230, 57, 53, 0.1);
 }
 
-input:valid {
-  border-right: 5px solid var(--accent-green);
-}
-
 input:focus {
   outline: none;
-  border: 1px solid black;
   box-shadow: inset 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
