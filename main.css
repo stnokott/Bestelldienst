@@ -120,7 +120,7 @@ section {
   max-width: 75%;
   min-width: 500px;
   padding: 1em;
-  margin: 1em 0 1em 0;
+  margin: 1em 0 1em 1em;
   border: 1px solid var(--accent-grey);
   box-shadow: 10px 10px 25px -15px rgba(0, 0, 0, 0.75);
 }
@@ -161,20 +161,38 @@ div.agentName::before {
   padding-right: .25em;
 }
 
-.imgPanorama {
+figure {
+  position: relative;
   overflow: hidden;
   margin: 1em 0 1em 0;
 }
 
-.imgPanorama>img {
+figure:hover > img {
+  transform: scale(1.1);
+}
+
+figure img {
   display: block;
   width: 100%;
   margin: -10% 0 -10% 0%;
+
+  transition: all .2s ease;
+}
+
+figcaption {
+  width: 100%;
+  font-size: 10pt;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  background-color: rgba(0, 0, 0, .5);
+  padding: .5em;
 }
 
 form {
   padding: 1em;
-  margin: 1em;
+  margin: 0 1em 1em 1em;
 }
 
 form#genoCheckForm {
