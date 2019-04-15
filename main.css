@@ -1,57 +1,42 @@
-.material-icons {
-  vertical-align: top;
-}
+$accent-color: #81D4FA;
 
-.material-icons.md-18 {
-  font-size: 18px;
-}
-
-.material-icons.md-24 {
-  font-size: 24px;
-}
-
+.material-icons {vertical-align: top;}
+.material-icons.md-18 {font-size: 18px;}
+.material-icons.md-24 {font-size: 24px;}
 /* Default */
 .material-icons.md-36 {
   font-size: 36px;
 }
-
-.material-icons.md-48 {
-  font-size: 48px;
-}
+.material-icons.md-48 {font-size: 48px;}
 
 @font-face {
   font-family: alien;
   src: url("./fonts/alienleague.ttf");
 }
 
-@font-face {
-  font-family: raleway-black;
-  src: url("./fonts/Raleway-Black.ttf");
-}
-
-@font-face {
-  font-family: raleway-medium;
-  src: url("./fonts/Raleway-Medium.ttf");
-}
-
-@font-face {
-  font-family: raleway-light;
-  src: url("./fonts/Raleway-Light.ttf");
-}
-
-@font-face {
-  font-family: raleway-thin;
-  src: url("./fonts/Raleway-Thin.ttf");
-}
+/*
+Schriftarten -> font-weight
+100 Thin
+200 Extra Light
+300 Light
+400 Normal
+500 Medium
+600 Semi Bold
+700 Bold
+800 Extra Bold
+900 Ultra Bold
+*/
 
 body {
   margin: 1em;
-  font-family: raleway-medium, sans-serif;
+  font-family: Roboto, sans-serif;
+  font-weight: 500; /* medium */
 
 }
 
 nav {
-  font-family: raleway-light, sans-serif;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
   background-color: white;
   border: 1px solid #81D4FA;
   overflow: hidden;
@@ -64,7 +49,7 @@ nav a {
   text-align: center;
   padding: 10px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 12pt;
   border-right: 1px solid #81D4FA;
 }
 
@@ -125,8 +110,8 @@ section>p {
 
 .sectionHeader {
   padding: 1em 0 0 1em;
-  font-family: raleway-light;
-  font-weight: bold;
+  font-family: Raleway, sans-serif;
+  font-weight: 300;
   font-size: 24px;
   border-bottom: 1px solid black;
 }
@@ -165,13 +150,15 @@ fieldset {
 }
 
 fieldset label span {
-  font-family: raleway-black;
+  font-family: Raleway, sans-serif;
+  font-weight: 900;
   display: inline-block;
   width: 150px;
 }
 
 input {
-  font-family: raleway-medium;
+  font-family: Raleway, sans-serif;
+  font-weight: 500;
   width: auto;
   box-sizing: content-box;
   margin: 3px;
