@@ -48,7 +48,10 @@
         <input type="text" id="inputCity" name="inputCity" value="Musterstadt" required>
 
         <label>PLZ</label>
-        <input type="text" id="inputZipcode" name="inputZipcode" value="12345" required>
+        <input type="text" id="inputZipcode" name="inputZipcode" value="12345" pattern="\d{5}" required>
+
+        <label>E-Mail</label>
+        <input type="email" id="inputEmail" name="inputEmail" value="m.mustermann@gmail.com" required>
 
         <button id="genoCheckSubmit" type="submit">
           <i class="material-icons md-24">check</i>
