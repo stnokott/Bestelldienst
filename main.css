@@ -61,23 +61,24 @@ body {
   display: inline-block; /* Horizontale Anordnung */
   margin-right: -5px;
   padding: 0 .25em 0 .25em;
-  border-bottom: 1px solid var(--accent-lighter-blue);
   background-color: var(--accent-lighter-blue);
+  width: 100px;
 
   transition: all .2s ease;
 }
 
-.navlist li:hover {
+.navlist li:not(.active):hover {
   background-color: white;
-  border-bottom: 1px solid var(--accent-black);
+  width: 250px;
+  margin: 0 .5em 0 .5em;
+}
+
+.navlist li:not(.active):hover ~ *.active {
+  background-color: var(--accent-lighter-blue);
 }
 
 .navlist li.active {
-  background-color: var(--accent-blue);
-}
-
-.navlist li.active:hover {
-  background-color: var(--accent-much-lighter-blue);
+  background-color: white;
 }
 
 .navlist li a {
