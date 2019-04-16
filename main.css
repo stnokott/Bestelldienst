@@ -1,16 +1,10 @@
-/* globale Variablen */
 :root {
   --accent-blue: #81D4FA;
-  --accent-lighter-blue: #b1e5fc;
-  --accent-much-lighter-blue: #f3ecfc;
+  --accent-light-blue: #b1e5fc;
+  --accent-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
-  --accent-light-grey: #eeeeee;
-  --accent-lighter-grey: #fafafa;
-  --accent-red: #d32f2f;
+  --accent-red: #e53935;
   --accent-green: #4caf50;
-  --accent-brown: #6d4c41;
-  --accent-yellow: #ffee58;
-  --accent-black: #212121;
 }
 
 
@@ -53,7 +47,7 @@ body {
   list-style-type: none;
   margin: 0 0 2em 0;
   padding: 0;
-  background-color: var(--accent-lighter-blue);
+  background-color: var(--accent-blue);
   overflow: hidden;
 }
 
@@ -61,18 +55,16 @@ body {
   display: inline-block; /* Horizontale Anordnung */
   margin-right: -5px;
   padding: 0 .25em 0 .25em;
-  background-color: var(--accent-lighter-blue);
+  background-color: var(--accent-blue);
+
   width: 100px;
 
   transition: all .2s ease;
 }
 
-.navlist li:not(.active):hover {
-  background-color: white;
-}
-
-.navlist li:not(.active):hover ~ *.active {
-  background-color: var(--accent-lighter-blue);
+.navlist li:hover {
+  background-color: var(--accent-light-blue);
+  width: 250px;
 }
 
 .navlist li.active {
@@ -80,7 +72,7 @@ body {
 }
 
 .navlist li a {
-  color: var(--accent-black);
+  color: black;
   display: block;
   min-width: 100px;
   height: 50px;
@@ -93,7 +85,7 @@ header {
   padding: 1em;
   font-family: alien;
   text-align: center;
-  border-bottom: 1px solid var(--accent-black);
+  border-bottom: 1px solid black;
   position: relative;
 }
 
@@ -123,7 +115,6 @@ header::after {
 }
 
 section {
-  position: relative;
   max-width: 75%;
   min-width: 500px;
   padding: 1em;
@@ -141,7 +132,7 @@ section>p {
   font-family: Raleway, sans-serif;
   font-weight: 300;
   font-size: 24px;
-  border-bottom: 1px solid var(--accent-black);
+  border-bottom: 1px solid black;
 }
 
 div.currentAgent {
@@ -244,7 +235,7 @@ input:invalid {
 
 input:focus {
   outline: none;
-  border-bottom: 1px solid var(--accent-black);
+  border-bottom: 1px solid black;
 }
 
 .dropdownWrapper {
@@ -285,71 +276,38 @@ ul.list {
   list-style-type: none;
   position: relative;
   padding: 0;
-  border: 1px solid var(--accent-black);
+  border: 1px solid black;
   margin: .5em 0 .5em 0;
 }
 
 ul.list li {
   padding: .5em .5em .5em 1em;
-  border-bottom: 1px solid var(--accent-black);
-
-  transition: all .4s ease;
+  border-bottom: 1px solid black;
 }
 
 ul.list > :last-child {
   border-bottom: none;
 }
 
+ul.list li.disabled {
+  color: var(--accent-grey);
+  background-color: transparent;
+}
+
 ul.list li.disabled::after {
   font-family: "Material Icons";
   content: "\e14b";
-  color: var(--accent-red);
+  color: red;
   position: absolute;
   right: 10px;
 }
 
-ul.list li.green {
-  background: linear-gradient(to right, transparent 50%, var(--accent-green) 50%);
+ul.list li#green {
+  border-right: 5px solid var(--accent-green);
 }
 
-ul.list li.blue {
-  background: linear-gradient(to right, transparent 50%, var(--accent-blue) 50%);
-}
-
-ul.list li.grey {
-  background: linear-gradient(to right, transparent 50%, var(--accent-grey) 50%);
-}
-
-ul.list li.brown {
-  background: linear-gradient(to right, transparent 50%, var(--accent-brown) 50%);
-}
-
-ul.list li.blonde {
-  background: linear-gradient(to right, transparent 50%, var(--accent-yellow) 50%);
-}
-
-ul.list li.black {
-  background: linear-gradient(to right, transparent 50%, var(--accent-black) 50%);
-}
-
-ul.list li.red {
-  background: linear-gradient(to right, transparent 50%, var(--accent-red) 50%);
-}
-
-ul.list li:not(.disabled) {
-  background-size: 200% 100%;
-  background-position-x: -5px;
-}
-
-ul.list li:hover {
-  background-position: right;
-  color: white;
-}
-
-ul.list li.disabled {
-  color: var(--accent-grey);
-  background: transparent;
-  border-right: 0px solid transparent;
+ul.list li#blue {
+  border-right: 5px solid var(--accent-blue);
 }
 
 button {
@@ -391,60 +349,6 @@ button:hover {
 
 button[type='submit'] {
   margin-top: .5em;
-}
-
-.disease {
-  width: 50%;
-  position: relative;
-  padding: 0 1em 1em 1em;
-  margin: 1em 0 1em 0;
-  border: 1px solid var(--accent-grey);
-
-  transition: all .2s ease;
-}
-
-.disease:hover {
-  background-color: var(--accent-lighter-grey);
-}
-
-meter {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 1em;
-
-  /* Firefox */
-  background: #EEE;
-  box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
-}
-
-/* WebKit */
-meter::-webkit-meter-bar {
-  background: #EEE;
-  box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
-  border-radius: 3px;
-}
-
-meter::-webkit-meter-optimum-value, meter:-moz-meter-optimum::-moz-meter-bar {
-  background: var(--accent-green);
-}
-
-meter::-webkit-meter-suboptimum-value, meter:-moz-meter-sub-optimum::-moz-meter-bar {
-  background: var(--accent-yellow);
-}
-
-meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-moz-meter-bar  {
-  background: var(--accent-red);
-}
-
-/* ~ = Sibling */
-meter ~ label {
-  margin-bottom: 1em;
-  position: absolute;
-  left: 1em;
-  bottom: 1.5em;
-  font-size: 10pt;
 }
 
 /* http://kodhus.com/newsite/step-progress-bar-css-only/ */
