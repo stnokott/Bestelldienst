@@ -289,7 +289,8 @@ ul.list {
 ul.list li {
   padding: .5em .5em .5em 1em;
   border-bottom: 1px solid black;
-  border-right: 5px solid transparent;
+
+  transition: all .4s ease;
 }
 
 ul.list > :last-child {
@@ -304,37 +305,47 @@ ul.list li.disabled::after {
   right: 10px;
 }
 
-ul.list li#green {
-  border-right-color: var(--accent-green);
+ul.list li.green {
+  background: linear-gradient(to right, transparent 50%, var(--accent-green) 50%);
 }
 
-ul.list li#blue {
-  border-right-color: var(--accent-blue);
+ul.list li.blue {
+  background: linear-gradient(to right, transparent 50%, var(--accent-blue) 50%);
 }
 
-ul.list li#grey {
-  border-right-color: var(--accent-grey);
+ul.list li.grey {
+  background: linear-gradient(to right, transparent 50%, var(--accent-grey) 50%);
 }
 
-ul.list li#brown {
-  border-right-color: var(--accent-brown);
+ul.list li.brown {
+  background: linear-gradient(to right, transparent 50%, var(--accent-brown) 50%);
 }
 
-ul.list li#blonde {
-  border-right-color: var(--accent-yellow);
+ul.list li.blonde {
+  background: linear-gradient(to right, transparent 50%, var(--accent-yellow) 50%);
 }
 
-ul.list li#black {
-  border-right-color: var(--accent-black);
+ul.list li.black {
+  background: linear-gradient(to right, transparent 50%, var(--accent-black) 50%);
 }
 
-ul.list li#red {
-  border-right-color: var(--accent-red);
+ul.list li.red {
+  background: linear-gradient(to right, transparent 50%, var(--accent-red) 50%);
+}
+
+ul.list li:not(.disabled) {
+  background-size: 200% 100%;
+  background-position-x: -5px;
+}
+
+ul.list li:hover {
+  background-position: right;
+  color: white;
 }
 
 ul.list li.disabled {
   color: var(--accent-grey);
-  background-color: transparent;
+  background: transparent;
   border-right: 0px solid transparent;
 }
 
