@@ -3,8 +3,11 @@
   --accent-lighter-blue: #b1e5fc;
   --accent-much-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
-  --accent-red: #e53935;
+  --accent-red: #d32f2f;
   --accent-green: #4caf50;
+  --accent-brown: #6d4c41;
+  --accent-yellow: #ffee58;
+  --accent-black: #212121;
 }
 
 
@@ -286,31 +289,53 @@ ul.list {
 ul.list li {
   padding: .5em .5em .5em 1em;
   border-bottom: 1px solid black;
+  border-right: 5px solid transparent;
 }
 
 ul.list > :last-child {
   border-bottom: none;
 }
 
-ul.list li.disabled {
-  color: var(--accent-grey);
-  background-color: transparent;
-}
-
 ul.list li.disabled::after {
   font-family: "Material Icons";
   content: "\e14b";
-  color: red;
+  color: var(--accent-red);
   position: absolute;
   right: 10px;
 }
 
 ul.list li#green {
-  border-right: 5px solid var(--accent-green);
+  border-right-color: var(--accent-green);
 }
 
 ul.list li#blue {
-  border-right: 5px solid var(--accent-blue);
+  border-right-color: var(--accent-blue);
+}
+
+ul.list li#grey {
+  border-right-color: var(--accent-grey);
+}
+
+ul.list li#brown {
+  border-right-color: var(--accent-brown);
+}
+
+ul.list li#blonde {
+  border-right-color: var(--accent-yellow);
+}
+
+ul.list li#black {
+  border-right-color: var(--accent-black);
+}
+
+ul.list li#red {
+  border-right-color: var(--accent-red);
+}
+
+ul.list li.disabled {
+  color: var(--accent-grey);
+  background-color: transparent;
+  border-right: 0px solid transparent;
 }
 
 button {
