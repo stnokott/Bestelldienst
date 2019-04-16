@@ -4,6 +4,7 @@
   --accent-much-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
   --accent-light-grey: #eeeeee;
+  --accent-lighter-grey: #fafafa;
   --accent-red: #d32f2f;
   --accent-green: #4caf50;
   --accent-brown: #6d4c41;
@@ -395,6 +396,15 @@ button[type='submit'] {
 .disease {
   width: 50%;
   position: relative;
+  padding: 0 1em 1em 1em;
+  margin: 1em 0 1em 0;
+  border: 1px solid var(--accent-grey);
+
+  transition: all .2s ease;
+}
+
+.disease:hover {
+  background-color: var(--accent-lighter-grey);
 }
 
 meter {
@@ -430,9 +440,10 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 
 /* ~ = Sibling */
 meter ~ label {
+  margin-bottom: 1em;
   position: absolute;
-  left: 0;
-  top: -1em;
+  left: 1em;
+  bottom: 1.5em;
   font-size: 10pt;
 }
 
