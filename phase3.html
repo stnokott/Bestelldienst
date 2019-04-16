@@ -6,18 +6,37 @@
     <meta charset="UTF-8">
     <title>GenoChoice&trade; - Kit wählen</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
   </head>
 
   <body>
+    <div>
+      <ul class="navlist">
+        <li class="active"><a href="#">Phase 1</a></li>
+        <li><a href="#">Phase 1-2</a></li>
+        <li><a href="#">Phase 2</a></li>
+      </ul>
+    </div>
+
     <header>
-      <h1>Wählen Sie Ihr GenoChoice&trade;-Kit</h1>
-      <hr>
+      <span class="headerTitle">Genochoice</span><br>
+      <span class="headerSubtitle">Legacy by Design</span>
     </header>
 
-    <h1>Verfügbare Kits</h1>
-    <hr>
-    <section class="kitList">
-      <form name="kitForm" action="phase4.html" method="post">
+    <section>
+      <span class="sectionHeader">Wählen Sie Ihr GenoChoice&trade;-Kit</span>
+      <p>
+        In unserem breiten Angebot finden Sie bestimmt die richtige Wahl für Ihr
+        zukünftiges Ich.
+      </p>
+    </section>
+
+    <section>
+      <span class="sectionHeader">Verfügbare Kits</span>
+      <form action="phase4.html" name="selectedKit" method="post">
+
         <div class="kit">
           <h2>Basic Kit</h2>
           <h4>Für den kleinen Geldbeutel</h4>

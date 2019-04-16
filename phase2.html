@@ -6,63 +6,89 @@
     <meta charset="UTF-8">
     <title>GenoChoice&trade; - Ihre GenoCheck&trade;-Ergebnisse</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
   </head>
 
   <body>
+    <div>
+      <ul class="navlist">
+        <li><a href="#">Phase 1</a></li>
+        <li><a href="#">Phase 1-2</a></li>
+        <li class="active"><a href="#">Phase 2</a></li>
+      </ul>
+    </div>
+
     <header>
-      <h1>Ihre GenoCheck&trade;-Ergebnisse</h1>
-      <hr>
+      <span class="headerTitle">Genochoice</span><br>
+      <span class="headerSubtitle">Legacy by Design</span>
     </header>
 
-    <section class="genoCheckResultsGenotypes">
-      <h1>Genotypen</h1>
+    <section>
+      <span class="sectionHeader">Ihre GenoCheck&trade;-Ergebnisse</span>
       <p>
         Diese Übersicht zeigt die Ergebnisse der labortechnischen Untersuchung Ihres persönlichen GenoCheck&trade;-Tests.<br>
-        Hier werden Ihnen die möglichen Genotypen eines auf Ihren Genen basierendem Baby angezeigt.
+        Hier werden Ihnen die möglichen Genotypen eines auf Ihren Genen basierendem Babys angezeigt.
       </p>
-      <h2>Augen</h2>
-      <select class="list" id="listEyes" size="5" style="width:200px">
-        <option value="green">Grün</option>
-        <option value="blue">Blau</option>
-        <option value="grey" disabled>Grau</option>
-        <option value="brown" disabled>Braun</option>
-      </select>
-      <h2>Haarfarbe</h2>
-      <select class="list" id="listHair" size="5" style="width:200px">
-        <option value="blonde">Blond</option>
-        <option value="brown">Braun</option>
-        <option value="black">Schwarz</option>
-        <option value="red" disabled>Rot</option>
-      </select>
     </section>
-    <hr>
+
+    <section class="genoCheckResultsGenotypes">
+      <span class="sectionHeader">Genotypen</span>
+
+      <h2>Augen</h2>
+      <ul class="list">
+        <li class="green">Grün</li>
+        <li class="blue">Blau</li>
+        <li class="grey disabled">Grau</li>
+        <li class="brown disabled">Braun</li>
+      </ul>
+
+      <h2>Haarfarbe</h2>
+      <ul class="list">
+        <li class="blonde">Blond</li>
+        <li class="brown">Braun</li>
+        <li class="black">Schwarz</li>
+        <li class="red disabled">Rot</li>
+      </ul>
+    </section>
 
     <section class="genoCheckResultsRisks">
-      <h1>Risiken</h1>
+      <span class="sectionHeader">Risiken</span>
       <p>
         Unser patentiertes GenoCheck&trade;-Verfahren ermöglicht eine
         Risikobeurteilung zu diversen Erkrankungen in der Lebensspanne Ihres Babys.<br>
         Für nicht erblich bedingte Krankheiten wird das potentielle Verhalten Ihres Kindes errechnet
         und daraus ein Risikowert berechnet.
       </p>
-      <h3>Lungenkrebs</h3>
-      <meter value="45" min="0" max="100" low="10" optimum="5" high="60" id="meterLungcancer"></meter>
-      <label for="meterLungcancer">45% - bedenklich</label>
-      <h3>Alkoholismus</h3>
-      <meter value="10" min="0" max="100" low="10" optimum="5" high="60" id="meterAlcoholism"></meter>
-      <label for="meterLungcancer">10% - unbedenklich</label><br>
-      <h3>Exzessiver Drogenkonsum</h3>
-      <meter value="3" min="0" max="100" low="10" optimum="5" high="60" id="meterDrugs"></meter>
-      <label for="meterLungcancer">3% - unbedenklich</label><br>
-      <h3>Ametropie (Fehlsichtigkeit)</h3>
-      <meter value="80" min="0" max="100" low="10" optimum="5" high="60" id="meterEyesight"></meter>
-      <label for="meterLungcancer">80% - kritisch</label><br>
-      <hr>
+
+      <div class="disease">
+        <h3>Lungenkrebs</h3>
+        <meter value="45" min="0" max="100" low="10" optimum="5" high="60" id="meterLungcancer"></meter>
+        <label for="meterLungcancer">45% - bedenklich</label>
+      </div>
+      <div class="disease">
+        <h3>Alkoholismus</h3>
+        <meter value="10" min="0" max="100" low="10" optimum="5" high="60" id="meterAlcoholism"></meter>
+        <label for="meterLungcancer">10% - unbedenklich</label>
+      </div>
+      <div class="disease">
+        <h3>Exzessiver Drogenkonsum</h3>
+        <meter value="3" min="0" max="100" low="10" optimum="5" high="60" id="meterDrugs"></meter>
+        <label for="meterLungcancer">3% - unbedenklich</label>
+      </div>
+      <div class="disease">
+        <h3>Ametropie (Fehlsichtigkeit)</h3>
+        <meter value="80" min="0" max="100" low="10" optimum="5" high="60" id="meterEyesight"></meter>
+        <label for="meterLungcancer">80% - kritisch</label>
+      </div>
     </section>
 
-    <form action="phase3.html">
-      <button type="submit" id="btnNextPhase">Weiter zur Paketbuchung</button>
-    </form>
+    <section>
+      <form action="phase3.html">
+        <button type="submit" id="btnNextPhase">Weiter zur Paketbuchung</button>
+      </form>
+    </section>
   </body>
 
 </html>

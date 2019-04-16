@@ -25,7 +25,9 @@
     </header>
 
     <section>
-      <span class="sectionHeader">GenoCheck&trade; bestellen</span>
+      <?php
+        echo "<span class=\"sectionHeader\">GenoCheck&trade; bestellen</span>";
+      ?>
       <p>
         Fordern Sie heute ihren <strong>kostenlosen</strong> GenoChoice&trade;-Gentest an.<br> Ein Team
         aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die
@@ -37,7 +39,11 @@
       </figure>
     </section>
     <section>
-      <span class="sectionHeader">Persönliche Daten</span>
+      <span class="sectionHeader">
+        <?php
+        echo "Persönliche Daten";
+         ?>
+      </span>
       <form id="genoCheckForm" name="genoCheckForm[]" action="phase1tophase2.html" method="post">
         <label>Vorname</label>
         <input type="text" id="inputFirstName" name="inputFirstName" value="Max" required autofocus>

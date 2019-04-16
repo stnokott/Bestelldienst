@@ -1,0 +1,547 @@
+/* globale Variablen */
+:root {
+  --accent-blue: #81D4FA;
+  --accent-lighter-blue: #b1e5fc;
+  --accent-much-lighter-blue: #f3ecfc;
+  --accent-grey: #BDBDBD;
+  --accent-light-grey: #eeeeee;
+  --accent-lighter-grey: #fafafa;
+  --accent-red: #d32f2f;
+  --accent-green: #4caf50;
+  --accent-brown: #6d4c41;
+  --accent-yellow: #ffee58;
+  --accent-black: #212121;
+}
+
+
+.material-icons {vertical-align: top;}
+.material-icons.md-18 {font-size: 18px;}
+.material-icons.md-24 {font-size: 24px;}
+/* Default */
+.material-icons.md-36 {
+  font-size: 36px;
+}
+.material-icons.md-48 {font-size: 48px;}
+
+@font-face {
+  font-family: alien;
+  src: url("./fonts/alienleague.ttf");
+}
+
+/*
+Schriftarten -> font-weight
+100 Thin
+200 Extra Light
+300 Light
+400 Normal
+500 Medium
+600 Semi Bold
+700 Bold
+800 Extra Bold
+900 Ultra Bold
+*/
+
+body {
+  /* zentrieren? */
+  padding: 0;
+  margin: 0 0 1em 0;
+  font-family: Roboto, sans-serif;
+  font-weight: 500; /* medium */
+}
+
+.navlist {
+  list-style-type: none;
+  margin: 0 0 2em 0;
+  padding: 0;
+  background-color: var(--accent-lighter-blue);
+  overflow: hidden;
+}
+
+.navlist li {
+  display: inline-block; /* Horizontale Anordnung */
+  margin-right: -5px;
+  padding: 0 .25em 0 .25em;
+  background-color: var(--accent-lighter-blue);
+  width: 100px;
+
+  transition: all .2s ease;
+}
+
+.navlist li:not(.active):hover {
+  background-color: white;
+}
+
+.navlist li:not(.active):hover ~ *.active {
+  background-color: var(--accent-lighter-blue);
+}
+
+.navlist li.active {
+  background-color: white;
+}
+
+.navlist li a {
+  color: var(--accent-black);
+  display: block;
+  min-width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+header {
+  padding: 1em;
+  font-family: alien;
+  text-align: center;
+  border-bottom: 1px solid var(--accent-black);
+  position: relative;
+}
+
+/* Header-Hintergrund */
+header::after {
+  content: "";
+  background: url("./img/header_bg.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100px 100px;
+  opacity: .15;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+.headerTitle {
+  letter-spacing: 10px;
+  font-weight: bold;
+  font-size: 4em;
+}
+
+.headerSubtitle {
+  font-size: 2em;
+}
+
+section {
+  position: relative;
+  max-width: 75%;
+  min-width: 500px;
+  padding: 1em;
+  margin: 1em auto 1em auto;
+  border: 1px solid var(--accent-grey);
+  box-shadow: 10px 10px 25px -15px rgba(0, 0, 0, 0.75);
+}
+
+section>p {
+  margin: 1em;
+}
+
+.sectionHeader {
+  padding: 1em 0 0 1em;
+  font-family: Raleway, sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  border-bottom: 1px solid var(--accent-black);
+}
+
+div.currentAgent {
+  display: inline-block;
+  padding-left: 1em;
+  margin: 1em 0 0 0;
+  border: 1px solid var(--accent-grey);
+}
+
+div.agentName {
+  background-color: var(--accent-blue);
+  height: 100%;
+  padding: .5em 1em .5em .5em;
+  margin-left: .5em;
+  font-family: Raleway, sans-serif;
+  font-weight: 700;
+  display: inline-block;
+}
+
+div.agentName::before {
+  font-family: "Material Icons";
+  content: "\e7fd";
+  vertical-align: bottom;
+  padding-right: .25em;
+}
+
+figure {
+  position: relative;
+  overflow: hidden;
+  margin: 1em 0 1em 0;
+}
+
+figure:hover > img {
+  transform: scale(1.025);
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  margin: -10% 0 -10% 0%;
+
+  transition: all .2s ease;
+}
+
+figcaption {
+  width: 100%;
+  font-size: 10pt;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  background-color: rgba(0, 0, 0, .5);
+  padding: .5em;
+}
+
+form {
+  padding: 1em;
+  margin: 0 1em 1em 1em;
+}
+
+form#genoCheckForm {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: .3em .4em;
+  align-items: center;
+}
+
+fieldset {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button#genoCheckSubmit {
+  grid-row-start: 7;
+  grid-column: 1 / 3;
+}
+
+fieldset label span {
+  font-family: Roboto, sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  width: 150px;
+}
+
+input {
+  font-family: Raleway, sans-serif;
+  font-weight: 500;
+  width: auto;
+  box-sizing: content-box;
+  margin: 3px;
+  padding: 5px 3px 5px 3px;
+  border-width: 0;
+  border-bottom: 1px solid var(--accent-grey);
+  transition: background-color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
+}
+
+input:invalid {
+  background-color: rgba(230, 57, 53, 0.1);
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--accent-black);
+}
+
+.dropdownWrapper {
+  position: relative;
+}
+
+.dropdownWrapper::before {
+  font-family: "Material Icons";
+  content: "\e313";
+  position: absolute;
+  right: .5em;
+  top: 1em;
+  pointer-events: none; /* ermöglicht Interaktion mit Liste durch Pfeil */
+}
+
+select {
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  border: 1px solid var(--accent-grey);
+  margin-bottom: 1em;
+}
+
+select.dropdown {
+  -moz-appearance: none;      /* um eigenen Pfeil darstellen zu können */
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--accent-grey);
+  padding: 1em;
+  width: 100%;
+}
+
+ul.list {
+  max-height: 150px;
+  overflow-y: auto;
+  width: 50%;
+  list-style-type: none;
+  position: relative;
+  padding: 0;
+  border: 1px solid var(--accent-black);
+  margin: .5em 0 .5em 0;
+}
+
+ul.list li {
+  padding: .5em .5em .5em 1em;
+  border-bottom: 1px solid var(--accent-black);
+
+  transition: all .4s ease;
+}
+
+ul.list > :last-child {
+  border-bottom: none;
+}
+
+ul.list li.disabled::after {
+  font-family: "Material Icons";
+  content: "\e14b";
+  color: var(--accent-red);
+  position: absolute;
+  right: 10px;
+}
+
+ul.list li.green {
+  background: linear-gradient(to right, transparent 50%, var(--accent-green) 50%);
+}
+
+ul.list li.blue {
+  background: linear-gradient(to right, transparent 50%, var(--accent-blue) 50%);
+}
+
+ul.list li.grey {
+  background: linear-gradient(to right, transparent 50%, var(--accent-grey) 50%);
+}
+
+ul.list li.brown {
+  background: linear-gradient(to right, transparent 50%, var(--accent-brown) 50%);
+}
+
+ul.list li.blonde {
+  background: linear-gradient(to right, transparent 50%, var(--accent-yellow) 50%);
+}
+
+ul.list li.black {
+  background: linear-gradient(to right, transparent 50%, var(--accent-black) 50%);
+}
+
+ul.list li.red {
+  background: linear-gradient(to right, transparent 50%, var(--accent-red) 50%);
+}
+
+ul.list li:not(.disabled) {
+  background-size: 200% 100%;
+  background-position-x: -5px;
+}
+
+ul.list li:hover {
+  background-position: right;
+  color: white;
+}
+
+ul.list li.disabled {
+  color: var(--accent-grey);
+  background: transparent;
+  border-right: 0px solid transparent;
+}
+
+button {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  display: inline-block;
+  width: 100%;
+  border: 4px solid var(--accent-blue);
+  padding: 1em;
+  cursor: pointer;
+  background: linear-gradient(to right, transparent 50%, var(--accent-blue) 50%);
+  background-size: 200% 100%;
+  background-position: right;
+  position: relative; /* für "after" nötig */
+
+  transition: all 0.4s ease;
+}
+
+button#genoCheckSubmit::after {
+  font-family: "Material Icons";
+  content: "\e5ca";
+  color: var(--accent-blue);
+}
+
+button:active {
+  outline: none;
+  box-shadow: inset 0px 0px 30px -8px #000000;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  color: var(--accent-blue);
+  background-position: left;
+}
+
+button[type='submit'] {
+  margin-top: .5em;
+}
+
+.disease {
+  width: 50%;
+  position: relative;
+  padding: 0 1em 1em 1em;
+  margin: 1em 0 1em 0;
+  border: 1px solid var(--accent-grey);
+
+  transition: all .2s ease;
+}
+
+.disease:hover {
+  background-color: var(--accent-lighter-grey);
+}
+
+meter {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 1em;
+
+  /* Firefox */
+  background: #EEE;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+}
+
+/* WebKit */
+meter::-webkit-meter-bar {
+  background: #EEE;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+  border-radius: 3px;
+}
+
+meter::-webkit-meter-optimum-value, meter:-moz-meter-optimum::-moz-meter-bar {
+  background: var(--accent-green);
+}
+
+meter::-webkit-meter-suboptimum-value, meter:-moz-meter-sub-optimum::-moz-meter-bar {
+  background: var(--accent-yellow);
+}
+
+meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-moz-meter-bar  {
+  background: var(--accent-red);
+}
+
+/* ~ = Sibling */
+meter ~ label {
+  margin-bottom: 1em;
+  position: absolute;
+  left: 1em;
+  bottom: 1.5em;
+  font-size: 10pt;
+}
+
+/* http://kodhus.com/newsite/step-progress-bar-css-only/ */
+.progresssteps-container {
+  display: inline-block;
+  margin: 1em;
+}
+
+.progresssteps {
+  padding: 0;
+  counter-reset: step;
+}
+
+.progresssteps li {
+  cursor: default;
+  color: var(--accent-grey);
+  list-style-type: none;
+  width: 25%;
+  float: left;
+  font-size: 15px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.progresssteps li:before {
+  width: 30px;
+  height: 30px;
+  content: counter(step);
+  counter-increment: step;
+  line-height: 30px;
+  border: 2px solid var(--accent-grey);
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: white;
+
+  transition: background-color 0.1s ease-in-out;
+}
+
+.progresssteps li:hover::before {
+  background-color: var(--accent-grey);
+  color: white;
+}
+
+.progresssteps li#confirmed:before {
+  font-family: "Material Icons";
+  content: "\e5ca";
+}
+
+.progresssteps li#sent:before {
+  font-family: "Material Icons";
+  content: "\e558";
+}
+
+.progresssteps li#analysis:before {
+  font-family: "Material Icons";
+  content: "\e8b6";
+}
+
+.progresssteps li#done:before {
+  font-family: "Material Icons";
+  content: "\e7f2";
+}
+
+.progresssteps li:after {
+  /* Strich nach Punkt */
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: var(--accent-grey);
+  top: 15px;
+  left: -50%;
+  z-index: -1;
+}
+
+.progresssteps li:first-child:after {
+  /* Linie vor erstem Item verbergen */
+  content: none;
+}
+
+.progresssteps li.active {
+  color: var(--accent-blue);
+}
+
+.progresssteps li.active:hover::before {
+  background-color: var(--accent-blue);
+}
+
+.progresssteps li.active:before {
+  /* Ring-Farbe */
+  border-color: var(--accent-blue);
+}
+
+.progresssteps li.active+li:after {
+  /* Strich nach active-Punkt */
+  background-color: var(--accent-blue);
+}

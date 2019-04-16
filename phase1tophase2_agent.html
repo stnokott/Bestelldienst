@@ -5,37 +5,44 @@
     <meta charset="UTF-8">
     <title>GenoChoice&trade; - GenoCheck&trade; Agent</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
   </head>
 
   <body>
     <header>
-      <h1>GenoChoice&trade; - Bestellungsbearbeitung</h1>
-      <hr>
+      <span class="headerTitle">Genochoice</span><br>
+      <span class="headerSubtitle">Legacy by Design</span>
     </header>
-    <div class="agent">
-      Bearbeiter: <strong>stnokott</strong>
+
+    <div class="currentAgent">
+      Bearbeiter: <div class="agentName">stnokott</div>
     </div>
-    <hr>
 
-    <section class="genoCheckOrders">
-      <h3>Offene Bestellungen:</h3>
-
-      <form name="genoCheckOrderStatus[]" class="editGenoCheckOrders" action="https://enlx6f766q8jc.x.pipedream.net" method="post">
+    <section>
+      <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
+      <form action="https://enlx6f766q8jc.x.pipedream.net" name="statusOrderChange[]" method="post">
         <!-- "order443" könnte Key in Datenbank sein -->
-        <select class="genoCheckOrdersSelect" name="genoCheckOrdersSelect">
-          <option value="order443">443 - Max Mustermann</option>
-          <option value="order444">444 - Marina Musterfrau</option>
-        </select>
-        <hr>
-        <input type="radio" name="statusOrderGenoCheckAgent" id="statusOrderConfirmed">
+        <div class="dropdownWrapper">
+          <select class="dropdown" name="genoCheckOrdersSelect">
+            <option value="order443">443 - Max Musterhalfen</option>
+            <option value="order444">444 - Erika Musterfrau</option>
+          </select>
+        </div>
+
+        <input type="radio" name="statusOrder" id="statusOrderConfirmed">
         <label for="statusOrderConfirmed">Bestellung bestätigt</label><br>
-        <input type="radio" name="statusOrderGenoCheckAgent" id="statusSent">
+
+        <input type="radio" name="statusOrder" id="statusSent">
         <label for="statusSent">GenoCheck&trade; versandt</label><br>
-        <input type="radio" name="statusOrderGenoCheckAgent" id="statusLaboratory" checked>
+
+        <input type="radio" name="statusOrder" id="statusLaboratory" checked>
         <label for="statusLaboratory">Labor-Analyse läuft</label><br>
-        <input type="radio" name="statusOrderGenoCheckAgent" id="statusDone">
+
+        <input type="radio" name="statusOrder" id="statusDone">
         <label for="statusDone"><strong>Analyse fertiggestellt</strong></label>
-        <hr>
+
         <button type="submit">Änderung bestätigen</button>
       </form>
     </section>
