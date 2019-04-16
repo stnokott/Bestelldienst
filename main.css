@@ -3,6 +3,7 @@
   --accent-lighter-blue: #b1e5fc;
   --accent-much-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
+  --accent-light-grey: #eeeeee;
   --accent-red: #d32f2f;
   --accent-green: #4caf50;
   --accent-brown: #6d4c41;
@@ -121,6 +122,7 @@ header::after {
 }
 
 section {
+  position: relative;
   max-width: 75%;
   min-width: 500px;
   padding: 1em;
@@ -388,6 +390,50 @@ button:hover {
 
 button[type='submit'] {
   margin-top: .5em;
+}
+
+.disease {
+  width: 50%;
+  position: relative;
+}
+
+meter {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 1em;
+
+  /* Firefox */
+  background: #EEE;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+}
+
+/* WebKit */
+meter::-webkit-meter-bar {
+  background: #EEE;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+  border-radius: 3px;
+}
+
+meter::-webkit-meter-optimum-value, meter:-moz-meter-optimum::-moz-meter-bar {
+  background: var(--accent-green);
+}
+
+meter::-webkit-meter-suboptimum-value, meter:-moz-meter-sub-optimum::-moz-meter-bar {
+  background: var(--accent-yellow);
+}
+
+meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-moz-meter-bar  {
+  background: var(--accent-red);
+}
+
+/* ~ = Sibling */
+meter ~ label {
+  position: absolute;
+  left: 0;
+  top: -1em;
+  font-size: 10pt;
 }
 
 /* http://kodhus.com/newsite/step-progress-bar-css-only/ */
