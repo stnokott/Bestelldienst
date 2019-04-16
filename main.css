@@ -69,8 +69,6 @@ body {
 
 .navlist li:not(.active):hover {
   background-color: white;
-  width: 250px;
-  margin: 0 .5em 0 .5em;
 }
 
 .navlist li:not(.active):hover ~ *.active {
