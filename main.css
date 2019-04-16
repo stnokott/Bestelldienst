@@ -68,11 +68,7 @@ body {
 }
 
 .navlist li:not(.active):hover {
-  background-color: white;
-}
-
-.navlist li:not(.active):hover ~ *.active {
-  background-color: var(--accent-lighter-blue);
+  background-color: var(--accent-much-lighter-blue);
 }
 
 .navlist li.active {
