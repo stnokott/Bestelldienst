@@ -75,7 +75,7 @@ class Phase1ToPhase2 extends Page
 
         $valid = true;
         foreach ($check as $checkString) {
-            if (empty($_POST[$checkString])) {
+            if (!isset($_POST[$checkString])) {
                 $valid = false;
                 break;
             }
@@ -83,6 +83,7 @@ class Phase1ToPhase2 extends Page
         if (!$valid) {
             // redirect zu phase1.php
             header('Location: phase1.php');
+            exit();
         }
 
         // weise Variablen zu
