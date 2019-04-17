@@ -73,10 +73,9 @@ abstract class Page
     protected function generatePageHeader($title)
     {
         header("Content-type: text/html; charset=UTF-8");
-        echo <<<EOT
+        echo <<<HTML
         <!DOCTYPE html>
         <html lang="de">
-
           <head>
             <meta charset="UTF-8">
             <title>$title</title>
@@ -87,7 +86,7 @@ abstract class Page
           </head>
 
           <body>
-EOT;
+HTML;
     }
 
     /**
@@ -97,10 +96,10 @@ EOT;
      */
     protected function generatePageFooter()
     {
-        echo <<<EOT
-        </body>
-    </html>
-EOT;
+        echo <<<HTML
+            </body>
+        </html>
+HTML;
     }
 
     /**

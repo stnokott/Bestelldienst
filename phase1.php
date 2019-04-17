@@ -73,15 +73,15 @@ class PageTemplate extends Page
     }
 
     protected function generateNavigationBar {
-        echo <<<EOT
+        echo <<<HTML
         <div>
-      <ul class="navlist">
-        <li class="active"><a href="#">Phase 1</a></li>
-        <li><a href="#">Phase 2</a></li>
-        <li><a href="#">Phase 3</a></li>
-      </ul>
-    </div>
-EOT;
+            <ul class="navlist">
+                <li class="active"><a href="#">Phase 1</a></li>
+                <li><a href="#">Phase 2</a></li>
+                <li><a href="#">Phase 3</a></li>
+            </ul>
+        </div>
+HTML;
     }
 
     /**
