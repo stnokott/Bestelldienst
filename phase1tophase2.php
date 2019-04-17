@@ -141,13 +141,13 @@ HTML;
         $query = "SELECT id FROM user WHERE email='".$email."'";
         $result = $this->_database->query($query);
         if ($result->fetch_assoc() == null) {
-            // User mit dieser Email noch nicht vorhanden vorhanden
+            // User mit dieser Email noch nicht vorhanden
             $query = $this->getMySQLInsertString("user", array("email", "firstname", "lastname", "address1", "address2", "address3"),
                                                 array($email, $firstname, $lastname, $address1, $address2, $address3));
             $this->_database->query($query);
             if ($this->_database->errno != 0) {
                 exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
-            }    
+            }
         }
     }
 
