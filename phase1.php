@@ -81,7 +81,7 @@ echo <<<HTML
 HTML;
     }
 
-    protected function generateGenoCheckDescription() {
+    protected function generatePageDescription() {
 echo<<<HTML
         <section>
             <span class="sectionHeader">GenoCheck&trade; bestellen</span>
@@ -146,7 +146,7 @@ HTML;
         $this->generateNavigationBar();
         $this->generatePageTitle();
 
-        $this->generateGenoCheckDescription();
+        $this->generatePageDescription();
         $this->generateGenoCheckForm();
 
         $this->generatePageFooter();
