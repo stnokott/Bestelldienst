@@ -53,7 +53,7 @@ abstract class Page
         if ($this->_database->connect_error) {
             die("Connection failed: " . $this->_database->connect_error);
         }
-        $this->_database->set_charset("utf8");
+        $this->_database->set_charset("utf8"); // stellt sicher, dass Sonderzeichen korrekt übertragen werden
     }
 
     /**

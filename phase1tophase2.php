@@ -33,6 +33,8 @@ require_once './Page.php';
  */
 class Phase1ToPhase2 extends Page
 {
+    private $user_created = false;
+
     /**
      * Instantiates members (to be defined above).
      * Calls the constructor of the parent i.e. page class.
@@ -66,52 +68,6 @@ class Phase1ToPhase2 extends Page
      */
     protected function getViewData()
     {
-
-    }
-
-    protected function generateNavigationBar() {
-echo <<<HTML
-        <div>
-            <ul class="navlist">
-                <li><a href="#">Phase 1</a></li>
-                <li class="active"><a href="#">Phase 1-2</a></li>
-                <li><a href="#">Phase 3</a></li>
-            </ul>
-        </div>
-HTML;
-    }
-
-    /**
-     * First the necessary data is fetched and then the HTML is
-     * assembled for output. i.e. the header is generated, the content
-     * of the page ("view") is inserted and -if avaialable- the content of
-     * all views contained is generated.
-     * Finally the footer is added.
-     *
-     * @return none
-     */
-    protected function generateView()
-    {
-        $this->getViewData();
-        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Fortschritt');
-        $this->generateNavigationBar();
-        $this->generatePageTitle();
-
-        $this->generatePageFooter();
-    }
-
-    /**
-     * Processes the data that comes via GET or POST i.e. CGI.
-     * If this page is supposed to do something with submitted
-     * data do it here.
-     * If the page contains blocks, delegate processing of the
-	 * respective subsets of data to them.
-     *
-     * @return none
-     */
-    protected function processReceivedData()
-    {
-        parent::processReceivedData();
         // POST wird angenommen
         // prüfe, ob alle Werte vorhanden
         $check = array("inputFirstName", "inputLastName", "inputStreet",
@@ -148,7 +104,65 @@ HTML;
             if ($this->_database->errno != 0) {
                 exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
             }
+            $this->user_created = true;
         }
+    }
+
+    protected function generateNavigationBar() {
+echo <<<HTML
+        <div>
+            <ul class="navlist">
+                <li><a href="#">Phase 1</a></li>
+                <li class="active"><a href="#">Phase 1-2</a></li>
+                <li><a href="#">Phase 3</a></li>
+            </ul>
+        </div>
+HTML;
+    }
+
+    protected function generateUserCreated() {
+echo<<<HTML
+        <section>
+          <span class="sectionHeader">User erstellt!</span>
+        </section>
+HTML;
+    }
+
+    /**
+     * First the necessary data is fetched and then the HTML is
+     * assembled for output. i.e. the header is generated, the content
+     * of the page ("view") is inserted and -if avaialable- the content of
+     * all views contained is generated.
+     * Finally the footer is added.
+     *
+     * @return none
+     */
+    protected function generateView()
+    {
+        $this->getViewData();
+        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Fortschritt');
+        $this->generateNavigationBar();
+        $this->generatePageTitle();
+
+        if ($this->user_created == true) {
+            $this->generateUserCreated();
+        }
+
+        $this->generatePageFooter();
+    }
+
+    /**
+     * Processes the data that comes via GET or POST i.e. CGI.
+     * If this page is supposed to do something with submitted
+     * data do it here.
+     * If the page contains blocks, delegate processing of the
+	 * respective subsets of data to them.
+     *
+     * @return none
+     */
+    protected function processReceivedData()
+    {
+        parent::processReceivedData();
     }
 
     /**
