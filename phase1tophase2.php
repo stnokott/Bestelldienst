@@ -129,6 +129,18 @@ echo<<<HTML
 HTML;
     }
 
+    protected function generatePageDescription() {
+echo<<<HTML
+        <section>
+          <span class="sectionHeader">GenoCheck&trade; - Sendungsverfolgung</span>
+          <p>
+            Hier können Sie den Fortschritt Ihres persönlichen GenoCheck&trade;-Tests verfolgen.<br>
+            Bei abgeschlossener Analyse werden Sie zu Ihren Ergebnissen weitergeleitet.
+          </p>
+        </section>
+HTML;
+    }
+
     /**
      * First the necessary data is fetched and then the HTML is
      * assembled for output. i.e. the header is generated, the content
@@ -148,6 +160,7 @@ HTML;
         if ($this->user_created == true) {
             $this->generateUserCreated();
         }
+        $this->generatePageDescription();
 
         $this->generatePageFooter();
     }
