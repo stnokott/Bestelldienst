@@ -99,8 +99,11 @@ class Phase1ToPhase2 extends Page
         $result = $this->_database->query($query);
         if ($result->fetch_assoc() == null) {
             // User mit dieser Email noch nicht vorhanden
-            $query = $this->getMySQLInsertString("user", array("email", "firstname", "lastname", "address1", "address2", "address3"),
-                                                array($email, $firstname, $lastname, $address1, $address2, $address3));
+            $query = $this->getMySQLInsertString(
+                "user",
+                array("email", "firstname", "lastname", "address1", "address2", "address3"),
+                array($email, $firstname, $lastname, $address1, $address2, $address3)
+            );
             $this->_database->query($query);
             if ($this->_database->errno != 0) {
                 exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
@@ -109,8 +112,9 @@ class Phase1ToPhase2 extends Page
         }
     }
 
-    protected function generateNavigationBar() {
-echo <<<HTML
+    protected function generateNavigationBar()
+    {
+        echo <<<HTML
         <div>
             <ul class="navlist">
                 <li><a href="#">Phase 1</a></li>
@@ -121,22 +125,45 @@ echo <<<HTML
 HTML;
     }
 
-    protected function generateUserCreated() {
-echo<<<HTML
+    protected function generateUserCreated()
+    {
+        echo<<<HTML
         <section>
           <span class="sectionHeader">User erstellt!</span>
         </section>
 HTML;
     }
 
-    protected function generatePageDescription() {
-echo<<<HTML
+    protected function generatePageDescription()
+    {
+        echo<<<HTML
         <section>
           <span class="sectionHeader">GenoCheck&trade; - Sendungsverfolgung</span>
           <p>
             Hier können Sie den Fortschritt Ihres persönlichen GenoCheck&trade;-Tests verfolgen.<br>
             Bei abgeschlossener Analyse werden Sie zu Ihren Ergebnissen weitergeleitet.
           </p>
+        </section>
+HTML;
+    }
+
+    protected function generateGenoCheckProgress()
+    {
+        echo<<<HTML
+        <section class="genoCheckStatus">
+            <div class="progresssteps-container">
+                <ul class="progresssteps">
+                    <li class="active" id="confirmed">Bestellung bestätigt</li>
+                    <li id="sent">GenoCheck&trade; versandt</li>
+                    <li id="analysis">Labor-Analyse läuft</li>
+                    <li id="done">Analyse fertiggestellt</li>
+                </ul>
+            </div>
+
+
+            <form action="phase2.html" method="post">
+                <button type="submit">Zu Ihren Ergebnissen</button>
+            </form>
         </section>
 HTML;
     }
@@ -161,6 +188,7 @@ HTML;
             $this->generateUserCreated();
         }
         $this->generatePageDescription();
+        $this->generateGenoCheckProgress();
 
         $this->generatePageFooter();
     }
@@ -170,7 +198,7 @@ HTML;
      * If this page is supposed to do something with submitted
      * data do it here.
      * If the page contains blocks, delegate processing of the
-	 * respective subsets of data to them.
+     * respective subsets of data to them.
      *
      * @return none
      */
@@ -197,8 +225,7 @@ HTML;
             $page = new Phase1ToPhase2();
             $page->processReceivedData();
             $page->generateView();
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             header("Content-type: text/plain; charset=UTF-8");
             echo $e->getMessage();
         }
