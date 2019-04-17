@@ -112,7 +112,8 @@ HTML;
     protected function processReceivedData()
     {
         parent::processReceivedData();
-        // to do: call processReceivedData() for all members
+        // POST wird angenommen
+        // prüfe, ob alle Werte vorhanden
         $check = array("inputFirstName", "inputLastName", "inputStreet",
                         "inputCity", "inputZipcode", "inputEmail");
 
@@ -127,11 +128,26 @@ HTML;
             // redirect zu phase1.php
             header('Location: phase1.php');
         }
-        $sql = $this->getMySQLInsertString("user", array("email", "firstname", "lastname", "address1", "address2", "address3"),
-                                            array($_POST["inputEmail"], $_POST["inputFirstName"], $_POST["inputLastName"], $_POST["inputStreet"], $_POST["inputCity"], $_POST["inputZipcode"]));
-        $this->_database->query($sql);
-        if ($this->_database->errno != 0) {
-            exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
+
+        // weise Variablen zu
+        $email = $_POST["inputEmail"];
+        $firstname = $_POST["inputFirstName"];
+        $lastname = $_POST["inputLastName"];
+        $address1 = $_POST["inputStreet"];
+        $address2 = $_POST["inputCity"];
+        $address3 = $_POST["inputZipcode"];
+
+        // prüfe, ob Nutzer bereits existiert
+        $query = "SELECT id FROM user WHERE email='".$email."'";
+        $result = $this->_database->query($query);
+        if ($result->fetch_assoc() == null) {
+            // User mit dieser Email noch nicht vorhanden vorhanden
+            $query = $this->getMySQLInsertString("user", array("email", "firstname", "lastname", "address1", "address2", "address3"),
+                                                array($email, $firstname, $lastname, $address1, $address2, $address3));
+            $this->_database->query($query);
+            if ($this->_database->errno != 0) {
+                exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
+            }    
         }
     }
 
