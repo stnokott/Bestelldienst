@@ -31,7 +31,7 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-class Phase1 extends Page
+class Phase1ToPhase2 extends Page
 {
     /**
      * Instantiates members (to be defined above).
@@ -73,61 +73,12 @@ class Phase1 extends Page
 echo <<<HTML
         <div>
             <ul class="navlist">
-                <li class="active"><a href="#">Phase 1</a></li>
-                <li><a href="#">Phase 1-2</a></li>
+                <li><a href="#">Phase 1</a></li>
+                <li class="active"><a href="#">Phase 1-2</a></li>
                 <li><a href="#">Phase 3</a></li>
             </ul>
         </div>
 HTML;
-    }
-
-    protected function generateGenoCheckDescription() {
-echo<<<HTML
-        <section>
-            <span class="sectionHeader">GenoCheck&trade; bestellen</span>
-            <p>
-                Fordern Sie heute ihren <strong>kostenlosen</strong> GenoChoice&trade;-Gentest an.<br> Ein Team
-                aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die
-                Stärken und Schwächen ihres zukünftigen Kindes.
-            </p>
-            <figure>
-                <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
-                <figcaption>Malte & Sombra Trontheim sind zufrieden mit ihrer GenoChoice&trade;-Entscheidung</figcaption>
-            </figure>
-        </section>
-HTML;
-    }
-
-    protected function generateGenoCheckForm() {
-echo<<<HTML
-    <section>
-        <span class="sectionHeader">Persönliche Daten</span>
-        <form id="genoCheckForm" name="genoCheckForm[]" action="phase1tophase2.php" method="post">
-            <label>Vorname</label>
-            <input type="text" id="inputFirstName" name="inputFirstName" value="Max" required autofocus>
-
-            <label>Name</label>
-            <input type="text" id="inputLastName" name="inputLastName" value="Musterhalfen" required>
-
-            <label>Straße & Hausnummer</label>
-            <input type="text" id="inputStreet" name="inputStreet" value="Musterstraße 1" required>
-
-            <label>Stadt</label>
-            <input type="text" id="inputCity" name="inputCity" value="Musterstadt" required>
-
-            <label>PLZ</label>
-            <input type="text" id="inputZipcode" name="inputZipcode" pattern="\d{5}" value="12345" required>
-
-            <label>E-Mail</label>
-            <input type="email" id="inputEmail" name="inputEmail" value="m.musterhalfen@gmail.com" required>
-
-            <button id="genoCheckSubmit" type="submit">
-                GenoCheck&trade; bestellen
-            </button>
-        </form>
-    </section>
-HTML;
-
     }
 
     /**
@@ -142,12 +93,9 @@ HTML;
     protected function generateView()
     {
         $this->getViewData();
-        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; bestellen');
+        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Fortschritt');
         $this->generateNavigationBar();
         $this->generatePageTitle();
-
-        $this->generateGenoCheckDescription();
-        $this->generateGenoCheckForm();
 
         $this->generatePageFooter();
     }
@@ -165,6 +113,26 @@ HTML;
     {
         parent::processReceivedData();
         // to do: call processReceivedData() for all members
+        $check = array("inputFirstName", "inputLastName", "inputStreet",
+                        "inputCity", "inputZipcode", "inputEmail");
+
+        $valid = true;
+        foreach ($check as $checkString) {
+            if (empty($_POST[$checkString])) {
+                $valid = false;
+                break;
+            }
+        }
+        if (!$valid) {
+            // redirect zu phase1.php
+            header('Location: phase1.php');
+        }
+        $sql = $this->getMySQLInsertString("user", array("email", "firstname", "lastname", "address1", "address2", "address3"),
+                                            array($_POST["inputEmail"], $_POST["inputFirstName"], $_POST["inputLastName"], $_POST["inputStreet"], $_POST["inputCity"], $_POST["inputZipcode"]));
+        $this->_database->query($sql);
+        if ($this->_database->errno != 0) {
+            exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
+        }
     }
 
     /**
@@ -182,7 +150,7 @@ HTML;
     public static function main()
     {
         try {
-            $page = new Phase1();
+            $page = new Phase1ToPhase2();
             $page->processReceivedData();
             $page->generateView();
         }
@@ -195,7 +163,7 @@ HTML;
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-Phase1::main();
+Phase1ToPhase2::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).

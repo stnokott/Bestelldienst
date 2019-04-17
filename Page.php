@@ -50,6 +50,10 @@ abstract class Page
     protected function __construct()
     {
         $this->_database = new mysqli("localhost", "website", "ewa2019sose", "bestelldienst");;
+        if ($this->_database->connect_error) {
+            die("Connection failed: " . $this->_database->connect_error);
+        }
+        $this->_database->set_charset("utf8");
     }
 
     /**
@@ -73,7 +77,7 @@ abstract class Page
     protected function generatePageHeader($title)
     {
         header("Content-type: text/html; charset=UTF-8");
-        echo <<<HTML
+echo <<<HTML
         <!DOCTYPE html>
         <html lang="de">
           <head>
@@ -87,6 +91,16 @@ abstract class Page
 
           <body>
 HTML;
+    }
+
+    protected function generatePageTitle() {
+echo<<<HTML
+      <header>
+        <span class="headerTitle">Genochoice</span><br>
+        <span class="headerSubtitle">Legacy by Design</span>
+      </header>
+HTML;
+
     }
 
     /**
@@ -116,6 +130,16 @@ HTML;
             throw new Exception
                 ("Bitte schalten Sie magic_quotes_gpc in php.ini aus!");
         }
+    }
+
+    protected function getMySQLInsertString($table, $columns, $values) {
+        $sql = "INSERT INTO user (email, firstname, lastname, address1, address2, address3)
+         VALUES ('" .$_POST['inputEmail']. "', '" .$_POST['inputFirstName']. "', '" .$_POST['inputLastName']. "', '" .$_POST['inputStreet']. "', '" .$_POST['inputCity']. "', '" .$_POST['inputZipcode']. "')";
+
+        $columns_string = join(", ", $columns);
+        $values_string = join("', '", $values);
+        $string = "INSERT INTO ".$table." (".$columns_string.") VALUES ('".$values_string."')";
+        return $string;
     }
 } // end of class
 
