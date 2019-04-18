@@ -123,39 +123,47 @@ HTML;
         } else {
 
             // bestimme, welches li-Item von progresssteps die "active"-Klasse bekommt
-            $echo_confirmed = $echo_sent = $echo_analysis = $echo_done = "";
+            $echo_confirmed = $echo_sent = $echo_analysis = $echo_done = null;
             $echo_class = "class = \"active\"";
+            $echo_button_attr = "disabled";
             switch ($this->order_status) {
                 case 0:
                     $echo_confirmed = $echo_class;
                     break;
                 case 1:
+                    $echo_confirmed = $echo_class;
                     $echo_sent = $echo_class;
                     break;
                 case 2:
+                    $echo_confirmed = $echo_class;
+                    $echo_sent = $echo_class;
                     $echo_analysis = $echo_class;
                     break;
                 case 3:
+                    $echo_confirmed = $echo_class;
+                    $echo_sent = $echo_class;
+                    $echo_analysis = $echo_class;
                     $echo_done = $echo_class;
+
+                    $echo_button_attr = null; // aktiviere Button, wenn letzte Phase erreicht
             }
 
             echo<<<HTML
-            <div class="progresssteps-container">
-                <ul class="progresssteps">
-                    <li $echo_confirmed id="confirmed">Bestellung bestätigt</li>
-                    <li $echo_sent id="sent">GenoCheck&trade; versandt</li>
-                    <li $echo_analysis id="analysis">Labor-Analyse läuft</li>
-                    <li $echo_done id="done">Analyse fertiggestellt</li>
-                </ul>
-            </div>
+                <div class="progresssteps-container">
+                    <ul class="progresssteps">
+                        <li {$echo_confirmed} id="confirmed">Bestellung bestätigt</li>
+                        <li {$echo_sent} id="sent">GenoCheck&trade; versandt</li>
+                        <li {$echo_analysis} id="analysis">Labor-Analyse läuft</li>
+                        <li {$echo_done} id="done">Analyse fertiggestellt</li>
+                    </ul>
+                </div>
 
-            <form action="phase2.html" method="post">
-                <button type="submit">Zu Ihren Ergebnissen</button>
-            </form>
+                <form action="phase2.html" method="post">
+                    <button type="submit" {$echo_button_attr}>Zu Ihren Ergebnissen</button>
+                </form>
+            </section>
 HTML;
         }
-
-        echo "</section>";
     }
 
     protected function checkPostParameters() {
