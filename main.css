@@ -310,6 +310,7 @@ ul.list li#blue {
   border-right: 5px solid var(--accent-blue);
 }
 
+
 button {
   color: white;
   font-weight: bold;
@@ -322,15 +323,9 @@ button {
   background: linear-gradient(to right, transparent 50%, var(--accent-blue) 50%);
   background-size: 200% 100%;
   background-position: right;
-  position: relative; /* für "after" nötig */
+  position: relative;
 
   transition: all 0.4s ease;
-}
-
-button#genoCheckSubmit::after {
-  font-family: "Material Icons";
-  content: "\e5ca";
-  color: var(--accent-blue);
 }
 
 button:active {
@@ -342,9 +337,16 @@ button:focus {
   outline: none;
 }
 
-button:hover {
+button:not(:disabled):hover {
   color: var(--accent-blue);
   background-position: left;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background: none;
+  background-color: var(--accent-lighter-blue);
+  border-color: var(--accent-lighter-blue);
 }
 
 button[type='submit'] {
