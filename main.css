@@ -312,22 +312,6 @@ ul.list li#blue {
 
 
 button {
-  color: black;
-  font-weight: 200;
-  font-family: Raleway, sans-serif;
-  font-size: 24px;
-  display: inline-block;
-  width: 100%;
-  border: 1px solid black;
-  padding: 1em;
-  cursor: pointer;
-  background: white;
-
-  transition: all .2s ease;
-}
-
-/*
-button {
   color: white;
   font-weight: bold;
   font-size: 24px;
@@ -343,14 +327,6 @@ button {
 
   transition: all 0.4s ease;
 }
-*/
-
-/*
-button:hover {
-  color: white;;
-  background-position: left;
-}
-*/
 
 button:active {
   outline: none;
@@ -362,8 +338,8 @@ button:focus {
 }
 
 button:hover {
-  color: white;
-  background-color: black;
+  color: var(--accent-blue);
+  background-position: left;
 }
 
 button[type='submit'] {
