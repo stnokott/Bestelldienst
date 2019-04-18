@@ -1,22 +1,12 @@
 <?php	// UTF-8 marker äöüÄÖÜß€
 /**
- * Class PageTemplate for the exercises of the EWA lecture
- * Demonstrates use of PHP including class and OO.
- * Implements Zend coding standards.
- * Generate documentation with Doxygen or phpdoc
- *
- * PHP Version 5
- *
  * @category File
- * @package  Pizzaservice
- * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
- * @author   Ralf Hahn, <ralf.hahn@h-da.de>
+ * @package  Bestelldienst
+ * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
+ * @author   Max Klosterhalfen, <max.klosterhalfen@stud.h-da.de>
  * @license  http://www.h-da.de  none
- * @Release  1.2
- * @link     http://www.fbi.h-da.de
  */
 
-// to do: change name 'PageTemplate' throughout this file
 require_once './Page.php';
 
 /**
@@ -27,7 +17,10 @@ require_once './Page.php';
  * to be replaced by the name of the specific HTML page e.g. baker.
  * The order of methods might correspond to the order of thinking
  * during implementation.
-
+ *
+ * Angepasst für Bestelldienst
+ *
+ * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
@@ -37,7 +30,7 @@ class Phase1ToPhase2 extends Page
 
     // TO-DO: dynamisch bestimmen über Session
     private $user_email = "m.musterhalfen@gmail.com";
-    private $order_status;
+    private $order_status; // 0 = confirmed, 1 = sent, 2 = analysis, 3 = done
 
     /**
      * Instantiates members (to be defined above).
@@ -68,6 +61,8 @@ class Phase1ToPhase2 extends Page
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
+     * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+     *
      * @return none
      */
     protected function getViewData()
@@ -75,6 +70,11 @@ class Phase1ToPhase2 extends Page
         $this->order_status = $this->getUserOrderStatus($this->user_email);
     }
 
+    /**
+     * Generiert Navigationsleiste.
+     * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
+     * @return none
+     */
     protected function generateNavigationBar()
     {
         echo <<<HTML
@@ -88,6 +88,11 @@ class Phase1ToPhase2 extends Page
 HTML;
     }
 
+    /**
+     * Generiert kurze <section>, um zu zeigen, dass beim Aufruf dieser Seite mit Hilfe der
+     * POST-Parameter ein neuer User erstellt wurde
+     * @return none
+     */
     protected function generateNewUser()
     {
         echo<<<HTML
@@ -97,6 +102,10 @@ HTML;
 HTML;
     }
 
+    /**
+     * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
+     * @return none
+     */
     protected function generatePageDescription()
     {
         echo<<<HTML
@@ -110,6 +119,11 @@ HTML;
 HTML;
     }
 
+    /**
+     * Generiert Ansicht zur Verfolgung des GenoCheck-Fortschritts für den Nutzer
+     * Verwendet das order_status-Attribut zur (De-)Aktivierung der Elemente
+     * @return none
+     */
     protected function generateGenoCheckProgress()
     {
         echo "<section class=\"genoCheckStatus\">";
@@ -166,6 +180,10 @@ HTML;
         }
     }
 
+    /**
+     * Prüft, ob empfangene POST-Parameter für die Erstellung eines neuen Nutzers valide sind
+     * @return Boolean Ob die empfangenen POST-Parameter valide sind
+     */
     protected function checkPostParameters() {
         // prüfe, ob alle Werte vorhanden
         $check = array("inputFirstName", "inputLastName", "inputStreet",
@@ -182,11 +200,22 @@ HTML;
         return $valid;
     }
 
+    /**
+     * Prüft, ob der Nutzer mit der angegebenen Email-Adresse in der Datenbank vorhanden ist
+     * @param String $email Email des zu prüfenden Nutzers
+     * @return Boolean Ob der User existiert
+     */
     protected function checkUserExists($email) {
         // wenn Ergebnis leer -> User existiert nicht
         return !($this->getUserId($email) == null);
     }
 
+    /**
+     * Prüft, ob der Nutzer mit der angegebenen Email-Adresse einen GenoCheck-Eintrag in
+     * der genocheckorder-Datenbank hat
+     * @param  String $email Email des zu prüfenden Nutzers
+     * @return Boolean Ob der User eine GenoCheck-Bestellung besitzt
+     */
     protected function checkUserHasGenoCheckOrder($email) {
         $query = "SELECT id FROM genocheckorder WHERE userId='".$this->getUserId($email)."'";
         $result = $this->_database->query($query);
@@ -194,6 +223,11 @@ HTML;
         return !$result->fetch_assoc() == null;
     }
 
+    /**
+     * Gibt den Wert des userId-Attributs der user-Datenbank für den User mit der angegebenen Email-Adresse aus
+     * @param  string $email Email des Nutzers
+     * @return int userId des Nutzers mit der angegebenen Email
+     */
     protected function getUserId($email) {
         $query = "SELECT id FROM user WHERE email='".$email."'";
         $result = $this->_database->query($query);
@@ -204,6 +238,12 @@ HTML;
         return null;
     }
 
+    /**
+     * Gibt den Wert des status-Attributs der genocheckorder-Datenbank für den User mit der
+     * angegebenen Email-Adresse aus
+     * @param  String $email Email des Nutzers
+     * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
+     */
     protected function getUserOrderStatus($email) {
         $query = "SELECT status FROM genocheckorder WHERE userId='".$this->getUserId($email)."'";
         $result = $this->_database->query($query);
@@ -214,6 +254,16 @@ HTML;
         return null;
     }
 
+    /**
+     * Erstellt Eintrag in der user-Datenbank mit den angegebenen Spalteninhalten
+     * @param  String $email     Email des Nutzers
+     * @param  String $firstname Vorname des Nutzers
+     * @param  String $lastname  Nachname des Nutzers
+     * @param  String $address1  Straße & Hausnummer des Nutzers
+     * @param  String $address2  Stadt des Nutzers
+     * @param  String $address3  PLZ des Nutzers
+     * @return none
+     */
     protected function createUser($email, $firstname, $lastname, $address1, $address2, $address3) {
         $query = $this->getMySQLInsertString(
             "user",
@@ -270,6 +320,8 @@ HTML;
      * data do it here.
      * If the page contains blocks, delegate processing of the
      * respective subsets of data to them.
+     *
+     * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
      *
      * @return none
      */
