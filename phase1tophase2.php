@@ -68,48 +68,7 @@ class Phase1ToPhase2 extends Page
      */
     protected function getViewData()
     {
-        // POST wird angenommen
-        // prüfe, ob alle Werte vorhanden
-        $check = array("inputFirstName", "inputLastName", "inputStreet",
-                        "inputCity", "inputZipcode", "inputEmail");
 
-        $valid = true;
-        foreach ($check as $checkString) {
-            if (!isset($_POST[$checkString])) {
-                $valid = false;
-                break;
-            }
-        }
-        if (!$valid) {
-            // redirect zu phase1.php
-            header('Location: phase1.php');
-            exit();
-        }
-
-        // weise Variablen zu
-        $email = $_POST["inputEmail"];
-        $firstname = $_POST["inputFirstName"];
-        $lastname = $_POST["inputLastName"];
-        $address1 = $_POST["inputStreet"];
-        $address2 = $_POST["inputCity"];
-        $address3 = $_POST["inputZipcode"];
-
-        // prüfe, ob Nutzer bereits existiert
-        $query = "SELECT id FROM user WHERE email='".$email."'";
-        $result = $this->_database->query($query);
-        if ($result->fetch_assoc() == null) {
-            // User mit dieser Email noch nicht vorhanden
-            $query = $this->getMySQLInsertString(
-                "user",
-                array("email", "firstname", "lastname", "address1", "address2", "address3"),
-                array($email, $firstname, $lastname, $address1, $address2, $address3)
-            );
-            $this->_database->query($query);
-            if ($this->_database->errno != 0) {
-                exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
-            }
-            $this->user_created = true;
-        }
     }
 
     protected function generateNavigationBar()
@@ -205,6 +164,50 @@ HTML;
     protected function processReceivedData()
     {
         parent::processReceivedData();
+        if ($_SERVER["REQUEST_METHOD"]=="POST") {
+            // prüfe, ob alle Werte vorhanden
+            $check = array("inputFirstName", "inputLastName", "inputStreet",
+                            "inputCity", "inputZipcode", "inputEmail");
+
+            $valid = true;
+            foreach ($check as $checkString) {
+                if (!isset($_POST[$checkString])) {
+                    $valid = false;
+                    break;
+                }
+            }
+            if (!$valid) {
+                // redirect zu phase1.php
+                header('Location: phase1.php');
+                exit();
+            }
+
+            // weise Variablen zu
+            $email = $_POST["inputEmail"];
+            $firstname = $_POST["inputFirstName"];
+            $lastname = $_POST["inputLastName"];
+            $address1 = $_POST["inputStreet"];
+            $address2 = $_POST["inputCity"];
+            $address3 = $_POST["inputZipcode"];
+
+            // prüfe, ob Nutzer bereits existiert
+            $query = "SELECT id FROM user WHERE email='".$email."'";
+            $result = $this->_database->query($query);
+            if ($result->fetch_assoc() == null) {
+                // User mit dieser Email noch nicht vorhanden
+                $query = $this->getMySQLInsertString(
+                    "user",
+                    array("email", "firstname", "lastname", "address1", "address2", "address3"),
+                    array($email, $firstname, $lastname, $address1, $address2, $address3)
+                );
+                $this->_database->query($query);
+                if ($this->_database->errno != 0) {
+                    exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
+                }
+                $this->user_created = true;
+            }
+            return;
+        }
     }
 
     /**
