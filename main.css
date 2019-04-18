@@ -337,9 +337,16 @@ button:focus {
   outline: none;
 }
 
-button:hover {
+button:not(:disabled):hover {
   color: var(--accent-blue);
   background-position: left;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background: none;
+  background-color: var(--accent-lighter-blue);
+  border-color: var(--accent-lighter-blue);
 }
 
 button[type='submit'] {
