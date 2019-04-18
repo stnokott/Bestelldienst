@@ -35,6 +35,10 @@ class Phase1ToPhase2 extends Page
 {
     private $new_user = false;
 
+    // TO-DO: dynamisch bestimmen über Session
+    private $user_email = "m.musterhalfen@gmail.com";
+    private $order_status;
+
     /**
      * Instantiates members (to be defined above).
      * Calls the constructor of the parent i.e. page class.
@@ -68,7 +72,7 @@ class Phase1ToPhase2 extends Page
      */
     protected function getViewData()
     {
-
+        $this->order_status = $this->getUserOrderStatus($this->user_email);
     }
 
     protected function generateNavigationBar()
@@ -84,7 +88,7 @@ class Phase1ToPhase2 extends Page
 HTML;
     }
 
-    protected function generateUserCreated()
+    protected function generateNewUser()
     {
         echo<<<HTML
         <section>
@@ -108,23 +112,123 @@ HTML;
 
     protected function generateGenoCheckProgress()
     {
-        echo<<<HTML
-        <section class="genoCheckStatus">
+        echo "<section class=\"genoCheckStatus\">";
+
+        if ($this->order_status == null) {
+            echo<<<HTML
+            <p>
+                Status der Bestellung nicht verfügbar, bitte erneut versuchen.
+            </p>
+HTML;
+        } else {
+
+            // bestimme, welches li-Item von progresssteps die "active"-Klasse bekommt
+            $echo_confirmed = $echo_sent = $echo_analysis = $echo_done = "";
+            $echo_class = "class = \"active\"";
+            switch ($this->order_status) {
+                case 0:
+                    $echo_confirmed = $echo_class;
+                    break;
+                case 1:
+                    $echo_sent = $echo_class;
+                    break;
+                case 2:
+                    $echo_analysis = $echo_class;
+                    break;
+                case 3:
+                    $echo_done = $echo_class;
+            }
+
+            echo<<<HTML
             <div class="progresssteps-container">
                 <ul class="progresssteps">
-                    <li class="active" id="confirmed">Bestellung bestätigt</li>
-                    <li id="sent">GenoCheck&trade; versandt</li>
-                    <li id="analysis">Labor-Analyse läuft</li>
-                    <li id="done">Analyse fertiggestellt</li>
+                    <li $echo_confirmed id="confirmed">Bestellung bestätigt</li>
+                    <li $echo_sent id="sent">GenoCheck&trade; versandt</li>
+                    <li $echo_analysis id="analysis">Labor-Analyse läuft</li>
+                    <li $echo_done id="done">Analyse fertiggestellt</li>
                 </ul>
             </div>
-
 
             <form action="phase2.html" method="post">
                 <button type="submit">Zu Ihren Ergebnissen</button>
             </form>
-        </section>
 HTML;
+        }
+
+        echo "</section>";
+    }
+
+    protected function checkPostParameters() {
+        // prüfe, ob alle Werte vorhanden
+        $check = array("inputFirstName", "inputLastName", "inputStreet",
+                        "inputCity", "inputZipcode", "inputEmail");
+
+        $valid = true;
+        foreach ($check as $checkString) {
+            if (!isset($_POST[$checkString])) {
+                $valid = false;
+                break;
+            }
+        }
+
+        return $valid;
+    }
+
+    protected function checkUserExists($email) {
+        // wenn Ergebnis leer -> User existiert nicht
+        return !($this->getUserId($email) == null);
+    }
+
+    protected function checkUserHasGenoCheckOrder($email) {
+        $query = "SELECT id FROM genocheckorder WHERE userId='".$this->getUserId($email)."'";
+        $result = $this->_database->query($query);
+
+        return !$result->fetch_assoc() == null;
+    }
+
+    protected function getUserId($email) {
+        $query = "SELECT id FROM user WHERE email='".$email."'";
+        $result = $this->_database->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            return $row["id"];
+        }
+        return null;
+    }
+
+    protected function getUserOrderStatus($email) {
+        $query = "SELECT status FROM genocheckorder WHERE userId='".$this->getUserId($email)."'";
+        $result = $this->_database->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            return $row["status"];
+        }
+        return null;
+    }
+
+    protected function createUser($email, $firstname, $lastname, $address1, $address2, $address3) {
+        $query = $this->getMySQLInsertString(
+            "user",
+            array("email", "firstname", "lastname", "address1", "address2", "address3"),
+            array($email, $firstname, $lastname, $address1, $address2, $address3)
+        );
+        $this->_database->query($query);
+        if ($this->_database->errno != 0) {
+            exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
+        }
+        $this->new_user = true;
+    }
+
+    protected function createGenoCheckOrder($email) {
+        $query = $this->getMySQLInsertString(
+            "genocheckorder",
+            array("userId"),
+            array($this->getUserId($email))
+        );
+        $this->_database->query($query);
+        if ($this->_database->errno != 0) {
+            exit("Fehler beim Erstellen der GenoCheck-Bestellung: ".$this->_database->error);
+        }
     }
 
     /**
@@ -143,8 +247,8 @@ HTML;
         $this->generateNavigationBar();
         $this->generatePageTitle();
 
-        if ($this->user_created == true) {
-            $this->generateUserCreated();
+        if ($this->new_user == true) {
+            $this->generateNewUser();
         }
         $this->generatePageDescription();
         $this->generateGenoCheckProgress();
@@ -165,18 +269,8 @@ HTML;
     {
         parent::processReceivedData();
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
-            // prüfe, ob alle Werte vorhanden
-            $check = array("inputFirstName", "inputLastName", "inputStreet",
-                            "inputCity", "inputZipcode", "inputEmail");
-
-            $valid = true;
-            foreach ($check as $checkString) {
-                if (!isset($_POST[$checkString])) {
-                    $valid = false;
-                    break;
-                }
-            }
-            if (!$valid) {
+            // prüfe POST Parameter
+            if (!$this->checkPostParameters()) {
                 // redirect zu phase1.php
                 header('Location: phase1.php');
                 exit();
@@ -191,20 +285,14 @@ HTML;
             $address3 = $_POST["inputZipcode"];
 
             // prüfe, ob Nutzer bereits existiert
-            $query = "SELECT id FROM user WHERE email='".$email."'";
-            $result = $this->_database->query($query);
-            if ($result->fetch_assoc() == null) {
+            if ($this->checkUserExists($email) == false) {
                 // User mit dieser Email noch nicht vorhanden
-                $query = $this->getMySQLInsertString(
-                    "user",
-                    array("email", "firstname", "lastname", "address1", "address2", "address3"),
-                    array($email, $firstname, $lastname, $address1, $address2, $address3)
-                );
-                $this->_database->query($query);
-                if ($this->_database->errno != 0) {
-                    exit("Fehler beim Erstellen des Nutzers: ".$this->_database->error);
-                }
-                $this->user_created = true;
+                $this->createUser($email, $firstname, $lastname, $address1, $address2, $address3);
+            }
+
+            if ($this->new_user == true && $this->checkUserHasGenoCheckOrder($email) == false) {
+                // User ist neu und hat noch kein GenoCheck bestellt
+                $this->createGenoCheckOrder($email);
             }
             return;
         }
