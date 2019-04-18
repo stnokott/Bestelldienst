@@ -1,22 +1,12 @@
 <?php	// UTF-8 marker äöüÄÖÜß€
 /**
- * Class PageTemplate for the exercises of the EWA lecture
- * Demonstrates use of PHP including class and OO.
- * Implements Zend coding standards.
- * Generate documentation with Doxygen or phpdoc
- *
- * PHP Version 5
- *
  * @category File
- * @package  Pizzaservice
- * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
- * @author   Ralf Hahn, <ralf.hahn@h-da.de>
+ * @package  Bestelldienst
+ * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
+ * @author   Max Klosterhalfen, <max.klosterhalfen@stud.h-da.de>
  * @license  http://www.h-da.de  none
- * @Release  1.2
- * @link     http://www.fbi.h-da.de
  */
 
-// to do: change name 'PageTemplate' throughout this file
 require_once './Page.php';
 
 /**
@@ -27,7 +17,10 @@ require_once './Page.php';
  * to be replaced by the name of the specific HTML page e.g. baker.
  * The order of methods might correspond to the order of thinking
  * during implementation.
-
+ *
+ * Angepasst für Bestelldienst
+ *
+ * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
@@ -69,6 +62,12 @@ class Phase1 extends Page
 
     }
 
+    /**
+     * Generiert Navigationsleiste.
+     * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
+     *
+     * @return none
+     */
     protected function generateNavigationBar() {
 echo <<<HTML
         <div>
@@ -81,6 +80,11 @@ echo <<<HTML
 HTML;
     }
 
+    /**
+     * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
+     *
+     * @return none
+     */
     protected function generatePageDescription() {
 echo<<<HTML
         <section>
@@ -98,6 +102,11 @@ echo<<<HTML
 HTML;
     }
 
+    /**
+     * Generiert <form> zur Eingabe der Daten, die für die GenoCheck-Bestellung nötig sind
+     *
+     * @return none
+     */
     protected function generateGenoCheckForm() {
 echo<<<HTML
     <section>
