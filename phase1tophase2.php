@@ -33,7 +33,7 @@ require_once './Page.php';
  */
 class Phase1ToPhase2 extends Page
 {
-    private $user_created = false;
+    private $new_user = false;
 
     /**
      * Instantiates members (to be defined above).
