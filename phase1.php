@@ -88,7 +88,6 @@ echo<<<HTML
         <section>
             <figure>
                 <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
-                <figcaption>Malte & Sombra Trontheim sind zufrieden mit ihrer GenoChoice&trade;-Entscheidung</figcaption>
             </figure>
             <span class="sectionHeader">GenoCheck&trade; bestellen</span>
             <p>
