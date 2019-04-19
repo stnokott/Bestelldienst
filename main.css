@@ -1,7 +1,7 @@
 :root {
   --accent-blue: #81D4FA;
-  --accent-lighter-blue: #b1e5fc;
-  --accent-much-lighter-blue: #f3ecfc;
+  --accent-light-blue: #b1e5fc;
+  --accent-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
   --accent-red: #d32f2f;
   --accent-green: #4caf50;
@@ -39,7 +39,6 @@ Schriftarten -> font-weight
 */
 
 body {
-  /* zentrieren? */
   padding: 0;
   margin: 0 0 1em 0;
   font-family: Roboto, sans-serif;
@@ -47,12 +46,16 @@ body {
 }
 
 .navlist {
+  z-index: 1;
+
+  backdrop-filter: blur(6px);
   width: 100%;
   list-style-type: none;
   margin: 0 0 2em 0;
   padding: 0;
-  background-color: var(--accent-lighter-blue);
+  background-color: var(--accent-blue);
   overflow: hidden;
+  box-shadow: inset 0px -10px 25px -15px rgba(0,0,0,0.5);
 
   position: fixed;
   top: 0;
@@ -67,7 +70,7 @@ body {
   margin-right: -5px;
   top: 0;
   padding: 0 .25em 0 .25em;
-  background-color: var(--accent-lighter-blue);
+  background-color: var(--accent-blue);
   width: 100px;
 
   transition: all .2s ease;
@@ -77,12 +80,17 @@ body {
   width: 250px;
 }
 
+.navlist li:not(.active) {
+  box-shadow: inset 0px -10px 25px -15px rgba(0,0,0,0.5);
+}
+
 .navlist li:not(.active):hover {
-  background-color: var(--accent-much-lighter-blue);
+  background-color: var(--accent-light-blue);
 }
 
 .navlist li.active {
   background-color: white;
+  z-index: 1;
 }
 
 
@@ -398,8 +406,8 @@ button:not(:disabled):hover {
 button:disabled {
   cursor: not-allowed;
   background: none;
-  background-color: var(--accent-lighter-blue);
-  border-color: var(--accent-lighter-blue);
+  background-color: var(--accent-light-blue);
+  border-color: var(--accent-light-blue);
 }
 
 button#genoCheckSubmit:after {
