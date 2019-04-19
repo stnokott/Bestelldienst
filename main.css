@@ -43,6 +43,7 @@ body {
   margin: 0 0 1em 0;
   font-family: Roboto, sans-serif;
   font-weight: 500; /* medium */
+  background: linear-gradient(to bottom, white 20%, var(--accent-lighter-blue) 100%);
 }
 
 .navlist {
@@ -103,6 +104,7 @@ body {
 }
 
 header {
+  height: 100%;
   padding: 1em;
   font-family: alien;
   font-size: 15pt;
@@ -150,6 +152,7 @@ section {
   box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
   border-radius: 15px;
   overflow: hidden; /* verhindert, dass eine figure den border-radius überschreibt */
+  background-color: white;
 }
 
 section>p {
@@ -240,13 +243,6 @@ button#genoCheckSubmit {
   grid-row-start: 7;
   grid-column: 2 / 3;
   margin-top: .5em;
-}
-
-fieldset label span {
-  font-family: Roboto, sans-serif;
-  font-weight: 900;
-  display: inline-block;
-  width: 150px;
 }
 
 input {
