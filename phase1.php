@@ -70,13 +70,11 @@ class Phase1 extends Page
      */
     protected function generateNavigationBar() {
 echo <<<HTML
-        <div>
-            <ul class="navlist">
-                <li class="active"><a href="#">Phase 1</a></li>
-                <li><a href="#">Phase 1-2</a></li>
-                <li><a href="#">Phase 3</a></li>
-            </ul>
-        </div>
+        <ul class="navlist">
+            <li class="active"><a href="#">Phase 1</a></li>
+            <li><a href="#">Phase 1-2</a></li>
+            <li><a href="#">Phase 3</a></li>
+        </ul>
 HTML;
     }
 
@@ -88,16 +86,16 @@ HTML;
     protected function generatePageDescription() {
 echo<<<HTML
         <section>
+            <figure>
+                <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
+                <figcaption>Malte & Sombra Trontheim sind zufrieden mit ihrer GenoChoice&trade;-Entscheidung</figcaption>
+            </figure>
             <span class="sectionHeader">GenoCheck&trade; bestellen</span>
             <p>
                 Fordern Sie heute ihren <strong>kostenlosen</strong> GenoChoice&trade;-Gentest an.<br> Ein Team
                 aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die
                 Stärken und Schwächen ihres zukünftigen Kindes.
             </p>
-            <figure>
-                <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
-                <figcaption>Malte & Sombra Trontheim sind zufrieden mit ihrer GenoChoice&trade;-Entscheidung</figcaption>
-            </figure>
         </section>
 HTML;
     }
