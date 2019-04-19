@@ -111,7 +111,7 @@ header {
   position: fixed;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* zentrieren */
 }
 
 header + section {
@@ -380,11 +380,11 @@ button {
   text-transform: uppercase;
   color: var(--accent-blue);
   font-weight: 300;
-  font-size: 15pt;
+  font-size: 10pt;
   width: 100%;
   border: 2px solid var(--accent-blue);
   border-radius: 10px;
-  padding: .25em .5em .25em .5em;
+  padding: .5em;
   cursor: pointer;
   background: linear-gradient(to left, transparent 50%, var(--accent-blue) 50%);
   background-size: 200% 100%;
