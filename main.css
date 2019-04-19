@@ -47,16 +47,26 @@ body {
 }
 
 .navlist {
+  z-index: 1;
+  width: 100%;
   list-style-type: none;
   margin: 0 0 2em 0;
   padding: 0;
   background-color: var(--accent-lighter-blue);
   overflow: hidden;
+
+  position: fixed;
+  top: 0;
+}
+
+.navlist ~ header {
+  margin-top: 4em;
 }
 
 .navlist li {
   display: inline-block; /* Horizontale Anordnung */
   margin-right: -5px;
+  top: 0;
   padding: 0 .25em 0 .25em;
   background-color: var(--accent-lighter-blue);
   width: 100px;
