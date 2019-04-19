@@ -88,7 +88,6 @@ echo<<<HTML
         <section>
             <figure>
                 <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
-                <figcaption>Malte & Sombra Trontheim sind zufrieden mit ihrer GenoChoice&trade;-Entscheidung</figcaption>
             </figure>
             <span class="sectionHeader">GenoCheck&trade; bestellen</span>
             <p>
@@ -111,7 +110,7 @@ echo<<<HTML
         <span class="sectionHeader">Persönliche Daten</span>
         <form id="genoCheckForm" name="genoCheckForm[]" action="phase1tophase2.php" method="post">
             <label>Vorname</label>
-            <input type="text" id="inputFirstName" name="inputFirstName" value="Max" required autofocus>
+            <input type="text" id="inputFirstName" name="inputFirstName" value="Max" required>
 
             <label>Name</label>
             <input type="text" id="inputLastName" name="inputLastName" value="Musterhalfen" required>
