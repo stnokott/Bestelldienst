@@ -92,7 +92,6 @@ body {
   z-index: 1;
 }
 
-
 .navlist li a {
   color: var(--accent-black);
   display: block;
@@ -104,11 +103,19 @@ body {
 }
 
 header {
+  height: 100%;
   padding: 1em;
   font-family: alien;
-  font-size: 2vw;
+  font-size: 15pt;
   text-align: center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header + section {
+  margin-top: 25vh;
 }
 
 /* Header-Hintergrund */
@@ -117,8 +124,7 @@ header::after {
   background: url("./img/header_bg.svg");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: 15vw;
-  /* background-size: 100px 100px; */
+  background-size: 30%;
   opacity: .15;
   top: 0;
   left: 0;
