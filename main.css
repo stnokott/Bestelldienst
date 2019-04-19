@@ -52,7 +52,7 @@ body {
   list-style-type: none;
   margin: 0 0 2em 0;
   padding: 0;
-  background-color: var(--accent-light-blue);
+  background-color: var(--accent-lighter-blue);
   overflow: hidden;
   box-shadow: inset 0px -5px 20px -15px #111;
 
@@ -69,7 +69,7 @@ body {
   margin-right: -5px;
   top: 0;
   padding: 0 .25em 0 .25em;
-  background-color: var(--accent-blue);
+  background-color: var(--accent-light-blue);
   width: 100px;
 
   transition: all .2s ease;
@@ -84,7 +84,7 @@ body {
 }
 
 .navlist li:not(.active):hover {
-  background-color: var(--accent-light-blue);
+  background-color: var(--accent-lighter-blue);
 }
 
 .navlist li.active {
