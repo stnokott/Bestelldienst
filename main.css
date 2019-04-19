@@ -215,7 +215,7 @@ figcaption {
   position: absolute;
   bottom: 0;
   color: var(--accent-black);
-  background-color: rgba(129, 212, 250, 0.6);
+  background-color: rgba(177, 229, 252, 0.6);
   /* background-color: rgba(0, 0, 0, .5); */
   padding: .5em;
 }
