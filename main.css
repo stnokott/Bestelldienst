@@ -54,7 +54,7 @@ body {
   padding: 0;
   background-color: var(--accent-light-blue);
   overflow: hidden;
-  box-shadow: inset 0px -10px 25px -15px rgba(0,0,0,0.5);
+  box-shadow: inset 0px -5px 20px -15px #111;
 
   position: fixed;
   top: 0;
@@ -80,7 +80,7 @@ body {
 }
 
 .navlist li:not(.active) {
-  box-shadow: inset 0px -10px 25px -15px rgba(0,0,0,0.5);
+  box-shadow: inset 0px -5px 20px -15px #111;
 }
 
 .navlist li:not(.active):hover {
