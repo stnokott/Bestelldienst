@@ -1,22 +1,12 @@
 <?php	// UTF-8 marker äöüÄÖÜß€
 /**
- * Class PageTemplate for the exercises of the EWA lecture
- * Demonstrates use of PHP including class and OO.
- * Implements Zend coding standards.
- * Generate documentation with Doxygen or phpdoc
- *
- * PHP Version 5
- *
  * @category File
- * @package  Pizzaservice
- * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
- * @author   Ralf Hahn, <ralf.hahn@h-da.de>
+ * @package  Bestelldienst
+ * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
+ * @author   Max Klosterhalfen, <max.klosterhalfen@stud.h-da.de>
  * @license  http://www.h-da.de  none
- * @Release  1.2
- * @link     http://www.fbi.h-da.de
  */
 
-// to do: change name 'PageTemplate' throughout this file
 require_once './Page.php';
 
 /**
@@ -27,7 +17,10 @@ require_once './Page.php';
  * to be replaced by the name of the specific HTML page e.g. baker.
  * The order of methods might correspond to the order of thinking
  * during implementation.
-
+ *
+ * Angepasst für Bestelldienst
+ *
+ * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
@@ -69,35 +62,49 @@ class Phase1 extends Page
 
     }
 
+    /**
+     * Generiert Navigationsleiste.
+     * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
+     *
+     * @return none
+     */
     protected function generateNavigationBar() {
 echo <<<HTML
-        <div>
-            <ul class="navlist">
-                <li class="active"><a href="#">Phase 1</a></li>
-                <li><a href="#">Phase 1-2</a></li>
-                <li><a href="#">Phase 3</a></li>
-            </ul>
-        </div>
+        <ul class="navlist">
+            <li class="active"><a href="#">Phase 1</a></li>
+            <li><a href="#">Phase 1-2</a></li>
+            <li><a href="#">Phase 3</a></li>
+        </ul>
 HTML;
     }
 
-    protected function generateGenoCheckDescription() {
+    /**
+     * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
+     *
+     * @return none
+     */
+    protected function generatePageDescription() {
 echo<<<HTML
         <section>
+            <figure>
+                <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
+                <figcaption>Malte & Sombra Trontheim sind zufrieden mit ihrer GenoChoice&trade;-Entscheidung</figcaption>
+            </figure>
             <span class="sectionHeader">GenoCheck&trade; bestellen</span>
             <p>
                 Fordern Sie heute ihren <strong>kostenlosen</strong> GenoChoice&trade;-Gentest an.<br> Ein Team
                 aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die
                 Stärken und Schwächen ihres zukünftigen Kindes.
             </p>
-            <figure>
-                <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
-                <figcaption>Malte & Sombra Trontheim sind zufrieden mit ihrer GenoChoice&trade;-Entscheidung</figcaption>
-            </figure>
         </section>
 HTML;
     }
 
+    /**
+     * Generiert <form> zur Eingabe der Daten, die für die GenoCheck-Bestellung nötig sind
+     *
+     * @return none
+     */
     protected function generateGenoCheckForm() {
 echo<<<HTML
     <section>
@@ -146,7 +153,7 @@ HTML;
         $this->generateNavigationBar();
         $this->generatePageTitle();
 
-        $this->generateGenoCheckDescription();
+        $this->generatePageDescription();
         $this->generateGenoCheckForm();
 
         $this->generatePageFooter();
