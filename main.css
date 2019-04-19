@@ -1,7 +1,7 @@
 :root {
   --accent-blue: #81D4FA;
-  --accent-lighter-blue: #b1e5fc;
-  --accent-much-lighter-blue: #f3ecfc;
+  --accent-light-blue: #b1e5fc;
+  --accent-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
   --accent-red: #d32f2f;
   --accent-green: #4caf50;
@@ -39,7 +39,6 @@ Schriftarten -> font-weight
 */
 
 body {
-  /* zentrieren? */
   padding: 0;
   margin: 0 0 1em 0;
   font-family: Roboto, sans-serif;
@@ -47,12 +46,15 @@ body {
 }
 
 .navlist {
+  z-index: 1;
+  backdrop-filter: blur(6px);
   width: 100%;
   list-style-type: none;
   margin: 0 0 2em 0;
   padding: 0;
   background-color: var(--accent-lighter-blue);
   overflow: hidden;
+  box-shadow: inset 0px -5px 20px -15px #111;
 
   position: fixed;
   top: 0;
@@ -67,7 +69,7 @@ body {
   margin-right: -5px;
   top: 0;
   padding: 0 .25em 0 .25em;
-  background-color: var(--accent-lighter-blue);
+  background-color: var(--accent-light-blue);
   width: 100px;
 
   transition: all .2s ease;
@@ -77,14 +79,18 @@ body {
   width: 250px;
 }
 
+.navlist li:not(.active) {
+  box-shadow: inset 0px -5px 20px -15px #111;
+}
+
 .navlist li:not(.active):hover {
-  background-color: var(--accent-much-lighter-blue);
+  background-color: var(--accent-lighter-blue);
 }
 
 .navlist li.active {
   background-color: white;
+  z-index: 1;
 }
-
 
 .navlist li a {
   color: var(--accent-black);
@@ -97,11 +103,19 @@ body {
 }
 
 header {
+  height: 100%;
   padding: 1em;
   font-family: alien;
-  font-size: 2vw;
+  font-size: 15pt;
   text-align: center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* zentrieren */
+}
+
+header + section {
+  margin-top: 25vh;
 }
 
 /* Header-Hintergrund */
@@ -110,8 +124,7 @@ header::after {
   background: url("./img/header_bg.svg");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: 15vw;
-  /* background-size: 100px 100px; */
+  background-size: 30%;
   opacity: .15;
   top: 0;
   left: 0;
@@ -367,11 +380,11 @@ button {
   text-transform: uppercase;
   color: var(--accent-blue);
   font-weight: 300;
-  font-size: 15pt;
+  font-size: 10pt;
   width: 100%;
   border: 2px solid var(--accent-blue);
   border-radius: 10px;
-  padding: .25em .5em .25em .5em;
+  padding: .5em;
   cursor: pointer;
   background: linear-gradient(to left, transparent 50%, var(--accent-blue) 50%);
   background-size: 200% 100%;
@@ -398,8 +411,8 @@ button:not(:disabled):hover {
 button:disabled {
   cursor: not-allowed;
   background: none;
-  background-color: var(--accent-lighter-blue);
-  border-color: var(--accent-lighter-blue);
+  background-color: var(--accent-light-blue);
+  border-color: var(--accent-light-blue);
 }
 
 button#genoCheckSubmit:after {
