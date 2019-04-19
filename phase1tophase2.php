@@ -78,13 +78,11 @@ class Phase1ToPhase2 extends Page
     protected function generateNavigationBar()
     {
         echo <<<HTML
-        <div>
-            <ul class="navlist">
-                <li><a href="#">Phase 1</a></li>
-                <li class="active"><a href="#">Phase 1-2</a></li>
-                <li><a href="#">Phase 3</a></li>
-            </ul>
-        </div>
+        <ul class="navlist">
+            <li><a href="#">Phase 1</a></li>
+            <li class="active"><a href="#">Phase 1-2</a></li>
+            <li><a href="#">Phase 3</a></li>
+        </ul>
 HTML;
     }
 
