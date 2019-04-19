@@ -1,7 +1,7 @@
 :root {
   --accent-blue: #81D4FA;
-  --accent-light-blue: #b1e5fc;
-  --accent-lighter-blue: #f3ecfc;
+  --accent-lighter-blue: #b1e5fc;
+  --accent-much-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
   --accent-red: #d32f2f;
   --accent-green: #4caf50;
@@ -47,13 +47,12 @@ body {
 
 .navlist {
   z-index: 1;
-
   backdrop-filter: blur(6px);
   width: 100%;
   list-style-type: none;
   margin: 0 0 2em 0;
   padding: 0;
-  background-color: var(--accent-blue);
+  background-color: var(--accent-lighter-blue);
   overflow: hidden;
   box-shadow: inset 0px -10px 25px -15px rgba(0,0,0,0.5);
 
