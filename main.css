@@ -1,7 +1,7 @@
 :root {
   --accent-blue: #81D4FA;
-  --accent-lighter-blue: #b1e5fc;
-  --accent-much-lighter-blue: #f3ecfc;
+  --accent-light-blue: #b1e5fc;
+  --accent-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
   --accent-red: #d32f2f;
   --accent-green: #4caf50;
@@ -39,7 +39,6 @@ Schriftarten -> font-weight
 */
 
 body {
-  /* zentrieren? */
   padding: 0;
   margin: 0 0 1em 0;
   font-family: Roboto, sans-serif;
@@ -47,18 +46,30 @@ body {
 }
 
 .navlist {
+  z-index: 1;
+  backdrop-filter: blur(6px);
+  width: 100%;
   list-style-type: none;
   margin: 0 0 2em 0;
   padding: 0;
   background-color: var(--accent-lighter-blue);
   overflow: hidden;
+  box-shadow: inset 0px -5px 20px -15px #111;
+
+  position: fixed;
+  top: 0;
+}
+
+.navlist ~ header {
+  margin-top: 7vh;
 }
 
 .navlist li {
   display: inline-block; /* Horizontale Anordnung */
   margin-right: -5px;
+  top: 0;
   padding: 0 .25em 0 .25em;
-  background-color: var(--accent-lighter-blue);
+  background-color: var(--accent-light-blue);
   width: 100px;
 
   transition: all .2s ease;
@@ -68,14 +79,18 @@ body {
   width: 250px;
 }
 
+.navlist li:not(.active) {
+  box-shadow: inset 0px -5px 20px -15px #111;
+}
+
 .navlist li:not(.active):hover {
-  background-color: var(--accent-much-lighter-blue);
+  background-color: var(--accent-lighter-blue);
 }
 
 .navlist li.active {
   background-color: white;
+  z-index: 1;
 }
-
 
 .navlist li a {
   color: var(--accent-black);
@@ -88,11 +103,19 @@ body {
 }
 
 header {
+  height: 100%;
   padding: 1em;
   font-family: alien;
+  font-size: 15pt;
   text-align: center;
-  border-bottom: 1px solid var(--accent-black);
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* zentrieren */
+}
+
+header + section {
+  margin-top: 25vh;
 }
 
 /* Header-Hintergrund */
@@ -101,7 +124,7 @@ header::after {
   background: url("./img/header_bg.svg");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: 100px 100px;
+  background-size: 30%;
   opacity: .15;
   top: 0;
   left: 0;
@@ -121,12 +144,13 @@ header::after {
 }
 
 section {
-  max-width: 75%;
+  max-width: 50%;
   min-width: 500px;
-  padding: 1em;
+  padding: 1em 2em 1em 2em;
   margin: 1em auto 1em auto;
-  border: 1px solid var(--accent-grey);
-  box-shadow: 10px 10px 25px -15px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 5px 25px 0 rgba(48,112,205,0.1);
+  border-radius: 15px;
+  overflow: hidden; /* verhindert, dass eine figure den border-radius überschreibt */
 }
 
 section>p {
@@ -168,7 +192,7 @@ div.agentName::before {
 figure {
   position: relative;
   overflow: hidden;
-  margin: 1em 0 1em 0;
+  margin: -1em -2em 1em -2em; /* Nötig, um Bild horizontal an den Rand und vertikal Abstand zu .sectionHeader zu bekommen */
 }
 
 figure:hover > img {
@@ -178,7 +202,8 @@ figure:hover > img {
 figure img {
   display: block;
   width: 100%;
-  margin: -10% 0 -10% 0%;
+  padding: 0 -2em 0 -2em;
+  margin: -10% 0 -10% 0;
 
   transition: all .2s ease;
 }
@@ -196,7 +221,7 @@ figcaption {
 
 form {
   padding: 1em;
-  margin: 0 1em 1em 1em;
+  margin: 0 1em 0 1em;
 }
 
 form#genoCheckForm {
@@ -213,7 +238,8 @@ fieldset {
 
 button#genoCheckSubmit {
   grid-row-start: 7;
-  grid-column: 1 / 3;
+  grid-column: 2 / 3;
+  margin-top: .5em;
 }
 
 fieldset label span {
@@ -351,20 +377,21 @@ ul.list li.disabled {
 
 
 button {
-  color: white;
-  font-weight: bold;
-  font-size: 24px;
-  display: inline-block;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 300;
+  font-size: 10pt;
   width: 100%;
-  border: 4px solid var(--accent-blue);
-  padding: 1em;
+  border: 2px solid var(--accent-blue);
+  border-radius: 10px;
+  padding: .5em;
   cursor: pointer;
-  background: linear-gradient(to right, transparent 50%, var(--accent-blue) 50%);
+  background: linear-gradient(to left, transparent 50%, var(--accent-blue) 50%);
   background-size: 200% 100%;
   background-position: right;
-  position: relative;
+  position: relative; /* für vertical-align von :after */
 
-  transition: all 0.4s ease;
+  transition: all .2s ease;
 }
 
 button:active {
@@ -377,19 +404,29 @@ button:focus {
 }
 
 button:not(:disabled):hover {
-  color: var(--accent-blue);
+  color: white;
   background-position: left;
 }
 
 button:disabled {
   cursor: not-allowed;
   background: none;
-  background-color: var(--accent-lighter-blue);
-  border-color: var(--accent-lighter-blue);
+  background-color: var(--accent-light-blue);
+  border-color: var(--accent-light-blue);
 }
 
-button[type='submit'] {
-  margin-top: .5em;
+button#genoCheckSubmit:after {
+  opacity: 0;
+  font-family: "Material Icons";
+  content: "\e5ca";
+  vertical-align: top;
+  right: 0;
+
+  transition: all .2s ease;
+}
+
+button#genoCheckSubmit:hover:after {
+  opacity: 1;
 }
 
 .disease {
