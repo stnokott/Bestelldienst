@@ -210,12 +210,13 @@ figure img {
 
 figcaption {
   width: 100%;
-  font-size: 10pt;
+  font-size: 12pt;
   display: block;
   position: absolute;
   bottom: 0;
-  color: white;
-  background-color: rgba(0, 0, 0, .5);
+  color: var(--accent-black);
+  background-color: rgba(129, 212, 250, 0.6);
+  /* background-color: rgba(0, 0, 0, .5); */
   padding: .5em;
 }
 
