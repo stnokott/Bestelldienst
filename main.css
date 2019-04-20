@@ -224,43 +224,57 @@ form {
   margin: 0 1em 0 1em;
 }
 
-form#genoCheckForm {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: .3em .4em;
-  align-items: center;
-}
-
-fieldset {
-  width: 100%;
-  box-sizing: border-box;
-}
-
 button#genoCheckSubmit {
-  grid-row-start: 7;
-  grid-column: 2 / 3;
   margin-top: .5em;
+}
+
+.inputGroup {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+label {
+  font-size: 12pt;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  pointer-events: none;
+
+  transition: all .2s ease;
 }
 
 input {
   font-family: Raleway, sans-serif;
+  font-size: 12pt;
+  display: block;
   font-weight: 500;
-  width: auto;
+  width: 100%;
   box-sizing: content-box;
-  margin: 3px;
-  padding: 5px 3px 5px 3px;
-  border-width: 0;
+  margin: 0;
+  padding: 15px 3px 3px 5px;
+  border: none;
   border-bottom: 1px solid var(--accent-grey);
-  transition: background-color 0.2s ease-in-out, border-bottom 0.2s ease-in-out;
-}
 
-input:invalid {
-  background-color: rgba(230, 57, 53, 0.1);
+  transition: all 0.2s ease-in-out;
 }
 
 input:focus {
   outline: none;
   border-bottom: 1px solid var(--accent-black);
+}
+
+input:focus + label, input:not(:placeholder-shown):not(:focus) + label {
+  font-size: 8pt;
+  top: 0;
+}
+
+input:invalid:not(:focus) {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-image: none;
+  box-shadow: none;
+  outline: none;
 }
 
 .dropdownWrapper {
