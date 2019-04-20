@@ -44,11 +44,7 @@ body {
   margin: 0 0 1em 0;
   font-family: Roboto, sans-serif;
   font-weight: 500; /* medium */
-<<<<<<< HEAD
-  background: linear-gradient(to bottom, white 0%, var(--accent-lighter-blue) 100%);
-=======
   background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%);
->>>>>>> b7ddadbf98512639a72df90499d7c7a87d3d0ea0
   background-attachment: fixed;
 }
 
@@ -153,11 +149,7 @@ section {
   box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
   border-radius: 15px;
   overflow: hidden; /* verhindert, dass eine figure den border-radius überschreibt */
-<<<<<<< HEAD
-  background-color: white;
-=======
   background: white;
->>>>>>> b7ddadbf98512639a72df90499d7c7a87d3d0ea0
 }
 
 section>p {
