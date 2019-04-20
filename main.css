@@ -510,9 +510,9 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 .progresssteps li:after {
   /* Strich vor Punkt */
   text-align: center;
-  margin-left: 15px;
-  margin-right: 15px;
-  width: calc(100% - 30px);
+  margin-left: 17px;
+  margin-right: 17px;
+  width: calc(100% - 34px);
   height: 2px;
   content: '';
   position: absolute;
@@ -548,9 +548,18 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
   /* Strich nach active-Punkt */
   background-color: var(--accent-blue);
 }
-/*
-.progresssteps li.active+li:after {
-  /* Strich nach active-Punkt 
-  background-color: var(--accent-blue);
+
+@keyframes slide {
+  0%{
+    background-position-x: 0%;
+  }
+  100%{
+    background-position-x: -200%;
+  }
 }
-*/
+
+.progresssteps li.animate:after {
+  background: linear-gradient(to right, var(--accent-blue) 0%, white 20%, white 80%, var(--accent-blue) 100%);
+  background-size: 200% 100%;
+  animation: slide 2s linear infinite;
+}
