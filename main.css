@@ -377,10 +377,10 @@ ul.list li.disabled {
 button {
   text-transform: uppercase;
   color: var(--accent-blue);
-  font-weight: 300;
-  font-size: 10pt;
+  font-weight: bold;
+  font-size: 15pt;
   width: 100%;
-  border: 2px solid var(--accent-blue);
+  border: 3px solid var(--accent-blue);
   border-radius: 10px;
   padding: .5em;
   cursor: pointer;
@@ -411,20 +411,6 @@ button:disabled {
   background: none;
   background-color: var(--accent-light-blue);
   border-color: var(--accent-light-blue);
-}
-
-button#genoCheckSubmit:after {
-  opacity: 0;
-  font-family: "Material Icons";
-  content: "\e5ca";
-  vertical-align: top;
-  right: 0;
-
-  transition: all .2s ease;
-}
-
-button#genoCheckSubmit:hover:after {
-  opacity: 1;
 }
 
 .disease {
