@@ -403,9 +403,10 @@ button:not(:disabled):hover {
 
 button:disabled {
   cursor: not-allowed;
+  color: var(--accent-light-blue);
   background: none;
-  background-color: var(--accent-light-blue);
-  border-color: var(--accent-light-blue);
+  background-color: var(--accent-lighter-blue);
+  border-color: var(--accent-lighter-blue);
 }
 
 .disease {
