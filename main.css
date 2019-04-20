@@ -3,6 +3,7 @@
   --accent-light-blue: #b1e5fc;
   --accent-lighter-blue: #f3ecfc;
   --accent-grey: #BDBDBD;
+  --accent-light-grey: #eeeeee;
   --accent-red: #d32f2f;
   --accent-green: #4caf50;
   --accent-brown: #6d4c41;
@@ -43,12 +44,15 @@ body {
   margin: 0 0 1em 0;
   font-family: Roboto, sans-serif;
   font-weight: 500; /* medium */
+<<<<<<< HEAD
   background: linear-gradient(to bottom, white 0%, var(--accent-lighter-blue) 100%);
+=======
+  background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%);
+>>>>>>> b7ddadbf98512639a72df90499d7c7a87d3d0ea0
   background-attachment: fixed;
 }
 
 .navlist {
-  z-index: 1;
   backdrop-filter: blur(6px);
   width: 100%;
   list-style-type: none;
@@ -56,7 +60,7 @@ body {
   padding: 0;
   background-color: var(--accent-lighter-blue);
   overflow: hidden;
-  box-shadow: inset 0px -5px 20px -15px #111;
+  z-index: 1000;
 
   position: fixed;
   top: 0;
@@ -71,7 +75,7 @@ body {
   margin-right: -5px;
   top: 0;
   padding: 0 .25em 0 .25em;
-  background-color: var(--accent-light-blue);
+  background-color: var(--accent-lighter-blue);
   width: 100px;
 
   transition: all .2s ease;
@@ -81,17 +85,12 @@ body {
   width: 250px;
 }
 
-.navlist li:not(.active) {
-  box-shadow: inset 0px -5px 20px -15px #111;
-}
-
 .navlist li:not(.active):hover {
-  background-color: var(--accent-lighter-blue);
+  background-color: var(--accent-light-blue);
 }
 
 .navlist li.active {
   background-color: white;
-  z-index: 1;
 }
 
 .navlist li a {
@@ -114,10 +113,11 @@ header {
   top: 0;
   left: 50%;
   transform: translateX(-50%); /* zentrieren */
+  z-index: -1;
 }
 
 header + section {
-  margin-top: 25vh;
+  margin-top: 28vh;
 }
 
 /* Header-Hintergrund */
@@ -153,7 +153,11 @@ section {
   box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
   border-radius: 15px;
   overflow: hidden; /* verhindert, dass eine figure den border-radius überschreibt */
+<<<<<<< HEAD
   background-color: white;
+=======
+  background: white;
+>>>>>>> b7ddadbf98512639a72df90499d7c7a87d3d0ea0
 }
 
 section>p {
@@ -376,10 +380,10 @@ ul.list li.disabled {
 button {
   text-transform: uppercase;
   color: var(--accent-blue);
-  font-weight: 300;
-  font-size: 10pt;
+  font-weight: bold;
+  font-size: 15pt;
   width: 100%;
-  border: 2px solid var(--accent-blue);
+  border: 3px solid var(--accent-blue);
   border-radius: 10px;
   padding: .5em;
   cursor: pointer;
@@ -407,23 +411,10 @@ button:not(:disabled):hover {
 
 button:disabled {
   cursor: not-allowed;
+  color: var(--accent-light-blue);
   background: none;
-  background-color: var(--accent-light-blue);
-  border-color: var(--accent-light-blue);
-}
-
-button#genoCheckSubmit:after {
-  opacity: 0;
-  font-family: "Material Icons";
-  content: "\e5ca";
-  vertical-align: top;
-  right: 0;
-
-  transition: all .2s ease;
-}
-
-button#genoCheckSubmit:hover:after {
-  opacity: 1;
+  background-color: var(--accent-lighter-blue);
+  border-color: var(--accent-lighter-blue);
 }
 
 .disease {
@@ -465,7 +456,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 /* http://kodhus.com/newsite/step-progress-bar-css-only/ */
 .progresssteps-container {
   display: block;
-  margin: 1em;
+  margin: 1em 1em 7em 1em;
 }
 
 .progresssteps {
@@ -475,7 +466,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 
 .progresssteps li {
   cursor: default;
-  color: var(--accent-grey);
+  color: var(--accent-light-grey);
   list-style-type: none;
   width: 25%;
   float: left;
@@ -486,10 +477,9 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 }
 
 .progresssteps li:before {
+  /* Icons */
   width: 30px;
   height: 30px;
-  content: counter(step);
-  counter-increment: step;
   line-height: 30px;
   border: 2px solid var(--accent-grey);
   display: block;
@@ -501,8 +491,8 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
   transition: background-color 0.1s ease-in-out;
 }
 
-.progresssteps li:hover::before {
-  background-color: var(--accent-grey);
+.progresssteps li:not(.active)::before {
+  background-color: var(--accent-light-grey);
   color: white;
 }
 
@@ -527,15 +517,17 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 }
 
 .progresssteps li:after {
-  /* Strich nach Punkt */
-  width: 100%;
+  /* Strich vor Punkt */
+  text-align: center;
+  margin-left: 17px;
+  margin-right: 17px;
+  width: calc(100% - 34px);
   height: 2px;
   content: '';
   position: absolute;
-  background-color: var(--accent-grey);
+  background-color: var(--accent-light-grey);
   top: 15px;
   left: -50%;
-  z-index: -1;
 }
 
 .progresssteps li:first-child:after {
@@ -548,15 +540,35 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 }
 
 .progresssteps li.active:hover::before {
+  color: white;
   background-color: var(--accent-blue);
 }
 
 .progresssteps li.active:before {
   /* Ring-Farbe */
   border-color: var(--accent-blue);
+  background-color: white;
 }
 
-.progresssteps li.active+li:after {
+.progresssteps li:not(.active)::before {
+  border-color: var(--accent-light-grey);
+}
+.progresssteps li.active:after {
   /* Strich nach active-Punkt */
   background-color: var(--accent-blue);
+}
+
+@keyframes slide {
+  0%{
+    background-position-x: 0%;
+  }
+  100%{
+    background-position-x: -200%;
+  }
+}
+
+.progresssteps li.animate:after {
+  background: linear-gradient(to right, var(--accent-blue) 0%, white 20%, white 80%, var(--accent-blue) 100%);
+  background-size: 200% 100%;
+  animation: slide 2s linear infinite;
 }

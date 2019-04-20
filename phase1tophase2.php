@@ -136,26 +136,30 @@ HTML;
 
             // bestimme, welches li-Item von progresssteps die "active"-Klasse bekommt
             $echo_confirmed = $echo_sent = $echo_analysis = $echo_done = null;
-            $echo_class = "class = \"active\"";
+            $echo_active = "class = \"active\"";
+            $echo_animate = "class = \"animate\"";
             $echo_button_attr = "disabled";
             switch ($this->order_status) {
                 case 0:
-                    $echo_confirmed = $echo_class;
+                    $echo_confirmed = $echo_active;
+                    $echo_sent = $echo_animate;
                     break;
                 case 1:
-                    $echo_confirmed = $echo_class;
-                    $echo_sent = $echo_class;
+                    $echo_confirmed = $echo_active;
+                    $echo_sent = $echo_active;
+                    $echo_analysis = $echo_animate;
                     break;
                 case 2:
-                    $echo_confirmed = $echo_class;
-                    $echo_sent = $echo_class;
-                    $echo_analysis = $echo_class;
+                    $echo_confirmed = $echo_active;
+                    $echo_sent = $echo_active;
+                    $echo_analysis = $echo_active;
+                    $echo_done = $echo_animate;
                     break;
                 case 3:
-                    $echo_confirmed = $echo_class;
-                    $echo_sent = $echo_class;
-                    $echo_analysis = $echo_class;
-                    $echo_done = $echo_class;
+                    $echo_confirmed = $echo_active;
+                    $echo_sent = $echo_active;
+                    $echo_analysis = $echo_active;
+                    $echo_done = $echo_active;
 
                     $echo_button_attr = null; // aktiviere Button, wenn letzte Phase erreicht
             }
