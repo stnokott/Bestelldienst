@@ -54,9 +54,8 @@ body {
   list-style-type: none;
   margin: 0 0 2em 0;
   padding: 0;
-  background-color: white;
+  background-color: var(--accent-lighter-blue);
   overflow: hidden;
-  box-shadow: inset 0px -5px 20px -15px #111;
 
   position: fixed;
   top: 0;
@@ -79,10 +78,6 @@ body {
 
 .navlist li:hover {
   width: 250px;
-}
-
-.navlist li:not(.active) {
-  box-shadow: inset 0px -5px 20px -15px #111;
 }
 
 .navlist li:not(.active):hover {
