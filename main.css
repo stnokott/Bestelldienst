@@ -105,6 +105,7 @@ body {
 }
 
 header {
+  z-index: -1;
   height: 100%;
   padding: 1em;
   font-family: alien;
