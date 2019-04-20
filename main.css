@@ -44,7 +44,7 @@ body {
   margin: 0 0 1em 0;
   font-family: Roboto, sans-serif;
   font-weight: 500; /* medium */
-  background: linear-gradient(to bottom, white 90%, var(--accent-lighter-blue) 100%);
+  background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%);
   background-attachment: fixed;
 }
 
