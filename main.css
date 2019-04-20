@@ -544,8 +544,13 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 .progresssteps li:not(.active)::before {
   border-color: var(--accent-light-grey);
 }
-
-.progresssteps li.active+li:after {
+.progresssteps li.active:after {
   /* Strich nach active-Punkt */
   background-color: var(--accent-blue);
 }
+/*
+.progresssteps li.active+li:after {
+  /* Strich nach active-Punkt 
+  background-color: var(--accent-blue);
+}
+*/
