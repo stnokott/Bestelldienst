@@ -109,27 +109,39 @@ echo<<<HTML
     <section>
         <span class="sectionHeader">Persönliche Daten</span>
         <form id="genoCheckForm" name="genoCheckForm[]" action="phase1tophase2.php" method="post">
-            <label>Vorname</label>
-            <input type="text" id="inputFirstName" name="inputFirstName" value="Max" required>
+          <div class="inputGroup">
+            <input type="text" id="inputFirstName" name="inputFirstName" placeholder="" required>
+            <label for="inputFirstName">Vorname</label>
+          </div>
 
-            <label>Name</label>
-            <input type="text" id="inputLastName" name="inputLastName" value="Musterhalfen" required>
+          <div class="inputGroup">
+            <input type="text" id="inputLastName" name="inputLastName" placeholder="" required>
+            <label for="inputLastName">Name</label>
+          </div>
 
-            <label>Straße & Hausnummer</label>
-            <input type="text" id="inputStreet" name="inputStreet" value="Musterstraße 1" required>
+          <div class="inputGroup">
+            <input type="text" id="inputStreet" name="inputStreet" placeholder="" required>
+            <label for="inputStreet">Straße & Hausnummer</label>
+          </div>
 
-            <label>Stadt</label>
-            <input type="text" id="inputCity" name="inputCity" value="Musterstadt" required>
+          <div class="inputGroup">
+            <input type="text" id="inputCity" name="inputCity" placeholder="" required>
+            <label for="inputCity">Stadt</label>
+          </div>
 
-            <label>PLZ</label>
-            <input type="text" id="inputZipcode" name="inputZipcode" pattern="\d{5}" value="12345" required>
+          <div class="inputGroup">
+            <input type="text" id="inputZipcode" name="inputZipcode" placeholder="" pattern="\d{5}" required>
+            <label for="inputZipcode">PLZ</label>
+          </div>
 
-            <label>E-Mail</label>
-            <input type="email" id="inputEmail" name="inputEmail" value="m.musterhalfen@gmail.com" required>
+          <div class="inputGroup">
+            <input type="email" id="inputEmail" name="inputEmail" placeholder="" required>
+            <label for="inputEmail">E-Mail</label>
+          </div>
 
-            <button id="genoCheckSubmit" type="submit">
-                GenoCheck&trade; bestellen
-            </button>
+          <button id="genoCheckSubmit" type="submit">
+              GenoCheck&trade; bestellen
+          </button>
         </form>
     </section>
 HTML;
