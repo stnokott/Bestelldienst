@@ -26,7 +26,7 @@
       <!-- POST, damit bereits gewählte optionale Pakete an den Server übermittelt werden können -->
       <form class="changeKit" action="phase3.html" method="post">
         <label for="btnChangeKit"><strong>Gewähltes Kit: [GEWÄHLTES KIT]</strong></label>
-        <button type="submit" id="btnChangeKit">Ändern</button>
+        <button type="submit">Ändern</button>
       </form>
     </section>
 
@@ -41,7 +41,7 @@
             <li>Leihmutter trägt Ihren Embryo aus</li>
           </ul>
           <h3>499.99€</h3>
-          <input type="button" id="btnBirth" value="In den Warenkorb">
+          <input type="button" value="In den Warenkorb">
         </section>
         <hr>
         <section class="optionalPackage">
@@ -51,7 +51,7 @@
             <li>Humane Lieferung in gepolstertem Behälter</li>
           </ul>
           <h3>249.99€</h3>
-          <input type="button" id="btnDelivery" value="Bereits in Warenkorb" disabled>
+          <input type="button" value="Bereits in Warenkorb" disabled>
         </section>
         <hr>
         <section class="optionalPackage">
@@ -64,19 +64,19 @@
           </ul>
           <h5>Disclaimer: Lieferung erfolgt durch den Schornstein</h5>
           <h3>0.99€</h3>
-          <input type="button" id="btnStork" name="btnStork" value="In den Warenkorb">
+          <input type="button" name="btnStork" value="In den Warenkorb">
         </section>
         <hr>
 
         <!-- Warenkorb -->
         <h3>Warenkorb</h3>
-        <select class="list" id="shoppingCart" name="shoppingCart[]" size="5" style="width:200px" multiple disabled>
+        <select class="list shoppingCart" name="shoppingCart[]" size="5" style="width:200px" multiple disabled>
           <option value="[chosenKit]" selected>[GEWÄHLTES KIT] - [PREIS]</option>
           <option value="packageDrone" selected>Lieferung Drohne - 249.99€</option>
         </select>
         <p>Gesamt: 123456.99€</p>
         <hr>
-        <button type="submit" id="btnGoToPayment">Fortfahren</button>
+        <button type="submit">Fortfahren</button>
       </form>
     </section>
   </body>
