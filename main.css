@@ -1,16 +1,25 @@
+@import url("./phase3.css");
+
 :root {
   --accent-blue: #81D4FA;
   --accent-light-blue: #b1e5fc;
   --accent-lighter-blue: #f3ecfc;
+  --accent-dark-blue: #5C6BC0;
   --accent-grey: #BDBDBD;
   --accent-light-grey: #eeeeee;
+  --accent-black: #212121;
   --accent-red: #d32f2f;
   --accent-light-red: #ef5350;
   --accent-lighter-red: #ef9a9a;
   --accent-green: #4caf50;
+  --accent-light-green: #81c784;
+  --accent-lighter-green: #c8e6c9;
   --accent-brown: #6d4c41;
+  --accent-light-brown: #8D6E63;
   --accent-yellow: #ffee58;
-  --accent-black: #212121;
+  --accent-orange: #FFB74D;
+  --accent-pink: #F06292;
+  --accent-light-pink: #F48FB1;
 }
 
 
@@ -48,6 +57,7 @@ body {
   font-weight: 500; /* medium */
   background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%);
   background-attachment: fixed;
+  color: var(--accent-black);
 }
 
 .navlist {
@@ -317,13 +327,13 @@ ul.list {
   list-style-type: none;
   position: relative;
   padding: 0;
-  border: 1px solid black;
+  border: 1px solid var(--accent-black);
   margin: .5em 0 .5em 0;
 }
 
 ul.list li {
   padding: .5em .5em .5em 1em;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--accent-black);
 
   transition: all .4s ease;
 }
@@ -425,6 +435,11 @@ button:disabled {
   border-color: var(--accent-lighter-blue);
 }
 
+
+
+
+/* LEISTE MIT MINIMUM, OPTIMUM, MAXIMUM */
+
 .disease {
   margin-top: -15px;
   padding-bottom: 10px; /* für Label */
@@ -485,6 +500,10 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     background: var(--accent-red);
   }
 }
+
+
+
+/* FORTSCHRITTSANZEIGE */
 
 /* http://kodhus.com/newsite/step-progress-bar-css-only/ */
 .progresssteps-container {

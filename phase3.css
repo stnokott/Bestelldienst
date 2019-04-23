@@ -1,0 +1,119 @@
+/* KIT-WAHL */
+
+.kit {
+  margin: 1em 0;
+  padding: 0 1em 1em 1em;
+  border: 2px solid var(--accent-grey);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px 0 rgba(48,112,205,0.2);
+}
+
+.kit span {
+  display: inline-block;
+}
+
+.kit div.kitHeader {
+  border-bottom: 1px solid var(--accent-lighter-blue);
+  margin-left: -1em;
+  margin-right: -1em;
+  padding: 1em 1em .5em 3em;
+  position: relative; /* für .price */
+}
+
+.kit span.kitTitle {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.kit span.kitSubtitle {
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 15px;
+  padding: .2em 1em;
+  margin: .25em -1em .25em -1em;
+  background-color: white;
+  color: var(--accent-black);
+}
+
+.kit .kitPrice {
+  font-size: 20px;
+  font-weight: 900;
+  padding: .5em 1em;
+  position: absolute;
+  right: 15px;
+  bottom: -1px;
+  text-align: center;
+  width: 20%;
+  background-color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.kit button[type="submit"]::before {
+  font-family: "Material Icons";
+  content: "\e8cc";
+  vertical-align: top;
+  margin-right: 5px;
+}
+
+.kitBasic {
+  border-color: var(--accent-grey);
+}
+.kitBasic div.kitHeader {
+  background-color: var(--accent-grey);
+}
+.kitBasic button[type="submit"] {
+  background: linear-gradient(to left, transparent 50%, var(--accent-grey) 50%);
+  border-color: var(--accent-grey);
+  color: var(--accent-grey);
+}
+.kitComfort {
+  border-color: var(--accent-dark-blue);
+}
+.kitComfort div.kitHeader {
+  background-color: var(--accent-dark-blue);
+}
+.kitComfort button[type="submit"] {
+  background: linear-gradient(to left, transparent 50%, var(--accent-dark-blue) 50%);
+  border-color: var(--accent-dark-blue);
+  color: var(--accent-dark-blue);
+}
+.kitSocial {
+  border-color: var(--accent-blue);
+}
+.kitSocial div.kitHeader {
+  background-color: var(--accent-blue);
+}
+.kitSocial button[type="submit"] {
+  background: linear-gradient(to left, transparent 50%, var(--accent-blue) 50%);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+.kitPremium {
+  border-color: var(--accent-light-green);
+}
+.kitPremium div.kitHeader {
+  background-color: var(--accent-light-green);
+}
+.kitPremium button[type="submit"] {
+  background: linear-gradient(to left, transparent 50%, var(--accent-light-green) 50%);
+  border-color: var(--accent-light-green);
+  color: var(--accent-light-green);
+}
+.kitCustom {
+  border-color: var(--accent-light-pink);
+}
+.kitCustom div.kitHeader {
+  background-color: var(--accent-light-pink);
+}
+.kitCustom button[type="submit"] {
+  background: linear-gradient(to left, transparent 50%, var(--accent-light-pink) 50%);
+  border-color: var(--accent-light-pink);
+  color: var(--accent-light-pink);
+}
+
+.kit button[type="submit"] {
+  background-size: 200% 100%;
+  background-position: right;
+}
