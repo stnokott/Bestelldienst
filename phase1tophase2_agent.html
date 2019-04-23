@@ -31,19 +31,27 @@
           </select>
         </div>
 
-        <input type="radio" name="statusOrder" id="statusOrderConfirmed">
-        <label for="statusOrderConfirmed">Bestellung bestätigt</label><br>
+        <div class="inputRadioGroup">
+          <input type="radio" name="statusOrder" id="statusOrderConfirmed">
+          <label for="statusOrderConfirmed">Bestellung bestätigt</label>
+        </div>
 
-        <input type="radio" name="statusOrder" id="statusSent">
-        <label for="statusSent">GenoCheck&trade; versandt</label><br>
+        <div class="inputRadioGroup">
+          <input type="radio" name="statusOrder" id="statusSent">
+          <label for="statusSent">GenoCheck&trade; versandt</label>
+        </div>
 
-        <input type="radio" name="statusOrder" id="statusLaboratory" checked>
-        <label for="statusLaboratory">Labor-Analyse läuft</label><br>
+        <div class="inputRadioGroup active">
+          <input type="radio" name="statusOrder" id="statusAnalysis" checked>
+          <label for="statusAnalysis">Labor-Analyse läuft</label>
+        </div>
 
-        <input type="radio" name="statusOrder" id="statusDone">
-        <label for="statusDone"><strong>Analyse fertiggestellt</strong></label>
+        <div class="inputRadioGroup">
+          <input type="radio" name="statusOrder" id="statusDone">
+          <label for="statusDone">Analyse fertiggestellt</label>
+        </div>
 
-        <button type="submit">Änderung bestätigen</button>
+        <button class="genoCheckSubmit" type="submit">Änderung bestätigen</button>
       </form>
     </section>
   </body>
