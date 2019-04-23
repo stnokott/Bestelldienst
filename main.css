@@ -237,7 +237,7 @@ form {
   margin: 0 1em 0 1em;
 }
 
-button#genoCheckSubmit {
+button.genoCheckSubmit {
   margin-top: .5em;
 }
 
@@ -545,26 +545,25 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 }
 
 .progresssteps li:not(.active)::before {
-  background-color: var(--accent-light-grey);
-  color: white;
+  background-color: white;
 }
 
-.progresssteps li#confirmed:before {
+.progresssteps li.confirmed:before {
   font-family: "Material Icons";
   content: "\e5ca";
 }
 
-.progresssteps li#sent:before {
+.progresssteps li.sent:before {
   font-family: "Material Icons";
   content: "\e558";
 }
 
-.progresssteps li#analysis:before {
+.progresssteps li.analysis:before {
   font-family: "Material Icons";
   content: "\e8b6";
 }
 
-.progresssteps li#done:before {
+.progresssteps li.done:before {
   font-family: "Material Icons";
   content: "\e7f2";
 }
@@ -606,6 +605,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 .progresssteps li:not(.active)::before {
   border-color: var(--accent-light-grey);
 }
+
 .progresssteps li.active:after {
   /* Strich nach active-Punkt */
   background-color: var(--accent-blue);
