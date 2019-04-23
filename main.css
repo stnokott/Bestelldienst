@@ -125,7 +125,7 @@ header {
   z-index: -1;
 }
 
-header + section {
+header + section, header + .currentAgent {
   margin-top: 28vh;
 }
 
@@ -155,6 +155,7 @@ header::after {
 }
 
 section {
+  wdith: 50%;
   max-width: 50%;
   min-width: 500px;
   padding: 1em 2em 1em 2em;
@@ -178,10 +179,14 @@ section>p {
 }
 
 div.currentAgent {
-  display: inline-block;
-  padding-left: 1em;
-  margin: 1em 0 0 0;
-  border: 1px solid var(--accent-grey);
+  width: 25%;
+  max-width: 50%;
+  padding: 0 1em;
+  box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+  border-radius: 15px;
+  background: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 div.agentName {
@@ -192,6 +197,12 @@ div.agentName {
   font-family: Raleway, sans-serif;
   font-weight: 700;
   display: inline-block;
+
+  transition: all .2s ease;
+}
+
+div.agentName:hover {
+  background-color: var(--accent-light-blue);
 }
 
 div.agentName::before {
@@ -237,16 +248,43 @@ form {
   margin: 0 1em 0 1em;
 }
 
-button.genoCheckSubmit {
+button[type="submit"] {
   margin-top: .5em;
 }
 
-.inputGroup {
+.inputRadioGroup {
+  border: 1px solid var(--accent-grey);
+  padding: 5px 10px 5px 25px;
+  margin: .5em 0;
+  position: relative;
+
+  transition: all .2s ease;
+}
+
+.inputRadioGroup.active {
+  background-color: var(--accent-blue);
+}
+
+.inputRadioGroup:not(.active):hover {
+  background-color: var(--accent-lighter-blue);
+}
+
+.inputRadioGroup.active::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 6px;
+  font-family: "Material Icons";
+  content: "\e5ca";
+  color: var(--accent-black);
+}
+
+.inputTextGroup {
   position: relative;
   margin-bottom: 1em;
 }
 
-label {
+.inputTextGroup label {
   font-size: 12pt;
   position: absolute;
   top: 10px;
@@ -256,7 +294,7 @@ label {
   transition: all .2s ease;
 }
 
-input {
+input[type="text"], input[type="email"] {
   font-family: Raleway, sans-serif;
   font-size: 12pt;
   display: block;
@@ -271,12 +309,12 @@ input {
   transition: all 0.2s ease-in-out;
 }
 
-input:focus {
+.inputTextGroup input:focus {
   outline: none;
   border-bottom: 1px solid var(--accent-black);
 }
 
-input:focus + label, input:not(:placeholder-shown):not(:focus) + label {
+.inputTextGroup input:focus + label, .inputTextGroup input:not(:placeholder-shown):not(:focus) + label {
   font-size: 8pt;
   top: 0;
 }
