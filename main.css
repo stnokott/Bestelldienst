@@ -236,7 +236,7 @@ form {
   margin: 0 1em 0 1em;
 }
 
-button#genoCheckSubmit {
+button.genoCheckSubmit {
   margin-top: .5em;
 }
 
