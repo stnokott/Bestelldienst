@@ -17,4 +17,4 @@
 #### Umsetzung:
   **GenoChoice**, ein Unternehmen in der dystopischen Zukunft, bietet die Möglichkeit, das **eigene Traum-Baby künstlich zu erstellen**.
   Dafür wird ein Webshop erstellt, in dem diverse Kits und Kaufoptionen dargestellt werden.
-  Die Bestellungs- und Inkubationsablauf stellt den Prozess dar, dessen Fortschritt live vom Kunden verfolgt werden kann.
+  Bestellungs- und Inkubationsablauf stellen die Prozesse dar, deren Fortschritt live vom Kunden per AJAX verfolgt werden kann.
