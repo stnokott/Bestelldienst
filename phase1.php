@@ -106,44 +106,44 @@ HTML;
      */
     protected function generateGenoCheckForm() {
 echo<<<HTML
-    <section>
+      <section>
         <span class="sectionHeader">Persönliche Daten</span>
-        <form id="genoCheckForm" name="genoCheckForm[]" action="phase1tophase2.php" method="post">
-          <div class="inputGroup">
+        <form name="genoCheckForm[]" action="phase1tophase2.html" method="post">
+          <div class="inputTextGroup">
             <input type="text" id="inputFirstName" name="inputFirstName" placeholder="" required>
             <label for="inputFirstName">Vorname</label>
           </div>
 
-          <div class="inputGroup">
+          <div class="inputTextGroup">
             <input type="text" id="inputLastName" name="inputLastName" placeholder="" required>
             <label for="inputLastName">Name</label>
           </div>
 
-          <div class="inputGroup">
+          <div class="inputTextGroup">
             <input type="text" id="inputStreet" name="inputStreet" placeholder="" required>
             <label for="inputStreet">Straße & Hausnummer</label>
           </div>
 
-          <div class="inputGroup">
+          <div class="inputTextGroup">
             <input type="text" id="inputCity" name="inputCity" placeholder="" required>
             <label for="inputCity">Stadt</label>
           </div>
 
-          <div class="inputGroup">
+          <div class="inputTextGroup">
             <input type="text" id="inputZipcode" name="inputZipcode" placeholder="" pattern="\d{5}" required>
             <label for="inputZipcode">PLZ</label>
           </div>
 
-          <div class="inputGroup">
+          <div class="inputTextGroup">
             <input type="email" id="inputEmail" name="inputEmail" placeholder="" required>
             <label for="inputEmail">E-Mail</label>
           </div>
 
-          <button id="genoCheckSubmit" type="submit">
-              GenoCheck&trade; bestellen
+          <button class="genoCheckSubmit" type="submit">
+            Bestellen
           </button>
         </form>
-    </section>
+      </section>
 HTML;
 
     }
