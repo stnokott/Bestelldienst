@@ -219,7 +219,7 @@ HTML;
      * @return Boolean Ob der User eine GenoCheck-Bestellung besitzt
      */
     protected function checkUserHasGenoCheckOrder($email) {
-        $query = "SELECT id FROM genocheckorder WHERE userId='".$this->getUserId($email)."'";
+        $query = "SELECT checkid FROM genocheckorder WHERE userId='".$this->getUserId($email)."'";
         $result = $this->_database->query($query);
 
         return !$result->fetch_assoc() == null;
@@ -231,11 +231,11 @@ HTML;
      * @return int userId des Nutzers mit der angegebenen Email
      */
     protected function getUserId($email) {
-        $query = "SELECT id FROM user WHERE email='".$email."'";
+        $query = "SELECT userid FROM user WHERE email='".$email."'";
         $result = $this->_database->query($query);
 
         while ($row = $result->fetch_assoc()) {
-            return $row["id"];
+            return $row["userid"];
         }
         return null;
     }
@@ -333,8 +333,8 @@ HTML;
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
             // prüfe POST Parameter
             if (!$this->checkPostParameters()) {
-                // redirect zu phase1.php
-                header('Location: phase1.php');
+                // redirect zu phase2.php
+                header('Location: phase2.php');
                 exit();
             }
 
