@@ -136,8 +136,8 @@ HTML;
 
             // bestimme, welches li-Item von progresssteps die "active"-Klasse bekommt
             $echo_confirmed = $echo_sent = $echo_analysis = $echo_done = null;
-            $echo_active = "class = \"active\"";
-            $echo_animate = "class = \"animate\"";
+            $echo_active = "active";
+            $echo_animate = "animate";
             $echo_button_attr = "disabled";
             switch ($this->order_status) {
                 case 0:
@@ -167,10 +167,10 @@ HTML;
             echo<<<HTML
                 <div class="progresssteps-container">
                     <ul class="progresssteps">
-                        <li {$echo_confirmed} id="confirmed">Bestellung bestätigt</li>
-                        <li {$echo_sent} id="sent">GenoCheck&trade; versandt</li>
-                        <li {$echo_analysis} id="analysis">Labor-Analyse läuft</li>
-                        <li {$echo_done} id="done">Analyse fertiggestellt</li>
+                        <li class="confirmed {$echo_confirmed}">Bestellung bestätigt</li>
+                        <li class="sent {$echo_sent}">GenoCheck&trade; versandt</li>
+                        <li class="analysis {$echo_analysis}">Labor-Analyse läuft</li>
+                        <li class="done {$echo_done}">Analyse fertiggestellt</li>
                     </ul>
                 </div>
 
