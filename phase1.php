@@ -136,8 +136,8 @@ HTML;
 
             // bestimme, welches li-Item von progresssteps die "active"-Klasse bekommt
             $echo_confirmed = $echo_sent = $echo_analysis = $echo_done = null;
-            $echo_active = "\"active\"";
-            $echo_animate = "\"animate\"";
+            $echo_active = "active";
+            $echo_animate = "animate";
             $echo_button_attr = "disabled";
             switch ($this->order_status) {
                 case 0:
