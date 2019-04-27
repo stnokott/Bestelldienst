@@ -24,7 +24,7 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-class Phase1 extends Page
+class Phase0 extends Page
 {
     /**
      * Instantiates members (to be defined above).
@@ -200,7 +200,7 @@ HTML;
     public static function main()
     {
         try {
-            $page = new Phase1();
+            $page = new Phase0();
             $page->processReceivedData();
             $page->generateView();
         }
@@ -213,7 +213,7 @@ HTML;
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-Phase1::main();
+Phase0::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).
