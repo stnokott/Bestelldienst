@@ -67,7 +67,8 @@ class Phase1 extends Page
      */
     protected function getViewData()
     {
-        $this->order_status = $this->getUserOrderStatus($this->user_email);
+        $userid = $this->getUserId($this->user_email);
+        $this->order_status = $this->getUserOrderStatus($userid);
     }
 
     /**
@@ -218,8 +219,8 @@ HTML;
      * @param  String $email Email des zu prüfenden Nutzers
      * @return Boolean Ob der User eine GenoCheck-Bestellung besitzt
      */
-    protected function checkUserHasGenoCheckOrder($email) {
-        $query = "SELECT checkid FROM genocheckorder WHERE userid='".$this->getUserId($email)."'";
+    protected function checkUserHasGenoCheckOrder($userid) {
+        $query = "SELECT checkid FROM genocheckorder WHERE userid='".$userid."'";
         $result = $this->_database->query($query);
 
         return !$result->fetch_assoc() == null;
@@ -246,8 +247,8 @@ HTML;
      * @param  String $email Email des Nutzers
      * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
      */
-    protected function getUserOrderStatus($email) {
-        $query = "SELECT status FROM genocheckorder WHERE userid='".$this->getUserId($email)."'";
+    protected function getUserOrderStatus($userid) {
+        $query = "SELECT status FROM genocheckorder WHERE userid='".$userid."'";
         $result = $this->_database->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -279,11 +280,11 @@ HTML;
         $this->new_user = true;
     }
 
-    protected function createGenoCheckOrder($email) {
+    protected function createGenoCheckOrder($userid) {
         $query = $this->getMySQLInsertString(
             "genocheckorder",
             array("userid"),
-            array($this->getUserId($email))
+            array($userid)
         );
         $this->_database->query($query);
         if ($this->_database->errno != 0) {
@@ -352,9 +353,10 @@ HTML;
                 $this->createUser($email, $firstname, $lastname, $address1, $address2, $address3);
             }
 
-            if ($this->new_user == true && $this->checkUserHasGenoCheckOrder($email) == false) {
+            $userid = $this->getUserId($email);
+            if ($this->new_user == true && $this->checkUserHasGenoCheckOrder($userid) == false) {
                 // User ist neu und hat noch kein GenoCheck bestellt
-                $this->createGenoCheckOrder($email);
+                $this->createGenoCheckOrder($userid);
             }
             // Lädt die Seite nach setzen der Parameter neu, um POST-Popup bei Neuladen der Seite zu verhindern
             header('Location: phase1.php');
