@@ -63,8 +63,7 @@ abstract class Page
      */
     protected function __destruct()
     {
-        $this->_database.close();
-        // to do: close database
+        $this->_database->close();
     }
 
     /**
