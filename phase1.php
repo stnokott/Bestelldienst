@@ -356,6 +356,8 @@ HTML;
                 // User ist neu und hat noch kein GenoCheck bestellt
                 $this->createGenoCheckOrder($email);
             }
+            // Lädt die Seite nach setzen der Parameter neu, um POST-Popup bei Neuladen der Seite zu verhindern
+            header('Location: phase1.php');
             return;
         }
     }
