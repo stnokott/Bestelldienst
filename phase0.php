@@ -108,7 +108,7 @@ HTML;
 echo<<<HTML
       <section>
         <span class="sectionHeader">Persönliche Daten</span>
-        <form name="genoCheckForm[]" action="phase1tophase2.php" method="post">
+        <form name="genoCheckForm[]" action="phase1.php" method="post">
           <div class="inputTextGroup">
             <input type="text" id="inputFirstName" name="inputFirstName" placeholder="" required>
             <label for="inputFirstName">Vorname</label>
