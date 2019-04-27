@@ -9,6 +9,41 @@
 
 require_once './Page.php';
 
+class User
+{
+    private $userid;
+    private $firstname;
+    private $lastname;
+    private $email;
+
+    public function __construct($userid, $firstname, $lastname, $email) {
+        $this->userid = userid;
+        $this->firstname = firstname;
+        $this->lastname = lastname;
+        $this->email = email;
+    }
+    public function __destruct() {
+
+    }
+
+    public function getUserid() {
+        return $this->userid;
+    }
+    public function getFirstname() {
+        return $this->firstname;
+    }
+    public function getLastname() {
+        return $this->lastname;
+    }
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function toString() {
+        return $this->firstname." ".$this->lastname." - ".$this->email;
+    }
+}
+
 /**
  * This is a template for top level classes, which represent
  * a complete web page and which are called directly by the user.
@@ -68,7 +103,7 @@ class Phase1Agent extends Page
         $result = $this->_database->query($query);
 
         while ($row = $result->fetch_assoc()) {
-            $user = $row["firstname"]." ".$row["lastname"]." - ".$row["email"];
+            $user = new User($row["firstname"], $row["lastname"], $row["email"]);
             array_push($this->users, $user);
         }
     }
