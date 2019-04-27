@@ -334,7 +334,7 @@ HTML;
             // prüfe POST Parameter
             if (!$this->checkPostParameters()) {
                 // redirect zu phase2.php
-                header('Location: phase2.php');
+                header('Location: phase0.php');
                 exit();
             }
 
@@ -377,6 +377,7 @@ HTML;
         try {
             $page = new Phase1();
             $page->processReceivedData();
+            header('Location: http://phase1.php/');
             $page->generateView();
         } catch (Exception $e) {
             header("Content-type: text/plain; charset=UTF-8");
