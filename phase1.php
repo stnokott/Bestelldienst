@@ -334,7 +334,7 @@ HTML;
             // prüfe POST Parameter
             if (!$this->checkPostParameters()) {
                 // redirect zu phase2.php
-                header('Location: phase2.php');
+                header('Location: phase0.php');
                 exit();
             }
 
