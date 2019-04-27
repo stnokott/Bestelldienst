@@ -17,10 +17,10 @@ class User
     private $email;
 
     public function __construct($userid, $firstname, $lastname, $email) {
-        $this->userid = userid;
-        $this->firstname = firstname;
-        $this->lastname = lastname;
-        $this->email = email;
+        $this->userid = $userid;
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->email = $email;
     }
     public function __destruct() {
 
@@ -99,11 +99,11 @@ class Phase1Agent extends Page
      */
     protected function getViewData()
     {
-        $query = "SELECT firstname, lastname, email FROM user";
+        $query = "SELECT userid, firstname, lastname, email FROM user";
         $result = $this->_database->query($query);
 
         while ($row = $result->fetch_assoc()) {
-            $user = new User($row["firstname"], $row["lastname"], $row["email"]);
+            $user = new User($row["userid"], $row["firstname"], $row["lastname"], $row["email"]);
             array_push($this->users, $user);
         }
     }
@@ -177,6 +177,52 @@ class Phase1Agent extends Page
 HTML;
     }
 
+    protected function generateAgentMenu() {
+        echo<<<HTML
+        <section>
+          <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
+          <form action="phase1_agent.php" name="statusOrderChange[]" method="post">
+            <!-- "order443" könnte Key in Datenbank sein -->
+            <div class="dropdownWrapper">
+              <select class="dropdown" name="genoCheckOrdersSelect" onchange="location.reload()">
+HTML;
+
+        // verfügbare Bestellungen in <select> einfügen
+        foreach($this->users as $user) {
+            echo '<option value="'.$user->getUserId().'">'.$user->toString().'</option>';
+        }
+        // <option value="443">443 - Max Musterhalfen</option>
+
+        echo<<<HTML
+              </select>
+            </div>
+
+            <div class="inputRadioGroup">
+              <input type="radio" name="statusOrder" id="statusOrderConfirmed">
+              <label for="statusOrderConfirmed">Bestellung bestätigt</label>
+            </div>
+
+            <div class="inputRadioGroup">
+              <input type="radio" name="statusOrder" id="statusSent">
+              <label for="statusSent">GenoCheck&trade; versandt</label>
+            </div>
+
+            <div class="inputRadioGroup active">
+              <input type="radio" name="statusOrder" id="statusAnalysis" checked>
+              <label for="statusAnalysis">Labor-Analyse läuft</label>
+            </div>
+
+            <div class="inputRadioGroup">
+              <input type="radio" name="statusOrder" id="statusDone">
+              <label for="statusDone">Analyse fertiggestellt</label>
+            </div>
+
+            <button class="genoCheckSubmit" type="submit">Änderung bestätigen</button>
+          </form>
+        </section>
+HTML;
+    }
+
     /**
      * First the necessary data is fetched and then the HTML is
      * assembled for output. i.e. the header is generated, the content
@@ -192,6 +238,7 @@ HTML;
         $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent');
         $this->generatePageTitle();
         $this->generateCurrentAgent();
+        $this->generateAgentMenu();
 
         $this->generatePageFooter();
     }
