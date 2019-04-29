@@ -69,7 +69,7 @@ class Phase1Agent extends Page
      * Calls the constructor of the parent i.e. page class.
      * So the database connection is established.
      *
-     * @return none
+     * @return void
      */
     protected function __construct()
     {
@@ -82,7 +82,7 @@ class Phase1Agent extends Page
      * Calls the destructor of the parent i.e. page class.
      * So the database connection is closed.
      *
-     * @return none
+     * @return void
      */
     protected function __destruct()
     {
@@ -95,7 +95,7 @@ class Phase1Agent extends Page
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
      *
-     * @return none
+     * @return void
      */
     protected function getViewData()
     {
@@ -150,12 +150,13 @@ class Phase1Agent extends Page
         while ($row = $result->fetch_assoc()) {
             return $row["userid"];
         }
+        return null;
     }
 
     /**
      * Gibt den Wert des status-Attributs der genocheckorder-Datenbank für den User mit der
      * angegebenen Email-Adresse aus
-     * @param  String $email Email des Nutzers
+     * @param  String $userid id des Nutzers
      * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
      */
      protected function getUserOrderStatus($userid) {
@@ -230,7 +231,7 @@ HTML;
      * all views contained is generated.
      * Finally the footer is added.
      *
-     * @return none
+     * @return void
      */
     protected function generateView()
     {
@@ -252,11 +253,15 @@ HTML;
      *
      * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
      *
-     * @return none
+     * @return void
      */
     protected function processReceivedData()
     {
-        parent::processReceivedData();
+        try {
+            parent::processReceivedData();
+        } catch (Exception $e) {
+            echo "Fehler bei der Verarbeitung der Daten: ".$e;
+        }
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
             // prüfe POST Parameter
             if (!$this->checkPostParameters()) {
@@ -299,7 +304,7 @@ HTML;
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
      *
-     * @return none
+     * @return void
      */
     public static function main()
     {
