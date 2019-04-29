@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb06a8fd-d836-4365-800d-fedc5846e2f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagenotfound.html" beforeDir="false" afterPath="$PROJECT_DIR$/pagenotfound.html" afterDir="false" />
     </list>
+    <ignored path="F:\xampp\htdocs\bestelldienst\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,29 +45,11 @@
     <splitter split-orientation="vertical" split-proportion="0.7808765">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/phase1_agent.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret selection-end-line="16" selection-end-column="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/phase1_agent.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="7176">
-                  <caret line="299" column="61" lean-forward="true" selection-start-line="299" selection-start-column="61" selection-end-line="299" selection-end-column="61" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/phase3.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="288">
-                  <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+                <state relative-caret-position="474">
+                  <caret line="299" column="61" selection-start-line="299" selection-start-column="61" selection-end-line="299" selection-end-column="61" />
                 </state>
               </provider>
             </entry>
@@ -76,17 +57,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="194">
-                  <caret line="112" column="1" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/pagenotfound.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+                <state relative-caret-position="1656">
+                  <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
                 </state>
               </provider>
             </entry>
@@ -141,8 +113,8 @@
         <option value="$PROJECT_DIR$/phase0.php" />
         <option value="$PROJECT_DIR$/phase1.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/main.css" />
         <option value="$PROJECT_DIR$/pagenotfound.html" />
+        <option value="$PROJECT_DIR$/main.css" />
       </list>
     </option>
   </component>
@@ -155,10 +127,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="153" />
-    <option name="y" value="18" />
-    <option name="width" value="1609" />
-    <option name="height" value="993" />
+    <option name="x" value="150" />
+    <option name="y" value="14" />
+    <option name="width" value="1613" />
+    <option name="height" value="996" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -168,6 +140,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,7 +152,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -196,7 +168,7 @@
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.stylelint" value="" />
-    <property name="settings.editor.selected.configurable" value="configurable.stylesheets" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -239,6 +211,8 @@
       <workItem from="1556378001857" duration="1815000" />
       <workItem from="1556520715124" duration="27000" />
       <workItem from="1556520765650" duration="3321000" />
+      <workItem from="1556544513619" duration="68000" />
+      <workItem from="1556544629980" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="IntelliJ PhpStorm config-Files hinzugefügt">
       <created>1556264685258</created>
@@ -345,17 +319,31 @@
       <option name="project" value="LOCAL" />
       <updated>1556538319412</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Button hinzugefügt, klickbarer Header entfernt">
+      <created>1556539360176</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1556539360176</updated>
+    </task>
+    <task id="LOCAL-00017" summary="IntelliJ-Codevorschläge angewandt">
+      <created>1556541011026</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1556541011026</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8466000" />
+    <option name="totallyTimeSpent" value="11471000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1691" height="917" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15346839" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15715162" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" show_stripe_button="false" weight="0.3296501" />
@@ -395,7 +383,9 @@
     <MESSAGE value=".htaccess erstellt für 404" />
     <MESSAGE value="404-Seite erstellt" />
     <MESSAGE value="IntelliJ-config" />
-    <option name="LAST_COMMIT_MESSAGE" value="IntelliJ-config" />
+    <MESSAGE value="Button hinzugefügt, klickbarer Header entfernt" />
+    <MESSAGE value="IntelliJ-Codevorschläge angewandt" />
+    <option name="LAST_COMMIT_MESSAGE" value="IntelliJ-Codevorschläge angewandt" />
   </component>
   <component name="editorHistoryManager">
     <entry file="das://365698b8-a247-4d89-b2d1-a27dd676c896/schema/bestelldienst/table/user">
@@ -440,6 +430,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/phase3.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagenotfound.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/phase1_agent.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -449,15 +453,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/phase1_agent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7176">
-          <caret line="299" column="61" lean-forward="true" selection-start-line="299" selection-start-column="61" selection-end-line="299" selection-end-column="61" />
+        <state relative-caret-position="474">
+          <caret line="299" column="61" selection-start-line="299" selection-start-column="61" selection-end-line="299" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/phase3.css">
+    <entry file="file://$PROJECT_DIR$/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        <state relative-caret-position="1656">
+          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -467,20 +471,6 @@
           <filtering enabled="true">
             <filter text="" />
           </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="112" column="1" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pagenotfound.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
         </state>
       </provider>
     </entry>
