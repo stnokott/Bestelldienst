@@ -271,7 +271,9 @@ HTML;
         $query = $this->getMySQLInsertString(
             "user",
             array("email", "firstname", "lastname", "address1", "address2", "address3"),
-            array($email, $firstname, $lastname, $address1, $address2, $address3)
+            array($this->real_escape_string($email), $this->real_escape_string($firstname),
+                $this->real_escape_string($lastname),$this->real_escape_string($address1),
+                $this->real_escape_string($address2), $this->real_escape_string($address3))
         );
         $this->_database->query($query);
         if ($this->_database->errno != 0) {
@@ -284,7 +286,7 @@ HTML;
         $query = $this->getMySQLInsertString(
             "genocheckorder",
             array("userid"),
-            array($userid)
+            array($this->real_escape_string($userid))
         );
         $this->_database->query($query);
         if ($this->_database->errno != 0) {
