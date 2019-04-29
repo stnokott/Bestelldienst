@@ -190,7 +190,7 @@ HTML;
 
         // verfügbare Bestellungen in <select> einfügen
         foreach($this->users as $user) {
-            echo '<option value="'.$user->getUserId().'">'.$user->toString().'</option>';
+            echo '<option value="'.htmlspecialchars($user->getUserId()).'">'.htmlspecialchars($user->toString()).'</option>';
         }
         // <option value="443">443 - Max Musterhalfen</option>
 
