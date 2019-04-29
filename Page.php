@@ -45,7 +45,7 @@ abstract class Page
      * the connection in member $_database.
      * Needs name of DB, user, password.
      *
-     * @return none
+     * @return void
      */
     protected function __construct()
     {
@@ -59,11 +59,21 @@ abstract class Page
     /**
      * Closes the DB connection and cleans up
      *
-     * @return none
+     * @return void
      */
     protected function __destruct()
     {
-        // to do: close database
+        $this->_database->close();
+    }
+
+    /**
+     * Verhindert SQL-Injection
+     *
+     * @param String $string Zu verarbeitender String
+     * @return string String ohne Escape-Characters
+     */
+    protected function real_escape_string($string) {
+        return $this->_database->real_escape_string($string);
     }
 
     /**
@@ -72,7 +82,8 @@ abstract class Page
      * Takes care that all strings passed from outside
      * are converted to safe HTML by htmlspecialchars.
      *
-     * @return none
+     * @param String $title Titel für Website
+     * @return void
      */
     protected function generatePageHeader($title)
     {
@@ -106,7 +117,7 @@ HTML;
     /**
      * Outputs the end of the HTML-file i.e. /body etc.
      *
-     * @return none
+     * @return void
      */
     protected function generatePageFooter()
     {
@@ -122,7 +133,8 @@ HTML;
      * data do it here. E.g. checking the settings of PHP that
      * influence passing the parameters (e.g. magic_quotes).
      *
-     * @return none
+     * @throws Exception Fehler, falls magic quotes an sind
+     * @return void
      */
     protected function processReceivedData()
     {
@@ -133,9 +145,6 @@ HTML;
     }
 
     protected function getMySQLInsertString($table, $columns, $values) {
-        $sql = "INSERT INTO user (email, firstname, lastname, address1, address2, address3)
-         VALUES ('" .$_POST['inputEmail']. "', '" .$_POST['inputFirstName']. "', '" .$_POST['inputLastName']. "', '" .$_POST['inputStreet']. "', '" .$_POST['inputCity']. "', '" .$_POST['inputZipcode']. "')";
-
         $columns_string = join(", ", $columns);
         $values_string = join("', '", $values);
         $string = "INSERT INTO ".$table." (".$columns_string.") VALUES ('".$values_string."')";
@@ -148,4 +157,4 @@ HTML;
 // Not specifying the closing ? >  helps to prevent accidents
 // like additional whitespace which will cause session
 // initialization to fail ("headers already sent").
-?>
+

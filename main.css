@@ -112,8 +112,11 @@ body {
   text-decoration: none;
 }
 
+a.headerlink {
+  color: var(--accent-black);
+}
+
 header {
-  height: 100%;
   padding: 1em;
   font-family: alien;
   font-size: 15pt;
@@ -662,4 +665,20 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
   background: linear-gradient(to right, var(--accent-blue) 0%, white 20%, white 80%, var(--accent-blue) 100%);
   background-size: 200% 100%;
   animation: slide 2s linear infinite;
+}
+
+.notfound {
+  font-family: Raleway, sans-serif;
+  text-align: center;
+  overflow: hidden;
+  margin: 8em auto;
+}
+
+.notfound .notfound-header {
+  font-weight: 100;
+  font-size: 150px;
+}
+
+.notfound .notfound-header {
+
 }

@@ -1,4 +1,4 @@
-<?php	// UTF-8 marker äöüÄÖÜß€
+<?php // UTF-8 marker äöüÄÖÜß€
 /**
  * @category File
  * @package  Bestelldienst
@@ -24,14 +24,14 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-class Phase1 extends Page
+class Phase0 extends Page
 {
     /**
      * Instantiates members (to be defined above).
      * Calls the constructor of the parent i.e. page class.
      * So the database connection is established.
      *
-     * @return none
+     * @return void
      */
     protected function __construct()
     {
@@ -44,7 +44,7 @@ class Phase1 extends Page
      * Calls the destructor of the parent i.e. page class.
      * So the database connection is closed.
      *
-     * @return none
+     * @return void
      */
     protected function __destruct()
     {
@@ -55,7 +55,7 @@ class Phase1 extends Page
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
-     * @return none
+     * @return void
      */
     protected function getViewData()
     {
@@ -66,10 +66,11 @@ class Phase1 extends Page
      * Generiert Navigationsleiste.
      * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
      *
-     * @return none
+     * @return void
      */
-    protected function generateNavigationBar() {
-echo <<<HTML
+    protected function generateNavigationBar()
+    {
+        echo <<<HTML
         <ul class="navlist">
             <li class="active"><a href="#">Phase 1</a></li>
             <li><a href="#">Phase 1-2</a></li>
@@ -81,10 +82,11 @@ HTML;
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
      *
-     * @return none
+     * @return void
      */
-    protected function generatePageDescription() {
-echo<<<HTML
+    protected function generatePageDescription()
+    {
+        echo <<<HTML
         <section>
             <figure>
                 <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
@@ -102,13 +104,14 @@ HTML;
     /**
      * Generiert <form> zur Eingabe der Daten, die für die GenoCheck-Bestellung nötig sind
      *
-     * @return none
+     * @return void
      */
-    protected function generateGenoCheckForm() {
-echo<<<HTML
+    protected function generateGenoCheckForm()
+    {
+        echo <<<HTML
       <section>
         <span class="sectionHeader">Persönliche Daten</span>
-        <form name="genoCheckForm[]" action="phase1tophase2.php" method="post">
+        <form name="genoCheckForm[]" action="phase1.php" method="post">
           <div class="inputTextGroup">
             <input type="text" id="inputFirstName" name="inputFirstName" placeholder="" required>
             <label for="inputFirstName">Vorname</label>
@@ -155,7 +158,7 @@ HTML;
      * all views contained is generated.
      * Finally the footer is added.
      *
-     * @return none
+     * @return void
      */
     protected function generateView()
     {
@@ -175,13 +178,17 @@ HTML;
      * If this page is supposed to do something with submitted
      * data do it here.
      * If the page contains blocks, delegate processing of the
-	 * respective subsets of data to them.
+     * respective subsets of data to them.
      *
-     * @return none
+     * @return void
      */
     protected function processReceivedData()
     {
-        parent::processReceivedData();
+        try {
+            parent::processReceivedData();
+        } catch (Exception $e) {
+            echo "Fehler beim Verarbeiten der Daten: " . $e;
+        }
         // to do: call processReceivedData() for all members
     }
 
@@ -195,16 +202,15 @@ HTML;
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
      *
-     * @return none
+     * @return void
      */
     public static function main()
     {
         try {
-            $page = new Phase1();
+            $page = new Phase0();
             $page->processReceivedData();
             $page->generateView();
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             header("Content-type: text/plain; charset=UTF-8");
             echo $e->getMessage();
         }
@@ -213,11 +219,10 @@ HTML;
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-Phase1::main();
+Phase0::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).
 // Not specifying the closing ? >  helps to prevent accidents
 // like additional whitespace which will cause session
 // initialization to fail ("headers already sent").
-?>

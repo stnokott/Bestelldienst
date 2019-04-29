@@ -9,6 +9,52 @@
 
 require_once './Page.php';
 
+class User
+{
+    private $userid;
+    private $firstname;
+    private $lastname;
+    private $email;
+
+    public function __construct($userid, $firstname, $lastname, $email)
+    {
+        $this->userid = $userid;
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->email = $email;
+    }
+
+    public function __destruct()
+    {
+
+    }
+
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function toString()
+    {
+        return $this->firstname . " " . $this->lastname . " - " . $this->email;
+    }
+}
+
 /**
  * This is a template for top level classes, which represent
  * a complete web page and which are called directly by the user.
@@ -24,12 +70,9 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-class Phase1 extends Page
+class Phase1Agent extends Page
 {
-    private $new_user = false;
-
-    // TO-DO: dynamisch bestimmen über Session
-    private $user_email = "m.musterhalfen@gmail.com";
+    private $users = []; // Liste der verfügbaren Nutzer
     private $order_status; // 0 = confirmed, 1 = sent, 2 = analysis, 3 = done
 
     /**
@@ -67,119 +110,12 @@ class Phase1 extends Page
      */
     protected function getViewData()
     {
-        $userid = $this->getUserId($this->user_email);
-        $this->order_status = $this->getUserOrderStatus($userid);
-    }
+        $query = "SELECT userid, firstname, lastname, email FROM user";
+        $result = $this->_database->query($query);
 
-    /**
-     * Generiert Navigationsleiste.
-     * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
-     * @return void
-     */
-    protected function generateNavigationBar()
-    {
-        echo <<<HTML
-        <ul class="navlist">
-            <li><a href="#">Phase 1</a></li>
-            <li class="active"><a href="#">Phase 1-2</a></li>
-            <li><a href="#">Phase 3</a></li>
-        </ul>
-HTML;
-    }
-
-    /**
-     * Generiert kurze <section>, um zu zeigen, dass beim Aufruf dieser Seite mit Hilfe der
-     * POST-Parameter ein neuer User erstellt wurde
-     * @return void
-     */
-    protected function generateNewUser()
-    {
-        echo <<<HTML
-        <section>
-          <span class="sectionHeader">User erstellt!</span>
-        </section>
-HTML;
-    }
-
-    /**
-     * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
-     * @return void
-     */
-    protected function generatePageDescription()
-    {
-        echo <<<HTML
-        <section>
-          <span class="sectionHeader">GenoCheck&trade; - Sendungsverfolgung</span>
-          <p>
-            Hier können Sie den Fortschritt Ihres persönlichen GenoCheck&trade;-Tests verfolgen.<br>
-            Bei abgeschlossener Analyse werden Sie zu Ihren Ergebnissen weitergeleitet.
-          </p>
-        </section>
-HTML;
-    }
-
-    /**
-     * Generiert Ansicht zur Verfolgung des GenoCheck-Fortschritts für den Nutzer
-     * Verwendet das order_status-Attribut zur (De-)Aktivierung der Elemente
-     * @return void
-     */
-    protected function generateGenoCheckProgress()
-    {
-        echo "<section class=\"genoCheckStatus\">";
-
-        if ($this->order_status == null) {
-            echo <<<HTML
-            <p>
-                Status der Bestellung nicht verfügbar, bitte erneut versuchen.
-            </p>
-HTML;
-        } else {
-
-            // bestimme, welches li-Item von progresssteps die "active"-Klasse bekommt
-            $echo_confirmed = $echo_sent = $echo_analysis = $echo_done = null;
-            $echo_active = "active";
-            $echo_animate = "animate";
-            $echo_button_attr = "disabled";
-            switch ($this->order_status) {
-                case 0:
-                    $echo_confirmed = $echo_active;
-                    $echo_sent = $echo_animate;
-                    break;
-                case 1:
-                    $echo_confirmed = $echo_active;
-                    $echo_sent = $echo_active;
-                    $echo_analysis = $echo_animate;
-                    break;
-                case 2:
-                    $echo_confirmed = $echo_active;
-                    $echo_sent = $echo_active;
-                    $echo_analysis = $echo_active;
-                    $echo_done = $echo_animate;
-                    break;
-                case 3:
-                    $echo_confirmed = $echo_active;
-                    $echo_sent = $echo_active;
-                    $echo_analysis = $echo_active;
-                    $echo_done = $echo_active;
-
-                    $echo_button_attr = null; // aktiviere Button, wenn letzte Phase erreicht
-            }
-
-            echo <<<HTML
-                <div class="progresssteps-container">
-                    <ul class="progresssteps">
-                        <li class="confirmed {$echo_confirmed}">Bestellung bestätigt</li>
-                        <li class="sent {$echo_sent}">GenoCheck&trade; versandt</li>
-                        <li class="analysis {$echo_analysis}">Labor-Analyse läuft</li>
-                        <li class="done {$echo_done}">Analyse fertiggestellt</li>
-                    </ul>
-                </div>
-
-                <form action="phase2.html" method="post">
-                    <button type="submit" {$echo_button_attr}>Zu Ihren Ergebnissen</button>
-                </form>
-            </section>
-HTML;
+        while ($row = $result->fetch_assoc()) {
+            $user = new User($row["userid"], $row["firstname"], $row["lastname"], $row["email"]);
+            array_push($this->users, $user);
         }
     }
 
@@ -216,20 +152,6 @@ HTML;
     }
 
     /**
-     * Prüft, ob der Nutzer mit der angegebenen Email-Adresse einen GenoCheck-Eintrag in
-     * der genocheckorder-Datenbank hat
-     * @param Int $userid id des zu prüfenden Nutzers
-     * @return Boolean Ob der User eine GenoCheck-Bestellung besitzt
-     */
-    protected function checkUserHasGenoCheckOrder($userid)
-    {
-        $query = "SELECT checkid FROM genocheckorder WHERE userid='" . $userid . "'";
-        $result = $this->_database->query($query);
-
-        return !$result->fetch_assoc() == null;
-    }
-
-    /**
      * Gibt den Wert des userId-Attributs der user-Datenbank für den User mit der angegebenen Email-Adresse aus
      * @param string $email Email des Nutzers
      * @return int userId des Nutzers mit der angegebenen Email
@@ -248,7 +170,7 @@ HTML;
     /**
      * Gibt den Wert des status-Attributs der genocheckorder-Datenbank für den User mit der
      * angegebenen Email-Adresse aus
-     * @param Int $userid id des Nutzers
+     * @param String $userid id des Nutzers
      * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
      */
     protected function getUserOrderStatus($userid)
@@ -262,43 +184,61 @@ HTML;
         return null;
     }
 
-    /**
-     * Erstellt Eintrag in der user-Datenbank mit den angegebenen Spalteninhalten
-     * @param String $email Email des Nutzers
-     * @param String $firstname Vorname des Nutzers
-     * @param String $lastname Nachname des Nutzers
-     * @param String $address1 Straße & Hausnummer des Nutzers
-     * @param String $address2 Stadt des Nutzers
-     * @param String $address3 PLZ des Nutzers
-     * @return void
-     */
-    protected function createUser($email, $firstname, $lastname, $address1, $address2, $address3)
+
+    protected function generateCurrentAgent()
     {
-        $query = $this->getMySQLInsertString(
-            "user",
-            array("email", "firstname", "lastname", "address1", "address2", "address3"),
-            array($this->real_escape_string($email), $this->real_escape_string($firstname),
-                $this->real_escape_string($lastname), $this->real_escape_string($address1),
-                $this->real_escape_string($address2), $this->real_escape_string($address3))
-        );
-        $this->_database->query($query);
-        if ($this->_database->errno != 0) {
-            exit("Fehler beim Erstellen des Nutzers: " . $this->_database->error);
-        }
-        $this->new_user = true;
+        echo <<<HTML
+        <div class="currentAgent">
+          Bearbeiter: <div class="agentName">stnokott</div>
+        </div>
+HTML;
     }
 
-    protected function createGenoCheckOrder($userid)
+    protected function generateAgentMenu()
     {
-        $query = $this->getMySQLInsertString(
-            "genocheckorder",
-            array("userid"),
-            array($this->real_escape_string($userid))
-        );
-        $this->_database->query($query);
-        if ($this->_database->errno != 0) {
-            exit("Fehler beim Erstellen der GenoCheck-Bestellung: " . $this->_database->error);
+        echo <<<HTML
+        <section>
+          <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
+          <form action="phase1_agent.php" name="statusOrderChange[]" method="post">
+            <!-- "order443" könnte Key in Datenbank sein -->
+            <div class="dropdownWrapper">
+              <select class="dropdown" name="genoCheckOrdersSelect" onchange="location.reload()">
+HTML;
+
+        // verfügbare Bestellungen in <select> einfügen
+        foreach ($this->users as $user) {
+            echo '<option value="' . htmlspecialchars($user->getUserId()) . '">' . htmlspecialchars($user->toString()) . '</option>';
         }
+        // <option value="443">443 - Max Musterhalfen</option>
+
+        echo <<<HTML
+              </select>
+            </div>
+
+            <div class="inputRadioGroup">
+              <input type="radio" name="statusOrder" id="statusOrderConfirmed">
+              <label for="statusOrderConfirmed">Bestellung bestätigt</label>
+            </div>
+
+            <div class="inputRadioGroup">
+              <input type="radio" name="statusOrder" id="statusSent">
+              <label for="statusSent">GenoCheck&trade; versandt</label>
+            </div>
+
+            <div class="inputRadioGroup active">
+              <input type="radio" name="statusOrder" id="statusAnalysis" checked>
+              <label for="statusAnalysis">Labor-Analyse läuft</label>
+            </div>
+
+            <div class="inputRadioGroup">
+              <input type="radio" name="statusOrder" id="statusDone">
+              <label for="statusDone">Analyse fertiggestellt</label>
+            </div>
+
+            <button class="genoCheckSubmit" type="submit">Änderung bestätigen</button>
+          </form>
+        </section>
+HTML;
     }
 
     /**
@@ -313,15 +253,10 @@ HTML;
     protected function generateView()
     {
         $this->getViewData();
-        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Fortschritt');
-        $this->generateNavigationBar();
+        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent');
         $this->generatePageTitle();
-
-        if ($this->new_user == true) {
-            $this->generateNewUser();
-        }
-        $this->generatePageDescription();
-        $this->generateGenoCheckProgress();
+        $this->generateCurrentAgent();
+        $this->generateAgentMenu();
 
         $this->generatePageFooter();
     }
@@ -366,10 +301,9 @@ HTML;
                 $this->createUser($email, $firstname, $lastname, $address1, $address2, $address3);
             }
 
-            $userid = $this->getUserId($email);
-            if ($this->new_user == true && $this->checkUserHasGenoCheckOrder($userid) == false) {
+            if ($this->new_user == true && $this->checkUserHasGenoCheckOrder($email) == false) {
                 // User ist neu und hat noch kein GenoCheck bestellt
-                $this->createGenoCheckOrder($userid);
+                $this->createGenoCheckOrder($email);
             }
             // Lädt die Seite nach setzen der Parameter neu, um POST-Popup bei Neuladen der Seite zu verhindern
             header('Location: phase1.php');
@@ -392,7 +326,7 @@ HTML;
     public static function main()
     {
         try {
-            $page = new Phase1();
+            $page = new Phase1Agent();
             $page->processReceivedData();
             $page->generateView();
         } catch (Exception $e) {
@@ -404,7 +338,7 @@ HTML;
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-Phase1::main();
+Phase1Agent::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).
