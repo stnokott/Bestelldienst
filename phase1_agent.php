@@ -1,4 +1,4 @@
-<?php	// UTF-8 marker äöüÄÖÜß€
+<?php // UTF-8 marker äöüÄÖÜß€
 /**
  * @category File
  * @package  Bestelldienst
@@ -16,31 +16,42 @@ class User
     private $lastname;
     private $email;
 
-    public function __construct($userid, $firstname, $lastname, $email) {
+    public function __construct($userid, $firstname, $lastname, $email)
+    {
         $this->userid = $userid;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
     }
-    public function __destruct() {
+
+    public function __destruct()
+    {
 
     }
 
-    public function getUserid() {
+    public function getUserid()
+    {
         return $this->userid;
     }
-    public function getFirstname() {
+
+    public function getFirstname()
+    {
         return $this->firstname;
     }
-    public function getLastname() {
+
+    public function getLastname()
+    {
         return $this->lastname;
     }
-    public function getEmail() {
+
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function toString() {
-        return $this->firstname." ".$this->lastname." - ".$this->email;
+    public function toString()
+    {
+        return $this->firstname . " " . $this->lastname . " - " . $this->email;
     }
 }
 
@@ -112,10 +123,11 @@ class Phase1Agent extends Page
      * Prüft, ob empfangene POST-Parameter für die Erstellung eines neuen Nutzers valide sind
      * @return Boolean Ob die empfangenen POST-Parameter valide sind
      */
-    protected function checkPostParameters() {
+    protected function checkPostParameters()
+    {
         // prüfe, ob alle Werte vorhanden
         $check = array("inputFirstName", "inputLastName", "inputStreet",
-                        "inputCity", "inputZipcode", "inputEmail");
+            "inputCity", "inputZipcode", "inputEmail");
 
         $valid = true;
         foreach ($check as $checkString) {
@@ -133,18 +145,20 @@ class Phase1Agent extends Page
      * @param String $email Email des zu prüfenden Nutzers
      * @return Boolean Ob der User existiert
      */
-    protected function checkUserExists($email) {
+    protected function checkUserExists($email)
+    {
         // wenn Ergebnis leer -> User existiert nicht
         return !($this->getUserId($email) == null);
     }
 
     /**
      * Gibt den Wert des userId-Attributs der user-Datenbank für den User mit der angegebenen Email-Adresse aus
-     * @param  string $email Email des Nutzers
+     * @param string $email Email des Nutzers
      * @return int userId des Nutzers mit der angegebenen Email
      */
-    protected function getUserId($email) {
-        $query = "SELECT userid FROM user WHERE email='".$email."'";
+    protected function getUserId($email)
+    {
+        $query = "SELECT userid FROM user WHERE email='" . $email . "'";
         $result = $this->_database->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -156,30 +170,33 @@ class Phase1Agent extends Page
     /**
      * Gibt den Wert des status-Attributs der genocheckorder-Datenbank für den User mit der
      * angegebenen Email-Adresse aus
-     * @param  String $userid id des Nutzers
+     * @param String $userid id des Nutzers
      * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
      */
-     protected function getUserOrderStatus($userid) {
-         $query = "SELECT status FROM genocheckorder WHERE userid='".$userid."'";
-         $result = $this->_database->query($query);
+    protected function getUserOrderStatus($userid)
+    {
+        $query = "SELECT status FROM genocheckorder WHERE userid='" . $userid . "'";
+        $result = $this->_database->query($query);
 
-         while ($row = $result->fetch_assoc()) {
-             return $row["status"];
-         }
-         return null;
+        while ($row = $result->fetch_assoc()) {
+            return $row["status"];
+        }
+        return null;
     }
 
 
-    protected function generateCurrentAgent() {
-        echo<<<HTML
+    protected function generateCurrentAgent()
+    {
+        echo <<<HTML
         <div class="currentAgent">
           Bearbeiter: <div class="agentName">stnokott</div>
         </div>
 HTML;
     }
 
-    protected function generateAgentMenu() {
-        echo<<<HTML
+    protected function generateAgentMenu()
+    {
+        echo <<<HTML
         <section>
           <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
           <form action="phase1_agent.php" name="statusOrderChange[]" method="post">
@@ -189,12 +206,12 @@ HTML;
 HTML;
 
         // verfügbare Bestellungen in <select> einfügen
-        foreach($this->users as $user) {
-            echo '<option value="'.htmlspecialchars($user->getUserId()).'">'.htmlspecialchars($user->toString()).'</option>';
+        foreach ($this->users as $user) {
+            echo '<option value="' . htmlspecialchars($user->getUserId()) . '">' . htmlspecialchars($user->toString()) . '</option>';
         }
         // <option value="443">443 - Max Musterhalfen</option>
 
-        echo<<<HTML
+        echo <<<HTML
               </select>
             </div>
 
@@ -260,9 +277,9 @@ HTML;
         try {
             parent::processReceivedData();
         } catch (Exception $e) {
-            echo "Fehler bei der Verarbeitung der Daten: ".$e;
+            echo "Fehler bei der Verarbeitung der Daten: " . $e;
         }
-        if ($_SERVER["REQUEST_METHOD"]=="POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // prüfe POST Parameter
             if (!$this->checkPostParameters()) {
                 // redirect zu phase2.php

@@ -1,4 +1,4 @@
-<?php	// UTF-8 marker äöüÄÖÜß€
+<?php // UTF-8 marker äöüÄÖÜß€
 /**
  * @category File
  * @package  Bestelldienst
@@ -68,8 +68,9 @@ class Phase0 extends Page
      *
      * @return void
      */
-    protected function generateNavigationBar() {
-echo <<<HTML
+    protected function generateNavigationBar()
+    {
+        echo <<<HTML
         <ul class="navlist">
             <li class="active"><a href="#">Phase 1</a></li>
             <li><a href="#">Phase 1-2</a></li>
@@ -83,8 +84,9 @@ HTML;
      *
      * @return void
      */
-    protected function generatePageDescription() {
-echo<<<HTML
+    protected function generatePageDescription()
+    {
+        echo <<<HTML
         <section>
             <figure>
                 <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
@@ -104,8 +106,9 @@ HTML;
      *
      * @return void
      */
-    protected function generateGenoCheckForm() {
-echo<<<HTML
+    protected function generateGenoCheckForm()
+    {
+        echo <<<HTML
       <section>
         <span class="sectionHeader">Persönliche Daten</span>
         <form name="genoCheckForm[]" action="phase1.php" method="post">
@@ -175,7 +178,7 @@ HTML;
      * If this page is supposed to do something with submitted
      * data do it here.
      * If the page contains blocks, delegate processing of the
-	 * respective subsets of data to them.
+     * respective subsets of data to them.
      *
      * @return void
      */
@@ -183,8 +186,8 @@ HTML;
     {
         try {
             parent::processReceivedData();
-        } catch(Exception $e) {
-            echo "Fehler beim Verarbeiten der Daten: ".$e;
+        } catch (Exception $e) {
+            echo "Fehler beim Verarbeiten der Daten: " . $e;
         }
         // to do: call processReceivedData() for all members
     }
@@ -207,8 +210,7 @@ HTML;
             $page = new Phase0();
             $page->processReceivedData();
             $page->generateView();
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             header("Content-type: text/plain; charset=UTF-8");
             echo $e->getMessage();
         }
