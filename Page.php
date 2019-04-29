@@ -67,6 +67,16 @@ abstract class Page
     }
 
     /**
+     * Verhindert SQL-Injection
+     *
+     * @param String $string Zu verarbeitender String
+     * @return string String ohne Escape-Characters
+     */
+    protected function real_escape_string($string) {
+        return $this->_database->real_escape_string($string);
+    }
+
+    /**
      * Generates the header section of the page.
      * i.e. starting from the content type up to the body-tag.
      * Takes care that all strings passed from outside
