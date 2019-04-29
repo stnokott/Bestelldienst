@@ -2,8 +2,14 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="bestelldienst@localhost" uuid="365698b8-a247-4d89-b2d1-a27dd676c896">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MARIADB" />
-      <secret-storage>forget</secret-storage>
+      <database-info product="MariaDB" version="10.1.38-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.4.1" dbms="MARIADB" exact-version="10.1.38" exact-driver-version="2.4">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>website</user-name>
+      <introspection-schemas>*:@</introspection-schemas>
     </data-source>
   </component>
 </project>
