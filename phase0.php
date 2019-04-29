@@ -31,7 +31,7 @@ class Phase0 extends Page
      * Calls the constructor of the parent i.e. page class.
      * So the database connection is established.
      *
-     * @return none
+     * @return void
      */
     protected function __construct()
     {
@@ -44,7 +44,7 @@ class Phase0 extends Page
      * Calls the destructor of the parent i.e. page class.
      * So the database connection is closed.
      *
-     * @return none
+     * @return void
      */
     protected function __destruct()
     {
@@ -55,7 +55,7 @@ class Phase0 extends Page
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
-     * @return none
+     * @return void
      */
     protected function getViewData()
     {
@@ -66,7 +66,7 @@ class Phase0 extends Page
      * Generiert Navigationsleiste.
      * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
      *
-     * @return none
+     * @return void
      */
     protected function generateNavigationBar() {
 echo <<<HTML
@@ -81,7 +81,7 @@ HTML;
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
      *
-     * @return none
+     * @return void
      */
     protected function generatePageDescription() {
 echo<<<HTML
@@ -102,7 +102,7 @@ HTML;
     /**
      * Generiert <form> zur Eingabe der Daten, die für die GenoCheck-Bestellung nötig sind
      *
-     * @return none
+     * @return void
      */
     protected function generateGenoCheckForm() {
 echo<<<HTML
@@ -155,7 +155,7 @@ HTML;
      * all views contained is generated.
      * Finally the footer is added.
      *
-     * @return none
+     * @return void
      */
     protected function generateView()
     {
@@ -177,11 +177,15 @@ HTML;
      * If the page contains blocks, delegate processing of the
 	 * respective subsets of data to them.
      *
-     * @return none
+     * @return void
      */
     protected function processReceivedData()
     {
-        parent::processReceivedData();
+        try {
+            parent::processReceivedData();
+        } catch(Exception $e) {
+            echo "Fehler beim Verarbeiten der Daten: ".$e;
+        }
         // to do: call processReceivedData() for all members
     }
 
@@ -195,7 +199,7 @@ HTML;
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
      *
-     * @return none
+     * @return void
      */
     public static function main()
     {
@@ -220,4 +224,3 @@ Phase0::main();
 // Not specifying the closing ? >  helps to prevent accidents
 // like additional whitespace which will cause session
 // initialization to fail ("headers already sent").
-?>
