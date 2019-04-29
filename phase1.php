@@ -37,7 +37,7 @@ class Phase1 extends Page
      * Calls the constructor of the parent i.e. page class.
      * So the database connection is established.
      *
-     * @return none
+     * @return void
      */
     protected function __construct()
     {
@@ -50,7 +50,7 @@ class Phase1 extends Page
      * Calls the destructor of the parent i.e. page class.
      * So the database connection is closed.
      *
-     * @return none
+     * @return void
      */
     protected function __destruct()
     {
@@ -63,7 +63,7 @@ class Phase1 extends Page
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
      *
-     * @return none
+     * @return void
      */
     protected function getViewData()
     {
@@ -74,7 +74,7 @@ class Phase1 extends Page
     /**
      * Generiert Navigationsleiste.
      * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
-     * @return none
+     * @return void
      */
     protected function generateNavigationBar()
     {
@@ -90,7 +90,7 @@ HTML;
     /**
      * Generiert kurze <section>, um zu zeigen, dass beim Aufruf dieser Seite mit Hilfe der
      * POST-Parameter ein neuer User erstellt wurde
-     * @return none
+     * @return void
      */
     protected function generateNewUser()
     {
@@ -103,7 +103,7 @@ HTML;
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
-     * @return none
+     * @return void
      */
     protected function generatePageDescription()
     {
@@ -121,7 +121,7 @@ HTML;
     /**
      * Generiert Ansicht zur Verfolgung des GenoCheck-Fortschritts für den Nutzer
      * Verwendet das order_status-Attribut zur (De-)Aktivierung der Elemente
-     * @return none
+     * @return void
      */
     protected function generateGenoCheckProgress()
     {
@@ -216,7 +216,7 @@ HTML;
     /**
      * Prüft, ob der Nutzer mit der angegebenen Email-Adresse einen GenoCheck-Eintrag in
      * der genocheckorder-Datenbank hat
-     * @param  String $email Email des zu prüfenden Nutzers
+     * @param  Int $userid id des zu prüfenden Nutzers
      * @return Boolean Ob der User eine GenoCheck-Bestellung besitzt
      */
     protected function checkUserHasGenoCheckOrder($userid) {
@@ -244,7 +244,7 @@ HTML;
     /**
      * Gibt den Wert des status-Attributs der genocheckorder-Datenbank für den User mit der
      * angegebenen Email-Adresse aus
-     * @param  String $email Email des Nutzers
+     * @param  Int $userid id des Nutzers
      * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
      */
     protected function getUserOrderStatus($userid) {
@@ -265,7 +265,7 @@ HTML;
      * @param  String $address1  Straße & Hausnummer des Nutzers
      * @param  String $address2  Stadt des Nutzers
      * @param  String $address3  PLZ des Nutzers
-     * @return none
+     * @return void
      */
     protected function createUser($email, $firstname, $lastname, $address1, $address2, $address3) {
         $query = $this->getMySQLInsertString(
@@ -299,7 +299,7 @@ HTML;
      * all views contained is generated.
      * Finally the footer is added.
      *
-     * @return none
+     * @return void
      */
     protected function generateView()
     {
@@ -326,11 +326,15 @@ HTML;
      *
      * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
      *
-     * @return none
+     * @return void
      */
     protected function processReceivedData()
     {
-        parent::processReceivedData();
+        try {
+            parent::processReceivedData();
+        } catch (Exception $e) {
+            echo "Fehler bei der Verarbeitung der Daten: ".$e;
+        }
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
             // prüfe POST Parameter
             if (!$this->checkPostParameters()) {
@@ -374,7 +378,7 @@ HTML;
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
      *
-     * @return none
+     * @return void
      */
     public static function main()
     {
