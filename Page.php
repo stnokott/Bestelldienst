@@ -85,7 +85,7 @@ abstract class Page
      * @param String $title Titel für Website
      * @return void
      */
-    protected function generatePageHeader($title)
+    protected function generatePageHeader($title, $jspath)
     {
         header("Content-type: text/html; charset=UTF-8");
 echo <<<HTML
@@ -94,6 +94,7 @@ echo <<<HTML
           <head>
             <meta charset="UTF-8">
             <title>$title</title>
+            <script src="$jspath"></script>
             <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
             <link rel="stylesheet" href="main.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -157,4 +158,3 @@ HTML;
 // Not specifying the closing ? >  helps to prevent accidents
 // like additional whitespace which will cause session
 // initialization to fail ("headers already sent").
-

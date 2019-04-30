@@ -74,6 +74,8 @@ class Phase1Agent extends Page
 {
     private $users = []; // Liste der verfügbaren Nutzer
     private $order_status; // 0 = confirmed, 1 = sent, 2 = analysis, 3 = done
+    private $selected_userid; // userid des ausgewählten Nutzers, dessen Bestellstatus abgerufen werden soll
+    private $selected_status; // status der Bestellung des ausgewählten Nutzers
 
     /**
      * Instantiates members (to be defined above).
@@ -110,12 +112,37 @@ class Phase1Agent extends Page
      */
     protected function getViewData()
     {
+        // Dropdown -> User-Auswahl
         $query = "SELECT userid, firstname, lastname, email FROM user";
         $result = $this->_database->query($query);
 
         while ($row = $result->fetch_assoc()) {
             $user = new User($row["userid"], $row["firstname"], $row["lastname"], $row["email"]);
             array_push($this->users, $user);
+        }
+
+        // falls bestimmter Nutzer abgefragt wurde
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+          // Status für ausgewählten Nutzer abrufen
+          $query = "SELECT status FROM genocheckorder WHERE userid='".$this->selected_userid."'";
+          $result = $this->_database->query($query);
+          while ($row = $result->fetch_assoc()) {
+              $this->selected_status = $row["status"];
+          }
+
+        // falls kein bestimmter Nutzer abgefragt wurde
+        } else {
+            // TODO: falls noch keine Bestellung besteht...?
+            // Status für ersten Nutzer abrufen
+            if ($this->users[0] != null) {
+                $first_userid = $this->users[0]->getUserId();
+                $query = "SELECT status FROM genocheckorder WHERE userid='".$first_userid."'";
+
+                $result = $this->_database->query($query);
+                while ($row = $result->fetch_assoc()) {
+                    $this->selected_status = $row["status"];
+                }
+            }
         }
     }
 
@@ -199,39 +226,68 @@ HTML;
         echo <<<HTML
         <section>
           <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
-          <form action="phase1_agent.php" name="statusOrderChange[]" method="post">
-            <!-- "order443" könnte Key in Datenbank sein -->
+          <form action="phase1_agent.php" method="get" name="genoCheckOrderSelect">
             <div class="dropdownWrapper">
-              <select class="dropdown" name="genoCheckOrdersSelect" onchange="location.reload()">
+              <select class="dropdown" name="genoCheckOrdersSelect" id="genoCheckOrdersSelect">
 HTML;
-
         // verfügbare Bestellungen in <select> einfügen
         foreach ($this->users as $user) {
             echo '<option value="' . htmlspecialchars($user->getUserId()) . '">' . htmlspecialchars($user->toString()) . '</option>';
         }
         // <option value="443">443 - Max Musterhalfen</option>
-
-        echo <<<HTML
+        echo<<<HTML
               </select>
             </div>
+            <button type="submit">Ändern</button>
+          </form>
 
-            <div class="inputRadioGroup">
-              <input type="radio" name="statusOrder" id="statusOrderConfirmed">
+          <form action="phase1_agent.php" name="statusOrderChange[]" method="post">
+
+HTML;
+        if ($this->selected_status == "0") {
+            echo "<div class=\"inputRadioGroup active\">";
+            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusOrderConfirmed\" value=\"0\" checked>";
+        } else {
+            echo "<div class=\"inputRadioGroup\">";
+            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusOrderConfirmed\" value=\"0\">";
+        }
+        echo<<<HTML
               <label for="statusOrderConfirmed">Bestellung bestätigt</label>
             </div>
 
-            <div class="inputRadioGroup">
-              <input type="radio" name="statusOrder" id="statusSent">
+HTML;
+        if ($this->selected_status == "1") {
+            echo "<div class=\"inputRadioGroup active\">";
+            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusSent\" value=\"1\" checked>";
+        } else {
+            echo "<div class=\"inputRadioGroup\">";
+            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusSent\" value=\"1\">";
+        }
+        echo<<<HTML
               <label for="statusSent">GenoCheck&trade; versandt</label>
             </div>
 
-            <div class="inputRadioGroup active">
-              <input type="radio" name="statusOrder" id="statusAnalysis" checked>
+HTML;
+        if ($this->selected_status == "2") {
+            echo "<div class=\"inputRadioGroup active\">";
+            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusAnalysis\" value=\"2\" checked>";
+        } else {
+            echo "<div class=\"inputRadioGroup\">";
+            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusAnalysis\" value=\"2\">";
+        }
+        echo<<<HTML
               <label for="statusAnalysis">Labor-Analyse läuft</label>
             </div>
 
-            <div class="inputRadioGroup">
-              <input type="radio" name="statusOrder" id="statusDone">
+HTML;
+        if($this->selected_status == "3") {
+            echo "<div class=\"inputRadioGroup active\">";
+            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusDone\" value=\"3\" checked>";
+        } else {
+            echo "<div class=\"inputRadioGroup\">";
+            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusDone\" value=\"3\">";
+        }
+        echo<<<HTML
               <label for="statusDone">Analyse fertiggestellt</label>
             </div>
 
@@ -253,7 +309,7 @@ HTML;
     protected function generateView()
     {
         $this->getViewData();
-        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent');
+        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent', "phase1_agent.js");
         $this->generatePageTitle();
         $this->generateCurrentAgent();
         $this->generateAgentMenu();
@@ -280,34 +336,9 @@ HTML;
             echo "Fehler bei der Verarbeitung der Daten: " . $e;
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // prüfe POST Parameter
-            if (!$this->checkPostParameters()) {
-                // redirect zu phase2.php
-                header('Location: phase0.php');
-                exit();
-            }
 
-            // weise Variablen zu
-            $email = $_POST["inputEmail"];
-            $firstname = $_POST["inputFirstName"];
-            $lastname = $_POST["inputLastName"];
-            $address1 = $_POST["inputStreet"];
-            $address2 = $_POST["inputCity"];
-            $address3 = $_POST["inputZipcode"];
-
-            // prüfe, ob Nutzer bereits existiert
-            if ($this->checkUserExists($email) == false) {
-                // User mit dieser Email noch nicht vorhanden
-                $this->createUser($email, $firstname, $lastname, $address1, $address2, $address3);
-            }
-
-            if ($this->new_user == true && $this->checkUserHasGenoCheckOrder($email) == false) {
-                // User ist neu und hat noch kein GenoCheck bestellt
-                $this->createGenoCheckOrder($email);
-            }
-            // Lädt die Seite nach setzen der Parameter neu, um POST-Popup bei Neuladen der Seite zu verhindern
-            header('Location: phase1.php');
-            return;
+        } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["genoCheckOrdersSelect"])) {
+            $this->selected_userid = $_GET["genoCheckOrdersSelect"];
         }
     }
 
