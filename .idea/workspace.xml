@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb06a8fd-d836-4365-800d-fedc5846e2f2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="F:\xampp\htdocs\bestelldienst\.idea\shelf/" />
@@ -46,19 +47,28 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/phase1_agent.php">
+            <entry file="file://$PROJECT_DIR$/main.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="474">
-                  <caret line="299" column="61" selection-start-line="299" selection-start-column="61" selection-end-line="299" selection-end-column="61" />
+                <state relative-caret-position="432">
+                  <caret line="40" column="38" lean-forward="true" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main.css">
+            <entry file="file://$PROJECT_DIR$/phase1_agent.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1656">
-                  <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
+                <state relative-caret-position="384">
+                  <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/phase1_agent.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="258">
+                  <caret line="299" column="61" selection-start-line="299" selection-start-column="61" selection-end-line="299" selection-end-column="61" />
                 </state>
               </provider>
             </entry>
@@ -95,13 +105,17 @@
       <find>param</find>
       <find>try</find>
       <find>$</find>
+      <find>input</find>
+      <find>social</find>
+      <find>dark-blue</find>
+      <find>indi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="praktikum2-noah" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
   </component>
@@ -110,10 +124,11 @@
       <list>
         <option value="$PROJECT_DIR$/Page.php" />
         <option value="$PROJECT_DIR$/phase1_agent.php" />
-        <option value="$PROJECT_DIR$/phase0.php" />
         <option value="$PROJECT_DIR$/phase1.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/pagenotfound.html" />
+        <option value="$PROJECT_DIR$/phase0.php" />
+        <option value="$PROJECT_DIR$/phase3.css" />
         <option value="$PROJECT_DIR$/main.css" />
       </list>
     </option>
@@ -127,10 +142,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="150" />
-    <option name="y" value="14" />
-    <option name="width" value="1613" />
-    <option name="height" value="996" />
+    <option name="x" value="151" />
+    <option name="y" value="16" />
+    <option name="width" value="1612" />
+    <option name="height" value="995" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -211,8 +226,8 @@
       <workItem from="1556378001857" duration="1815000" />
       <workItem from="1556520715124" duration="27000" />
       <workItem from="1556520765650" duration="3321000" />
-      <workItem from="1556544513619" duration="68000" />
-      <workItem from="1556544629980" duration="320000" />
+      <workItem from="1556618095274" duration="2235000" />
+      <workItem from="1556620380831" duration="3207000" />
     </task>
     <task id="LOCAL-00001" summary="IntelliJ PhpStorm config-Files hinzugefügt">
       <created>1556264685258</created>
@@ -312,38 +327,52 @@
       <option name="project" value="LOCAL" />
       <updated>1556529017795</updated>
     </task>
-    <task id="LOCAL-00015" summary="IntelliJ-config">
-      <created>1556538319412</created>
+    <task id="LOCAL-00015" summary="Button mit Link ausgestattet">
+      <created>1556620963693</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1556538319412</updated>
+      <updated>1556620963693</updated>
     </task>
-    <task id="LOCAL-00016" summary="Button hinzugefügt, klickbarer Header entfernt">
-      <created>1556539360176</created>
+    <task id="LOCAL-00016" summary="Kleinere CSS-Fehler behoben">
+      <created>1556620983600</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1556539360176</updated>
+      <updated>1556620983600</updated>
     </task>
-    <task id="LOCAL-00017" summary="IntelliJ-Codevorschläge angewandt">
-      <created>1556541011026</created>
+    <task id="LOCAL-00017" summary="Farben durch Material-Design Farben ersetzt">
+      <created>1556622675909</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1556541011026</updated>
+      <updated>1556622675909</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Obsoleten Kommentar entfernt">
+      <created>1556622814295</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1556622814295</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Merge from master">
+      <created>1556623312886</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1556623312886</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11471000" />
+    <option name="totallyTimeSpent" value="13093000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1691" height="917" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15715162" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16267648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" show_stripe_button="false" weight="0.3296501" />
@@ -382,10 +411,12 @@
     <MESSAGE value=".htaccess gelöscht" />
     <MESSAGE value=".htaccess erstellt für 404" />
     <MESSAGE value="404-Seite erstellt" />
-    <MESSAGE value="IntelliJ-config" />
-    <MESSAGE value="Button hinzugefügt, klickbarer Header entfernt" />
-    <MESSAGE value="IntelliJ-Codevorschläge angewandt" />
-    <option name="LAST_COMMIT_MESSAGE" value="IntelliJ-Codevorschläge angewandt" />
+    <MESSAGE value="Button mit Link ausgestattet" />
+    <MESSAGE value="Kleinere CSS-Fehler behoben" />
+    <MESSAGE value="Farben durch Material-Design Farben ersetzt" />
+    <MESSAGE value="Obsoleten Kommentar entfernt" />
+    <MESSAGE value="Merge from master" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge from master" />
   </component>
   <component name="editorHistoryManager">
     <entry file="das://365698b8-a247-4d89-b2d1-a27dd676c896/schema/bestelldienst/table/user">
@@ -404,15 +435,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess" />
     <entry file="file://$PROJECT_DIR$/phase0.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="214" column="26" selection-start-line="214" selection-start-column="26" selection-end-line="214" selection-end-column="26" />
-          <folding>
-            <element signature="e#201#208#0" expanded="true" />
-            <element signature="e#321#328#0" expanded="true" />
-            <element signature="e#443#450#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2298">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1584" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagenotfound.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -453,15 +499,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/phase1_agent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
+        <state relative-caret-position="258">
           <caret line="299" column="61" selection-start-line="299" selection-start-column="61" selection-end-line="299" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.css">
+    <entry file="file://$PROJECT_DIR$/phase3.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1656">
-          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
+        <state relative-caret-position="194">
+          <caret line="88" column="17" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -471,6 +517,20 @@
           <filtering enabled="true">
             <filter text="" />
           </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase1_agent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="40" column="38" lean-forward="true" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
         </state>
       </provider>
     </entry>
