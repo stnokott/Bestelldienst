@@ -2,6 +2,29 @@
 /* TODO: in finaler Version alles in einer CSS für bessere Performance */
 
 :root {
+    --accent-blue: #64B5F6;
+    --accent-light-blue: #BBDEFB;
+    --accent-lighter-blue: #E3F2FD;
+    --accent-indigo: #3F51B5;
+    --accent-light-indigo: #5C6BC0;
+    --accent-dark-grey: #9E9E9E;
+    --accent-grey: #BDBDBD;
+    --accent-light-grey: #E0E0E0;
+    --accent-black: #424242;
+    --accent-red: #F44336;
+    --accent-light-red: #EF5350;
+    --accent-lighter-red: #E57373;
+    --accent-green: #66BB6A;
+    --accent-light-green: #81C784;
+    --accent-lighter-green: #A5D6A7;
+    --accent-brown: #795548;
+    --accent-light-brown: #8D6E63;
+    --accent-yellow: #FFEB3B;
+    --accent-orange: #FF9800;
+    --accent-pink: #EC407A;
+    --accent-light-pink: #F06292;
+    --accent-lighter-pink: #F48FB1;
+    /*
   --accent-blue: #81D4FA;
   --accent-light-blue: #b1e5fc;
   --accent-lighter-blue: #f3ecfc;
@@ -22,6 +45,7 @@
   --accent-orange: #FFB74D;
   --accent-pink: #F06292;
   --accent-light-pink: #F48FB1;
+  */
 }
 
 
