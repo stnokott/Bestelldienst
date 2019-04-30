@@ -22,14 +22,17 @@
 
     <section>
       <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
-      <form action="https://enlx6f766q8jc.x.pipedream.net" name="statusOrderChange[]" method="post">
-        <!-- "order443" könnte Key in Datenbank sein -->
+      <form action="." method="get" name="genoCheckOrderSelect">
         <div class="dropdownWrapper">
           <select class="dropdown" name="genoCheckOrdersSelect">
             <option value="order443">443 - Max Musterhalfen</option>
             <option value="order444">444 - Erika Musterfrau</option>
           </select>
         </div>
+        <button type="submit">Ändern</button>
+      </form>
+      <form action="https://enlx6f766q8jc.x.pipedream.net" name="statusOrderChange[]" method="post">
+        <!-- "order443" könnte Key in Datenbank sein -->
 
         <div class="inputRadioGroup">
           <input type="radio" name="statusOrder" id="statusOrderConfirmed">
