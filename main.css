@@ -2,25 +2,28 @@
 /* TODO: in finaler Version alles in einer CSS für bessere Performance */
 
 :root {
-  --accent-blue: #81D4FA;
-  --accent-light-blue: #b1e5fc;
-  --accent-lighter-blue: #f3ecfc;
-  --accent-dark-blue: #5C6BC0;
-  --accent-grey: #BDBDBD;
-  --accent-light-grey: #eeeeee;
-  --accent-black: #212121;
-  --accent-red: #d32f2f;
-  --accent-light-red: #ef5350;
-  --accent-lighter-red: #ef9a9a;
-  --accent-green: #4caf50;
-  --accent-light-green: #81c784;
-  --accent-lighter-green: #c8e6c9;
-  --accent-brown: #6d4c41;
-  --accent-light-brown: #8D6E63;
-  --accent-yellow: #ffee58;
-  --accent-orange: #FFB74D;
-  --accent-pink: #F06292;
-  --accent-light-pink: #F48FB1;
+    --accent-blue: #64B5F6;
+    --accent-light-blue: #BBDEFB;
+    --accent-lighter-blue: #E3F2FD;
+    --accent-indigo: #3F51B5;
+    --accent-light-indigo: #5C6BC0;
+    --accent-dark-grey: #9E9E9E;
+    --accent-grey: #BDBDBD;
+    --accent-light-grey: #E0E0E0;
+    --accent-black: #424242;
+    --accent-red: #F44336;
+    --accent-light-red: #EF5350;
+    --accent-lighter-red: #E57373;
+    --accent-green: #66BB6A;
+    --accent-light-green: #81C784;
+    --accent-lighter-green: #A5D6A7;
+    --accent-brown: #795548;
+    --accent-light-brown: #8D6E63;
+    --accent-yellow: #FFEB3B;
+    --accent-orange: #FF9800;
+    --accent-pink: #EC407A;
+    --accent-light-pink: #F06292;
+    --accent-lighter-pink: #F48FB1;
 }
 
 
@@ -56,12 +59,12 @@ body {
   margin: 0 0 1em 0;
   font-family: Roboto, sans-serif;
   font-weight: 500; /* medium */
-  background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%);
-  background-attachment: fixed;
+  background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%) fixed;
   color: var(--accent-black);
 }
 
 .navlist {
+  /*noinspection CssBrowserCompatibilityForProperties*/
   backdrop-filter: blur(6px);
   width: 100%;
   list-style-type: none;
@@ -113,9 +116,8 @@ body {
 }
 
 header {
-  height: 100%;
   padding: 1em;
-  font-family: alien;
+  font-family: alien, sans-serif;
   font-size: 15pt;
   text-align: center;
   position: fixed;
@@ -132,9 +134,7 @@ header + section, header + .currentAgent {
 /* Header-Hintergrund */
 header::after {
   content: "";
-  background: url("./img/header_bg.svg");
-  background-repeat: no-repeat;
-  background-position: center top;
+  background: url("./img/header_bg.svg") no-repeat center top;
   background-size: 30%;
   opacity: .15;
   top: 0;
@@ -206,7 +206,7 @@ div.agentName:hover {
 }
 
 div.agentName::before {
-  font-family: "Material Icons";
+  font-family: "Material Icons", sans-serif;
   content: "\e7fd";
   vertical-align: bottom;
   padding-right: .25em;
@@ -274,7 +274,7 @@ button[type="submit"] {
   top: 0;
   left: 0;
   padding: 6px;
-  font-family: "Material Icons";
+  font-family: "Material Icons", sans-serif;
   content: "\e5ca";
   color: var(--accent-black);
 }
@@ -285,6 +285,7 @@ button[type="submit"] {
 }
 
 .inputTextGroup label {
+  color: var(--accent-dark-grey);
   font-size: 12pt;
   position: absolute;
   top: 10px;
@@ -304,14 +305,14 @@ input[type="text"], input[type="email"] {
   margin: 0;
   padding: 15px 3px 3px 5px;
   border: none;
-  border-bottom: 1px solid var(--accent-grey);
+  border-bottom: 2px solid var(--accent-grey);
 
   transition: all 0.2s ease-in-out;
 }
 
 .inputTextGroup input:focus {
   outline: none;
-  border-bottom: 1px solid var(--accent-black);
+  border-color: var(--accent-black);
 }
 
 .inputTextGroup input:focus + label, .inputTextGroup input:not(:placeholder-shown):not(:focus) + label {
@@ -333,7 +334,7 @@ input:invalid:not(:focus) {
 }
 
 .dropdownWrapper::before {
-  font-family: "Material Icons";
+  font-family: "Material Icons", sans-serif;
   content: "\e313";
   position: absolute;
   right: .5em;
@@ -351,7 +352,9 @@ select {
 select.dropdown {
   -moz-appearance: none;      /* um eigenen Pfeil darstellen zu können */
   -webkit-appearance: none;
-  appearance: none;
+  /*noinspection CssBrowserCompatibilityForProperties*/
+  appearance: none; /* alles außer IE */
+  display: none; /* IE */
   outline: none;
   border: none;
   border-bottom: 1px solid var(--accent-grey);
@@ -382,7 +385,7 @@ ul.list > :last-child {
 }
 
 ul.list li.disabled::after {
-  font-family: "Material Icons";
+  font-family: "Material Icons", sans-serif;
   content: "\e14b";
   color: var(--accent-red);
   position: absolute;
@@ -430,47 +433,44 @@ ul.list li:hover {
 ul.list li.disabled {
   color: var(--accent-grey);
   background: transparent;
-  border-right: 0px solid transparent;
+  border-right: 0 solid transparent;
 }
 
 
 button {
   text-transform: uppercase;
-  color: var(--accent-blue);
-  font-weight: bold;
+  font-weight: 500;
   font-size: 15pt;
   width: 100%;
-  border: 3px solid var(--accent-blue);
+  float: right;
   border-radius: 10px;
-  padding: .5em;
+  padding: .25em;
   cursor: pointer;
-  background: linear-gradient(to left, transparent 50%, var(--accent-blue) 50%);
-  background-size: 200% 100%;
-  background-position: right;
+  color: var(--accent-blue);
+  background: white;
+  border: 2px solid var(--accent-blue);
   position: relative; /* für vertical-align von :after */
 
   transition: all .2s ease;
 }
 
-button:active {
+button:active, button:focus {
   outline: none;
-  box-shadow: inset 0px 0px 30px -8px #000000;
-}
-
-button:focus {
-  outline: none;
+  color: white;
+  background: var(--accent-blue);
 }
 
 button:not(:disabled):hover {
   color: white;
-  background-position: left;
+  background: var(--accent-light-blue);
+  border-color: var(--accent-light-blue);
 }
 
 button:disabled {
+  opacity: .75;
   cursor: not-allowed;
   color: var(--accent-light-blue);
-  background: none;
-  background-color: var(--accent-lighter-blue);
+  background: var(--accent-lighter-blue);
   border-color: var(--accent-lighter-blue);
 }
 
@@ -489,7 +489,9 @@ button:disabled {
 meter {
   -webkit-appearance: none;
   -moz-appearance: none;
+  /*noinspection CssBrowserCompatibilityForProperties*/
   appearance: none;
+  display: none;
   width: 100%;
   height: 20px;
   border-radius: 15px;
@@ -514,18 +516,22 @@ meter::-webkit-meter-bar {
   border-radius: 15px;
 }
 
+/*noinspection CssInvalidPseudoSelector*/
 meter::-moz-meter-bar {
   border-radius: 15px;
 }
 
+/*noinspection CssInvalidPseudoSelector*/
 meter::-webkit-meter-optimum-value, meter:-moz-meter-optimum::-moz-meter-bar {
   background: var(--accent-green);
 }
 
+/*noinspection CssInvalidPseudoSelector*/
 meter::-webkit-meter-suboptimum-value, meter:-moz-meter-sub-optimum::-moz-meter-bar {
   background: var(--accent-yellow);
 }
 
+/*noinspection CssInvalidPseudoSelector*/
 meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-moz-meter-bar  {
   background: var(--accent-red);
   animation: glow .7s ease infinite alternate;
@@ -547,7 +553,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 /* http://kodhus.com/newsite/step-progress-bar-css-only/ */
 .progresssteps-container {
   display: block;
-  margin: 1em 1em 7em 1em;
+  margin: 1em 1em 4em 1em;
 }
 
 .progresssteps {
@@ -587,22 +593,22 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 }
 
 .progresssteps li.confirmed:before {
-  font-family: "Material Icons";
+  font-family: "Material Icons", sans-serif;
   content: "\e5ca";
 }
 
 .progresssteps li.sent:before {
-  font-family: "Material Icons";
+  font-family: "Material Icons", sans-serif;
   content: "\e558";
 }
 
 .progresssteps li.analysis:before {
-  font-family: "Material Icons";
+  font-family: "Material Icons", sans-serif;
   content: "\e8b6";
 }
 
 .progresssteps li.done:before {
-  font-family: "Material Icons";
+  font-family: "Material Icons", sans-serif;
   content: "\e7f2";
 }
 
@@ -651,7 +657,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 
 @keyframes slide {
   from {
-    background-position-x: 0%;
+    background-position-x: 0;
   }
   to {
     background-position-x: -200%;
@@ -662,4 +668,21 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
   background: linear-gradient(to right, var(--accent-blue) 0%, white 20%, white 80%, var(--accent-blue) 100%);
   background-size: 200% 100%;
   animation: slide 2s linear infinite;
+}
+
+.notfound {
+  width: 25%;
+  font-family: Raleway, sans-serif;
+  text-align: center;
+  overflow: hidden;
+  margin: 8em auto;
+}
+
+.notfound .notfound-header {
+  font-weight: 100;
+  font-size: 150px;
+}
+
+.notfound button {
+  margin-top: 1em;
 }

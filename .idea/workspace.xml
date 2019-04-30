@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb06a8fd-d836-4365-800d-fedc5846e2f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pagenotfound.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phase1_agent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase0.php" beforeDir="false" afterPath="$PROJECT_DIR$/phase0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1.html" beforeDir="false" afterPath="$PROJECT_DIR$/phase1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1.php" beforeDir="false" afterPath="$PROJECT_DIR$/phase1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase3.css" beforeDir="false" afterPath="$PROJECT_DIR$/phase3.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase6.html" beforeDir="false" afterPath="$PROJECT_DIR$/phase6.html" afterDir="false" />
     </list>
+    <ignored path="F:\xampp\htdocs\bestelldienst\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,38 +37,95 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="bestelldienst@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="bestelldienst@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="bestelldienst@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="bestelldienst: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/phase1.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Page.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1438">
-              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.7808765">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/main.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="72">
+                  <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="das://365698b8-a247-4d89-b2d1-a27dd676c896/schema/bestelldienst/table/genocheckorder">
+              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+                <state>
+                  <filtering enabled="true">
+                    <filter text="" />
+                  </filtering>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>process</find>
+      <find>param</find>
+      <find>try</find>
+      <find>$</find>
+      <find>input</find>
+      <find>social</find>
+      <find>dark-blue</find>
+      <find>indi</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/Page.php" />
+        <option value="$PROJECT_DIR$/phase1_agent.php" />
         <option value="$PROJECT_DIR$/phase1.php" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/pagenotfound.html" />
+        <option value="$PROJECT_DIR$/phase0.php" />
+        <option value="$PROJECT_DIR$/phase3.css" />
+        <option value="$PROJECT_DIR$/main.css" />
       </list>
     </option>
   </component>
@@ -65,10 +138,13 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="155" />
-    <option name="y" value="20" />
-    <option name="width" value="1607" />
-    <option name="height" value="991" />
+    <option name="x" value="151" />
+    <option name="y" value="16" />
+    <option name="width" value="1612" />
+    <option name="height" value="995" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -92,13 +168,18 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../php/php.exe" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -119,6 +200,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="PHP Script.phase1.php" />
+        <item itemvalue="PHP Script.phase1.php" />
+        <item itemvalue="PHP Script.phase1.php" />
+        <item itemvalue="PHP Script.phase1.php" />
+        <item itemvalue="PHP Script.phase1.php" />
       </list>
     </recent_temporary>
   </component>
@@ -135,6 +220,10 @@
       <workItem from="1556264533543" duration="354000" />
       <workItem from="1556264987352" duration="870000" />
       <workItem from="1556378001857" duration="1815000" />
+      <workItem from="1556520715124" duration="27000" />
+      <workItem from="1556520765650" duration="3321000" />
+      <workItem from="1556618095274" duration="2235000" />
+      <workItem from="1556620380831" duration="3207000" />
     </task>
     <task id="LOCAL-00001" summary="IntelliJ PhpStorm config-Files hinzugefügt">
       <created>1556264685258</created>
@@ -157,21 +246,132 @@
       <option name="project" value="LOCAL" />
       <updated>1556379271388</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="IntelliJ-Verbesserungsvorschläge angewandt">
+      <created>1556521520960</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556521520960</updated>
+    </task>
+    <task id="LOCAL-00005" summary="IntelliJ-Verbesserungsvorschläge angewandt">
+      <created>1556521695477</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1556521695477</updated>
+    </task>
+    <task id="LOCAL-00006" summary="IntelliJ-Verbesserungsvorschläge angewandt">
+      <created>1556521815341</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1556521815341</updated>
+    </task>
+    <task id="LOCAL-00007" summary="IntelliJ-Verbesserungsvorschläge angewandt">
+      <created>1556521987269</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1556521987269</updated>
+    </task>
+    <task id="LOCAL-00008" summary="real_escape_string()-Methode hinzugefügt, um SQL-Injection zu verhindern">
+      <created>1556522168129</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556522168129</updated>
+    </task>
+    <task id="LOCAL-00009" summary="real_escape_string()-Methode verwendet, um SQL-Injection zu verhindern">
+      <created>1556522343669</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1556522343669</updated>
+    </task>
+    <task id="LOCAL-00010" summary="htmlspecialchars()-Methode für Sicherheit verwendet">
+      <created>1556522584917</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1556522584917</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Reformatting">
+      <created>1556523064147</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1556523064147</updated>
+    </task>
+    <task id="LOCAL-00012" summary=".htaccess gelöscht">
+      <created>1556528725005</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1556528725005</updated>
+    </task>
+    <task id="LOCAL-00013" summary=".htaccess erstellt für 404">
+      <created>1556528779040</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1556528779040</updated>
+    </task>
+    <task id="LOCAL-00014" summary="404-Seite erstellt">
+      <created>1556529017795</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556529017795</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Button mit Link ausgestattet">
+      <created>1556620963693</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1556620963693</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Kleinere CSS-Fehler behoben">
+      <created>1556620983600</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1556620983600</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Farben durch Material-Design Farben ersetzt">
+      <created>1556622675909</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1556622675909</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Obsoleten Kommentar entfernt">
+      <created>1556622814295</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1556622814295</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Merge from master">
+      <created>1556623312886</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1556623312886</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3039000" />
+    <option name="totallyTimeSpent" value="13727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1691" height="917" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14978515" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16267648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" show_stripe_button="false" weight="0.3296501" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32934928" />
@@ -181,11 +381,13 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49969307" visible="true" weight="0.2549801" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49969307" weight="0.2549801" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50030696" side_tool="true" weight="0.2549801" />
+      <window_info anchor="bottom" id="Event Log" order="11" show_stripe_button="false" sideWeight="0.50030696" side_tool="true" weight="0.2549801" />
       <window_info anchor="bottom" id="DB Execution Console" order="12" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="13" weight="0.32934928" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.32934928" />
+      <window_info anchor="bottom" id="Database Console" order="15" weight="0.32934928" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -197,20 +399,108 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="IntelliJ PhpStorm config-Files hinzugefügt" />
-    <option name="LAST_COMMIT_MESSAGE" value="IntelliJ PhpStorm config-Files hinzugefügt" />
+    <MESSAGE value="IntelliJ-Verbesserungsvorschläge angewandt" />
+    <MESSAGE value="real_escape_string()-Methode hinzugefügt, um SQL-Injection zu verhindern" />
+    <MESSAGE value="real_escape_string()-Methode verwendet, um SQL-Injection zu verhindern" />
+    <MESSAGE value="htmlspecialchars()-Methode für Sicherheit verwendet" />
+    <MESSAGE value="Reformatting" />
+    <MESSAGE value=".htaccess gelöscht" />
+    <MESSAGE value=".htaccess erstellt für 404" />
+    <MESSAGE value="404-Seite erstellt" />
+    <MESSAGE value="Button mit Link ausgestattet" />
+    <MESSAGE value="Kleinere CSS-Fehler behoben" />
+    <MESSAGE value="Farben durch Material-Design Farben ersetzt" />
+    <MESSAGE value="Obsoleten Kommentar entfernt" />
+    <MESSAGE value="Merge from master" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge from master" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="das://365698b8-a247-4d89-b2d1-a27dd676c896/schema/bestelldienst/table/user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Page.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1438">
-          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        <state relative-caret-position="326">
+          <caret line="69" column="31" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase0.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1584" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/phase1.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+        <state relative-caret-position="222">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase1_agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="299" column="61" selection-start-line="299" selection-start-column="61" selection-end-line="299" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase3.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="88" column="17" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://365698b8-a247-4d89-b2d1-a27dd676c896/schema/bestelldienst/table/genocheckorder">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase1_agent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="50" selection-start-column="50" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagenotfound.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phase1.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
         </state>
       </provider>
     </entry>
