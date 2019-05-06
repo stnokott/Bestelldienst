@@ -129,6 +129,21 @@ HTML;
     }
 
     /**
+     * Outputs the end of the HTML-file i.e. /body etc.
+     * Version without JavaScript
+     *
+     * @return void
+     */
+    protected function generatePageFooterNoJS()
+    {
+        echo<<<HTML
+        </body>
+        </html>
+HTML;
+
+    }
+
+    /**
      * Processes the data that comes via GET or POST i.e. CGI.
      * If every page is supposed to do something with submitted
      * data do it here. E.g. checking the settings of PHP that
