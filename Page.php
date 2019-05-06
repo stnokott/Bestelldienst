@@ -85,7 +85,7 @@ abstract class Page
      * @param String $title Titel für Website
      * @return void
      */
-    protected function generatePageHeader($title, $jspath)
+    protected function generatePageHeader($title)
     {
         header("Content-type: text/html; charset=UTF-8");
 echo <<<HTML
@@ -93,8 +93,7 @@ echo <<<HTML
         <html lang="de">
           <head>
             <meta charset="UTF-8">
-            <title>$title</title>
-            <script src="$jspath"></script>
+            <title>$title</title>>
             <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
             <link rel="stylesheet" href="main.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -120,12 +119,13 @@ HTML;
      *
      * @return void
      */
-    protected function generatePageFooter()
+    protected function generatePageFooter($jspath)
     {
-        echo <<<HTML
-            </body>
-        </html>
-HTML;
+        echo "</body>";
+        if (isset($jspath)) {
+            echo "<script src=\"$jspath\"></script>";
+        }
+        echo "</html";
     }
 
     /**

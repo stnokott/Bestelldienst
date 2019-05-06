@@ -309,12 +309,12 @@ HTML;
     protected function generateView()
     {
         $this->getViewData();
-        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent', "phase1_agent.js");
+        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent');
         $this->generatePageTitle();
         $this->generateCurrentAgent();
         $this->generateAgentMenu();
 
-        $this->generatePageFooter();
+        $this->generatePageFooter("phase1_agent.js");
     }
 
     /**
