@@ -93,7 +93,7 @@ echo <<<HTML
         <html lang="de">
           <head>
             <meta charset="UTF-8">
-            <title>$title</title>>
+            <title>$title</title>
             <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
             <link rel="stylesheet" href="main.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
