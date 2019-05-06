@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <title>GenoChoice&trade; - GenoCheck&trade; Agent</title>
+    <script src="phase1_agent.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,32 +23,35 @@
 
     <section>
       <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
-      <form action="https://enlx6f766q8jc.x.pipedream.net" name="statusOrderChange[]" method="post">
-        <!-- "order443" könnte Key in Datenbank sein -->
+      <form action="https://enlx6f766q8jc.x.pipedream.net/" method="get" name="genoCheckOrderSelect">
         <div class="dropdownWrapper">
           <select class="dropdown" name="genoCheckOrdersSelect" id="genoCheckOrdersSelect">
-            <option value="order443">443 - Max Musterhalfen</option>
-            <option value="order444">444 - Erika Musterfrau</option>
+            <option value="443">443 - Max Musterhalfen</option>
+            <option value="444">444 - Erika Musterfrau</option>
           </select>
         </div>
+        <button type="submit">Ändern</button>
+      </form>
+      <form action="https://enlx6f766q8jc.x.pipedream.net" name="statusOrderChange[]" method="post">
+        <!-- "order443" könnte Key in Datenbank sein -->
 
         <div class="inputRadioGroup">
-          <input type="radio" name="statusOrder" id="statusOrderConfirmed">
+          <input type="radio" name="statusOrder" id="statusOrderConfirmed" value="0">
           <label for="statusOrderConfirmed">Bestellung bestätigt</label>
         </div>
 
         <div class="inputRadioGroup">
-          <input type="radio" name="statusOrder" id="statusSent">
+          <input type="radio" name="statusOrder" id="statusSent" value="1">
           <label for="statusSent">GenoCheck&trade; versandt</label>
         </div>
 
         <div class="inputRadioGroup active">
-          <input type="radio" name="statusOrder" id="statusAnalysis" checked>
+          <input type="radio" name="statusOrder" id="statusAnalysis" value="2" checked>
           <label for="statusAnalysis">Labor-Analyse läuft</label>
         </div>
 
         <div class="inputRadioGroup">
-          <input type="radio" name="statusOrder" id="statusDone">
+          <input type="radio" name="statusOrder" id="statusDone" value="3">
           <label for="statusDone">Analyse fertiggestellt</label>
         </div>
 

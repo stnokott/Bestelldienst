@@ -1,7 +1,6 @@
-console.log("fuuf");
+// Wenn Dropdown-Element geändert, rufe "loadStatus" auf
 document.getElementById("genoCheckOrdersSelect").addEventListener("change", loadStatus);
 
 function loadStatus() {
   console.log("meeeemes");
-  document.getElementsByClassName("agentName")[0].innerHTML = "fuuf";
 }
