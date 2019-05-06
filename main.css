@@ -354,7 +354,6 @@ select.dropdown {
   -webkit-appearance: none;
   /*noinspection CssBrowserCompatibilityForProperties*/
   appearance: none; /* alles außer IE */
-  display: none; /* IE */
   outline: none;
   border: none;
   border-bottom: 1px solid var(--accent-grey);
@@ -491,7 +490,6 @@ meter {
   -moz-appearance: none;
   /*noinspection CssBrowserCompatibilityForProperties*/
   appearance: none;
-  display: none;
   width: 100%;
   height: 20px;
   border-radius: 15px;
