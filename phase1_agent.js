@@ -22,16 +22,29 @@ function loadStatus() {
 
 /**
  * "active"-Klasse von allen radioButtons entfernen
+ * @param index Integer Index of Status to activate (0=sent, 1=delivered, 2=analysis, 3=done)
  */
 function setRadioGroupActive(index) {
     let radioButtons = document.getElementsByClassName("inputRadioGroup");
 
-    // alle "active"-Klassen entfernen
+    // alle RadioButtons deaktivieren
+    for (let i=0; i<radioButtons.length; i++) {
+        let radioButton = document.getElementsByClassName("inputRadioGroup")[index].querySelectorAll('[type="radio"]')[0];
+        radioButton.checked = false;
+    }
+
+    // alle "active"-Klassen entfernen und radioButtons deaktivieren
     for (let i=0; i<radioButtons.length; i++) {
         let classList = radioButtons[i].classList;
-        if (i === index && !classList.contains("active")) {
-            classList.add("active");
+        if (i === index) {
+            if (!classList.contains("active")) {
+                // active-Klasse setzen
+                classList.add("active");
+            }
+            let radioButton = document.getElementsByClassName("inputRadioGroup")[index].querySelectorAll('[type="radio"]')[0];
+            radioButton.checked = true;
         } else {
+            // active-Klasse entfernen
             classList.remove("active");
         }
     }
