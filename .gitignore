@@ -1,3 +1,5 @@
+_sonarqube_analyse.bat
+_StartSonar.bat
 
 # Created by https://www.gitignore.io/api/sonar,intellij,sonarqube
 # Edit at https://www.gitignore.io/?templates=sonar,intellij,sonarqube
