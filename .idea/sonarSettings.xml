@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="projectSettings">
+    <option name="alternativeWorkingDirPath" value="" />
+    <option name="localAnalysisScripName" value="SonarCloud Analysis" />
+    <option name="resources">
+      <list>
+        <Resource>
+          <option name="key" value="stnokott:Bestelldienst" />
+          <option name="name" value="Bestelldienst" />
+          <option name="qualifier" value="TRK" />
+        </Resource>
+      </list>
+    </option>
+    <option name="serverName" value="SonarQube Local" />
+    <option name="useAlternativeWorkingDir" value="false" />
+    <option name="workingDirSelection" value="&lt;PROJECT&gt;" />
+  </component>
+</project>

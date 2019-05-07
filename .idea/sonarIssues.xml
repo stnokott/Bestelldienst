@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Page.php">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYXKlOjVTbwhfM0I" />
+                <option name="line" value="52" />
+                <option name="message" value="Remove this empty statement." />
+                <option name="ruleKey" value="php:S1116" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYXKlOjVTbwhfM0H" />
+                <option name="line" value="166" />
+                <option name="message" value="Immediately return this expression instead of assigning it to the temporary variable &quot;$string&quot;." />
+                <option name="ruleKey" value="php:S1488" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYXKlOjVTbwhfM0G" />
+                <option name="line" value="158" />
+                <option name="message" value="Define and throw a dedicated exception instead of using a generic one." />
+                <option name="ruleKey" value="php:S112" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/getstatus.php">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYW6lOjVTbwhfM0D" />
+                <option name="line" value="36" />
+                <option name="message" value="Remove this method &quot;__construct&quot; to simply inherit it." />
+                <option name="ruleKey" value="php:S1185" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYW6lOjVTbwhfM0E" />
+                <option name="line" value="49" />
+                <option name="message" value="Remove this method &quot;__destruct&quot; to simply inherit it." />
+                <option name="ruleKey" value="php:S1185" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYW6lOjVTbwhfM0C" />
+                <option name="line" value="65" />
+                <option name="message" value="Refactor this loop to do more than one iteration." />
+                <option name="ruleKey" value="php:S1751" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYW6lOjVTbwhfM0F" />
+                <option name="line" value="124" />
+                <option name="message" value="Remove this commented out code." />
+                <option name="ruleKey" value="php:S125" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/main.css">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVNlOjVTbwhfMzo" />
+                <option name="line" value="647" />
+                <option name="message" value="Unexpected duplicate selector &quot;.progresssteps li:not(.active)::before&quot;, first used at line 589" />
+                <option name="ruleKey" value="css:S4666" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/phase0.php">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYU9lOjVTbwhfMzm" />
+                <option name="line" value="36" />
+                <option name="message" value="Remove this method &quot;__construct&quot; to simply inherit it." />
+                <option name="ruleKey" value="php:S1185" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYU9lOjVTbwhfMzn" />
+                <option name="line" value="49" />
+                <option name="message" value="Remove this method &quot;__destruct&quot; to simply inherit it." />
+                <option name="ruleKey" value="php:S1185" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/phase1.php">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz3" />
+                <option name="line" value="239" />
+                <option name="message" value="Refactor this loop to do more than one iteration." />
+                <option name="ruleKey" value="php:S1751" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz5" />
+                <option name="line" value="312" />
+                <option name="message" value="Remove the literal &quot;true&quot; boolean value." />
+                <option name="ruleKey" value="php:S1125" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz6" />
+                <option name="line" value="352" />
+                <option name="message" value="Remove the literal &quot;false&quot; boolean value." />
+                <option name="ruleKey" value="php:S1125" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz_" />
+                <option name="line" value="56" />
+                <option name="message" value="Remove this method &quot;__destruct&quot; to simply inherit it." />
+                <option name="ruleKey" value="php:S1185" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz-" />
+                <option name="line" value="43" />
+                <option name="message" value="Remove this method &quot;__construct&quot; to simply inherit it." />
+                <option name="ruleKey" value="php:S1185" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz9" />
+                <option name="line" value="364" />
+                <option name="message" value="Remove this redundant jump." />
+                <option name="ruleKey" value="php:S3626" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz4" />
+                <option name="line" value="255" />
+                <option name="message" value="Refactor this loop to do more than one iteration." />
+                <option name="ruleKey" value="php:S1751" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz8" />
+                <option name="line" value="358" />
+                <option name="message" value="Remove the literal &quot;false&quot; boolean value." />
+                <option name="ruleKey" value="php:S1125" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfMz7" />
+                <option name="line" value="358" />
+                <option name="message" value="Remove the literal &quot;true&quot; boolean value." />
+                <option name="ruleKey" value="php:S1125" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWblOjVTbwhfM0A" />
+                <option name="line" value="144" />
+                <option name="message" value="Add a &quot;case default&quot; clause to this &quot;switch&quot; statement." />
+                <option name="ruleKey" value="php:S131" />
+                <option name="severity" value="CRITICAL" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/phase1_agent.html">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYURlOjVTbwhfMzj" />
+                <option name="line" value="25" />
+                <option name="message" value="Replace this &lt;i&gt; tag by &lt;em&gt;." />
+                <option name="ruleKey" value="Web:BoldAndItalicTagsCheck" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/phase1_agent.php">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzx" />
+                <option name="line" value="248" />
+                <option name="message" value="Define a constant instead of duplicating this literal &quot;&lt;div class=\&quot;inputRadioGroup active\&quot;&gt;&quot; 4 times." />
+                <option name="ruleKey" value="php:S1192" />
+                <option name="severity" value="CRITICAL" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzt" />
+                <option name="line" value="208" />
+                <option name="message" value="Refactor this loop to do more than one iteration." />
+                <option name="ruleKey" value="php:S1751" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzz" />
+                <option name="line" value="130" />
+                <option name="message" value="Define a constant instead of duplicating this literal &quot;status&quot; 3 times." />
+                <option name="ruleKey" value="php:S1192" />
+                <option name="severity" value="CRITICAL" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzy" />
+                <option name="line" value="251" />
+                <option name="message" value="Define a constant instead of duplicating this literal &quot;&lt;div class=\&quot;inputRadioGroup\&quot;&gt;&quot; 4 times." />
+                <option name="ruleKey" value="php:S1192" />
+                <option name="severity" value="CRITICAL" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzs" />
+                <option name="line" value="338" />
+                <option name="message" value="Either remove or fill this block of code." />
+                <option name="ruleKey" value="php:S108" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMz1" />
+                <option name="line" value="87" />
+                <option name="message" value="Remove this method &quot;__construct&quot; to simply inherit it." />
+                <option name="ruleKey" value="php:S1185" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzw" />
+                <option name="line" value="127" />
+                <option name="message" value="Define a constant instead of duplicating this literal &quot;SELECT status FROM genocheckorder WHERE userid='&quot; 3 times." />
+                <option name="ruleKey" value="php:S1192" />
+                <option name="severity" value="CRITICAL" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMz0" />
+                <option name="line" value="76" />
+                <option name="message" value="Remove this unused &quot;$order_status&quot; private field." />
+                <option name="ruleKey" value="php:S1068" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzu" />
+                <option name="line" value="191" />
+                <option name="message" value="Refactor this loop to do more than one iteration." />
+                <option name="ruleKey" value="php:S1751" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzr" />
+                <option name="line" value="135" />
+                <option name="message" value="Complete the task associated to this &quot;TODO&quot; comment." />
+                <option name="ruleKey" value="php:S1135" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMz2" />
+                <option name="line" value="100" />
+                <option name="message" value="Remove this method &quot;__destruct&quot; to simply inherit it." />
+                <option name="ruleKey" value="php:S1185" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVslOjVTbwhfMzv" />
+                <option name="line" value="125" />
+                <option name="message" value="Define a constant instead of duplicating this literal &quot;REQUEST_METHOD&quot; 3 times." />
+                <option name="ruleKey" value="php:S1192" />
+                <option name="severity" value="CRITICAL" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/phase3.html">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYUrlOjVTbwhfMzk" />
+                <option name="line" value="31" />
+                <option name="message" value="Complete the task associated to this &quot;TODO&quot; comment." />
+                <option name="ruleKey" value="Web:S1135" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/phase4.html">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVclOjVTbwhfMzp" />
+                <option name="line" value="59" />
+                <option name="message" value="Complete the task associated to this &quot;TODO&quot; comment." />
+                <option name="ruleKey" value="Web:S1135" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYVclOjVTbwhfMzq" />
+                <option name="line" value="59" />
+                <option name="message" value="Remove this commented out code." />
+                <option name="ruleKey" value="Web:AvoidCommentedOutCodeCheck" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/phase5.html">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYSUlOjVTbwhfMzh" />
+                <option name="line" value="36" />
+                <option name="message" value="Complete the task associated to this &quot;TODO&quot; comment." />
+                <option name="ruleKey" value="Web:S1135" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYSUlOjVTbwhfMzi" />
+                <option name="line" value="49" />
+                <option name="message" value="Complete the task associated to this &quot;TODO&quot; comment." />
+                <option name="ruleKey" value="Web:S1135" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/phase6.html">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AWqRFYWqlOjVTbwhfM0B" />
+                <option name="line" value="37" />
+                <option name="message" value="Complete the task associated to this &quot;TODO&quot; comment." />
+                <option name="ruleKey" value="Web:S1135" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
