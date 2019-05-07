@@ -1,0 +1,1 @@
+start cmd /C sonar-scanner.bat -D"sonar.projectKey=stnokott_Bestelldienst" -D"sonar.organization=stnokott-github" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io" -D"sonar.login=4fdd6f2116f20ddcffd0bf91ac2c44d93ea3c263"
