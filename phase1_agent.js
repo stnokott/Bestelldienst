@@ -3,10 +3,13 @@ loadStatus();
 document.getElementById("genoCheckOrdersSelect").addEventListener("change", loadStatus);
 
 function loadStatus() {
+<<<<<<< HEAD
     if (document.getElementById("genoCheckOrdersSelect").selectedOptions.length===0){
       return;
     }
     console.log("schnansch");
+=======
+>>>>>>> 228d0195ad6a51f7f3ceb8850120aeeb3f36db44
     let selectedUserid = document.getElementById("genoCheckOrdersSelect").selectedOptions[0].value;
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
