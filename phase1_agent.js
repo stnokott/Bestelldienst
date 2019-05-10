@@ -1,8 +1,11 @@
 loadStatus();
-// Wenn Dropdown-Element geändert, rufe "loadStatus" auf
+
 document.getElementById("genoCheckOrdersSelect").addEventListener("change", loadStatus);
 
 function loadStatus() {
+    if (document.getElementById("genoCheckOrdersSelect").selectedOptions.length===0){
+      return;
+    }
     console.log("schnansch");
     let selectedUserid = document.getElementById("genoCheckOrdersSelect").selectedOptions[0].value;
     let xmlhttp = new XMLHttpRequest();
