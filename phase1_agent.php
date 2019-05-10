@@ -309,6 +309,7 @@ HTML;
             echo "Fehler bei der Verarbeitung der Daten: " . $e;
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // TO-DO in Javascript umlagern, um ohne Neuladen der Seite zu machen
             // Wende Änderungen an
             $order_id = $_POST["genoCheckOrdersSelect"];
             $new_status = $_POST["statusOrder"];
