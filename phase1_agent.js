@@ -1,3 +1,5 @@
+document.getElementsByClassName("agentName")[0].innerHTML = "fuuf";
+document.addEventListener("load", loadStatus);
 // Wenn Dropdown-Element geändert, rufe "loadStatus" auf
 document.getElementById("genoCheckOrdersSelect").addEventListener("change", loadStatus);
 
