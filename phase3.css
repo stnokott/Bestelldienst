@@ -66,7 +66,7 @@
   border-color: var(--accent-grey);
 }
 .kitBasic div.kitHeader {
-  background-color: var(--accent-grey);
+  background: var(--accent-grey);
 }
 .kitBasic button[type="submit"] {
   background-color: var(--accent-grey);
@@ -125,4 +125,29 @@
 }
 .kitCustom button[type="submit"]:hover {
   background: var(--accent-lighter-pink);
+}
+
+
+.kitRecommended {
+  margin-left: 64px;
+  margin-right: -16px;
+  padding: 0 16px 16px 16px;
+  border: 2px solid var(--accent-black);
+  border-right: none;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  box-shadow: 0 0 15px 0 rgba(48,112,205,0.4);
+  overflow: hidden;
+}
+
+.kitRecommended .kitRecommendedHeader {
+  display: block;
+  border-bottom: 2px solid var(--accent-black);
+  margin: 0 -16px 16px -16px;
+  padding: 8px 8px 8px 16px;
+  font-size: 15pt;
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--accent-black);
+  color: white;
+  background: repeating-linear-gradient(-45deg, var(--accent-black), var(--accent-black) 20px, white 20px, white 40px);
 }
