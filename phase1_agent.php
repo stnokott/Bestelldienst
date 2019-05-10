@@ -309,9 +309,21 @@ HTML;
             echo "Fehler bei der Verarbeitung der Daten: " . $e;
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+            // Wende Änderungen an
+            $order_id = $_POST["genoCheckOrdersSelect"];
+            $new_status = $_POST["statusOrder"];
+            $this->setStatusOrder($order_id, $new_status);
         } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["genoCheckOrdersSelect"])) {
             $this->selected_userid = $_GET["genoCheckOrdersSelect"];
+        }
+    }
+
+    protected function setStatusOrder($order_id, $status) {
+        $query = "UPDATE genocheckorder SET status='" .$status. "' WHERE userid='" .$order_id. "'";
+        $this->_database->query($query);
+
+        if ($this->_database->error != "") {
+            echo $this->_database->error;
         }
     }
 
