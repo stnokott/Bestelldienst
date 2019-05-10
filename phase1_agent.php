@@ -73,7 +73,6 @@ class User
 class Phase1Agent extends Page
 {
     private $users = []; // Liste der verfügbaren Nutzer
-    private $order_status; // 0 = confirmed, 1 = sent, 2 = analysis, 3 = done
     private $selected_userid; // userid des ausgewählten Nutzers, dessen Bestellstatus abgerufen werden soll
     private $selected_status; // status der Bestellung des ausgewählten Nutzers
 
@@ -120,30 +119,6 @@ class Phase1Agent extends Page
             $user = new User($row["userid"], $row["firstname"], $row["lastname"], $row["email"]);
             array_push($this->users, $user);
         }
-
-        // falls bestimmter Nutzer abgefragt wurde
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-          // Status für ausgewählten Nutzer abrufen
-          $query = "SELECT status FROM genocheckorder WHERE userid='".$this->selected_userid."'";
-          $result = $this->_database->query($query);
-          while ($row = $result->fetch_assoc()) {
-              $this->selected_status = $row["status"];
-          }
-
-        // falls kein bestimmter Nutzer abgefragt wurde
-        } else {
-            // TODO: falls noch keine Bestellung besteht...?
-            // Status für ersten Nutzer abrufen
-            if ($this->users[0] != null) {
-                $first_userid = $this->users[0]->getUserId();
-                $query = "SELECT status FROM genocheckorder WHERE userid='".$first_userid."'";
-
-                $result = $this->_database->query($query);
-                while ($row = $result->fetch_assoc()) {
-                    $this->selected_status = $row["status"];
-                }
-            }
-        }
     }
 
     /**
@@ -188,10 +163,11 @@ class Phase1Agent extends Page
         $query = "SELECT userid FROM user WHERE email='" . $email . "'";
         $result = $this->_database->query($query);
 
-        while ($row = $result->fetch_assoc()) {
+        if ($row = $result->fetch_assoc()) {
             return $row["userid"];
+        } else {
+            return null;
         }
-        return null;
     }
 
     /**
@@ -205,10 +181,11 @@ class Phase1Agent extends Page
         $query = "SELECT status FROM genocheckorder WHERE userid='" . $userid . "'";
         $result = $this->_database->query($query);
 
-        while ($row = $result->fetch_assoc()) {
+        if ($row = $result->fetch_assoc()) {
             return $row["status"];
+        } else {
+            return null;
         }
-        return null;
     }
 
 
