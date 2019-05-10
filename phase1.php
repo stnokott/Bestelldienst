@@ -315,7 +315,7 @@ HTML;
         $this->generatePageDescription();
         $this->generateGenoCheckProgress();
 
-        $this->generatePageFooter();
+        $this->generatePageFooter(null);
     }
 
     /**

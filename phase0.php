@@ -170,7 +170,7 @@ HTML;
         $this->generatePageDescription();
         $this->generateGenoCheckForm();
 
-        $this->generatePageFooter();
+        $this->generatePageFooter(null);
     }
 
     /**
