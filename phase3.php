@@ -101,95 +101,94 @@ HTML;
 
     protected function generateAvailableKits() {
         echo<<<HTML
-            <section>
-              <span class="sectionHeader">Verfügbare Kits</span>
-        
-              <form action="phase4.html" name="selectedKit" method="post">
-                <div class="kit kitBasic">
-                  <div class="kitHeader">
-                    <span class="kitTitle">Basic Kit</span><br>
-                    <span class="kitSubtitle">Für den kleinen Geldbeutel</span>
-                    <span class="kitPrice">€ 5999.99</span>
-                  </div>
-                  <ul>
-                    <li>Attribute werden naturgegeben zufällig aus dem Genpool bestimmt</li>
-                    <li>Kein Einfluss auf negative Attribute Ihres Kindes</li>
-                  </ul>
-                  <button type="submit" id="btnBasic">In den Warenkorb</button>
-                </div>
-        
-                <div class="kit kitComfort">
-                  <div class="kitHeader">
-                    <span class="kitTitle">Comfort Kit</span><br>
-                    <span class="kitSubtitle">Für eine erhöhte Lebenserwartung</span>
-                    <span class="kitPrice">€ 7999.99</span>
-                  </div>
-                  <ul>
-                    <li>Auswahl bestimmter visueller Attribute, auch außerhalb des elterlich verfügbaren Genpool, möglich</li>
-                    <li>Erheblich reduzierte Krankheitswahrscheinlichkeiten</li>
-                  </ul>
-                  <div class="kitRecommended">
-                    <h4>++ EMPFOHLEN ++</h4>
-                    Ihre <strong>GenoCheck&trade;-Analyse</strong> ergab eine <strong>kritische Ametropie-Wahrscheinlichkeit</strong> von
-                    <strong>80%</strong>.<br>
-                    Mit diesem Kit kann diese auf <strong>5%</strong> gesenkt werden.
-                    <h4>++ EMPFOHLEN ++</h4>
-                  </div>
-                  <button type="submit" id="btnComfort">In den Warenkorb</button>
-                </div>
-        
-                <div class="kit kitSocial">
-                  <div class="kitHeader">
-                    <span class="kitTitle">Social Kit</span><br>
-                    <span class="kitSubtitle">Beliebtheit garantiert</span>
-                    <span class="kitPrice">€ 8499.99</span>
-                  </div>
-                  <ul>
-                    <li>Auswahl bestimmter visueller Attribute möglich (auch außerhalb des elterlichen Genpools)</li>
-                    <li>Erhöhte Werte in sozial anerkannten Bereichen wie <strong>Intelligenz, Körpergröße, Sportlichkeit</strong></li>
-                  </ul>
-                  <button type="submit" id="btnSocial">In den Warenkorb</button>
-                </div>
-        
-                <div class="kit kitPremium">
-                  <div class="kitHeader">
-                    <span class="kitTitle">Premium Kit</span><br>
-                    <span class="kitSubtitle">Das Beste von GenoChoice&trade;</span>
-                    <span class="kitPrice">€ 14499.99</span>
-                  </div>
-                  <ul>
-                    <li>Auswahl bestimmter visueller Attribute möglich (auch außerhalb des elterlichen Genpools)</li>
-                    <li>inkl. Comfort Kit</li>
-                    <li>inkl. Social Kit</li>
-                  </ul>
-                  <div class="kitPopular">
-                    <h4>++ BELIEBT ++</h4>
-                    Am meisten gewählt
-                    <h4>++ BELIEBT ++</h4>
-                  </div>
-                  <button type="submit" id="btnPremium">In den Warenkorb</button>
-                </div>
-        
-                <div class="kit kitCustom">
-                  <div class="kitHeader">
-                    <span class="kitTitle">Custom Kit</span><br>
-                    <span class="kitSubtitle">Erstellen Sie Ihr Traum-Baby</span>
-                    <span class="kitPrice">€ 24999.99</span>
-                  </div>
-                  <ul>
-                    <li><strong>Optische Attribute</strong> frei wählbar</li>
-                    <li><strong>Charakterwerte</strong> frei wählbar</li>
-                    <li>Krankheiten eliminiert</li>
-                  </ul>
-                  <div class="kitCustom">
-                    <h4>++ FLEXIBILITÄT ++</h4>
-                    Anpassung in allen Bereichen möglich
-                    <h4>++ FLEXIBILITÄT ++</h4>
-                  </div>
-                  <button type="submit" id="btnCustom">In den Warenkorb</button>
-                </div>
-              </form>
-            </section>
+<section>
+      <span class="sectionHeader">Verfügbare Kits</span>
+
+      <form action="phase4.html" name="selectedKit" method="post">
+        <div class="kit kitBasic">
+          <div class="kitHeader">
+            <span class="kitTitle">Basic Kit</span><br>
+            <span class="kitSubtitle">Für den kleinen Geldbeutel</span>
+            <span class="kitPrice">€ 5999.99</span>
+          </div>
+          <ul>
+            <li>Attribute werden naturgegeben zufällig aus dem Genpool bestimmt</li>
+            <li>Kein Einfluss auf negative Attribute Ihres Kindes</li>
+          </ul>
+          <button type="submit" id="btnBasic">In den Warenkorb</button>
+        </div>
+
+        <div class="kit kitComfort">
+          <div class="kitHeader">
+            <span class="kitTitle">Comfort Kit</span><br>
+            <span class="kitSubtitle">Für eine erhöhte Lebenserwartung</span>
+            <span class="kitPrice">€ 7999.99</span>
+          </div>
+          <ul>
+            <li>Auswahl bestimmter visueller Attribute, auch außerhalb des elterlich verfügbaren Genpool, möglich</li>
+            <li>Erheblich reduzierte Krankheitswahrscheinlichkeiten</li>
+          </ul>
+          <div class="kitRecommended">
+            <span class="kitRecommendedHeader">EMPFOHLEN</span>
+            Ihre <strong>GenoCheck&trade;-Analyse</strong> ergab eine <strong>kritische Ametropie-Wahrscheinlichkeit</strong> von
+            <strong>80%</strong>.<br>
+            Mit diesem Kit kann diese auf <strong>5%</strong> gesenkt werden.
+          </div>
+          <button type="submit" id="btnComfort">In den Warenkorb</button>
+        </div>
+
+        <div class="kit kitSocial">
+          <div class="kitHeader">
+            <span class="kitTitle">Social Kit</span><br>
+            <span class="kitSubtitle">Beliebtheit garantiert</span>
+            <span class="kitPrice">€ 8499.99</span>
+          </div>
+          <ul>
+            <li>Auswahl bestimmter visueller Attribute möglich (auch außerhalb des elterlichen Genpools)</li>
+            <li>Erhöhte Werte in sozial anerkannten Bereichen wie <strong>Intelligenz, Körpergröße, Sportlichkeit</strong></li>
+          </ul>
+          <button type="submit" id="btnSocial">In den Warenkorb</button>
+        </div>
+
+        <div class="kit kitPremium">
+          <div class="kitHeader">
+            <span class="kitTitle">Premium Kit</span><br>
+            <span class="kitSubtitle">Das Beste von GenoChoice&trade;</span>
+            <span class="kitPrice">€ 14499.99</span>
+          </div>
+          <ul>
+            <li>Auswahl bestimmter visueller Attribute möglich (auch außerhalb des elterlichen Genpools)</li>
+            <li>inkl. Comfort Kit</li>
+            <li>inkl. Social Kit</li>
+          </ul>
+          <div class="kitPopular">
+            <h4>++ BELIEBT ++</h4>
+            Am meisten gewählt
+            <h4>++ BELIEBT ++</h4>
+          </div>
+          <button type="submit" id="btnPremium">In den Warenkorb</button>
+        </div>
+
+        <div class="kit kitCustom">
+          <div class="kitHeader">
+            <span class="kitTitle">Custom Kit</span><br>
+            <span class="kitSubtitle">Erstellen Sie Ihr Traum-Baby</span>
+            <span class="kitPrice">€ 24999.99</span>
+          </div>
+          <ul>
+            <li><strong>Optische Attribute</strong> frei wählbar</li>
+            <li><strong>Charakterwerte</strong> frei wählbar</li>
+            <li>Krankheiten eliminiert</li>
+          </ul>
+          <div class="kitCustom">
+            <h4>++ FLEXIBILITÄT ++</h4>
+            Anpassung in allen Bereichen möglich
+            <h4>++ FLEXIBILITÄT ++</h4>
+          </div>
+          <button type="submit" id="btnCustom">In den Warenkorb</button>
+        </div>
+      </form>
+    </section>
 HTML;
 
     }
