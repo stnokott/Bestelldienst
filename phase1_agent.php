@@ -226,7 +226,8 @@ HTML;
         echo <<<HTML
         <section>
           <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
-          <form action="phase1_agent.php" method="get" name="genoCheckOrderSelect">
+
+          <form action="phase1_agent.php" name="statusOrderChange[]" method="post">
             <div class="dropdownWrapper">
               <select class="dropdown" name="genoCheckOrdersSelect" id="genoCheckOrdersSelect">
 HTML;
@@ -238,11 +239,6 @@ HTML;
         echo<<<HTML
               </select>
             </div>
-            <button type="submit">Ändern</button>
-          </form>
-
-          <form action="phase1_agent.php" name="statusOrderChange[]" method="post">
-
 HTML;
         if ($this->selected_status == "0") {
             echo "<div class=\"inputRadioGroup active\">";
