@@ -272,6 +272,7 @@ HTML;
      * @return null
      */
     protected function createUser($email, $firstname, $lastname, $address1, $address2, $address3) {
+
         $query = $this->getMySQLInsertString(
             "user",
             array("email", "firstname", "lastname", "address1", "address2", "address3"),
@@ -318,7 +319,7 @@ HTML;
         $this->generatePageDescription();
         $this->generateGenoCheckProgress();
 
-        $this->generatePageFooter(null);
+        $this->generatePageFooter("phase1.js");
     }
 
     /**
