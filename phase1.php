@@ -30,7 +30,7 @@ class Phase1 extends Page
     private $new_user = false;
 
     // TO-DO: dynamisch bestimmen über Session
-    private $user_email = "m.musterhalfen@gmail.com";
+    private $user_id = 1;
     private $order_status; // 0 = confirmed, 1 = sent, 2 = analysis, 3 = done
 
     /**
@@ -68,7 +68,6 @@ class Phase1 extends Page
      */
     protected function getViewData()
     {
-        $userid = $this->getUserId($this->user_email);
         $this->order_status = $this->getUserOrderStatus($userid);
     }
 
@@ -272,7 +271,7 @@ HTML;
         $query = $this->getMySQLInsertString(
             "user",
             array("email", "firstname", "lastname", "address1", "address2", "address3"),
-            array($email, $firstname, $lastname, $address1, $address2, $address3)
+            array(this->database->real_escape_string($email), this->database->real_escape_string($firstname), this->database->real_escape_string($lastname), this->database->real_escape_string($address1), this->database->real_escape_string($address2), this->database->real_escape_string($address3))
         );
         $this->_database->query($query);
         if ($this->_database->errno != 0) {
