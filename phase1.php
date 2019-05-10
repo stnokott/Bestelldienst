@@ -68,7 +68,7 @@ class Phase1 extends Page
      */
     protected function getViewData()
     {
-        $this->order_status = $this->getUserOrderStatus($this->$userid);
+        $this->order_status = $this->getUserOrderStatus($this->user_id);
     }
 
     /**
