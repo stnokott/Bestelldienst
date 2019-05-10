@@ -3,7 +3,6 @@ loadStatus();
 document.getElementById("genoCheckOrdersSelect").addEventListener("change", loadStatus);
 
 function loadStatus() {
-    console.log("schnansch");
     let selectedUserid = document.getElementById("genoCheckOrdersSelect").selectedOptions[0].value;
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
