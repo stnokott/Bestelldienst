@@ -101,7 +101,7 @@ HTML;
 
     protected function generateAvailableKits() {
         echo<<<HTML
-<section>
+    <section>
       <span class="sectionHeader">Verfügbare Kits</span>
 
       <form action="phase4.html" name="selectedKit" method="post">
@@ -119,6 +119,7 @@ HTML;
         </div>
 
         <div class="kit kitComfort">
+          <div class="kitRibbon recommended">Empfohlen <i class="material-icons">done</i></div>
           <div class="kitHeader">
             <span class="kitTitle">Comfort Kit</span><br>
             <span class="kitSubtitle">Für eine erhöhte Lebenserwartung</span>
@@ -128,8 +129,8 @@ HTML;
             <li>Auswahl bestimmter visueller Attribute, auch außerhalb des elterlich verfügbaren Genpool, möglich</li>
             <li>Erheblich reduzierte Krankheitswahrscheinlichkeiten</li>
           </ul>
-          <div class="kitRecommended">
-            <span class="kitRecommendedHeader">EMPFOHLEN</span>
+          <div class="kitAdvice recommended">
+            <span class="kitAdviceHeader recommended">EMPFOHLEN</span>
             Ihre <strong>GenoCheck&trade;-Analyse</strong> ergab eine <strong>kritische Ametropie-Wahrscheinlichkeit</strong> von
             <strong>80%</strong>.<br>
             Mit diesem Kit kann diese auf <strong>5%</strong> gesenkt werden.
@@ -151,6 +152,7 @@ HTML;
         </div>
 
         <div class="kit kitPremium">
+          <div class="kitRibbon popular">Beliebt <i class="material-icons">favorite</i></div>
           <div class="kitHeader">
             <span class="kitTitle">Premium Kit</span><br>
             <span class="kitSubtitle">Das Beste von GenoChoice&trade;</span>
@@ -161,15 +163,15 @@ HTML;
             <li>inkl. Comfort Kit</li>
             <li>inkl. Social Kit</li>
           </ul>
-          <div class="kitPopular">
-            <h4>++ BELIEBT ++</h4>
+          <div class="kitAdvice popular">
+            <span class="kitAdviceHeader popular">Beliebt</span>
             Am meisten gewählt
-            <h4>++ BELIEBT ++</h4>
           </div>
           <button type="submit" id="btnPremium">In den Warenkorb</button>
         </div>
 
         <div class="kit kitCustom">
+          <div class="kitRibbon flexible">Flexibilität <i class="material-icons">call_split</i></div>
           <div class="kitHeader">
             <span class="kitTitle">Custom Kit</span><br>
             <span class="kitSubtitle">Erstellen Sie Ihr Traum-Baby</span>
@@ -180,10 +182,9 @@ HTML;
             <li><strong>Charakterwerte</strong> frei wählbar</li>
             <li>Krankheiten eliminiert</li>
           </ul>
-          <div class="kitCustom">
-            <h4>++ FLEXIBILITÄT ++</h4>
+          <div class="kitAdvice flexible">
+            <span class="kitAdviceHeader flexible">Flexibilität</span>
             Anpassung in allen Bereichen möglich
-            <h4>++ FLEXIBILITÄT ++</h4>
           </div>
           <button type="submit" id="btnCustom">In den Warenkorb</button>
         </div>
