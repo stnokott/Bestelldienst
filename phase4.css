@@ -144,7 +144,9 @@
 
 .shoppingCartTotal {
     margin-top: 1em;
-    border-top: 5px solid var(--accent-blue);
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, white, white 60%, var(--accent-blue) 75%, var(--accent-blue) 90%, white) 1 0 0 0;
     padding-top: 1em;
     font-size: 14pt;
     display: grid;
