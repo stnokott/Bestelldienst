@@ -97,7 +97,7 @@ echo <<<HTML
             <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
             <link rel="stylesheet" href="main.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:500,900" rel="stylesheet">
           </head>
 
           <body>
