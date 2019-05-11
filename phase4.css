@@ -1,0 +1,155 @@
+/*
+        KIT- AUSWAHL
+ */
+
+.packageContainer {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+}
+
+.optional {
+    width: auto;
+    padding: 10px 20px 60px 20px; /* zusätzliches Padding unten, um für Button Platz zu schaffen */
+    margin: 1em;
+    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+    border-radius: 15px;
+    background: white;
+    overflow: hidden;
+    position: relative;
+}
+
+.optional > .header {
+    vertical-align: middle;
+    height: 2em;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    font-size: 18pt;
+    font-weight: 900;
+    padding: 2em 1em;
+    margin: -10px -20px; /* .optional-Padding negieren */
+    color: white;
+    background: linear-gradient(10deg, var(--accent-blue), var(--accent-light-blue));
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    position: relative; /* für img */
+}
+
+.optional > .header > img {
+    opacity: .05;
+    width: 70%;
+    position: absolute;
+    margin: auto auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.optional > ul {
+    list-style: none; /* ermöglicht Änderung der Bullet-Pooint-Symcole */
+}
+
+.optional > ul > li {
+    position: relative;
+}
+
+.optional > ul > li:before {
+    display: block;
+    position: absolute;
+    left: -25px;
+    top: 0;
+    color: var(--accent-green);
+    font-family: "Material Icons", sans-serif;
+    content: "\e5ca";
+    font-weight: bold;
+}
+
+.optional button{
+    border: none;
+    font-size: 18pt;
+    font-weight: 900;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    width: calc(100% - 40px);
+}
+
+
+/*
+        WARENKORB
+*/
+
+.shoppingCartHeader {
+    margin: 1em 0 0 1em;
+    padding-bottom: 0;
+    vertical-align: bottom;
+    font-weight: 900;
+    font-size: 24pt;
+}
+
+.shoppingCart {
+    display: block;
+    margin: 0 1em 1em 1em;
+}
+
+.shoppingCart > .cartItem {
+    display: grid;
+    grid-template-columns: 75% 15% 10%; /* Name, Preis, Button */
+    align-items: center;
+    padding: 10px;
+    margin-bottom: .5em;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+}
+
+.shoppingCart > .cartItem > .cartItemName {
+    grid-column: 1/2;
+    margin-left: .5em;
+    font-size: 16pt;
+}
+
+.shoppingCart > .cartItem > .cartItemPrice {
+    grid-column: 2/3;
+    text-align: center;
+    font-size: 14pt;
+    font-weight: bold;
+    border: 3px dashed var(--accent-grey);
+    border-radius: 15px;
+}
+
+.shoppingCart > .cartItem > button {
+    background: none;
+    border: none;
+    grid-column: 3/4;
+    color: var(--accent-red);
+}
+
+.shoppingCart > .cartItem > button:hover {
+    background: none;
+}
+
+.shoppingCartTotal {
+    margin-top: 1em;
+    border-top: 3px solid var(--accent-black);
+    padding-top: 1em;
+    font-size: 14pt;
+    display: grid;
+    grid-template-columns: calc(75% - 5px) auto calc(10% + 5px);
+    align-items: center;
+}
+
+.shoppingCartTotal > .title {
+    grid-column: 1/2;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.shoppingCartTotal > .value {
+    font-weight: bold;
+    grid-column: 2/3;
+    text-align: center;
+    border: 3px dashed var(--accent-grey);
+    border-radius: 15px;
+}

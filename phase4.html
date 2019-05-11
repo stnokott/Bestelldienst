@@ -7,7 +7,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:500,900" rel="stylesheet">
   </head>
 
   <body>
@@ -32,48 +32,53 @@
 
     <section>
       <span class="sectionHeader">Buchen Sie optionale Zusatzpakete</span>
-      <form action="phase5.html" name="selectedOptionals[]" method="post">
+        <div class="packageContainer">
+          <div class="optional">
+            <div class="header"><img src="img/pregnant.svg" alt=""/>Klinische Geburt</div>
+            <ul>
+              <li>Ersetzt klassiche Inkubation</li>
+              <li>Leihmutter trägt Ihren Embryo aus</li>
+            </ul>
+            <button value="clinic">499.99€</button>
+          </div>
+          <div class="optional">
+            <div class="header"><img src="img/drone-delivery.svg" alt=""/>Lieferung per Drohne</div>
+            <ul>
+              <li>Kein Termin in Klinik nötig</li>
+              <li>Gepolsterter Behälter</li>
+            </ul>
+            <button value="drone">249.99€</button>
+          </div>
+          <div class="optional">
+            <div class="header"><img src="img/heron.svg" alt=""/>Storch</div>
+            <ul>
+              <li>Traditionsbewusst</li>
+              <li>Komfortable Lieferung in Leinenbeutel</li>
+            </ul>
+            <button value="heron">0.99€</button>
+          </div>
+        </div>
 
-        <section class="optionalPackage">
-          <h2>Klinische Geburt</h2>
-          <ul>
-            <li>Ersetzt klassiche Inkubation</li>
-            <li>Leihmutter trägt Ihren Embryo aus</li>
-          </ul>
-          <h3>499.99€</h3>
-          <input type="button" value="In den Warenkorb">
-        </section>
-        <section class="optionalPackage">
-          <h2>Lieferung per Drohne</h2>
-          <ul>
-            <li>Kein persönlicher Termin in der Klinik nötig</li>
-            <li>Humane Lieferung in gepolstertem Behälter</li>
-          </ul>
-          <h3>249.99€</h3>
-          <input type="button" value="Bereits in Warenkorb" disabled>
-        </section>
-        <section class="optionalPackage">
-          <h2>S.T.O.R.C.H.</h2>
-          <!-- TODO: Wieso sind beide </u> Tags nötig, um ein zusätzliches Leerzeichen zu verhindern? -->
-          <h4><u>S</u>upra <u>T</u>ransportabler <u>O</u>rnithologisch <u>R</u>elevanter <u>C</u>iconia <u>H</u>abilitatet<u></u><u></u></h4>
-          <ul>
-            <li>Bleiben Sie traditionsbewusst mit unserer flexiblen Luftflotte</li>
-            <li>Komfortable Lieferung in Leinenbeutel passend zum Geschlecht des Kindes</li>
-          </ul>
-          <h5>Disclaimer: Lieferung erfolgt durch den Schornstein</h5>
-          <h3>0.99€</h3>
-          <input type="button" name="btnStork" value="In den Warenkorb">
-        </section>
+      <!-- Warenkorb -->
+      <div class="shoppingCartHeader">Warenkorb</div>
+      <div class="shoppingCart">
+        <div class="cartItem">
+          <div class="cartItemName">Klinikgeburt</div>
+          <div class="cartItemPrice">499.99€</div>
+          <button value="removeItem"><i class="material-icons">clear</i></button>
+        </div>
+        <div class="cartItem">
+          <div class="cartItemName">Drohne</div>
+          <div class="cartItemPrice">249.99€</div>
+          <button value="removeItem"><i class="material-icons">clear</i></button>
+        </div>
+        <div class="shoppingCartTotal">
+          <span class="title">Gesamt:</span>
+          <span class="value">12345.67€</span>
+        </div>
+      </div>
 
-        <!-- Warenkorb -->
-        <h3>Warenkorb</h3>
-        <select class="list shoppingCart" name="shoppingCart[]" size="5" style="width:200px" multiple disabled>
-          <option value="[chosenKit]" selected>[GEWÄHLTES KIT] - [PREIS]</option>
-          <option value="packageDrone" selected>Lieferung Drohne - 249.99€</option>
-        </select>
-        <p>Gesamt: 123456.99€</p>
-        <button type="submit">Fortfahren</button>
-      </form>
+      <button value="continue">Fortfahren</button>
     </section>
   </body>
 
