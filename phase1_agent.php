@@ -264,7 +264,7 @@ HTML;
               <label for="statusDone">Analyse fertiggestellt</label>
             </div>
 
-            <button class="genoCheckSubmit" type="submit">Änderung bestätigen</button>
+            <button class="floatright" type="submit">Änderung bestätigen</button>
           </form>
         </section>
 HTML;

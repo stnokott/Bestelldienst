@@ -148,7 +148,7 @@ HTML;
                         <span class="title">Gesamt:</span>
                         <span class="value">12345.67€</span>
                     </div>
-                    <button value="continue">Weiter <i class="material-icons">forward</i></button>
+                    <button class="floatright" value="continue">Weiter <i class="material-icons">forward</i></button>
                 </div>
             </section>
 HTML;

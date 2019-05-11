@@ -142,7 +142,7 @@ HTML;
             <label for="inputEmail">E-Mail</label>
           </div>
 
-          <button class="genoCheckSubmit" type="submit">
+          <button class="floatright" type="submit">
             Bestellen
           </button>
         </form>

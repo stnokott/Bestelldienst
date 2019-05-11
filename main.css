@@ -445,16 +445,25 @@ button {
   font-weight: 500;
   font-size: 15pt;
   width: 100%;
-  float: right;
   border-radius: 10px;
-  padding: .25em;
+  padding: 5px 15px;
   cursor: pointer;
   color: var(--accent-blue);
+  background: none;
+  border: none;
+  box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+  /*
   background: white;
   border: 2px solid var(--accent-blue);
+  */
   position: relative; /* für vertical-align von :after */
 
   transition: all .2s ease;
+}
+
+button.floatright {
+    width: auto;
+    float: right;
 }
 
 button:active, button:focus {

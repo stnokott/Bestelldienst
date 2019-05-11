@@ -170,7 +170,4 @@
 
 .shoppingCart > button {
     margin-top: 1em;
-    width: 25%;
-    margin-left: auto;
-    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
 }
