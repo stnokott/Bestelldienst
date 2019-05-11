@@ -25,7 +25,7 @@
     <section>
       <!-- POST, damit bereits gewählte optionale Pakete an den Server übermittelt werden können -->
       <form class="changeKit" action="phase3.html" method="post">
-        <label for="btnChangeKit"><strong>Gewähltes Kit: [GEWÄHLTES KIT]</strong></label>
+        <label><strong>Gewähltes Kit: [GEWÄHLTES KIT]</strong></label>
         <button type="submit">Ändern</button>
       </form>
     </section>
@@ -43,7 +43,6 @@
           <h3>499.99€</h3>
           <input type="button" value="In den Warenkorb">
         </section>
-        <hr>
         <section class="optionalPackage">
           <h2>Lieferung per Drohne</h2>
           <ul>
@@ -53,7 +52,6 @@
           <h3>249.99€</h3>
           <input type="button" value="Bereits in Warenkorb" disabled>
         </section>
-        <hr>
         <section class="optionalPackage">
           <h2>S.T.O.R.C.H.</h2>
           <!-- TODO: Wieso sind beide </u> Tags nötig, um ein zusätzliches Leerzeichen zu verhindern? -->
@@ -66,7 +64,6 @@
           <h3>0.99€</h3>
           <input type="button" name="btnStork" value="In den Warenkorb">
         </section>
-        <hr>
 
         <!-- Warenkorb -->
         <h3>Warenkorb</h3>
@@ -75,7 +72,6 @@
           <option value="packageDrone" selected>Lieferung Drohne - 249.99€</option>
         </select>
         <p>Gesamt: 123456.99€</p>
-        <hr>
         <button type="submit">Fortfahren</button>
       </form>
     </section>
