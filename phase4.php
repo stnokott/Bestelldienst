@@ -101,55 +101,56 @@ HTML;
     protected function generateAvailableOptionals() {
         echo<<<HTML
             <section>
-              <span class="sectionHeader">Buchen Sie optionale Zusatzpakete</span>
+                <span class="sectionHeader">Buchen Sie optionale Zusatzpakete</span>
                 <div class="packageContainer">
-                  <div class="optional">
-                    <div class="header"><img src="img/pregnant.svg" alt=""/>Klinische Geburt</div>
-                    <ul>
-                      <li>Ersetzt klassiche Inkubation</li>
-                      <li>Leihmutter trägt Ihren Embryo aus</li>
-                    </ul>
-                    <button value="clinic">499.99€</button>
-                  </div>
-                  <div class="optional">
-                    <div class="header"><img src="img/drone-delivery.svg" alt=""/>Lieferung per Drohne</div>
-                    <ul>
-                      <li>Kein Termin in Klinik nötig</li>
-                      <li>Gepolsterter Behälter</li>
-                    </ul>
-                    <button value="drone">249.99€</button>
-                  </div>
-                  <div class="optional">
-                    <div class="header"><img src="img/heron.svg" alt=""/>Storch</div>
-                    <ul>
-                      <li>Traditionsbewusst</li>
-                      <li>Komfortable Lieferung in Leinenbeutel</li>
-                    </ul>
-                    <button value="heron">0.99€</button>
-                  </div>
+                    <div class="optional">
+                        <div class="header"><img src="img/pregnant.svg" alt=""/>Klinische Geburt</div>
+                        <ul>
+                            <li>Ersetzt klassiche Inkubation</li>
+                            <li>Leihmutter trägt Ihren Embryo aus</li>
+                        </ul>
+                        <button value="clinic">499.99€</button>
+                    </div>
+                    <div class="optional">
+                        <div class="header"><img src="img/drone-delivery.svg" alt=""/>Lieferung per Drohne</div>
+                        <ul>
+                            <li>Kein Termin in Klinik nötig</li>
+                            <li>Gepolsterter Behälter</li>
+                        </ul>
+                        <button value="drone">249.99€</button>
+                    </div>
+                    <div class="optional">
+                        <div class="header"><img src="img/heron.svg" alt=""/>Lieferung per Storch</div>
+                        <ul>
+                            <li>Traditionsbewusst</li>
+                            <li>Komfortable Lieferung in Leinenbeutel</li>
+                        </ul>
+                        <button value="heron">0.99€</button>
+                    </div>
                 </div>
-        
-              <!-- Warenkorb -->
-              <div class="shoppingCartHeader">Warenkorb</div>
-              <div class="shoppingCart">
-                <div class="cartItem">
-                  <div class="cartItemName">Klinikgeburt</div>
-                  <div class="cartItemPrice">499.99€</div>
-                  <button value="removeItem"><i class="material-icons">clear</i></button>
+            
+                <!-- Warenkorb -->
+                <div class="shoppingCartHeader">Warenkorb</div>
+                <div class="shoppingCart">
+                    <div class="cartItem">
+                        <img src="img/pregnant.svg" alt=""/>
+                        <div class="cartItemName">Klinikgeburt</div>
+                        <div class="cartItemPrice">499.99€</div>
+                        <button value="removeItem"><i class="material-icons">clear</i></button>
+                    </div>
+                    <div class="cartItem">
+                        <img src="img/drone-delivery.svg" alt=""/>
+                        <div class="cartItemName">Lieferung per Drohne</div>
+                        <div class="cartItemPrice">249.99€</div>
+                        <button value="removeItem"><i class="material-icons">clear</i></button>
+                    </div>
+                    <div class="shoppingCartTotal">
+                        <span class="title">Gesamt:</span>
+                        <span class="value">12345.67€</span>
+                    </div>
+                    <button value="continue">Weiter <i class="material-icons">forward</i></button>
                 </div>
-                <div class="cartItem">
-                  <div class="cartItemName">Drohne</div>
-                  <div class="cartItemPrice">249.99€</div>
-                  <button value="removeItem"><i class="material-icons">clear</i></button>
-                </div>
-                <div class="shoppingCartTotal">
-                  <span class="title">Gesamt:</span>
-                  <span class="value">12345.67€</span>
-                </div>
-              </div>
-        
-              <button value="continue">Fortfahren</button>
-            </section>  
+            </section>
 HTML;
 
     }
