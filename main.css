@@ -1,4 +1,4 @@
-@import url("./phase3.css");
+/*@import url("./phase3.css");*/
 @import url("./phase4.css");
 /* TODO: in finaler Version alles in einer CSS für bessere Performance */
 
@@ -23,6 +23,7 @@
     --accent-brown: #795548;
     --accent-light-brown: #8D6E63;
     --accent-yellow: #FFEB3B;
+    --accent-light-yellow: #FFFF72;
     --accent-orange: #FF9800;
     --accent-pink: #EC407A;
     --accent-light-pink: #F06292;
@@ -443,7 +444,7 @@ button {
   height: 40px;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 15pt;
+  font-size: 14pt;
   width: 100%;
   border-radius: 10px;
   padding: 5px 15px;
@@ -464,6 +465,10 @@ button {
 button.floatright {
     width: auto;
     float: right;
+}
+
+button.noshadow {
+  box-shadow: none;
 }
 
 button:active, button:focus {

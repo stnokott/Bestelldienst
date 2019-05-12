@@ -102,6 +102,7 @@
   border-color: var(--accent-pink);
 }
 .kitSocial div.kitHeader {
+  color: white;
   background-color: var(--accent-pink);
 }
 .kitSocial button[type="submit"] {

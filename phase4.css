@@ -2,12 +2,21 @@
         KIT- AUSWAHL
  */
 
-.packageContainer {
+.optionalContainer {
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
 }
 
-.optional {
+.kitContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.kitContainer > .bookable.stretched {
+    grid-column: 1/-1;
+}
+
+.bookable {
     width: auto;
     padding: 10px 20px 60px 20px; /* zusätzliches Padding unten, um für Button Platz zu schaffen */
     margin: 1em;
@@ -18,7 +27,8 @@
     position: relative;
 }
 
-.optional > .header {
+.bookableHeader {
+    color: white;
     vertical-align: middle;
     height: 2em;
     text-transform: uppercase;
@@ -28,15 +38,68 @@
     font-weight: 900;
     padding: 2em 1em;
     margin: -10px -20px; /* .optional-Padding negieren */
-    color: white;
-    background: linear-gradient(10deg, var(--accent-blue), var(--accent-light-blue));
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
     position: relative; /* für img */
 }
 
-.optional > .header > img {
+.bookableHeader.optional {
+    background: linear-gradient(10deg, var(--accent-blue), var(--accent-light-blue));
+}
+
+.bookableHeader.kitBasic {
+    background: linear-gradient(10deg, var(--accent-grey), var(--accent-light-grey));
+}
+.bookableHeader.kitBasic ~ button {
+    color: var(--accent-grey);
+}
+.bookableHeader.kitBasic ~ button:hover {
+    background-color: var(--accent-light-grey);
+}
+
+.bookableHeader.kitComfort {
+    background: linear-gradient(10deg, var(--accent-indigo), var(--accent-light-indigo));
+}
+.bookableHeader.kitComfort ~ button {
+    color: var(--accent-indigo);
+}
+.bookableHeader.kitComfort ~ button:hover {
+    background-color: var(--accent-light-indigo);
+}
+
+.bookableHeader.kitSocial {
+    background: linear-gradient(10deg, var(--accent-yellow), var(--accent-light-yellow));
+}
+.bookableHeader.kitSocial ~ button {
+    color: var(--accent-yellow);
+}
+.bookableHeader.kitSocial ~ button:hover {
+    background-color: var(--accent-light-yellow);
+}
+
+.bookableHeader.kitPremium {
+    background: linear-gradient(10deg, var(--accent-green), var(--accent-light-green));
+}
+.bookableHeader.kitPremium ~ button {
+    color: var(--accent-green);
+}
+.bookableHeader.kitPremium ~ button:hover {
+    background-color: var(--accent-light-green);
+}
+
+.bookableHeader.kitCustom {
+    background: linear-gradient(10deg, var(--accent-pink), var(--accent-light-pink));
+    clip-path: ellipse(85% 95% at 50% 5%);
+}
+.bookableHeader.kitCustom ~ button {
+    color: var(--accent-pink);
+}
+.bookableHeader.kitCustom ~ button:hover {
+    background-color: var(--accent-light-pink);
+}
+
+.bookableHeader > img {
     opacity: .05;
-    width: 70%;
+    height: 90%;
     position: absolute;
     margin: auto auto;
     left: 0;
@@ -46,15 +109,15 @@
     z-index: -1;
 }
 
-.optional > ul {
+.bookable > ul {
     list-style: none; /* ermöglicht Änderung der Bullet-Pooint-Symcole */
 }
 
-.optional > ul > li {
+.bookable > ul > li {
     position: relative;
 }
 
-.optional > ul > li:before {
+.bookable > ul > li:before {
     display: block;
     position: absolute;
     left: -25px;
@@ -65,7 +128,7 @@
     font-weight: bold;
 }
 
-.optional button{
+.bookable button{
     border: none;
     font-size: 18pt;
     font-weight: 900;
@@ -106,6 +169,27 @@
     overflow: hidden;
 }
 
+.shoppingCart > .cartItem.kitBasic {
+    color: var(--accent-black);
+    background-color: var(--accent-light-grey);
+}
+.shoppingCart > .cartItem.kitComfort {
+    color: white;
+    background-color: var(--accent-light-indigo);
+}
+.shoppingCart > .cartItem.kitSocial {
+    color: var(--accent-black);
+    background-color: var(--accent-light-yellow);
+}
+.shoppingCart > .cartItem.kitPremium {
+    color: white;
+    background-color: var(--accent-light-green);
+}
+.shoppingCart > .cartItem.kitCustom {
+    color: white;
+    background-color: var(--accent-light-pink);
+}
+
 .shoppingCart > .cartItem > img {
     opacity: .1;
     position: absolute;
@@ -127,7 +211,17 @@
     padding-top: 10px;
     padding-bottom: 10px;
     border: 3px dashed var(--accent-grey);
+    background: white;
+    color: black;
     border-radius: 15px;
+}
+
+.shoppingCart > .cartItem:not(.optional) > .cartItemPrice {
+    border-style: none;
+}
+
+.shoppingCart > .cartItem:not(optional) > .cartItemPrice {
+    background-color: white;
 }
 
 .shoppingCart > .cartItem > button {
@@ -144,9 +238,6 @@
 
 .shoppingCartTotal {
     margin-top: 1em;
-    border-width: 5px;
-    border-style: solid;
-    border-image: linear-gradient(to right, white, white 60%, var(--accent-blue) 75%, var(--accent-blue) 90%, white) 1 0 0 0;
     padding-top: 1em;
     font-size: 14pt;
     display: grid;
