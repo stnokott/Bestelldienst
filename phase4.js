@@ -49,15 +49,6 @@ for (let i=0; i<optionals.length; i++) {
 // Listener für Kit-Ändern-Button
 document.querySelector('button[value="changeKit"').addEventListener("click", handleKitChangeButtonPress);
 
-// Listener für Warenkorb-Änderungen
-let observer = new MutationObserver(function(mutations) {
-    // TODO Mutations ignorieren
-    mutations.forEach(function(mutation) {
-        calculateTotal();
-    });
-});
-observer.observe(shoppingCart, { childList: true });
-
 function handleKitButtonPress() {
     shoppingCartKitItem.className = "cartItem "+dictKitClass[this.value];
     document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName[this.value];
@@ -66,6 +57,8 @@ function handleKitButtonPress() {
 
     // zu Optionals scrollen
     document.getElementById("chooseOptionalsHeader").scrollIntoView({ left: 0, block: 'start', behavior: 'smooth' });
+
+    calculateTotal();
 }
 
 function handleOptionalButtonPress() {
@@ -112,6 +105,8 @@ function handleOptionalButtonPress() {
             <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
         </div>
          */
+
+        calculateTotal()
     }
 }
 
@@ -119,6 +114,8 @@ function handleOptionalRemoveButtonPress() {
     let cartItem = this.parentElement;
     document.getElementById("optionalsContainer").querySelector('button[value="'+cartItem.id+'"]').disabled = false;
     shoppingCart.removeChild(cartItem);
+
+    calculateTotal()
 }
 
 function handleKitChangeButtonPress() {
