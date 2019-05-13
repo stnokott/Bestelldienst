@@ -93,11 +93,11 @@ echo <<<HTML
         <html lang="de">
           <head>
             <meta charset="UTF-8">
-            <title>$title</title>>
+            <title>$title</title>
             <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
             <link rel="stylesheet" href="main.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:500,900" rel="stylesheet">
           </head>
 
           <body>
@@ -126,6 +126,21 @@ HTML;
             echo "<script src=\"$jspath\"></script>";
         }
         echo "</html";
+    }
+
+    /**
+     * Outputs the end of the HTML-file i.e. /body etc.
+     * Version without JavaScript
+     *
+     * @return void
+     */
+    protected function generatePageFooterNoJS()
+    {
+        echo<<<HTML
+        </body>
+        </html>
+HTML;
+
     }
 
     /**

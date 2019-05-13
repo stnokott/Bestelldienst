@@ -1,5 +1,8 @@
-@import url("./phase3.css");
+/*@import url("./phase3.css");*/
+@import url("./phase4.css");
 /* TODO: in finaler Version alles in einer CSS für bessere Performance */
+
+/* TODO: Überall, wo font-weight verwendet wird, muss in der GoogleFonts URL das entsprechende Weight inkludiert werden */
 
 :root {
     --accent-blue: #64B5F6;
@@ -20,6 +23,7 @@
     --accent-brown: #795548;
     --accent-light-brown: #8D6E63;
     --accent-yellow: #FFEB3B;
+    --accent-light-yellow: #FFFF72;
     --accent-orange: #FF9800;
     --accent-pink: #EC407A;
     --accent-light-pink: #F06292;
@@ -437,20 +441,34 @@ ul.list li.disabled {
 
 
 button {
+  height: 40px;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 15pt;
+  font-size: 14pt;
   width: 100%;
-  float: right;
   border-radius: 10px;
-  padding: .25em;
+  padding: 5px 15px;
   cursor: pointer;
   color: var(--accent-blue);
+  background: none;
+  border: none;
+  box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+  /*
   background: white;
   border: 2px solid var(--accent-blue);
+  */
   position: relative; /* für vertical-align von :after */
 
   transition: all .2s ease;
+}
+
+button.floatright {
+    width: auto;
+    float: right;
+}
+
+button.noshadow {
+  box-shadow: none;
 }
 
 button:active, button:focus {

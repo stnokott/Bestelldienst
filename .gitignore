@@ -1,2 +1,5 @@
-.idea/
-.idea/*
+/.scannerwork/
+/_sonarqube_analyse.bat
+/.idea/
+/sonar-project.properties
+/_StartSonar.bat.lnk

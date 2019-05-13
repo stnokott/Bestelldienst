@@ -7,14 +7,20 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 5px 25px 0 rgba(48,112,205,0.2);
+  position: relative;
 }
 
-.kit span {
+.kit > span {
   display: inline-block;
 }
 
+.kit > button {
+  font-size: 12pt;
+  padding: 10px;
+}
+
 .kit div.kitHeader {
-  border-bottom: 1px solid var(--accent-lighter-blue);
+  border-bottom: 1px solid var(--accent-lighter-pink);
   margin-left: -1em;
   margin-right: -1em;
   padding: 1em 1em .5em 3em;
@@ -41,7 +47,7 @@
   font-weight: 900;
   padding: .5em 1em;
   position: absolute;
-  right: 15px;
+  right: 30px;
   bottom: -1px;
   text-align: center;
   width: 20%;
@@ -66,7 +72,7 @@
   border-color: var(--accent-grey);
 }
 .kitBasic div.kitHeader {
-  background-color: var(--accent-grey);
+  background: var(--accent-grey);
 }
 .kitBasic button[type="submit"] {
   background-color: var(--accent-grey);
@@ -79,7 +85,11 @@
   border-color: var(--accent-indigo);
 }
 .kitComfort div.kitHeader {
+  color: var(--accent-light-grey);
   background-color: var(--accent-indigo);
+}
+.kitComfort div.kitHeader .kitPrice {
+  color: var(--accent-black);
 }
 .kitComfort button[type="submit"] {
   background-color: var(--accent-indigo);
@@ -89,16 +99,17 @@
 }
 
 .kitSocial {
-  border-color: var(--accent-blue);
+  border-color: var(--accent-pink);
 }
 .kitSocial div.kitHeader {
-  background-color: var(--accent-blue);
+  color: white;
+  background-color: var(--accent-pink);
 }
 .kitSocial button[type="submit"] {
-  background-color: var(--accent-blue);
+  background-color: var(--accent-pink);
 }
 .kitSocial button[type="submit"]:hover {
-  background-color: var(--accent-light-blue);
+  background-color: var(--accent-light-pink);
 }
 
 .kitPremium {
@@ -125,4 +136,82 @@
 }
 .kitCustom button[type="submit"]:hover {
   background: var(--accent-lighter-pink);
+}
+
+
+.kitAdvice {
+  margin-left: 64px;
+  margin-right: -16px;
+  padding: 0 16px 16px 16px;
+  border: 2px solid transparent;
+  border-right: none;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  box-shadow: 0 0 15px 0 rgba(48,112,205,0.4);
+  overflow: hidden;
+}
+
+.kitAdvice.recommended {
+  border-color: var(--accent-orange);
+}
+.kitAdvice.popular {
+  border-color: var(--accent-light-red);
+}
+.kitAdvice.flexible {
+  border-color: var(--accent-lighter-blue);
+}
+
+.kitAdviceHeader {
+  display: block;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  margin: 0 -16px 16px -16px;
+  padding: 8px 8px 8px 16px;
+  font-size: 15pt;
+  font-weight: bold;
+  color: white;
+}
+
+.kitAdviceHeader.recommended {
+  border-color: var(--accent-orange);
+  background-color: var(--accent-orange);
+}
+.kitAdviceHeader.popular {
+  border-color: var(--accent-light-red);
+  background-color: var(--accent-light-red);
+}
+.kitAdviceHeader.flexible {
+  color: var(--accent-black);
+  border-color: var(--accent-lighter-blue);
+  background-color: var(--accent-lighter-blue);
+}
+
+.kitRibbon {
+  z-index: 1;
+  width: 12vw;
+  color: white;
+  box-shadow: 0px 7px 15px 0px rgba(0,0,0,0.2);
+  position: absolute;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  top: 25px;
+  right: -50px;
+  left: auto;
+  transform: rotate(45deg);
+  overflow: hidden;
+}
+
+.kitRibbon > i.material-icons {
+  vertical-align: middle;
+}
+
+.kitRibbon.recommended {
+  background-color: var(--accent-orange);
+}
+.kitRibbon.popular {
+  background-color: var(--accent-light-red);
+}
+.kitRibbon.flexible {
+  background-color: var(--accent-lighter-blue);
 }

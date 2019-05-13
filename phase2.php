@@ -1,4 +1,4 @@
-<?php // UTF-8 marker äöüÄÖÜß€
+<?php	// UTF-8 marker äöüÄÖÜß€
 /**
  * @category File
  * @package  Bestelldienst
@@ -24,14 +24,15 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-class Phase0 extends Page
+
+class Phase2 extends Page
 {
     /**
      * Instantiates members (to be defined above).
      * Calls the constructor of the parent i.e. page class.
      * So the database connection is established.
      *
-     * @return void
+     * @return null
      */
     protected function __construct()
     {
@@ -44,7 +45,7 @@ class Phase0 extends Page
      * Calls the destructor of the parent i.e. page class.
      * So the database connection is closed.
      *
-     * @return void
+     * @return null
      */
     protected function __destruct()
     {
@@ -55,7 +56,9 @@ class Phase0 extends Page
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
-     * @return void
+     * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+     *
+     * @return null
      */
     protected function getViewData()
     {
@@ -65,89 +68,106 @@ class Phase0 extends Page
     /**
      * Generiert Navigationsleiste.
      * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
-     *
-     * @return void
+     * @return null
      */
     protected function generateNavigationBar()
     {
         echo <<<HTML
         <ul class="navlist">
-            <li class="active"><a href="#">Phase 1</a></li>
+            <li><a href="#">Phase 1</a></li>
             <li><a href="#">Phase 1-2</a></li>
-            <li><a href="#">Phase 3</a></li>
+            <li class="active"><a href="#">Phase 3</a></li>
         </ul>
 HTML;
     }
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
-     *
-     * @return void
+     * @return null
      */
     protected function generatePageDescription()
     {
-        echo <<<HTML
+        echo<<<HTML
         <section>
-            <figure>
-                <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
-            </figure>
-            <span class="sectionHeader">GenoCheck&trade; bestellen</span>
-            <p>
-                Fordern Sie heute ihren <strong>kostenlosen</strong> GenoChoice&trade;-Gentest an.<br> Ein Team
-                aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die
-                Stärken und Schwächen ihres zukünftigen Kindes.
-            </p>
+          <span class="sectionHeader">Ihre GenoCheck&trade;-Ergebnisse</span>
+          <p>
+            Diese Übersicht zeigt die Ergebnisse der labortechnischen Untersuchung Ihres persönlichen GenoCheck&trade;-Tests.<br>
+            Hier werden Ihnen die möglichen Genotypen eines auf Ihren Genen basierendem Babys angezeigt.
+          </p>
         </section>
 HTML;
     }
 
-    /**
-     * Generiert <form> zur Eingabe der Daten, die für die GenoCheck-Bestellung nötig sind
-     *
-     * @return void
-     */
-    protected function generateGenoCheckForm()
-    {
-        echo <<<HTML
-      <section>
-        <span class="sectionHeader">Persönliche Daten</span>
-        <form name="genoCheckForm[]" action="phase1.php" method="post">
-          <div class="inputTextGroup">
-            <input type="text" id="inputFirstName" name="inputFirstName" placeholder="" required>
-            <label for="inputFirstName">Vorname</label>
-          </div>
-
-          <div class="inputTextGroup">
-            <input type="text" id="inputLastName" name="inputLastName" placeholder="" required>
-            <label for="inputLastName">Name</label>
-          </div>
-
-          <div class="inputTextGroup">
-            <input type="text" id="inputStreet" name="inputStreet" placeholder="" required>
-            <label for="inputStreet">Straße & Hausnummer</label>
-          </div>
-
-          <div class="inputTextGroup">
-            <input type="text" id="inputCity" name="inputCity" placeholder="" required>
-            <label for="inputCity">Stadt</label>
-          </div>
-
-          <div class="inputTextGroup">
-            <input type="text" id="inputZipcode" name="inputZipcode" placeholder="" pattern="\d{5}" required>
-            <label for="inputZipcode">PLZ</label>
-          </div>
-
-          <div class="inputTextGroup">
-            <input type="email" id="inputEmail" name="inputEmail" placeholder="" required>
-            <label for="inputEmail">E-Mail</label>
-          </div>
-
-          <button class="floatright" type="submit">
-            Bestellen
-          </button>
-        </form>
-      </section>
+    protected function generateGenoTypes() {
+        echo<<<HTML
+        <section class="genoCheckResultsGenotypes">
+             <span class="sectionHeader">Genotypen</span>
+        
+             <h2>Augen</h2>
+             <ul class="list">
+                 <li class="green">Grün</li>
+                 <li class="blue">Blau</li>
+                 <li class="grey disabled">Grau</li>
+                 <li class="brown disabled">Braun</li>
+             </ul>
+        
+             <h2>Haarfarbe</h2>
+             <ul class="list">
+                <li class="blonde">Blond</li>
+                <li class="brown">Braun</li>
+                <li class="black">Schwarz</li>
+                <li class="red disabled">Rot</li>
+             </ul>
+        </section>
 HTML;
+
+    }
+
+    protected function generateRisks() {
+        echo<<<HTML
+        <section class="genoCheckResultsRisks">
+          <span class="sectionHeader">Risiken</span>
+          <p>
+            Unser patentiertes GenoCheck&trade;-Verfahren ermöglicht eine
+            Risikobeurteilung zu diversen Erkrankungen in der Lebensspanne Ihres Babys.<br>
+            Für nicht erblich bedingte Krankheiten wird das potentielle Verhalten Ihres Kindes errechnet
+            und daraus ein Risikowert berechnet.
+          </p>
+    
+          <h3>Lungenkrebs</h3>
+          <div class="disease">
+            <meter value="45" min="0" max="100" low="15" optimum="5" high="60"></meter>
+            <label for="meterLungcancer">45% - bedenklich</label>
+          </div>
+          <h3>Alkoholismus</h3>
+          <div class="disease">
+            <meter value="10" min="0" max="100" low="15" optimum="5" high="60"></meter>
+            <label for="meterLungcancer">10% - unbedenklich</label>
+          </div>
+          <h3>Exzessiver Drogenkonsum</h3>
+          <div class="disease">
+            <meter value="3" min="0" max="100" low="15" optimum="5" high="60"></meter>
+            <label for="meterLungcancer">3% - unbedenklich</label>
+          </div>
+          <h3>Ametropie (Fehlsichtigkeit)</h3>
+          <div class="disease">
+            <meter value="80" min="0" max="100" low="15" optimum="5" high="60"></meter>
+            <label for="meterLungcancer">80% - kritisch</label>
+          </div>
+        </section>
+HTML;
+
+    }
+
+    protected function generateContinueButton() {
+        echo<<<HTML
+        <section>
+          <form action="phase3.html">
+            <button type="submit">Weiter zur Paketbuchung</button>
+          </form>
+        </section>
+HTML;
+
 
     }
 
@@ -158,17 +178,18 @@ HTML;
      * all views contained is generated.
      * Finally the footer is added.
      *
-     * @return void
+     * @return null
      */
     protected function generateView()
     {
         $this->getViewData();
-        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; bestellen');
+        $this->generatePageHeader('GenoChoice&trade; - Ihre GenoCheck&trade;-Ergebnisse');
         $this->generateNavigationBar();
         $this->generatePageTitle();
-
         $this->generatePageDescription();
-        $this->generateGenoCheckForm();
+        $this->generateGenoTypes();
+        $this->generateRisks();
+        $this->generateContinueButton();
 
         $this->generatePageFooter(null);
     }
@@ -180,16 +201,15 @@ HTML;
      * If the page contains blocks, delegate processing of the
      * respective subsets of data to them.
      *
-     * @return void
+     * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
+     *
+     * @return null
+     * @throws Exception Fehler, falls magic quotes an sind
      */
     protected function processReceivedData()
     {
-        try {
-            parent::processReceivedData();
-        } catch (Exception $e) {
-            echo "Fehler beim Verarbeiten der Daten: " . $e;
-        }
-        // to do: call processReceivedData() for all members
+        parent::processReceivedData();
+
     }
 
     /**
@@ -202,12 +222,12 @@ HTML;
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
      *
-     * @return void
+     * @return null
      */
     public static function main()
     {
         try {
-            $page = new Phase0();
+            $page = new Phase2();
             $page->processReceivedData();
             $page->generateView();
         } catch (Exception $e) {
@@ -219,10 +239,11 @@ HTML;
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-Phase0::main();
+Phase2::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).
 // Not specifying the closing ? >  helps to prevent accidents
 // like additional whitespace which will cause session
 // initialization to fail ("headers already sent").
+//? >

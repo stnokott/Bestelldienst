@@ -1,84 +1,128 @@
 <!DOCTYPE html>
 <html lang="de">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>GenoChoice&trade; - Optionale Pakete buchen</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
-  </head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:500,900" rel="stylesheet">
+</head>
 
-  <body>
-    <ul class="navlist">
-      <li class="active"><a href="#">Phase 1</a></li>
-      <li><a href="#">Phase 1-2</a></li>
-      <li><a href="#">Phase 2</a></li>
-    </ul>
+<body>
+<ul class="navlist">
+    <li class="active"><a href="#">Phase 1</a></li>
+    <li><a href="#">Phase 1-2</a></li>
+    <li><a href="#">Phase 2</a></li>
+</ul>
 
-    <header>
-      <span class="headerTitle">Genochoice</span><br>
-      <span class="headerSubtitle">Legacy by Design</span>
-    </header>
+<header>
+    <span class="headerTitle">Genochoice</span><br>
+    <span class="headerSubtitle">Legacy by Design</span>
+</header>
 
-    <section>
-      <!-- POST, damit bereits gewählte optionale Pakete an den Server übermittelt werden können -->
-      <form class="changeKit" action="phase3.html" method="post">
-        <label for="btnChangeKit"><strong>Gewähltes Kit: [GEWÄHLTES KIT]</strong></label>
-        <button type="submit">Ändern</button>
-      </form>
-    </section>
-
-    <section>
-      <span class="sectionHeader">Buchen Sie optionale Zusatzpakete</span>
-      <form action="phase5.html" name="selectedOptionals[]" method="post">
-
-        <section class="optionalPackage">
-          <h2>Klinische Geburt</h2>
-          <ul>
-            <li>Ersetzt klassiche Inkubation</li>
-            <li>Leihmutter trägt Ihren Embryo aus</li>
-          </ul>
-          <h3>499.99€</h3>
-          <input type="button" value="In den Warenkorb">
-        </section>
-        <hr>
-        <section class="optionalPackage">
-          <h2>Lieferung per Drohne</h2>
-          <ul>
-            <li>Kein persönlicher Termin in der Klinik nötig</li>
-            <li>Humane Lieferung in gepolstertem Behälter</li>
-          </ul>
-          <h3>249.99€</h3>
-          <input type="button" value="Bereits in Warenkorb" disabled>
-        </section>
-        <hr>
-        <section class="optionalPackage">
-          <h2>S.T.O.R.C.H.</h2>
-          <!-- TODO: Wieso sind beide </u> Tags nötig, um ein zusätzliches Leerzeichen zu verhindern? -->
-          <h4><u>S</u>upra <u>T</u>ransportabler <u>O</u>rnithologisch <u>R</u>elevanter <u>C</u>iconia <u>H</u>abilitatet<u></u><u></u></h4>
-          <ul>
-            <li>Bleiben Sie traditionsbewusst mit unserer flexiblen Luftflotte</li>
-            <li>Komfortable Lieferung in Leinenbeutel passend zum Geschlecht des Kindes</li>
-          </ul>
-          <h5>Disclaimer: Lieferung erfolgt durch den Schornstein</h5>
-          <h3>0.99€</h3>
-          <input type="button" name="btnStork" value="In den Warenkorb">
-        </section>
-        <hr>
-
-        <!-- Warenkorb -->
-        <h3>Warenkorb</h3>
-        <select class="list shoppingCart" name="shoppingCart[]" size="5" style="width:200px" multiple disabled>
-          <option value="[chosenKit]" selected>[GEWÄHLTES KIT] - [PREIS]</option>
-          <option value="packageDrone" selected>Lieferung Drohne - 249.99€</option>
-        </select>
-        <p>Gesamt: 123456.99€</p>
-        <hr>
-        <button type="submit">Fortfahren</button>
-      </form>
-    </section>
-  </body>
+<section>
+    <span class="sectionHeader">Ihr Kit wählen</span>
+    <div class="kitContainer">
+        <div class="bookable">
+            <div class="bookableHeader kitBasic"><img src="img/wrench.svg" alt=""/>Basic Kit</div>
+            <ul>
+                <li>Attribute aus naturgegebenem Genpool</li>
+                <li>Kein Einfluss auf negative Attribute</li>
+            </ul>
+            <button class="noshadow" value="basic">5999.99€</button>
+        </div>
+        <div class="bookable">
+            <div class="bookableHeader kitComfort"><img src="img/couch.svg" alt=""/>Comfort Kit</div>
+            <ul>
+                <li>Visuelle Attribute individuell wählbar</li>
+                <li>Reduzierte Krankheitswahrscheinlichkeiten</li>
+            </ul>
+            <button class="noshadow" value="comfort">7999.99€</button>
+        </div>
+        <div class="bookable">
+            <div class="bookableHeader kitSocial"><img src="img/laugh.svg" alt=""/>Social Kit</div>
+            <ul>
+                <li>Visuelle Attribute individuell wählbar</li>
+                <li>Erhöhte Werte in sozial anerkannten Bereichen</li>
+            </ul>
+            <button class="noshadow" value="social">8499.99€</button>
+        </div>
+        <div class="bookable">
+            <div class="bookableHeader kitPremium"><img src="img/trophy.svg" alt=""/>Premium Kit</div>
+            <ul>
+                <li>Visuelle Attribute individuell wählbar</li>
+                <li>Inkl. Comfort Kit</li>
+                <li>Inkl. Social Kit</li>
+            </ul>
+            <button class="noshadow" value="premium">14499.99€</button>
+        </div>
+        <div class="bookable stretched">
+            <div class="bookableHeader kitCustom"><img src="img/growth.svg" alt=""/>Custom Kit</div>
+            <ul>
+                <li>Visuelle Attribute individuell wählbar</li>
+                <li>Charakter-Attribute individuell wählbar</li>
+                <li>Krankheiten eliminiert</li>
+            </ul>
+            <button class="noshadow" value="premium">24499.99€</button>
+        </div>
+    </div>
+    <div class="sectionHeader">Optionale Zusatzpakete buchen</div>
+    <div class="optionalContainer">
+        <div class="bookable">
+            <div class="bookableHeader optional"><img src="img/pregnant.svg" alt=""/>Klinische Geburt</div>
+            <ul>
+                <li>Ersetzt klassiche Inkubation</li>
+                <li>Leihmutter trägt Ihren Embryo aus</li>
+            </ul>
+            <button class="noshadow" value="clinic">499.99€</button>
+        </div>
+        <div class="bookable">
+            <div class="bookableHeader optional"><img src="img/drone-delivery.svg" alt=""/>Lieferung per Drohne</div>
+            <ul>
+                <li>Kein Termin in Klinik nötig</li>
+                <li>Gepolsterter Behälter</li>
+            </ul>
+            <button class="noshadow" value="drone">249.99€</button>
+        </div>
+        <div class="bookable">
+            <div class="bookableHeader optional"><img src="img/heron.svg" alt=""/>Lieferung per Storch</div>
+            <ul>
+                <li>Traditionsbewusst</li>
+                <li>Komfortable Lieferung in Leinenbeutel</li>
+            </ul>
+            <button class="noshadow" value="heron">0.99€</button>
+        </div>
+    </div>
+    <div class="sectionHeader">Bestellung prüfen</div>
+    <div class="shoppingCartHeader">Warenkorb</div>
+    <div class="shoppingCart">
+        <div class="cartItem kitSocial">
+            <img src="img/laugh.svg" alt=""/>
+            <div class="cartItemName">Social Kit</div>
+            <div class="cartItemPrice">8499.99€</div>
+            <button class="noshadow" value="changeKit"><i class="material-icons">swap_horiz</i></button>
+        </div>
+        <div class="cartItem optional">
+            <img src="img/pregnant.svg" alt=""/>
+            <div class="cartItemName">Klinikgeburt</div>
+            <div class="cartItemPrice">499.99€</div>
+            <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
+        </div>
+        <div class="cartItem optional">
+            <img src="img/drone-delivery.svg" alt=""/>
+            <div class="cartItemName">Lieferung per Drohne</div>
+            <div class="cartItemPrice">249.99€</div>
+            <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
+        </div>
+        <div class="shoppingCartTotal">
+            <span class="title">Gesamt:</span>
+            <span class="value">12345.67€</span>
+        </div>
+    </div>
+    <button class="floatright" value="continue">Weiter <i class="material-icons">forward</i></button>
+</section>
+</body>
 
 </html>

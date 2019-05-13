@@ -23,7 +23,7 @@ function loadStatus() {
     xmlhttp.open("GET", "getstatus.php?userid="+selectedUserid, true);
     xmlhttp.send();
 }
-
+//SETSTATUSINTERVAL nutzen
 /**
  * "active"-Klasse von allen radioButtons entfernen
  * @param index Integer Index of Status to activate (0=sent, 1=delivered, 2=analysis, 3=done)
