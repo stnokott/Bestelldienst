@@ -49,7 +49,7 @@ abstract class Page
      */
     protected function __construct()
     {
-        $this->_database = new mysqli("localhost", "website", "ewa2019sose", "bestelldienst");;
+        $this->_database = new mysqli("localhost", "website", "ewa2019sose", "bestelldienst");
         if ($this->_database->connect_error) {
             die("Connection failed: " . $this->_database->connect_error);
         }
@@ -116,7 +116,9 @@ HTML;
 
     /**
      * Outputs the end of the HTML-file i.e. /body etc.
+     * Fügt JavaScript am Ende der Datei ein
      *
+     * @param $jspath String Pfad der JavaScript-Datei
      * @return void
      */
     protected function generatePageFooter($jspath)
@@ -163,8 +165,7 @@ HTML;
     protected function getMySQLInsertString($table, $columns, $values) {
         $columns_string = join(", ", $columns);
         $values_string = join("', '", $values);
-        $string = "INSERT INTO ".$table." (".$columns_string.") VALUES ('".$values_string."')";
-        return $string;
+        return "INSERT INTO ".$table." (".$columns_string.") VALUES ('".$values_string."')";
     }
 } // end of class
 

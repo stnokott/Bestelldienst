@@ -200,6 +200,9 @@ HTML;
 
     protected function generateAgentMenu()
     {
+        $radioButtonGroup_active = "<div class=\"inputRadioGroup active\">";
+        $radioButtonGroup_notactive = "<div class=\"inputRadioGroup\">";
+
         echo <<<HTML
         <section>
           <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
@@ -218,10 +221,10 @@ HTML;
             </div>
 HTML;
         if ($this->selected_status == "0") {
-            echo "<div class=\"inputRadioGroup active\">";
+            echo $radioButtonGroup_active;
             echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusOrderConfirmed\" value=\"0\" checked>";
         } else {
-            echo "<div class=\"inputRadioGroup\">";
+            echo $radioButtonGroup_notactive;
             echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusOrderConfirmed\" value=\"0\">";
         }
         echo<<<HTML
@@ -230,10 +233,10 @@ HTML;
 
 HTML;
         if ($this->selected_status == "1") {
-            echo "<div class=\"inputRadioGroup active\">";
+            echo $radioButtonGroup_active;
             echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusSent\" value=\"1\" checked>";
         } else {
-            echo "<div class=\"inputRadioGroup\">";
+            echo $radioButtonGroup_notactive;
             echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusSent\" value=\"1\">";
         }
         echo<<<HTML
@@ -242,10 +245,10 @@ HTML;
 
 HTML;
         if ($this->selected_status == "2") {
-            echo "<div class=\"inputRadioGroup active\">";
+            echo $radioButtonGroup_active;
             echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusAnalysis\" value=\"2\" checked>";
         } else {
-            echo "<div class=\"inputRadioGroup\">";
+            echo $radioButtonGroup_notactive;
             echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusAnalysis\" value=\"2\">";
         }
         echo<<<HTML
@@ -303,6 +306,8 @@ HTML;
      */
     protected function processReceivedData()
     {
+        $ordersSelectKey = "genoCheckOrdersSelect";
+
         try {
             parent::processReceivedData();
         } catch (Exception $e) {
@@ -311,11 +316,11 @@ HTML;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // TO-DO in Javascript umlagern, um ohne Neuladen der Seite zu machen
             // Wende Änderungen an
-            $order_id = $_POST["genoCheckOrdersSelect"];
+            $order_id = $_POST[$ordersSelectKey];
             $new_status = $_POST["statusOrder"];
             $this->setStatusOrder($order_id, $new_status);
-        } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["genoCheckOrdersSelect"])) {
-            $this->selected_userid = $_GET["genoCheckOrdersSelect"];
+        } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET[$ordersSelectKey])) {
+            $this->selected_userid = $_GET[$ordersSelectKey];
         }
     }
 
