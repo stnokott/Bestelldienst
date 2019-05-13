@@ -84,14 +84,14 @@ HTML;
     protected function generateSectionStart() {
         echo<<<HTML
             <section>
-                <span class="sectionHeader">Ihr Kit wählen</span>
+                <span class="sectionHeader" id="chooseKitHeader">Ihr Kit wählen</span>
 HTML;
 
     }
 
     protected function generateAvailableKits() {
         echo<<<HTML
-            <div class="kitContainer">
+            <div id="kitContainer">
                 <div class="bookable">
                     <div class="bookableHeader kitBasic"><img src="img/wrench.svg" alt=""/>Basic Kit</div>
                     <ul>
@@ -132,7 +132,7 @@ HTML;
                         <li>Charakter-Attribute individuell wählbar</li>
                         <li>Krankheiten eliminiert</li>
                     </ul>
-                    <button class="noshadow" value="premium">24499.99€</button>
+                    <button class="noshadow" value="custom">24499.99€</button>
                 </div>
             </div>
 HTML;
@@ -140,10 +140,10 @@ HTML;
 
     protected function generateAvailableOptionals() {
         echo <<<HTML
-            <div class="sectionHeader">Optionale Zusatzpakete buchen</div>
-            <div class="optionalContainer">
+            <div class="sectionHeader" id="chooseOptionalsHeader">Optionale Zusatzpakete buchen</div>
+            <div id="optionalsContainer">
                 <div class="bookable">
-                    <div class="bookableHeader optional"><img src="img/pregnant.svg" alt=""/>Klinische Geburt</div>
+                    <div class="bookableHeader optional"><img src="img/pregnant.svg" alt=""/>Klinikgeburt</div>
                     <ul>
                         <li>Ersetzt klassiche Inkubation</li>
                         <li>Leihmutter trägt Ihren Embryo aus</li>
@@ -175,28 +175,16 @@ HTML;
             <div class="sectionHeader">Bestellung prüfen</div>
             <div class="shoppingCartHeader">Warenkorb</div>
             <div class="shoppingCart">
-                <div class="cartItem kitSocial">
-                    <img src="img/laugh.svg" alt=""/>
-                    <div class="cartItemName">Social Kit</div>
-                    <div class="cartItemPrice">8499.99€</div>
+                <div class="cartItem kitBasic" id="shoppingCartKit">
+                    <img src="img/wrench.svg" alt=""/>
+                    <div class="cartItemName">Basic Kit</div>
+                    <div class="cartItemPrice">5999.99€</div>
                     <button class="noshadow" value="changeKit"><i class="material-icons">swap_horiz</i></button>
                 </div>
-                <div class="cartItem optional">
-                    <img src="img/pregnant.svg" alt=""/>
-                    <div class="cartItemName">Klinikgeburt</div>
-                    <div class="cartItemPrice">499.99€</div>
-                    <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
-                </div>
-                <div class="cartItem optional">
-                    <img src="img/drone-delivery.svg" alt=""/>
-                    <div class="cartItemName">Lieferung per Drohne</div>
-                    <div class="cartItemPrice">249.99€</div>
-                    <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
-                </div>
-                <div class="shoppingCartTotal">
-                    <span class="title">Gesamt:</span>
-                    <span class="value">12345.67€</span>
-                </div>
+            </div>
+            <div class="shoppingCartTotal">
+                <span class="title">Gesamt:</span>
+                <span class="value">5999.99€</span>
             </div>
 HTML;
     }
