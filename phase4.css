@@ -218,9 +218,6 @@
 
 .shoppingCart > .cartItem#shoppingCartKit > .cartItemPrice {
     border-style: none;
-}
-
-.shoppingCart > .cartItem#shoppingCartKit > .cartItemPrice {
     background-color: white;
 }
 
