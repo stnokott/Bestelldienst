@@ -231,7 +231,7 @@ HTML;
         $this->generateShoppingCart();
         $this->generateSectionEnd();
 
-        $this->generatePageFooter(null);
+        $this->generatePageFooter('phase4.js');
     }
 
     /**
