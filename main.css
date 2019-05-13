@@ -471,12 +471,6 @@ button.noshadow {
   box-shadow: none;
 }
 
-button:active, button:focus {
-  outline: none;
-  color: white;
-  background: var(--accent-blue);
-}
-
 button:not(:disabled):hover {
   color: white;
   background: var(--accent-light-blue);

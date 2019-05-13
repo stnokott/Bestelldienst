@@ -62,10 +62,11 @@ class StatusHelper extends Page
         $query = "SELECT status FROM genocheckorder WHERE userid='" . $userid . "'";
         $result = $this->_database->query($query);
 
-        while ($row = $result->fetch_assoc()) {
+        if ($row = $result->fetch_assoc()) {
             return $row["status"];
+        } else {
+            return null;
         }
-        return null;
     }
 
     /**
@@ -121,7 +122,7 @@ class StatusHelper extends Page
         header("Content-Type: application/json; charset=UTF-8");
         try {
             $page = new StatusHelper();
-            //$page->processReceivedData();
+            $page->processReceivedData();
             $page->getStatus();
         } catch (Exception $e) {
             header("Content-type: text/plain; charset=UTF-8");

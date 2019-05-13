@@ -37,8 +37,6 @@ class Phase1 extends Page
      * Instantiates members (to be defined above).
      * Calls the constructor of the parent i.e. page class.
      * So the database connection is established.
-     *
-     * @return null
      */
     protected function __construct()
     {
@@ -50,8 +48,6 @@ class Phase1 extends Page
      * Cleans up what ever is needed.
      * Calls the destructor of the parent i.e. page class.
      * So the database connection is closed.
-     *
-     * @return null
      */
     protected function __destruct()
     {
@@ -63,8 +59,6 @@ class Phase1 extends Page
      * Data is stored in an easily accessible way e.g. as associative array.
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
-     *
-     * @return null
      */
     protected function getViewData()
     {
@@ -74,7 +68,6 @@ class Phase1 extends Page
     /**
      * Generiert Navigationsleiste.
      * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
-     * @return null
      */
     protected function generateNavigationBar()
     {
@@ -90,7 +83,6 @@ HTML;
     /**
      * Generiert kurze <section>, um zu zeigen, dass beim Aufruf dieser Seite mit Hilfe der
      * POST-Parameter ein neuer User erstellt wurde
-     * @return null
      */
     protected function generateNewUser()
     {
@@ -103,7 +95,6 @@ HTML;
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
-     * @return null
      */
     protected function generatePageDescription()
     {
@@ -121,7 +112,6 @@ HTML;
     /**
      * Generiert Ansicht zur Verfolgung des GenoCheck-Fortschritts für den Nutzer
      * Verwendet das order_status-Attribut zur (De-)Aktivierung der Elemente
-     * @return null
      */
     protected function generateGenoCheckProgress()
     {
@@ -177,7 +167,7 @@ HTML;
                     </ul>
                 </div>
 
-                <form action="phase2.html" method="post">
+                <form action="phase2.php">
                     <button type="submit" {$echo_button_attr}>Zu Ihren Ergebnissen</button>
                 </form>
             </section>
@@ -269,7 +259,6 @@ HTML;
      * @param  String $address1  Straße & Hausnummer des Nutzers
      * @param  String $address2  Stadt des Nutzers
      * @param  String $address3  PLZ des Nutzers
-     * @return null
      */
     protected function createUser($email, $firstname, $lastname, $address1, $address2, $address3) {
 
@@ -303,8 +292,6 @@ HTML;
      * of the page ("view") is inserted and -if avaialable- the content of
      * all views contained is generated.
      * Finally the footer is added.
-     *
-     * @return null
      */
     protected function generateView()
     {
@@ -330,8 +317,6 @@ HTML;
      * respective subsets of data to them.
      *
      * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
-     *
-     * @return null
      * @throws Exception Fehler, falls magic quotes an sind
      */
     protected function processReceivedData()
@@ -367,7 +352,6 @@ HTML;
             // Lädt die Seite nach setzen der Parameter neu, um POST-Popup bei Neuladen der Seite zu verhindern
             header('Location: phase1.php');
         }
-        return;
     }
 
     /**
@@ -379,8 +363,6 @@ HTML;
      * indicate that function as the central starting point.
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
-     *
-     * @return null
      */
     public static function main()
     {

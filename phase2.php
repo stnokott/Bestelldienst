@@ -31,8 +31,6 @@ class Phase2 extends Page
      * Instantiates members (to be defined above).
      * Calls the constructor of the parent i.e. page class.
      * So the database connection is established.
-     *
-     * @return null
      */
     protected function __construct()
     {
@@ -44,8 +42,6 @@ class Phase2 extends Page
      * Cleans up what ever is needed.
      * Calls the destructor of the parent i.e. page class.
      * So the database connection is closed.
-     *
-     * @return null
      */
     protected function __destruct()
     {
@@ -68,7 +64,6 @@ class Phase2 extends Page
     /**
      * Generiert Navigationsleiste.
      * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
-     * @return null
      */
     protected function generateNavigationBar()
     {
@@ -83,7 +78,6 @@ HTML;
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
-     * @return null
      */
     protected function generatePageDescription()
     {
@@ -177,8 +171,6 @@ HTML;
      * of the page ("view") is inserted and -if avaialable- the content of
      * all views contained is generated.
      * Finally the footer is added.
-     *
-     * @return null
      */
     protected function generateView()
     {
@@ -202,8 +194,6 @@ HTML;
      * respective subsets of data to them.
      *
      * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
-     *
-     * @return null
      * @throws Exception Fehler, falls magic quotes an sind
      */
     protected function processReceivedData()
@@ -221,8 +211,6 @@ HTML;
      * indicate that function as the central starting point.
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
-     *
-     * @return null
      */
     public static function main()
     {
