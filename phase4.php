@@ -171,7 +171,7 @@ HTML;
     }
 
     protected function generateShoppingCart() {
-        echo<<<HTML
+        echo <<<HTML
             <div class="sectionHeader">Bestellung prüfen</div>
             <div class="shoppingCartHeader">Warenkorb</div>
             <div class="shoppingCart">
@@ -180,6 +180,24 @@ HTML;
                     <div class="cartItemName">Basic Kit</div>
                     <div class="cartItemPrice">5999.99€</div>
                     <button class="noshadow" value="changeKit"><i class="material-icons">swap_horiz</i></button>
+                </div>
+                <div id="clinic" class="cartItem optional">
+                    <img src="img/pregnant.svg" alt=""/>
+                    <div class="cartItemName">Klinikgeburt</div>
+                    <div class="cartItemPrice">499.99€</div>
+                    <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
+                </div>
+                <div id="drone" class="cartItem optional">
+                    <img src="img/drone-delivery.svg" alt=""/>
+                    <div class="cartItemName">Lieferung per Drohne</div>
+                    <div class="cartItemPrice">249.99€</div>
+                    <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
+                </div>
+                <div id="heron" class="cartItem optional">
+                    <img src="img/heron.svg" alt=""/>
+                    <div class="cartItemName">Lieferung per Storch</div>
+                    <div class="cartItemPrice">0.99€</div>
+                    <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
                 </div>
             </div>
             <div class="shoppingCartTotal">
@@ -191,7 +209,9 @@ HTML;
 
     protected function generateSectionEnd() {
         echo<<<HTML
-            <button class="floatright" value="continue">Weiter <i class="material-icons">forward</i></button>
+            <form action="phase5.html" method="post">
+                <button type="submit" class="floatright" value="continue">Weiter <i class="material-icons">forward</i></button>
+            </form>
         </section>
 HTML;
 
