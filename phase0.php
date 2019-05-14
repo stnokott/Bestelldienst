@@ -7,6 +7,8 @@
  * @license  http://www.h-da.de  none
  */
 
+session_start();
+
 require_once './Page.php';
 
 /**

@@ -62,8 +62,8 @@ class Phase1 extends Page
      */
     protected function getViewData()
     {
-      if(isset($_SESSION["userid"])){
-        $this->order_status = $this->getUserOrderStatus($_SESSION["userid"]);
+      if(isset($_SESSION['userid'])){
+        $this->order_status = $this->getUserOrderStatus($_SESSION['userid']);
       } else{
         //Falls user nicht vorhaden, redirect auf Startseite
         header('Location: phase0.php');
@@ -356,7 +356,7 @@ HTML;
 
             $userid = $this->getUserId($email);
 
-            $_SESSION["userid"] = $userid;
+            $_SESSION['userid'] = $userid;
 
             if ($this->new_user && !$this->checkUserHasGenoCheckOrder($userid)) {
                 // User ist neu und hat noch kein GenoCheck bestellt
