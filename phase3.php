@@ -233,7 +233,7 @@ HTML;
     {
         $this->getViewData();
         $this->generatePageHeader('GenoChoice&trade; - Pakete buchen');
-        $this->generateNavigationBar();
+        $this->generateNavigationBar(3);
         $this->generatePageTitle();
 
         $this->generateSectionStart();
