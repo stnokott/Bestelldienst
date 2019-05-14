@@ -59,6 +59,10 @@ class StatusHelper extends Page
      */
     protected function getUserOrderStatus($userid)
     {
+        if (!$this->checkUserExists($userid)) {
+            return null;
+        }
+
         $query = "SELECT status FROM genocheckorder WHERE userid='" . $userid . "'";
         $result = $this->_database->query($query);
 
@@ -67,6 +71,19 @@ class StatusHelper extends Page
         } else {
             return null;
         }
+    }
+
+    /**
+     * Prüft, ob der Nutzer mit der angegebenen Email-Adresse einen Eintrag
+     * in der User-Datenbank hat
+     * @param  String $userid ID des zu prüfenden Nutzers
+     * @return Boolean Ob der User in der Datenbank besteht
+     */
+    protected function checkUserExists($userid) {
+        $query = "SELECT userid FROM user WHERE userid='".$userid."'";
+        $result = $this->_database->query($query);
+
+        return !$result->fetch_assoc() == null;
     }
 
     /**

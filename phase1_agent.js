@@ -11,7 +11,7 @@ function loadStatus() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             let statusJSON = JSON.parse(this.responseText);
-            if (statusJSON.length === 0) {
+            if (statusJSON === null || statusJSON.length === 0) {
                 // Status nicht vorhanden
                 return;
             }
