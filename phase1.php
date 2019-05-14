@@ -62,12 +62,12 @@ class Phase1 extends Page
      */
     protected function getViewData()
     {
-      if(isset($_SESSION['userid'])){
-        $this->order_status = $this->getUserOrderStatus($_SESSION['userid']);
-      } else{
-        //Falls user nicht vorhaden, redirect auf Startseite
-        header('Location: phase0.php');
-      }
+        if(isset($_SESSION["userid"])){
+            $this->order_status = $this->getUserOrderStatus($_SESSION["userid"]);
+        } else{
+            //Falls user nicht vorhaden, redirect auf Startseite
+            header('Location: phase0.php');
+        }
     }
 
     /**
@@ -187,7 +187,7 @@ HTML;
     protected function checkPostParameters() {
         // prüfe, ob alle Werte vorhanden
         $check = array("inputFirstName", "inputLastName", "inputStreet",
-                        "inputCity", "inputZipcode", "inputEmail");
+            "inputCity", "inputZipcode", "inputEmail");
 
         $valid = true;
         foreach ($check as $checkString) {
@@ -356,7 +356,7 @@ HTML;
 
             $userid = $this->getUserId($email);
 
-            $_SESSION['userid'] = $userid;
+            $_SESSION["userid"] = $userid;
 
             if ($this->new_user && !$this->checkUserHasGenoCheckOrder($userid)) {
                 // User ist neu und hat noch kein GenoCheck bestellt
@@ -379,6 +379,7 @@ HTML;
      */
     public static function main()
     {
+        session_start();
         try {
             $page = new Phase1();
             $page->processReceivedData();

@@ -7,8 +7,6 @@
  * @license  http://www.h-da.de  none
  */
 
-session_start();
-
 require_once './Page.php';
 
 /**
@@ -195,6 +193,16 @@ HTML;
     }
 
     /**
+     * Prüfe, ob Session-Variable bereits gesetzt ist.
+     * Falls ja, gehe zu phase1.php
+     */
+    protected function checkUserWasHereBefore() {
+        if (isset($_SESSION["userid"])) {
+            header("Location: phase1.php");
+        }
+    }
+
+    /**
      * This main-function has the only purpose to create an instance
      * of the class and to get all the things going.
      * I.e. the operations of the class are called to produce
@@ -208,8 +216,10 @@ HTML;
      */
     public static function main()
     {
+        session_start();
         try {
             $page = new Phase0();
+            $page->checkUserWasHereBefore();
             $page->processReceivedData();
             $page->generateView();
         } catch (Exception $e) {
