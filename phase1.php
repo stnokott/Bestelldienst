@@ -30,7 +30,6 @@ class Phase1 extends Page
     private $new_user = false;
 
     // TO-DO: dynamisch bestimmen über Session
-    //private $user_id = 1;
     private $order_status; // 0 = confirmed, 1 = sent, 2 = analysis, 3 = done
 
     /**
