@@ -229,7 +229,7 @@ HTML;
     protected function generateView()
     {
         $this->getViewData();
-        $this->generatePageHeader('GenoChoice&trade; - Optionale Pakete buchen');
+        $this->generatePageHeader('GenoChoice&trade; - Pakete buchen');
         $this->generateNavigationBar();
         $this->generatePageTitle();
 
