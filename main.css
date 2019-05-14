@@ -36,13 +36,13 @@
 .material-icons.md-24 {font-size: 24px;}
 /* Default */
 .material-icons.md-36 {
-  font-size: 36px;
+    font-size: 36px;
 }
 .material-icons.md-48 {font-size: 48px;}
 
 @font-face {
-  font-family: alien;
-  src: url("./fonts/alienleague.ttf");
+    font-family: alien;
+    src: url("./fonts/alienleague.ttf");
 }
 
 /*
@@ -59,407 +59,407 @@ Schriftarten -> font-weight
 */
 
 body {
-  padding: 0;
-  margin: 0 0 1em 0;
-  font-family: Roboto, sans-serif;
-  font-weight: 500; /* medium */
-  background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%) fixed;
-  color: var(--accent-black);
+    padding: 0;
+    margin: 0 0 1em 0;
+    font-family: Roboto, sans-serif;
+    font-weight: 500; /* medium */
+    background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%) fixed;
+    color: var(--accent-black);
 }
 
 .navlist {
-  /*noinspection CssBrowserCompatibilityForProperties*/
-  backdrop-filter: blur(6px);
-  width: 100%;
-  list-style-type: none;
-  margin: 0 0 2em 0;
-  padding: 0;
-  background-color: var(--accent-lighter-blue);
-  overflow: hidden;
-  z-index: 1000;
+    /*noinspection CssBrowserCompatibilityForProperties*/
+    backdrop-filter: blur(6px);
+    width: 100%;
+    list-style-type: none;
+    margin: 0 0 2em 0;
+    padding: 0;
+    background-color: var(--accent-lighter-blue);
+    overflow: hidden;
+    z-index: 1000;
 
-  position: fixed;
-  top: 0;
+    position: fixed;
+    top: 0;
 }
 
 .navlist ~ header {
-  margin-top: 7vh;
+    margin-top: 7vh;
 }
 
 .navlist li {
-  display: inline-block; /* Horizontale Anordnung */
-  margin-right: -5px;
-  top: 0;
-  padding: 0 .25em 0 .25em;
-  background-color: var(--accent-lighter-blue);
-  width: 100px;
+    display: inline-block; /* Horizontale Anordnung */
+    margin-right: -5px;
+    top: 0;
+    padding: 0 .25em 0 .25em;
+    background-color: var(--accent-lighter-blue);
+    width: 100px;
 
-  transition: all .2s ease;
+    transition: all .2s ease;
 }
 
 .navlist li:hover {
-  width: 250px;
+    width: 250px;
 }
 
 .navlist li:not(.active):hover {
-  background-color: var(--accent-light-blue);
+    background-color: var(--accent-light-blue);
 }
 
 .navlist li.active {
-  background-color: white;
+    background-color: white;
 }
 
 .navlist li a {
-  color: var(--accent-black);
-  display: block;
-  min-width: 100px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  text-decoration: none;
+    color: var(--accent-black);
+    display: block;
+    min-width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
 }
 
 header {
-  padding: 1em;
-  font-family: alien, sans-serif;
-  font-size: 15pt;
-  text-align: center;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%); /* zentrieren */
-  z-index: -1;
+    padding: 1em;
+    font-family: alien, sans-serif;
+    font-size: 15pt;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* zentrieren */
+    z-index: -1;
 }
 
 header + section, header + .currentAgent {
-  margin-top: 28vh;
+    margin-top: 28vh;
 }
 
 /* Header-Hintergrund */
 header::after {
-  content: "";
-  background: url("./img/header_bg.svg") no-repeat center top;
-  background-size: 30%;
-  opacity: .15;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
+    content: "";
+    background: url("./img/header_bg.svg") no-repeat center top;
+    background-size: 30%;
+    opacity: .15;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
 }
 
 .headerTitle {
-  letter-spacing: 10px;
-  font-weight: bold;
-  font-size: 4em;
+    letter-spacing: 10px;
+    font-weight: bold;
+    font-size: 4em;
 }
 
 .headerSubtitle {
-  font-size: 2em;
+    font-size: 2em;
 }
 
 section {
-  width: 50%;
-  max-width: 50%;
-  min-width: 500px;
-  padding: 1em 2em 1em 2em;
-  margin: 1em auto 3em auto;
-  box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
-  border-radius: 15px;
-  overflow: hidden; /* verhindert, dass eine figure den border-radius überschreibt */
-  background: white;
+    width: 50%;
+    max-width: 50%;
+    min-width: 500px;
+    padding: 1em 2em 1em 2em;
+    margin: 1em auto 3em auto;
+    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+    border-radius: 15px;
+    overflow: hidden; /* verhindert, dass eine figure den border-radius überschreibt */
+    background: white;
 }
 
 section>p {
-  margin: 1em;
+    margin: 1em;
 }
 
 .sectionHeader {
-  padding: 1em 0 0 1em;
-  font-family: Raleway, sans-serif;
-  font-weight: 300;
-  font-size: 24px;
-  border-bottom: 1px solid var(--accent-black);
+    padding: 1em 0 0 1em;
+    font-family: Raleway, sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    border-bottom: 1px solid var(--accent-black);
 }
 
 div.currentAgent {
-  width: 25%;
-  max-width: 50%;
-  padding: 0 1em;
-  box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
-  border-radius: 15px;
-  background: white;
-  margin-left: auto;
-  margin-right: auto;
+    width: 25%;
+    max-width: 50%;
+    padding: 0 1em;
+    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+    border-radius: 15px;
+    background: white;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div.agentName {
-  background-color: var(--accent-blue);
-  height: 100%;
-  padding: .5em 1em .5em .5em;
-  margin-left: .5em;
-  font-family: Raleway, sans-serif;
-  font-weight: 700;
-  display: inline-block;
+    background-color: var(--accent-blue);
+    height: 100%;
+    padding: .5em 1em .5em .5em;
+    margin-left: .5em;
+    font-family: Raleway, sans-serif;
+    font-weight: 700;
+    display: inline-block;
 
-  transition: all .2s ease;
+    transition: all .2s ease;
 }
 
 div.agentName:hover {
-  background-color: var(--accent-light-blue);
+    background-color: var(--accent-light-blue);
 }
 
 div.agentName::before {
-  font-family: "Material Icons", sans-serif;
-  content: "\e7fd";
-  vertical-align: bottom;
-  padding-right: .25em;
+    font-family: "Material Icons", sans-serif;
+    content: "\e7fd";
+    vertical-align: bottom;
+    padding-right: .25em;
 }
 
 figure {
-  position: relative;
-  overflow: hidden;
-  margin: -1em -2em 1em -2em; /* Nötig, um Bild horizontal an den Rand und vertikal Abstand zu .sectionHeader zu bekommen */
+    position: relative;
+    overflow: hidden;
+    margin: -1em -2em 1em -2em; /* Nötig, um Bild horizontal an den Rand und vertikal Abstand zu .sectionHeader zu bekommen */
 }
 
 figure:hover > img {
-  transform: scale(1.025);
+    transform: scale(1.025);
 }
 
 figure img {
-  display: block;
-  width: 100%;
-  padding: 0 -2em 0 -2em;
-  margin: -10% 0 -10% 0;
+    display: block;
+    width: 100%;
+    padding: 0 -2em 0 -2em;
+    margin: -10% 0 -10% 0;
 
-  transition: all .2s ease;
+    transition: all .2s ease;
 }
 
 figcaption {
-  width: 100%;
-  font-size: 12pt;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  color: var(--accent-black);
-  background-color: rgba(177, 229, 252, 0.6);
-  /* background-color: rgba(0, 0, 0, .5); */
-  padding: .5em;
+    width: 100%;
+    font-size: 12pt;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    color: var(--accent-black);
+    background-color: rgba(177, 229, 252, 0.6);
+    /* background-color: rgba(0, 0, 0, .5); */
+    padding: .5em;
 }
 
 form {
-  padding: 1em;
-  margin: 0 1em 0 1em;
+    padding: 1em;
+    margin: 0 1em 0 1em;
 }
 
 button[type="submit"] {
-  margin-top: .5em;
+    margin-top: .5em;
 }
 
 .inputRadioGroup {
-  border: 1px solid var(--accent-grey);
-  padding: 5px 10px 5px 25px;
-  margin: .5em 0;
-  position: relative;
+    border: 1px solid var(--accent-grey);
+    padding: 5px 10px 5px 25px;
+    margin: .5em 0;
+    position: relative;
 
-  transition: all .2s ease;
+    transition: all .2s ease;
 }
 
 .inputRadioGroup.active {
-  background-color: var(--accent-blue);
+    background-color: var(--accent-blue);
 }
 
 .inputRadioGroup:not(.active):hover {
-  background-color: var(--accent-lighter-blue);
+    background-color: var(--accent-lighter-blue);
 }
 
 .inputRadioGroup.active::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 6px;
-  font-family: "Material Icons", sans-serif;
-  content: "\e5ca";
-  color: var(--accent-black);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 6px;
+    font-family: "Material Icons", sans-serif;
+    content: "\e5ca";
+    color: var(--accent-black);
 }
 
 .inputTextGroup {
-  position: relative;
-  margin-bottom: 1em;
+    position: relative;
+    margin-bottom: 1em;
 }
 
 .inputTextGroup label {
-  color: var(--accent-dark-grey);
-  font-size: 12pt;
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  pointer-events: none;
+    color: var(--accent-dark-grey);
+    font-size: 12pt;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    pointer-events: none;
 
-  transition: all .2s ease;
+    transition: all .2s ease;
 }
 
 input[type="text"], input[type="email"] {
-  font-family: Raleway, sans-serif;
-  font-size: 12pt;
-  display: block;
-  font-weight: 500;
-  width: 100%;
-  box-sizing: content-box;
-  margin: 0;
-  padding: 15px 3px 3px 5px;
-  border: none;
-  border-bottom: 2px solid var(--accent-grey);
+    font-family: Raleway, sans-serif;
+    font-size: 12pt;
+    display: block;
+    font-weight: 500;
+    width: 100%;
+    box-sizing: content-box;
+    margin: 0;
+    padding: 15px 3px 3px 5px;
+    border: none;
+    border-bottom: 2px solid var(--accent-grey);
 
-  transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .inputTextGroup input:focus {
-  outline: none;
-  border-color: var(--accent-black);
+    outline: none;
+    border-color: var(--accent-black);
 }
 
 .inputTextGroup input:focus + label, .inputTextGroup input:not(:placeholder-shown):not(:focus) + label {
-  font-size: 8pt;
-  top: 0;
+    font-size: 8pt;
+    top: 0;
 }
 
 input:invalid:not(:focus) {
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
-  border-image: none;
-  box-shadow: none;
-  outline: none;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-image: none;
+    box-shadow: none;
+    outline: none;
 }
 
 .dropdownWrapper {
-  position: relative;
+    position: relative;
 }
 
 .dropdownWrapper::before {
-  font-family: "Material Icons", sans-serif;
-  content: "\e313";
-  position: absolute;
-  right: .5em;
-  top: 1em;
-  pointer-events: none; /* ermöglicht Interaktion mit Liste durch Pfeil */
+    font-family: "Material Icons", sans-serif;
+    content: "\e313";
+    position: absolute;
+    right: .5em;
+    top: 1em;
+    pointer-events: none; /* ermöglicht Interaktion mit Liste durch Pfeil */
 }
 
 select {
-  font-family: Roboto, sans-serif;
-  font-weight: 600;
-  border: 1px solid var(--accent-grey);
-  margin-bottom: 1em;
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    border: 1px solid var(--accent-grey);
+    margin-bottom: 1em;
 }
 
 select.dropdown {
-  -moz-appearance: none;      /* um eigenen Pfeil darstellen zu können */
-  -webkit-appearance: none;
-  /*noinspection CssBrowserCompatibilityForProperties*/
-  appearance: none; /* alles außer IE */
-  outline: none;
-  border: none;
-  border-bottom: 1px solid var(--accent-grey);
-  padding: 1em;
-  width: 100%;
+    -moz-appearance: none;      /* um eigenen Pfeil darstellen zu können */
+    -webkit-appearance: none;
+    /*noinspection CssBrowserCompatibilityForProperties*/
+    appearance: none; /* alles außer IE */
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--accent-grey);
+    padding: 1em;
+    width: 100%;
 }
 
 ul.list {
-  max-height: 150px;
-  overflow-y: auto;
-  width: 50%;
-  list-style-type: none;
-  position: relative;
-  padding: 0;
-  border: 1px solid var(--accent-black);
-  margin: .5em 0 .5em 0;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 50%;
+    list-style-type: none;
+    position: relative;
+    padding: 0;
+    border: 1px solid var(--accent-black);
+    margin: .5em 0 .5em 0;
 }
 
 ul.list li {
-  padding: .5em .5em .5em 1em;
-  border-bottom: 1px solid var(--accent-black);
+    padding: .5em .5em .5em 1em;
+    border-bottom: 1px solid var(--accent-black);
 
-  transition: all .4s ease;
+    transition: all .4s ease;
 }
 
 ul.list > :last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 ul.list li.disabled::after {
-  font-family: "Material Icons", sans-serif;
-  content: "\e14b";
-  color: var(--accent-red);
-  position: absolute;
-  right: 10px;
+    font-family: "Material Icons", sans-serif;
+    content: "\e14b";
+    color: var(--accent-red);
+    position: absolute;
+    right: 10px;
 }
 
 ul.list li.green {
-  background: linear-gradient(to right, transparent 50%, var(--accent-green) 50%);
+    background: linear-gradient(to right, transparent 50%, var(--accent-green) 50%);
 }
 
 ul.list li.blue {
-  background: linear-gradient(to right, transparent 50%, var(--accent-blue) 50%);
+    background: linear-gradient(to right, transparent 50%, var(--accent-blue) 50%);
 }
 
 ul.list li.grey {
-  background: linear-gradient(to right, transparent 50%, var(--accent-grey) 50%);
+    background: linear-gradient(to right, transparent 50%, var(--accent-grey) 50%);
 }
 
 ul.list li.brown {
-  background: linear-gradient(to right, transparent 50%, var(--accent-brown) 50%);
+    background: linear-gradient(to right, transparent 50%, var(--accent-brown) 50%);
 }
 
 ul.list li.blonde {
-  background: linear-gradient(to right, transparent 50%, var(--accent-yellow) 50%);
+    background: linear-gradient(to right, transparent 50%, var(--accent-yellow) 50%);
 }
 
 ul.list li.black {
-  background: linear-gradient(to right, transparent 50%, var(--accent-black) 50%);
+    background: linear-gradient(to right, transparent 50%, var(--accent-black) 50%);
 }
 
 ul.list li.red {
-  background: linear-gradient(to right, transparent 50%, var(--accent-red) 50%);
+    background: linear-gradient(to right, transparent 50%, var(--accent-red) 50%);
 }
 
 ul.list li:not(.disabled) {
-  background-size: 200% 100%;
-  background-position-x: -5px;
+    background-size: 200% 100%;
+    background-position-x: -5px;
 }
 
 ul.list li:hover {
-  background-position: right;
-  color: white;
+    background-position: right;
+    color: white;
 }
 
 ul.list li.disabled {
-  color: var(--accent-grey);
-  background: transparent;
-  border-right: 0 solid transparent;
+    color: var(--accent-grey);
+    background: transparent;
+    border-right: 0 solid transparent;
 }
 
 
 button {
-  height: 40px;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 14pt;
-  width: 100%;
-  border-radius: 10px;
-  padding: 5px 15px;
-  cursor: pointer;
-  color: var(--accent-blue);
-  background: none;
-  border: none;
-  box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
-  /*
-  background: white;
-  border: 2px solid var(--accent-blue);
-  */
-  position: relative; /* für vertical-align von :after */
+    height: 40px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14pt;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: var(--accent-blue);
+    background: none;
+    border: none;
+    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+    /*
+    background: white;
+    border: 2px solid var(--accent-blue);
+    */
+    position: relative; /* für vertical-align von :after */
 
-  transition: all .2s ease;
+    transition: all .2s ease;
 }
 
 button.floatright {
@@ -468,21 +468,21 @@ button.floatright {
 }
 
 button.noshadow {
-  box-shadow: none;
+    box-shadow: none;
 }
 
 button:not(:disabled):hover {
-  color: white;
-  background: var(--accent-light-blue);
-  border-color: var(--accent-light-blue);
+    color: white;
+    background: var(--accent-light-blue);
+    border-color: var(--accent-light-blue);
 }
 
 button:disabled {
-  opacity: .75;
-  cursor: not-allowed;
-  color: var(--accent-light-blue);
-  background: var(--accent-lighter-blue);
-  border-color: var(--accent-lighter-blue);
+    opacity: .75;
+    cursor: not-allowed;
+    color: var(--accent-light-blue);
+    background: var(--accent-lighter-blue);
+    border-color: var(--accent-lighter-blue);
 }
 
 
@@ -491,69 +491,69 @@ button:disabled {
 /* LEISTE MIT MINIMUM, OPTIMUM, MAXIMUM */
 
 .disease {
-  margin-top: -15px;
-  padding-bottom: 10px; /* für Label */
-  width: 100%;
-  position: relative;
+    margin-top: -15px;
+    padding-bottom: 10px; /* für Label */
+    width: 100%;
+    position: relative;
 }
 
 meter {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  /*noinspection CssBrowserCompatibilityForProperties*/
-  appearance: none;
-  width: 100%;
-  height: 20px;
-  border-radius: 15px;
-  padding: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /*noinspection CssBrowserCompatibilityForProperties*/
+    appearance: none;
+    width: 100%;
+    height: 20px;
+    border-radius: 15px;
+    padding: 5px;
 
-  /* Firefox */
-  background: var(--accent-light-grey);
-  /* box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset; */
+    /* Firefox */
+    background: var(--accent-light-grey);
+    /* box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset; */
 }
 
 meter + label {
-  position: absolute;
-  top: 30px;
-  right: 0;
-  font-size: 12px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    font-size: 12px;
 }
 
 /* WebKit */
 meter::-webkit-meter-bar {
-  background: var(--accent-light-grey);
-  /* box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset; */
-  border-radius: 15px;
+    background: var(--accent-light-grey);
+    /* box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset; */
+    border-radius: 15px;
 }
 
 /*noinspection CssInvalidPseudoSelector*/
 meter::-moz-meter-bar {
-  border-radius: 15px;
+    border-radius: 15px;
 }
 
 /*noinspection CssInvalidPseudoSelector*/
 meter::-webkit-meter-optimum-value, meter:-moz-meter-optimum::-moz-meter-bar {
-  background: var(--accent-green);
+    background: var(--accent-green);
 }
 
 /*noinspection CssInvalidPseudoSelector*/
 meter::-webkit-meter-suboptimum-value, meter:-moz-meter-sub-optimum::-moz-meter-bar {
-  background: var(--accent-yellow);
+    background: var(--accent-yellow);
 }
 
 /*noinspection CssInvalidPseudoSelector*/
 meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-moz-meter-bar  {
-  background: var(--accent-red);
-  animation: glow .7s ease infinite alternate;
+    background: var(--accent-red);
+    animation: glow .7s ease infinite alternate;
 }
 
 @keyframes glow {
-  from {
-    background: var(--accent-lighter-red);
-  }
-  to {
-    background: var(--accent-red);
-  }
+    from {
+        background: var(--accent-lighter-red);
+    }
+    to {
+        background: var(--accent-red);
+    }
 }
 
 
@@ -562,137 +562,134 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 
 /* http://kodhus.com/newsite/step-progress-bar-css-only/ */
 .progresssteps-container {
-  display: block;
-  margin: 1em 1em 4em 1em;
+    display: block;
+    margin: 1em 1em 4em 1em;
 }
 
 .progresssteps {
-  padding: 0;
-  counter-reset: step;
+    padding: 0;
+    counter-reset: step;
 }
 
 .progresssteps li {
-  cursor: default;
-  color: var(--accent-light-grey);
-  list-style-type: none;
-  width: 25%;
-  float: left;
-  font-size: 15px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
+    cursor: default;
+    color: var(--accent-light-grey);
+    list-style-type: none;
+    width: 25%;
+    float: left;
+    font-size: 15px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .progresssteps li:before {
-  /* Icons */
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  border: 2px solid var(--accent-grey);
-  display: block;
-  text-align: center;
-  margin: 0 auto 10px auto;
-  border-radius: 50%;
-  background-color: white;
+    /* Icons */
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 2px solid var(--accent-grey);
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
 
-  transition: background-color 0.1s ease-in-out;
-}
-
-.progresssteps li:not(.active)::before {
-  background-color: white;
+    transition: background-color 0.1s ease-in-out;
 }
 
 .progresssteps li.confirmed:before {
-  font-family: "Material Icons", sans-serif;
-  content: "\e5ca";
+    font-family: "Material Icons", sans-serif;
+    content: "\e5ca";
 }
 
 .progresssteps li.sent:before {
-  font-family: "Material Icons", sans-serif;
-  content: "\e558";
+    font-family: "Material Icons", sans-serif;
+    content: "\e558";
 }
 
 .progresssteps li.analysis:before {
-  font-family: "Material Icons", sans-serif;
-  content: "\e8b6";
+    font-family: "Material Icons", sans-serif;
+    content: "\e8b6";
 }
 
 .progresssteps li.done:before {
-  font-family: "Material Icons", sans-serif;
-  content: "\e7f2";
+    font-family: "Material Icons", sans-serif;
+    content: "\e7f2";
 }
 
 .progresssteps li:after {
-  /* Strich vor Punkt */
-  text-align: center;
-  margin-left: 17px;
-  margin-right: 17px;
-  width: calc(100% - 34px);
-  height: 2px;
-  content: '';
-  position: absolute;
-  background-color: var(--accent-light-grey);
-  top: 15px;
-  left: -50%;
+    /* Strich vor Punkt */
+    text-align: center;
+    margin-left: 17px;
+    margin-right: 17px;
+    width: calc(100% - 34px);
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: var(--accent-light-grey);
+    top: 15px;
+    left: -50%;
 }
 
 .progresssteps li:first-child:after {
-  /* Linie vor erstem Item verbergen */
-  content: none;
+    /* Linie vor erstem Item verbergen */
+    content: none;
 }
 
 .progresssteps li.active {
-  color: var(--accent-blue);
+    color: var(--accent-blue);
 }
 
 .progresssteps li.active:hover::before {
-  color: white;
-  background-color: var(--accent-blue);
+    color: white;
+    background-color: var(--accent-blue);
 }
 
 .progresssteps li.active:before {
-  /* Ring-Farbe */
-  border-color: var(--accent-blue);
-  background-color: white;
+    /* Ring-Farbe */
+    border-color: var(--accent-blue);
+    background-color: white;
 }
 
 .progresssteps li:not(.active)::before {
-  border-color: var(--accent-light-grey);
+    background-color: white;
+    border-color: var(--accent-light-grey);
 }
 
 .progresssteps li.active:after {
-  /* Strich nach active-Punkt */
-  background-color: var(--accent-blue);
+    /* Strich nach active-Punkt */
+    background-color: var(--accent-blue);
 }
 
 @keyframes slide {
-  from {
-    background-position-x: 0;
-  }
-  to {
-    background-position-x: -200%;
-  }
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: -200%;
+    }
 }
 
 .progresssteps li.animate:after {
-  background: linear-gradient(to right, var(--accent-blue) 0%, white 20%, white 80%, var(--accent-blue) 100%);
-  background-size: 200% 100%;
-  animation: slide 2s linear infinite;
+    background: linear-gradient(to right, var(--accent-blue) 0%, white 20%, white 80%, var(--accent-blue) 100%);
+    background-size: 200% 100%;
+    animation: slide 2s linear infinite;
 }
 
 .notfound {
-  width: 25%;
-  font-family: Raleway, sans-serif;
-  text-align: center;
-  overflow: hidden;
-  margin: 8em auto;
+    width: 25%;
+    font-family: Raleway, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    margin: 8em auto;
 }
 
 .notfound .notfound-header {
-  font-weight: 100;
-  font-size: 150px;
+    font-weight: 100;
+    font-size: 150px;
 }
 
 .notfound button {
-  margin-top: 1em;
+    margin-top: 1em;
 }

@@ -19,19 +19,10 @@ let dictKitSVGName = {
     "premium": "trophy",
     "custom": "growth"
 };
-let dictOptionalsName = {
-    "clinic": "Klinikgeburt",
-    "drone": "Lieferung per Drohne",
-    "heron": "Lieferung per Storch"
-};
-let dictOptionalsSVGName = {
-    "clinic": "pregnant",
-    "drone": "drone-delivery",
-    "heron": "heron"
-};
 
 let shoppingCart = document.getElementsByClassName("shoppingCart")[0];
 let shoppingCartKitItem = document.getElementById("shoppingCartKit");
+let shoppingCartOptionalItems = shoppingCart.getElementsByClassName("optional");
 let shoppingCartTotalPrice =  document.getElementsByClassName("shoppingCartTotal")[0].getElementsByClassName("value")[0];
 let kits = document.getElementById("kitContainer").getElementsByClassName("bookable");
 let optionals = document.getElementById("optionalsContainer").getElementsByClassName("bookable");
@@ -49,6 +40,13 @@ for (let i=0; i<optionals.length; i++) {
 // Listener für Kit-Ändern-Button
 document.querySelector('button[value="changeKit"').addEventListener("click", handleKitChangeButtonPress);
 
+// ShoppingCartItems verstecken und Listener aktivieren
+for (let i=0; i<shoppingCartOptionalItems.length; i++) {
+    let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
+    shoppingCartOptionalItem.style.display = "none";
+    shoppingCartOptionalItem.querySelector('button[value="removeItem"]').addEventListener("click", handleOptionalRemoveButtonPress);
+}
+
 function handleKitButtonPress() {
     shoppingCartKitItem.className = "cartItem "+dictKitClass[this.value];
     document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName[this.value];
@@ -62,60 +60,19 @@ function handleKitButtonPress() {
 }
 
 function handleOptionalButtonPress() {
-    // prüfe, ob Item bereits vorhanden
-    if (shoppingCart.querySelector("#"+this.value) == null) {
-        let cartItem = document.createElement("div");
-        cartItem.className = "cartItem optional";
-        cartItem.id = this.value;
+    let cartItem = shoppingCart.querySelector("#"+this.value);
+    cartItem.style.display = "grid";
+    this.disabled = true;
 
-        let imgItem = document.createElement("img");
-        imgItem.src = "img/"+dictOptionalsSVGName[this.value]+".svg";
-        imgItem.alt = "";
-        cartItem.appendChild(imgItem);
-
-        let nameItem = document.createElement("div");
-        nameItem.className = "cartItemName";
-        nameItem.innerHTML = dictOptionalsName[this.value];
-        cartItem.appendChild(nameItem);
-
-        let priceItem = document.createElement("div");
-        priceItem.className = "cartItemPrice";
-        priceItem.innerHTML = this.innerHTML;
-        cartItem.appendChild(priceItem);
-
-        let removeButton = document.createElement("button");
-        removeButton.className = "noshadow";
-        removeButton.value = "removeItem";
-        let removeButtonIcon = document.createElement("i");
-        removeButtonIcon.className = "material-icons";
-        removeButtonIcon.innerHTML = "clear";
-        removeButton.appendChild(removeButtonIcon);
-        removeButton.addEventListener("click", handleOptionalRemoveButtonPress);
-        cartItem.appendChild(removeButton);
-
-        shoppingCart.appendChild(cartItem);
-
-        this.disabled = true;
-
-        /*
-        <div class="cartItem optional">
-            <img src="img/drone-delivery.svg" alt=""/>
-            <div class="cartItemName">Lieferung per Drohne</div>
-            <div class="cartItemPrice">249.99€</div>
-            <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
-        </div>
-         */
-
-        calculateTotal()
-    }
+    calculateTotal();
 }
 
 function handleOptionalRemoveButtonPress() {
     let cartItem = this.parentElement;
-    document.getElementById("optionalsContainer").querySelector('button[value="'+cartItem.id+'"]').disabled = false;
-    shoppingCart.removeChild(cartItem);
+    optionals.querySelector('button[value="'+cartItem.id+'"]').disabled = false;
+    cartItem.style.display = "none";
 
-    calculateTotal()
+    calculateTotal();
 }
 
 function handleKitChangeButtonPress() {
@@ -124,10 +81,12 @@ function handleKitChangeButtonPress() {
 
 function calculateTotal() {
     let total = 0.0;
-    for (let i=0; i<shoppingCart.children.length; i++) {
-        let priceString = shoppingCart.children[i].getElementsByClassName("cartItemPrice")[0].innerHTML;
-        total += parseFloat(priceString.substring(0, priceString.length-1));
+    let iterationCount = shoppingCart.children.length;
+    for (let i=0; i<iterationCount; i++) {
+        if (shoppingCart.children[i].style.display !== "none") {
+            let priceString = shoppingCart.children[i].getElementsByClassName("cartItemPrice")[0].innerHTML;
+            total += parseFloat(priceString.substring(0, priceString.length-1));
+        }
     }
-
     shoppingCartTotalPrice.innerHTML = total.toFixed(2)+"€";
 }
