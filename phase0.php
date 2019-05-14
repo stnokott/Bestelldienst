@@ -63,23 +63,6 @@ class Phase0 extends Page
     }
 
     /**
-     * Generiert Navigationsleiste.
-     * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
-     *
-     * @return void
-     */
-    protected function generateNavigationBar()
-    {
-        echo <<<HTML
-        <ul class="navlist">
-            <li class="active"><a href="#">Phase 1</a></li>
-            <li><a href="#">Phase 1-2</a></li>
-            <li><a href="#">Phase 3</a></li>
-        </ul>
-HTML;
-    }
-
-    /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
      *
      * @return void
@@ -164,7 +147,7 @@ HTML;
     {
         $this->getViewData();
         $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; bestellen');
-        $this->generateNavigationBar();
+        $this->generateNavigationBar(0);
         $this->generatePageTitle();
 
         $this->generatePageDescription();
