@@ -209,8 +209,8 @@ HTML;
     }
 
     protected function generateSectionEnd() {
-        echo<<<HTML
-            <form action="phase5.html" method="post">
+        echo <<<HTML
+            <form action="phase4.html" method="post">
                 <button type="submit" class="floatright" value="continue">Weiter <i class="material-icons">forward</i></button>
             </form>
         </section>
@@ -240,7 +240,7 @@ HTML;
         $this->generateShoppingCart();
         $this->generateSectionEnd();
 
-        $this->generatePageFooter('phase4.js');
+        $this->generatePageFooter('phase3.js');
     }
 
     /**
