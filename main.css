@@ -132,7 +132,7 @@ header {
     z-index: -1;
 }
 
-header + section, header + .currentAgent {
+header + section, header + .currentUser {
     margin-top: 28vh;
 }
 
@@ -183,10 +183,10 @@ section>p {
     border-bottom: 1px solid var(--accent-black);
 }
 
-div.currentAgent {
-    width: 25%;
+.currentUser {
+    width: 50%;
     max-width: 50%;
-    padding: 0 1em;
+    padding: 0 2em;
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
     border-radius: 15px;
     background: white;
@@ -194,7 +194,7 @@ div.currentAgent {
     margin-right: auto;
 }
 
-div.agentName {
+.currentUser > .userName {
     background-color: var(--accent-blue);
     height: 100%;
     padding: .5em 1em .5em .5em;
@@ -206,15 +206,21 @@ div.agentName {
     transition: all .2s ease;
 }
 
-div.agentName:hover {
+.currentUser > .userName:hover {
     background-color: var(--accent-light-blue);
 }
 
-div.agentName::before {
+.currentUser > .userName::before {
     font-family: "Material Icons", sans-serif;
     content: "\e7fd";
     vertical-align: bottom;
     padding-right: .25em;
+}
+
+form.inline {
+    margin: 0;
+    padding: 0;
+    display: inline;
 }
 
 figure {
@@ -472,10 +478,21 @@ button.noshadow {
     box-shadow: none;
 }
 
+button.nobackground {
+    background: none;
+    border: none;
+}
+
 button:not(:disabled):hover {
     color: white;
     background: var(--accent-light-blue);
     border-color: var(--accent-light-blue);
+}
+
+button.nobackground:not(:disabled):hover {
+    color: inherit;
+    background: none;
+    border: none;
 }
 
 button:disabled {
@@ -484,6 +501,12 @@ button:disabled {
     color: var(--accent-light-blue);
     background: var(--accent-lighter-blue);
     border-color: var(--accent-lighter-blue);
+}
+
+button.nobackground:disabled {
+    opacity: .75;
+    cursor: not-allowed;
+    color: var(--accent-light-blue);
 }
 
 

@@ -180,25 +180,25 @@ HTML;
                     <img src="img/wrench.svg" alt=""/>
                     <div class="cartItemName">Basic Kit</div>
                     <div class="cartItemPrice">5999.99€</div>
-                    <button class="noshadow" value="changeKit"><i class="material-icons">swap_horiz</i></button>
+                    <button class="noshadow nobackground" value="changeKit"><i class="material-icons">swap_horiz</i></button>
                 </div>
                 <div id="clinic" class="cartItem optional">
                     <img src="img/pregnant.svg" alt=""/>
                     <div class="cartItemName">Klinikgeburt</div>
                     <div class="cartItemPrice">499.99€</div>
-                    <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
+                    <button class="noshadow nobackground" value="removeItem"><i class="material-icons">clear</i></button>
                 </div>
                 <div id="drone" class="cartItem optional">
                     <img src="img/drone-delivery.svg" alt=""/>
                     <div class="cartItemName">Lieferung per Drohne</div>
                     <div class="cartItemPrice">249.99€</div>
-                    <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
+                    <button class="noshadow nobackground" value="removeItem"><i class="material-icons">clear</i></button>
                 </div>
                 <div id="insurance" class="cartItem optional">
                     <img src="img/heart.svg" alt=""/>
                     <div class="cartItemName">Organversicherung</div>
                     <div class="cartItemPrice">899.99€</div>
-                    <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
+                    <button class="noshadow nobackground" value="removeItem"><i class="material-icons">clear</i></button>
                 </div>
             </div>
             <div class="shoppingCartTotal">
