@@ -265,7 +265,12 @@ HTML;
         $query = $this->getMySQLInsertString(
             "user",
             array("email", "firstname", "lastname", "address1", "address2", "address3"),
-            array($this->_database->real_escape_string($email), $this->_database->real_escape_string($firstname), $this->_database->real_escape_string($lastname), $this->_database->real_escape_string($address1), $this->_database->real_escape_string($address2), $this->_database->real_escape_string($address3))
+            array($this->_database->real_escape_string($email),
+                $this->_database->real_escape_string($firstname),
+                $this->_database->real_escape_string($lastname),
+                $this->_database->real_escape_string($address1),
+                $this->_database->real_escape_string($address2),
+                $this->_database->real_escape_string($address3))
         );
         $this->_database->query($query);
         if ($this->_database->errno != 0) {
