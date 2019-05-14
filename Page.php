@@ -144,7 +144,7 @@ HTML;
             </div>
 HTML;
         } else if (isset($_SESSION["userid"])) {
-            $query = "SELECT firstname, lastname, email FROM user";
+            $query = "SELECT firstname, lastname, email FROM user WHERE userid = '".$_SESSION["userid"]."'";
             $result = $this->_database->query($query);
 
             if ($row = $result->fetch_assoc()) {
