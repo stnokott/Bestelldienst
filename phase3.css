@@ -224,8 +224,6 @@
 
 .shoppingCart > .cartItem > button {
     grid-column: 3/4;
-    background: none;
-    border: none;
     color: var(--accent-red);
 }
 
@@ -235,7 +233,6 @@
 
 .shoppingCart > .cartItem > button:hover {
     color: var(--accent-red);
-    background: none;
 }
 
 .shoppingCartTotal {

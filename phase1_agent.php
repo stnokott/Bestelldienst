@@ -170,15 +170,6 @@ class Phase1Agent extends Page
         }
     }
 
-    protected function generateCurrentAgent()
-    {
-        echo <<<HTML
-        <div class="currentAgent">
-          Bearbeiter: <div class="agentName">stnokott</div>
-        </div>
-HTML;
-    }
-
     protected function generateAgentMenu()
     {
         echo <<<HTML
@@ -236,7 +227,7 @@ HTML;
         $this->getViewData();
         $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent');
         $this->generatePageTitle();
-        $this->generateCurrentAgent();
+        $this->generateCurrentUser(true);
         $this->generateAgentMenu();
 
         $this->generatePageFooter("phase1_agent.js");

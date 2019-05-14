@@ -115,6 +115,33 @@ HTML;
     }
 
     /**
+     * @param $is_agent boolean Ob für einen Bearbeiter (oder User) generiert werden soll
+     */
+    protected function generateCurrentUser($is_agent)
+    {
+        if ($is_agent) {
+            echo <<<HTML
+            <div class="currentUser">
+              Bearbeiter: <div class="userName">stnokott</div>
+            </div>
+HTML;
+        } else if (isset($_SESSION["userid"])) {
+            $query = "SELECT firstname, lastname, email FROM user";
+            $result = $this->_database->query($query);
+
+            if ($row = $result->fetch_assoc()) {
+                $name = htmlspecialchars($row["firstname"])." ".htmlspecialchars($row["lastname"]);
+                echo "<div class=\"currentUser\">";
+                echo    "Nutzer: <div class=\"userName\">$name</div>";
+                echo    "<form action=\"resetUser.php\" class=\"inline\">";
+                echo        "<button class=\"noshadow floatright nobackground\"><i class=\"material-icons\">clear</i></button>";
+                echo    "</form>";
+                echo "</div>";
+            }
+        }
+    }
+
+    /**
      * Outputs the end of the HTML-file i.e. /body etc.
      * Fügt JavaScript am Ende der Datei ein
      *

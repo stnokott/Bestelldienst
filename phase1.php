@@ -314,6 +314,7 @@ HTML;
             $this->generateNewUser();
         }
         $this->generatePageDescription();
+        $this->generateCurrentUser(false);
         $this->generateGenoCheckProgress();
 
         $this->generatePageFooter("phase1.js");
