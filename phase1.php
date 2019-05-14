@@ -70,21 +70,6 @@ class Phase1 extends Page
     }
 
     /**
-     * Generiert Navigationsleiste.
-     * Setzt "active"-class je nachdem, welche Seite aktiv ist (diese Seite)
-     */
-    protected function generateNavigationBar()
-    {
-        echo <<<HTML
-        <ul class="navlist">
-            <li><a href="#">Phase 1</a></li>
-            <li class="active"><a href="#">Phase 1-2</a></li>
-            <li><a href="#">Phase 3</a></li>
-        </ul>
-HTML;
-    }
-
-    /**
      * Generiert kurze <section>, um zu zeigen, dass beim Aufruf dieser Seite mit Hilfe der
      * POST-Parameter ein neuer User erstellt wurde
      */
