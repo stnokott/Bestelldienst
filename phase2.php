@@ -96,7 +96,7 @@ HTML;
         echo<<<HTML
         <section class="genoCheckResultsGenotypes">
              <span class="sectionHeader">Genotypen</span>
-        
+
              <h2>Augen</h2>
              <ul class="list">
                  <li class="green">Grün</li>
@@ -104,7 +104,7 @@ HTML;
                  <li class="grey disabled">Grau</li>
                  <li class="brown disabled">Braun</li>
              </ul>
-        
+
              <h2>Haarfarbe</h2>
              <ul class="list">
                 <li class="blonde">Blond</li>
@@ -127,7 +127,7 @@ HTML;
             Für nicht erblich bedingte Krankheiten wird das potentielle Verhalten Ihres Kindes errechnet
             und daraus ein Risikowert berechnet.
           </p>
-    
+
           <h3>Lungenkrebs</h3>
           <div class="disease">
             <meter value="45" min="0" max="100" low="15" optimum="5" high="60"></meter>
