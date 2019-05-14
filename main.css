@@ -59,6 +59,7 @@ Schriftarten -> font-weight
 */
 
 body {
+    hyphens: auto; /* sinnvolle Linebreaks, abhängig von Sprache */
     padding: 0;
     margin: 0 0 1em 0;
     font-family: Roboto, sans-serif;

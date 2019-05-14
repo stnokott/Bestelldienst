@@ -28,6 +28,7 @@
 }
 
 .bookableHeader {
+    word-break: break-word;
     color: white;
     vertical-align: middle;
     height: 2em;
