@@ -159,12 +159,13 @@ HTML;
                     <button class="noshadow" value="drone">249.99€</button>
                 </div>
                 <div class="bookable">
-                    <div class="bookableHeader optional"><img src="img/heron.svg" alt=""/>Lieferung per Storch</div>
+                    <div class="bookableHeader optional"><img src="img/heart.svg" alt=""/>Organversicherung</div>
                     <ul>
-                        <li>Traditionsbewusst</li>
-                        <li>Komfortable Lieferung in Leinenbeutel</li>
+                        <li>Auswahl an biologisch gezüchteten Ersatzorganen</li>
+                        <li>Kompatibilitätsgarantie</li>
+                        <li>Komfortabel im Kühlschrank lagern</li>
                     </ul>
-                    <button class="noshadow" value="heron">0.99€</button>
+                    <button class="noshadow" value="insurance">899.99€</button>
                 </div>
             </div>
 HTML;
@@ -193,10 +194,10 @@ HTML;
                     <div class="cartItemPrice">249.99€</div>
                     <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
                 </div>
-                <div id="heron" class="cartItem optional">
-                    <img src="img/heron.svg" alt=""/>
-                    <div class="cartItemName">Lieferung per Storch</div>
-                    <div class="cartItemPrice">0.99€</div>
+                <div id="insurance" class="cartItem optional">
+                    <img src="img/heart.svg" alt=""/>
+                    <div class="cartItemName">Organversicherung</div>
+                    <div class="cartItemPrice">899.99€</div>
                     <button class="noshadow" value="removeItem"><i class="material-icons">clear</i></button>
                 </div>
             </div>
