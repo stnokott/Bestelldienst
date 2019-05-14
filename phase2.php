@@ -201,6 +201,7 @@ HTML;
      */
     public static function main()
     {
+        session_start();
         try {
             $page = new Phase2();
             $page->processReceivedData();

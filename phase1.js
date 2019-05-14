@@ -1,7 +1,3 @@
-loadStatus();
-
-document.getElementById("genoCheckOrdersSelect").addEventListener("change", loadStatus);
-
 function loadStatus() {
     if (document.getElementById("genoCheckOrdersSelect").selectedOptions.length===0){
       return;

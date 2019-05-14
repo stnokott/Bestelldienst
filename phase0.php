@@ -74,7 +74,7 @@ class Phase0 extends Page
             <figure>
                 <img src="img/family.jpg" alt="Diese fröhliche Familie könnten Sie sein!">
             </figure>
-            <span class="sectionHeader">GenoCheck&trade; bestellen</span>
+            <span class="sectionHeader"><span class="themeFont">GenoCheck&trade;</span> bestellen</span>
             <p>
                 Fordern Sie heute ihren <strong>kostenlosen</strong> GenoChoice&trade;-Gentest an.<br> Ein Team
                 aus professionellen Genforschern prüft mit unserem patentierten GenoCheck&trade;-Verfahren die
