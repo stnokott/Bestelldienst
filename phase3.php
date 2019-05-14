@@ -62,7 +62,9 @@ class Phase4 extends Page
      */
     protected function getViewData()
     {
-
+        if(!isset($_SESSION["userid"])){
+            header('Location: phase0.php');
+        }
     }
 
     /**
