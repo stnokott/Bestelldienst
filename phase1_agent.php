@@ -7,6 +7,8 @@
  * @license  http://www.h-da.de  none
  */
 
+session_start();
+
 require_once './Page.php';
 
 class User
@@ -73,8 +75,6 @@ class User
 class Phase1Agent extends Page
 {
     private $users = []; // Liste der verfügbaren Nutzer
-    private $selected_userid; // userid des ausgewählten Nutzers, dessen Bestellstatus abgerufen werden soll
-    private $selected_status; // status der Bestellung des ausgewählten Nutzers
 
     /**
      * Instantiates members (to be defined above).
@@ -170,25 +170,6 @@ class Phase1Agent extends Page
         }
     }
 
-    /**
-     * Gibt den Wert des status-Attributs der genocheckorder-Datenbank für den User mit der
-     * angegebenen Email-Adresse aus
-     * @param String $userid id des Nutzers
-     * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
-     */
-    protected function getUserOrderStatus($userid)
-    {
-        $query = "SELECT status FROM genocheckorder WHERE userid='" . $userid . "'";
-        $result = $this->_database->query($query);
-
-        if ($row = $result->fetch_assoc()) {
-            return $row["status"];
-        } else {
-            return null;
-        }
-    }
-
-
     protected function generateCurrentAgent()
     {
         echo <<<HTML
@@ -200,9 +181,6 @@ HTML;
 
     protected function generateAgentMenu()
     {
-        $radioButtonGroup_active = "<div class=\"inputRadioGroup active\">";
-        $radioButtonGroup_notactive = "<div class=\"inputRadioGroup\">";
-
         echo <<<HTML
         <section>
           <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
@@ -217,57 +195,28 @@ HTML;
         }
         // <option value="443">443 - Max Musterhalfen</option>
         echo<<<HTML
-              </select>
+                  </select>
+                </div>
+            <div id="phase1_radioWrapper">
+                <div class="inputRadioGroup">
+                    <input type="radio" name="statusOrder" id="statusOrderConfirmed" value="0">
+                    <label for="statusOrderConfirmed">Bestellung bestätigt</label>
+                </div>
+                <div class="inputRadioGroup">
+                    <input type="radio" name="statusOrder" id="statusSent" value="1">
+                    <label for="statusSent">GenoCheck&trade; versandt</label>
+                </div>
+                <div class="inputRadioGroup">
+                    <input type="radio" name="statusOrder" id="statusAnalysis" value="2">
+                    <label for="statusAnalysis">Labor-Analyse läuft</label>
+                </div>
+                <div class="inputRadioGroup">
+                    <input type="radio" name="statusOrder" id="statusDone" value="3">
+                    <label for="statusDone">Analyse fertiggestellt</label>
+                </div>
             </div>
-HTML;
-        if ($this->selected_status == "0") {
-            echo $radioButtonGroup_active;
-            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusOrderConfirmed\" value=\"0\" checked>";
-        } else {
-            echo $radioButtonGroup_notactive;
-            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusOrderConfirmed\" value=\"0\">";
-        }
-        echo<<<HTML
-              <label for="statusOrderConfirmed">Bestellung bestätigt</label>
-            </div>
-
-HTML;
-        if ($this->selected_status == "1") {
-            echo $radioButtonGroup_active;
-            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusSent\" value=\"1\" checked>";
-        } else {
-            echo $radioButtonGroup_notactive;
-            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusSent\" value=\"1\">";
-        }
-        echo<<<HTML
-              <label for="statusSent">GenoCheck&trade; versandt</label>
-            </div>
-
-HTML;
-        if ($this->selected_status == "2") {
-            echo $radioButtonGroup_active;
-            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusAnalysis\" value=\"2\" checked>";
-        } else {
-            echo $radioButtonGroup_notactive;
-            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusAnalysis\" value=\"2\">";
-        }
-        echo<<<HTML
-              <label for="statusAnalysis">Labor-Analyse läuft</label>
-            </div>
-
-HTML;
-        if($this->selected_status == "3") {
-            echo "<div class=\"inputRadioGroup active\">";
-            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusDone\" value=\"3\" checked>";
-        } else {
-            echo "<div class=\"inputRadioGroup\">";
-            echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusDone\" value=\"3\">";
-        }
-        echo<<<HTML
-              <label for="statusDone">Analyse fertiggestellt</label>
-            </div>
-
-            <button class="floatright" type="submit">Änderung bestätigen</button>
+            
+            <button class="floatright" id="btnCommitChanges">Änderung bestätigen</button>
           </form>
         </section>
 HTML;
@@ -319,8 +268,7 @@ HTML;
             $order_id = $_POST[$ordersSelectKey];
             $new_status = $_POST["statusOrder"];
             $this->setStatusOrder($order_id, $new_status);
-        } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET[$ordersSelectKey])) {
-            $this->selected_userid = $_GET[$ordersSelectKey];
+            header('Location: phase1_agent.php');
         }
     }
 

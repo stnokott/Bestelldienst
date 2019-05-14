@@ -69,7 +69,7 @@ function handleOptionalButtonPress() {
 
 function handleOptionalRemoveButtonPress() {
     let cartItem = this.parentElement;
-    optionals.querySelector('button[value="'+cartItem.id+'"]').disabled = false;
+    document.getElementById("optionalsContainer").querySelector('button[value="'+cartItem.id+'"]').disabled = false;
     cartItem.style.display = "none";
 
     calculateTotal();

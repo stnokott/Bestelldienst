@@ -156,7 +156,7 @@ HTML;
     protected function generateContinueButton() {
         echo<<<HTML
         <section>
-          <form action="phase3.html">
+          <form action="phase4.php">
             <button type="submit">Weiter zur Paketbuchung</button>
           </form>
         </section>
