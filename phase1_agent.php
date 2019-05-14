@@ -7,6 +7,8 @@
  * @license  http://www.h-da.de  none
  */
 
+session_start();
+
 require_once './Page.php';
 
 class User
@@ -179,8 +181,6 @@ HTML;
 
     protected function generateAgentMenu()
     {
-        $echo_radioButtonGroup = "<div class=\"inputRadioGroup\">";
-
         echo <<<HTML
         <section>
           <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
@@ -195,36 +195,27 @@ HTML;
         }
         // <option value="443">443 - Max Musterhalfen</option>
         echo<<<HTML
-              </select>
+                  </select>
+                </div>
+            <div id="phase1_radioWrapper">
+                <div class="inputRadioGroup">
+                    <input type="radio" name="statusOrder" id="statusOrderConfirmed" value="0">
+                    <label for="statusOrderConfirmed">Bestellung bestätigt</label>
+                </div>
+                <div class="inputRadioGroup">
+                    <input type="radio" name="statusOrder" id="statusSent" value="1">
+                    <label for="statusSent">GenoCheck&trade; versandt</label>
+                </div>
+                <div class="inputRadioGroup">
+                    <input type="radio" name="statusOrder" id="statusAnalysis" value="2">
+                    <label for="statusAnalysis">Labor-Analyse läuft</label>
+                </div>
+                <div class="inputRadioGroup">
+                    <input type="radio" name="statusOrder" id="statusDone" value="3">
+                    <label for="statusDone">Analyse fertiggestellt</label>
+                </div>
             </div>
-HTML;
-        echo $echo_radioButtonGroup;
-        echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusOrderConfirmed\" value=\"0\">";
-        echo<<<HTML
-              <label for="statusOrderConfirmed">Bestellung bestätigt</label>
-            </div>
-
-HTML;
-        echo $echo_radioButtonGroup;
-        echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusSent\" value=\"1\">";
-        echo<<<HTML
-              <label for="statusSent">GenoCheck&trade; versandt</label>
-            </div>
-
-HTML;
-        echo $echo_radioButtonGroup;
-        echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusAnalysis\" value=\"2\">";
-        echo<<<HTML
-              <label for="statusAnalysis">Labor-Analyse läuft</label>
-            </div>
-
-HTML;
-        echo "<div class=\"inputRadioGroup\">";
-        echo "<input type=\"radio\" name=\"statusOrder\" id=\"statusDone\" value=\"3\">";
-        echo<<<HTML
-              <label for="statusDone">Analyse fertiggestellt</label>
-            </div>
-
+            
             <button class="floatright" id="btnCommitChanges">Änderung bestätigen</button>
           </form>
         </section>
@@ -277,6 +268,7 @@ HTML;
             $order_id = $_POST[$ordersSelectKey];
             $new_status = $_POST["statusOrder"];
             $this->setStatusOrder($order_id, $new_status);
+            header('Location: phase1_agent.php');
         }
     }
 

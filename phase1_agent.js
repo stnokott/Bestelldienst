@@ -1,12 +1,17 @@
+let genoCheckOrdersSelect = document.getElementById("genoCheckOrdersSelect");
+
+restoreSelectionFromSessionStorage();
 loadStatus();
 
-document.getElementById("genoCheckOrdersSelect").addEventListener("change", loadStatus);
+genoCheckOrdersSelect.addEventListener("change", loadStatus);
 
 function loadStatus() {
-    if (document.getElementById("genoCheckOrdersSelect").selectedOptions.length===0){
-      return;
+    sessionStorage.setItem('phase1_agent_selectedIndex', genoCheckOrdersSelect.selectedIndex);
+
+    if (genoCheckOrdersSelect.selectedOptions.length===0){
+        return;
     }
-    let selectedUserid = document.getElementById("genoCheckOrdersSelect").selectedOptions[0].value;
+    let selectedUserid = genoCheckOrdersSelect.selectedOptions[0].value;
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -51,5 +56,12 @@ function setRadioGroupActive(index) {
             // active-Klasse entfernen
             classList.remove("active");
         }
+    }
+}
+
+function restoreSelectionFromSessionStorage() {
+    let selectedIndex = sessionStorage.getItem('phase1_agent_selectedIndex');
+    if (selectedIndex < genoCheckOrdersSelect.getElementsByTagName("option").length) {
+        genoCheckOrdersSelect.selectedIndex = selectedIndex;
     }
 }
