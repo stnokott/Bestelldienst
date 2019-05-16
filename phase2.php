@@ -143,8 +143,8 @@ HTML;
     protected function generateContinueButton() {
         echo <<<HTML
         <section>
-          <form action="phase3.php">
-            <button type="submit">Weiter zur Paketbuchung</button>
+          <form action="phase3.php" method="get">
+            <button type="submit" name="getShopMenu">Weiter zur Paketbuchung</button>
           </form>
         </section>
 HTML;
@@ -186,6 +186,10 @@ HTML;
     {
         parent::processReceivedData();
 
+        // prüfe, ob diese Seite legitim von Phase1 aus aufgerufen wurde
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["getGenoCheckResults"])) {
+            $_SESSION["phase"] = 2;
+        }
     }
 
     /**
@@ -204,6 +208,7 @@ HTML;
         try {
             $page = new Phase2();
             $page->processReceivedData();
+            $page->checkSessionPhase(2);
             $page->generateView();
         } catch (Exception $e) {
             header("Content-type: text/plain; charset=UTF-8");

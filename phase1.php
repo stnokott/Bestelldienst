@@ -156,8 +156,8 @@ HTML;
                     </ul>
                 </div>
 
-                <form action="phase2.php">
-                    <button type="submit" {$echo_button_attr}>Zu Ihren Ergebnissen</button>
+                <form action="phase2.php" method="get">
+                    <button type="submit" name="getGenoCheckResults" {$echo_button_attr}>Zu Ihren Ergebnissen</button>
                 </form>
             </section>
 HTML;
@@ -346,6 +346,8 @@ HTML;
                 // User ist neu und hat noch kein GenoCheck bestellt
                 $this->createGenoCheckOrder($userid);
             }
+
+            $_SESSION["phase"] = 1;
             // Lädt die Seite nach setzen der Parameter neu, um POST-Popup bei Neuladen der Seite zu verhindern
             header('Location: phase1.php');
         }
@@ -367,6 +369,7 @@ HTML;
         try {
             $page = new Phase1();
             $page->processReceivedData();
+            $page->checkSessionPhase(1);
             $page->generateView();
         } catch (Exception $e) {
             header("Content-type: text/plain; charset=UTF-8");
