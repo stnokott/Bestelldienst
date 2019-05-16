@@ -102,16 +102,19 @@ function calculateTotal() {
 }
 
 function deleteShoppingCart(){
-/*
-    for (let i=0; i<3; i++){
-        let cartItem =
-        cartItem.style.display = "none";
+
+    //Entfernen der Optionals
+    for (let i = 0; i < 3; i++){
+      let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
+      shoppingCartOptionalItem.style.display = "none";
+      document.getElementById("optionalsContainer").querySelector('button[value="'+shoppingCartOptionalItem.id+'"]').disabled = false;
     }
-*/
+
+    //Zurücksetzen auf BasicKit
     shoppingCartKitItem.className = "cartItem "+dictKitClass["basic"];
     document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName["basic"];
     document.getElementsByClassName("cartItemPrice")[0].innerHTML = dictKitPrice["basic"];
     shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName["basic"]+".svg";
-    
+
     calculateTotal();
 }
