@@ -1,3 +1,15 @@
+let dictKitType = {
+    "basic": 0,
+    "comfort": 1,
+    "social": 2,
+    "premium": 3,
+    "custom": 4
+};
+let dictOptionalType = {
+    "clinic": 0,
+    "drone": 1,
+    "insurance": 2
+};
 let dictKitClass = {
     "basic": "kitBasic",
     "comfort": "kitComfort",
@@ -33,6 +45,7 @@ let shoppingCartOptionalItems = shoppingCart.getElementsByClassName("optional");
 let shoppingCartTotalPrice =  document.getElementsByClassName("shoppingCartTotal")[0].getElementsByClassName("value")[0];
 let kits = document.getElementById("kitContainer").getElementsByClassName("bookable");
 let optionals = document.getElementById("optionalsContainer").getElementsByClassName("bookable");
+let selectedKitType = 0;
 
 // Listener für Kit-Buttons
 for (let i=0; i<kits.length; i++) {
@@ -54,14 +67,18 @@ for (let i=0; i<shoppingCartOptionalItems.length; i++) {
     shoppingCartOptionalItem.querySelector('button[value="removeItem"]').addEventListener("click", handleOptionalRemoveButtonPress);
 }
 
-//Entfernen aller Optionals und zurücksetzen auf das BasicKit
+//Listener für das Entfernen aller Optionals und zurücksetzen auf das BasicKit
 document.getElementById("deleteCart").addEventListener("click", deleteShoppingCart);
+
+// Listener für Fortfahren-Button
+document.getElementById("confirmGenoCheckOrder").addEventListener("click", sendOrder);
 
 function handleKitButtonPress() {
     shoppingCartKitItem.className = "cartItem "+dictKitClass[this.value];
     document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName[this.value];
     document.getElementsByClassName("cartItemPrice")[0].innerHTML = this.innerHTML;
     shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName[this.value]+".svg";
+    selectedKitType = dictKitType[this.value];
 
     // zu Optionals scrollen
     document.getElementById("chooseOptionalsHeader").scrollIntoView({ left: 0, block: 'start', behavior: 'smooth' });
@@ -117,4 +134,41 @@ function deleteShoppingCart(){
     shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName["basic"]+".svg";
 
     calculateTotal();
+}
+
+function sendOrder() {
+    this.disabled = true;
+    let selectedOptionals = {};
+    for (let i=0; i<shoppingCartOptionalItems.length; i++) {
+        let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
+        if (shoppingCartOptionalItem.style.display !== "none") {
+            selectedOptionals["kit"+i] = dictOptionalType[shoppingCartOptionalItem.id];
+        }
+    }
+
+    let data = [{
+        "kittype": selectedKitType,
+    },
+        selectedOptionals
+    ];
+
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState === XMLHttpRequest.DONE ) {
+            if(xmlhttp.status === 200){
+                console.log('request successfull : ', xmlhttp.responseText);
+            }
+            else if(xmlhttp.status === 400) {
+                alert('There was an error 400');
+            }
+            else {
+                alert('something else other than 200 was returned');
+            }
+        }
+    }
+
+    xmlhttp.open("post", "https://enlx6f766q8jc.x.pipedream.net/", true);
+    xmlhttp.send(JSON.stringify(data)); //your custom data
+
+    this.disabled = false;
 }
