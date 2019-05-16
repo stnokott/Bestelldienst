@@ -147,7 +147,6 @@ HTML;
     {
         $this->getViewData();
         $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; bestellen');
-        $this->generateNavigationBar(0);
         $this->generatePageTitle();
 
         $this->generatePageDescription();
