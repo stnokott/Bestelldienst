@@ -20,11 +20,11 @@ let dictKitSVGName = {
     "custom": "growth"
 };
 let dictKitPrice = {
-  "basic": "5999.99",
-  "comfort": "7999.99",
-  "social": "8499.99",
-  "premium": "14999.99",
-  "custom": "24999.99"
+  "basic": "5999.99€",
+  "comfort": "7999.99€",
+  "social": "8499.99€",
+  "premium": "14999.99€",
+  "custom": "24999.99€"
 };
 
 let shoppingCart = document.getElementsByClassName("shoppingCart")[0];
