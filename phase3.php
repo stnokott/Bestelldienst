@@ -190,6 +190,7 @@ HTML;
             <div class="shoppingCartTotal">
                 <span class="title">Gesamt:</span>
                 <span class="value">5999.99€</span>
+                <button class="noshadow nobackground" value="removeAll" id="deleteCart"><i class="material-icons">delete</i></button>
             </div>
 HTML;
     }

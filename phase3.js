@@ -19,6 +19,13 @@ let dictKitSVGName = {
     "premium": "trophy",
     "custom": "growth"
 };
+let dictKitPrice = {
+  "basic": "5999.99",
+  "comfort": "7999.99",
+  "social": "8499.99",
+  "premium": "14999.99",
+  "custom": "24999.99"
+};
 
 let shoppingCart = document.getElementsByClassName("shoppingCart")[0];
 let shoppingCartKitItem = document.getElementById("shoppingCartKit");
@@ -46,6 +53,9 @@ for (let i=0; i<shoppingCartOptionalItems.length; i++) {
     shoppingCartOptionalItem.style.display = "none";
     shoppingCartOptionalItem.querySelector('button[value="removeItem"]').addEventListener("click", handleOptionalRemoveButtonPress);
 }
+
+//Entfernen aller Optionals und zurücksetzen auf das BasicKit
+document.getElementById("deleteCart").addEventListener("click", deleteShoppingCart);
 
 function handleKitButtonPress() {
     shoppingCartKitItem.className = "cartItem "+dictKitClass[this.value];
@@ -89,4 +99,22 @@ function calculateTotal() {
         }
     }
     shoppingCartTotalPrice.innerHTML = total.toFixed(2)+"€";
+}
+
+function deleteShoppingCart(){
+
+    //Entfernen der Optionals
+    for (let i = 0; i < 3; i++){
+      let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
+      shoppingCartOptionalItem.style.display = "none";
+      document.getElementById("optionalsContainer").querySelector('button[value="'+shoppingCartOptionalItem.id+'"]').disabled = false;
+    }
+
+    //Zurücksetzen auf BasicKit
+    shoppingCartKitItem.className = "cartItem "+dictKitClass["basic"];
+    document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName["basic"];
+    document.getElementsByClassName("cartItemPrice")[0].innerHTML = dictKitPrice["basic"];
+    shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName["basic"]+".svg";
+
+    calculateTotal();
 }
