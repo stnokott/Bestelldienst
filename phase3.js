@@ -136,6 +136,19 @@ function deleteShoppingCart(){
     calculateTotal();
 }
 
+/**
+ * Sendet POST-Request mit Bestelldaten an Phase4.php
+ *
+ * Format:
+ * "root":
+ *    0:
+ *       "kittype": 3
+ *    1:
+ *       "kit1": 1
+ *       "kit2": 2
+ *
+ *  Die Values sind jeweils die IDs des Kits / der Optionals, siehe Dictionary am Anfang der Datei
+ */
 function sendOrder() {
     this.disabled = true;
     let selectedOptionals = {};
@@ -156,19 +169,33 @@ function sendOrder() {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState === XMLHttpRequest.DONE ) {
             if(xmlhttp.status === 200){
-                console.log('request successfull : ', xmlhttp.responseText);
+                console.log('POST-Request erfolgreich');
+                /*
+                var form = document.createElement('form');
+                document.body.appendChild(form);
+                form.method = 'post';
+                form.action = url;
+                for (var name in data) {
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = name;
+                    input.value = data[name];
+                    form.appendChild(input);
+                }
+                form.submit();
+                 */
             }
             else if(xmlhttp.status === 400) {
-                alert('There was an error 400');
+                console.log("Error-Code 400 bei POST-Request");
             }
             else {
-                alert('something else other than 200 was returned');
+                console.log("Nicht spezifizierter Error-Code bei POST-Request");
             }
         }
     }
 
-    xmlhttp.open("post", "https://enlx6f766q8jc.x.pipedream.net/", true);
-    xmlhttp.send(JSON.stringify(data)); //your custom data
+    xmlhttp.open("post", "phase4.php", true);
+    xmlhttp.send(JSON.stringify(data));
 
-    this.disabled = false;
+    //this.disabled = false;
 }
