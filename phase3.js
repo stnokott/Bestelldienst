@@ -104,7 +104,7 @@ function calculateTotal() {
 //Shoppingcart löschen
 function deleteShoppingCart(){
     //Entfernen der Optionals
-    for (let i = 0; i < 3; i++){
+    for (let i = 0; i < shoppingCartOptionalItems.length; i++){
       let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
       shoppingCartOptionalItem.style.display = "none";
       document.getElementById("optionalsContainer").querySelector('button[value="'+shoppingCartOptionalItem.id+'"]').disabled = false;
