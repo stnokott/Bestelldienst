@@ -163,7 +163,6 @@ HTML;
     {
         $this->getViewData();
         $this->generatePageHeader('GenoChoice&trade; - Ihre GenoCheck&trade;-Ergebnisse');
-        $this->generateNavigationBar(2);
         $this->generatePageTitle();
         $this->generatePageDescription();
         $this->generateGenoTypes();

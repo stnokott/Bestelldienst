@@ -121,6 +121,7 @@ body {
 }
 
 header {
+    margin-top: 2em;
     padding: 1em;
     font-family: alien, sans-serif;
     font-size: 15pt;
@@ -133,7 +134,7 @@ header {
 }
 
 header + section, header + .currentUser {
-    margin-top: 28vh;
+    margin-top: 26vh;
 }
 
 /* Header-Hintergrund */
