@@ -25,7 +25,7 @@ require_once './Page.php';
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
 
-class Phase4 extends Page
+class Phase3 extends Page
 {
     /**
      * Instantiates members (to be defined above).
@@ -244,7 +244,10 @@ HTML;
     protected function processReceivedData()
     {
         parent::processReceivedData();
-
+        // prüfe, ob diese Seite legitim von Phase2 aus aufgerufen wurde
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["getShopMenu"])) {
+            $_SESSION["phase"] = 3;
+        }
     }
 
     /**
@@ -263,8 +266,9 @@ HTML;
     {
         session_start();
         try {
-            $page = new Phase4();
+            $page = new Phase3();
             $page->processReceivedData();
+            $page->checkSessionPhase(3);
             $page->generateView();
         } catch (Exception $e) {
             header("Content-type: text/plain; charset=UTF-8");
@@ -275,7 +279,7 @@ HTML;
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-Phase4::main();
+Phase3::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).

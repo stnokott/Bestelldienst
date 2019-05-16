@@ -212,6 +212,48 @@ HTML;
         $values_string = join("', '", $values);
         return "INSERT INTO ".$table." (".$columns_string.") VALUES ('".$values_string."')";
     }
+
+    /**
+     * Prüft die Session-Variable "phase", um sicherzugehen, dass der
+     * Nutzer die angeforderte Seite überhaupt abrufen darf
+     * Falls die angeforderte Seite nicht schon der korrekten Seite entspricht, wird
+     * auf die in der Session gespeicherte Seite weitergeleitet
+     *
+     * @param $requestedPhase Integer angeforderte Phasennummer
+     */
+    protected function checkSessionPhase($requestedPhase) {
+        if (!isset($_SESSION["phase"])) {
+            $_SESSION["phase"] = 0;
+            header("Location: phase0.php");
+            exit(1);
+        }
+        $curPhase = $_SESSION["phase"];
+        if ($requestedPhase != $curPhase) {
+            $this->redirectToPhase($curPhase);
+        }
+    }
+
+    protected function redirectToPhase($phaseNum) {
+        switch($phaseNum) {
+            case 0:
+                header("Location: phase0.php");
+                break;
+            case 1:
+                header("Location: phase1.php");
+                break;
+            case 2:
+                header("Location: phase2.php");
+                break;
+            case 3:
+                header("Location: phase3.php");
+                break;
+            case 4:
+                header("Location: phase4.php");
+                break;
+            default:
+                header("Location: phase0.php");
+        }
+    }
 } // end of class
 
 // Zend standard does not like closing php-tag!
