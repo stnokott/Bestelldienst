@@ -101,8 +101,8 @@ function calculateTotal() {
     shoppingCartTotalPrice.innerHTML = total.toFixed(2)+"€";
 }
 
+//Shoppingcart löschen
 function deleteShoppingCart(){
-
     //Entfernen der Optionals
     for (let i = 0; i < 3; i++){
       let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
