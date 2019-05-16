@@ -168,6 +168,7 @@ HTML;
      */
     protected function generatePageFooter($jspath)
     {
+        $this->generateClearSessionButton();
         echo "</body>";
         if (isset($jspath)) {
             echo "<script src=\"$jspath\"></script>";
@@ -183,9 +184,20 @@ HTML;
      */
     protected function generatePageFooterNoJS()
     {
+        $this->generateClearSessionButton();
         echo<<<HTML
         </body>
         </html>
+HTML;
+    }
+
+    protected function generateClearSessionButton() {
+        echo<<<HTML
+        <section>
+            <form action="resetUser.php">
+                <button type="submit">Session löschen</button>
+            </form>
+        </section>
 HTML;
 
     }
