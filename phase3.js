@@ -1,3 +1,15 @@
+let dictKitType = {
+    "basic": 0,
+    "comfort": 1,
+    "social": 2,
+    "premium": 3,
+    "custom": 4
+};
+let dictOptionalType = {
+    "clinic": 0,
+    "drone": 1,
+    "insurance": 2
+};
 let dictKitClass = {
     "basic": "kitBasic",
     "comfort": "kitComfort",
@@ -33,6 +45,7 @@ let shoppingCartOptionalItems = shoppingCart.getElementsByClassName("optional");
 let shoppingCartTotalPrice =  document.getElementsByClassName("shoppingCartTotal")[0].getElementsByClassName("value")[0];
 let kits = document.getElementById("kitContainer").getElementsByClassName("bookable");
 let optionals = document.getElementById("optionalsContainer").getElementsByClassName("bookable");
+let selectedKitType = 0;
 
 // Listener für Kit-Buttons
 for (let i=0; i<kits.length; i++) {
@@ -54,14 +67,18 @@ for (let i=0; i<shoppingCartOptionalItems.length; i++) {
     shoppingCartOptionalItem.querySelector('button[value="removeItem"]').addEventListener("click", handleOptionalRemoveButtonPress);
 }
 
-//Entfernen aller Optionals und zurücksetzen auf das BasicKit
+//Listener für das Entfernen aller Optionals und zurücksetzen auf das BasicKit
 document.getElementById("deleteCart").addEventListener("click", deleteShoppingCart);
+
+// Listener für Fortfahren-Button
+document.getElementById("confirmGenoCheckOrder").addEventListener("click", sendOrder);
 
 function handleKitButtonPress() {
     shoppingCartKitItem.className = "cartItem "+dictKitClass[this.value];
     document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName[this.value];
     document.getElementsByClassName("cartItemPrice")[0].innerHTML = this.innerHTML;
     shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName[this.value]+".svg";
+    selectedKitType = dictKitType[this.value];
 
     // zu Optionals scrollen
     document.getElementById("chooseOptionalsHeader").scrollIntoView({ left: 0, block: 'start', behavior: 'smooth' });
@@ -117,4 +134,68 @@ function deleteShoppingCart(){
     shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName["basic"]+".svg";
 
     calculateTotal();
+}
+
+/**
+ * Sendet POST-Request mit Bestelldaten an Phase4.php
+ *
+ * Format:
+ * "root":
+ *    0:
+ *       "kittype": 3
+ *    1:
+ *       "kit1": 1
+ *       "kit2": 2
+ *
+ *  Die Values sind jeweils die IDs des Kits / der Optionals, siehe Dictionary am Anfang der Datei
+ */
+function sendOrder() {
+    this.disabled = true;
+    let selectedOptionals = {};
+    for (let i=0; i<shoppingCartOptionalItems.length; i++) {
+        let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
+        if (shoppingCartOptionalItem.style.display !== "none") {
+            selectedOptionals["kit"+i] = dictOptionalType[shoppingCartOptionalItem.id];
+        }
+    }
+
+    let data = [{
+        "kittype": selectedKitType,
+    },
+        selectedOptionals
+    ];
+
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState === XMLHttpRequest.DONE ) {
+            if(xmlhttp.status === 200){
+                console.log('POST-Request erfolgreich');
+                /*
+                var form = document.createElement('form');
+                document.body.appendChild(form);
+                form.method = 'post';
+                form.action = url;
+                for (var name in data) {
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = name;
+                    input.value = data[name];
+                    form.appendChild(input);
+                }
+                form.submit();
+                 */
+            }
+            else if(xmlhttp.status === 400) {
+                console.log("Error-Code 400 bei POST-Request");
+            }
+            else {
+                console.log("Nicht spezifizierter Error-Code bei POST-Request");
+            }
+        }
+    }
+
+    xmlhttp.open("post", "phase4.php", true);
+    xmlhttp.send(JSON.stringify(data));
+
+    this.disabled = false;
 }

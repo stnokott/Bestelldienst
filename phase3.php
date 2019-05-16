@@ -197,9 +197,7 @@ HTML;
 
     protected function generateSectionEnd() {
         echo <<<HTML
-            <form action="phase4.html" method="post">
-                <button type="submit" class="floatright" value="continue">Weiter <i class="material-icons">forward</i></button>
-            </form>
+            <button id="confirmGenoCheckOrder" class="floatright">Bestellen <i class="material-icons">forward</i></button>
         </section>
 HTML;
 
