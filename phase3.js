@@ -197,5 +197,5 @@ function sendOrder() {
     xmlhttp.open("post", "phase4.php", true);
     xmlhttp.send(JSON.stringify(data));
 
-    //this.disabled = false;
+    this.disabled = false;
 }
