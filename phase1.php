@@ -101,7 +101,7 @@ HTML;
         echo<<<HTML
             <section class="genoCheckStatus">
             <div class="progresssteps-container">
-                <ul class="progresssteps">
+                <ul class="progresssteps quarter">
                     <li class="confirmed">Bestellung bestätigt</li>
                     <li class="sent">GenoCheck&trade; versandt</li>
                     <li class="analysis">Labor-Analyse läuft</li>
