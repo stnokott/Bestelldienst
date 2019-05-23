@@ -30,6 +30,19 @@ protected function createGenochoiceOrder($userid, $kittype) {
     }
 }
 
+protected function createOrderOptional($optionaltype, $choiceid){
+  $query = $this->getMySQLInsertString(
+      "orderoptionals",
+      array("optionaltype","choiceid"),
+      array($this->_database->real_escape_string($optionaltype),
+            $this->_database->real_escape_string($choiceid))
+  );
+  $this->_database->query($query);
+  if ($this->_database->errno != 0) {
+      exit("Fehler beim Erstellen von Bestelloptionen: ".$this->_database->error);
+  }
+}
+
 protected function checkPostParameters() {
     // prüfe, ob alle Werte vorhanden
     $check = array("kittype", "orderoptionals");
@@ -46,10 +59,21 @@ protected function checkPostParameters() {
 }
 
 protected function checkUserHasGenoChoiceOrder($userid) {
-    $query = "SELECT checkid FROM genochoiceorder WHERE userid='".$userid."'";
+    $query = "SELECT choiceid FROM genochoiceorder WHERE userid='".$userid."'";
     $result = $this->_database->query($query);
 
     return !$result->fetch_assoc() == null;
+}
+
+protected function getCenoChoiceId($userid) {
+    $query = "SELECT choiceid FROM genochoiceorder WHERE userid='".$userid."'";
+    $result = $this->_database->query($query);
+
+    if($row = $result->fetch_assoc()){
+      return $row["choiceid"];
+    }
+
+    return NULL;
 }
 
 protected function processReceivedData()
@@ -73,11 +97,14 @@ protected function processReceivedData()
             $this->createGenochoiceOrder($userid, $kittype);
         }
 
-        /* orderoptionals
-        for ($i=0; $i < sizeof($_POST["selectedOptionals"]); i++){
-            $kit1 = $_POST["selectedOptionals"][i];
-        }
-        */
+        $choiceid = $this->getCenoChoiceId($userid);
+
+        //Bestelloptionen hinzufügen
+        for($i=0; $i<sizeof($_POST["selectedoptionals"]; $i++){
+            $optionaltype = $_POST["selectedoptionals"][$i];
+            $this->createOrderOptional($choiceid, $optionaltype);
+       }
+
         // Lädt die Seite nach setzen der Parameter neu, um POST-Popup bei Neuladen der Seite zu verhindern
         $_SESSION["phase"] = 4;
         header('Location: phase4.php');
