@@ -70,7 +70,7 @@ class Phase2 extends Page
     {
         echo<<<HTML
         <section>
-          <span class="sectionHeader">Ihre GenoCheck&trade;-Ergebnisse</span>
+          <div class="sectionHeader">Ihre GenoCheck&trade;-Ergebnisse</div>
           <p>
             Diese Übersicht zeigt die Ergebnisse der labortechnischen Untersuchung Ihres persönlichen GenoCheck&trade;-Tests.<br>
             Hier werden Ihnen die möglichen Genotypen eines auf Ihren Genen basierendem Babys angezeigt.
@@ -82,7 +82,7 @@ HTML;
     protected function generateGenoTypes() {
         echo<<<HTML
         <section class="genoCheckResultsGenotypes">
-             <span class="sectionHeader">Genotypen</span>
+             <div class="sectionHeader">Genotypen</div>
 
              <h2>Augen</h2>
              <ul class="list">
@@ -107,7 +107,7 @@ HTML;
     protected function generateRisks() {
         echo<<<HTML
         <section class="genoCheckResultsRisks">
-          <span class="sectionHeader">Risiken</span>
+          <div class="sectionHeader">Risiken</div>
           <p>
             Unser patentiertes GenoCheck&trade;-Verfahren ermöglicht eine
             Risikobeurteilung zu diversen Erkrankungen in der Lebensspanne Ihres Babys.<br>

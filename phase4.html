@@ -1,70 +1,65 @@
 <!DOCTYPE html>
 <html lang="de">
-
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>GenoChoice&trade; - Bestellungsverfolgung</title>
+    <title>GenoChoice&trade; - GenoChoice&trade; Fortschritt</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
-  </head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto:500,900" rel="stylesheet">
+</head>
 
-  <body>
-    <ul class="navlist">
-      <li class="active"><a href="#">Phase 1</a></li>
-      <li><a href="#">Phase 1-2</a></li>
-      <li><a href="#">Phase 2</a></li>
-    </ul>
+<body>
 
-    <header>
-      <span class="headerTitle">Genochoice</span><br>
-      <span class="headerSubtitle">Legacy by Design</span>
-    </header>
+<header>
+    <span class="headerTitle">Genochoice</span><br>
+    <span class="headerSubtitle">Legacy by Design</span>
+</header>
 
-    <section>
-      <span class="sectionHeader">GenoChoice&trade; - Bestellungsverfolgung</span>
+<section>
+    <span class="sectionHeader">GenoChoice&trade; - Sendungsverfolgung</span>
+    <p>
+        Hier können Sie den Fortschritt Ihres persönlichen GenoCheck&trade;-Tests verfolgen.<br>
+        Bei abgeschlossener Analyse werden Sie zu Ihren Ergebnissen weitergeleitet.
+    </p>
+</section>
+    <div class="currentUser">Nutzer: <div class="userName">Glen Schillhofer</div>
+        <form action="resetUser.php" class="inline">
+            <button class="noshadow floatright nobackground"><i class="material-icons">clear</i></button>
+        </form>
+    </div>
 
-      <p>
-        Hier können Sie den Fortschritt Ihrer GenoChoice&trade;-Bestellung verfolgen.
-      </p>
+<section class="genoChoiceStatus">
+    <div class="sectionHeader"><div class="sectionHeaderNumber">1</div>Vorbereitung</div>
+    <div class="progresssteps-container">
+        <ul class="progresssteps third">
+            <li class="confirmed active">Bestellung bestätigt</li>
+            <li class="extraction active">DNA-Extraktion aus GenoCheck&trade;</li>
+            <li class="incubate animate">Inkubationsbehälter füllen</li>
+        </ul>
+    </div>
+    <div class="sectionHeader disabled"><div class="sectionHeaderNumber">2</div>Optionale Schritte</div>
+    <div class="progresssteps-container">
+        <ul class="progresssteps third">
+            <li class="insertion">Merkmalinsertion (CRISPR-cas9)</li>
+            <li class="sickness">Krankheitspotential reduzieren</li>
+            <li class="social">Soziale Bereiche verbessern</li>
+        </ul>
+    </div>
+    <div class="sectionHeader disabled"><div class="sectionHeaderNumber">3</div>Produktion</div>
+    <div class="progresssteps-container">
+        <ul class="progresssteps quarter">
+            <li class="meiosis">(Künstliche) Meiose initiieren</li>
+            <li class="embryo">Embryonalstatus erreicht</li>
+            <li class="analysis">Phänotypen prüfen</li>
+            <li class="choiceready">Produktion fertiggestellt</li>
+        </ul>
+    </div>
 
-      <div class="orderId">
-        <strong>Auftragsnummer:</strong> 443
-      </div>
+    <form action="" method="get">
+        <button type="submit" name="getGenoChoiceResults" id="getGenoChoiceResults" disabled>Produkt abholen</button>
+    </form>
+</section>
 
-      <br>
-      <!-- TODO: action hinzufügen -->
-      <form action="phase4.html" name="statusOrderProduction[]" method="get">
-        <u>Vorbereitung (fertiggestellt)</u><br>
-        <input type="checkbox" name="statusOrderConfirmed" id="statusOrderConfirmed" checked disabled>
-        <label for="statusOrderConfirmed">Bestellung bestätigt</label><br>
-        <input type="checkbox" name="statusExtraction" id="statusExtraction" checked disabled>
-        <label for="statusExtraction">DNA-Extraktion aus GenoCheck&trade;</label><br>
-        <input type="checkbox" name="statusIncubation" id="statusIncubation" checked disabled>
-        <label for="statusIncubation">Inkubationsbehälter füllen</label>
-        <strong>oder</strong>
-        <input type="checkbox" name="statusClinic" id="statusClinic" disabled>
-        <label for="statusClinic">Transfer zu Klinik</label><br>
-        <u>++ OPTIONAL ++</u><br>
-        <input type="checkbox" name="statusInsertion" id="statusInsertion" disabled>
-        <label for="statusInsertion">Merkmalinsertion (CRISPR-cas9)</label><br>
-        <input type="checkbox" name="statusDisease" id="statusDisease" checked disabled>
-        <label for="statusDisease">Krankheitspotential reduzieren (Immunomodifikation)</label><br>
-        <input type="checkbox" name="statusSocial" id="statusSocial" disabled>
-        <label for="statusSocial">Soziale Bereiche verbessern (kombinierte Methoden)</label><br>
-        <u>Produktion (aktiv)</u><br>
-        <input type="checkbox" name="statusMeiosis" id="statusMeiosis" checked disabled>
-        <label for="statusMeiosis">(Künstliche) Meiose initiieren</label><br>
-        <input type="checkbox" name="statusEmbryo" id="statusEmbryo" disabled>
-        <label for="statusEmbryo">Embryonalstatus erreicht</label><br>
-        <input type="checkbox" name="statusCheck" id="statusCheck" disabled>
-        <label for="statusCheck">Phänotypen prüfen</label><br>
-        <input type="checkbox" name="statusDone" id="statusDone" disabled>
-        <label for="statusDone"><strong>Produktion fertiggestellt</strong></label><br>
-        <button type="submit">Produkt abholen</button>
-      </form>
-    </section>
-  </body>
-
+</body>
 </html>

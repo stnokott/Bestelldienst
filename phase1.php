@@ -71,7 +71,7 @@ class Phase1 extends Page
     {
         echo<<<HTML
         <section>
-          <span class="sectionHeader">User erstellt!</span>
+          <div class="sectionHeader">User erstellt!</div>
         </section>
 HTML;
     }
@@ -83,7 +83,7 @@ HTML;
     {
         echo<<<HTML
         <section>
-          <span class="sectionHeader">GenoCheck&trade; - Sendungsverfolgung</span>
+          <div class="sectionHeader">GenoCheck&trade; - Sendungsverfolgung</div>
           <p>
             Hier können Sie den Fortschritt Ihres persönlichen GenoCheck&trade;-Tests verfolgen.<br>
             Bei abgeschlossener Analyse werden Sie zu Ihren Ergebnissen weitergeleitet.
@@ -101,7 +101,7 @@ HTML;
         echo<<<HTML
             <section class="genoCheckStatus">
             <div class="progresssteps-container">
-                <ul class="progresssteps">
+                <ul class="progresssteps quarter">
                     <li class="confirmed">Bestellung bestätigt</li>
                     <li class="sent">GenoCheck&trade; versandt</li>
                     <li class="analysis">Labor-Analyse läuft</li>

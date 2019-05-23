@@ -70,7 +70,7 @@ class Phase3 extends Page
     protected function generateSectionStart() {
         echo<<<HTML
             <section>
-                <span class="sectionHeader" id="chooseKitHeader">Ihr Kit wählen</span>
+                <div class="sectionHeader" id="chooseKitHeader">Ihr Kit wählen</div>
 HTML;
 
     }

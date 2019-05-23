@@ -164,7 +164,7 @@ section {
     width: 50%;
     max-width: 50%;
     min-width: 500px;
-    padding: 1em 2em 1em 2em;
+    padding: 0 2em 1em 2em;
     margin: 1em auto 3em auto;
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
     border-radius: 15px;
@@ -177,11 +177,29 @@ section>p {
 }
 
 .sectionHeader {
-    padding: 1em 0 0 1em;
+    margin-top: 1em;
+    margin-bottom: .25em;
+    display: inline-block;
+    padding: 5px 1em;
     font-family: Raleway, sans-serif;
-    font-weight: 300;
+    font-weight: 900;
     font-size: 24px;
-    border-bottom: 1px solid var(--accent-black);
+    border-radius: 15px;
+    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+}
+
+.sectionHeader.disabled {
+    opacity: 0.3;
+}
+
+.sectionHeaderNumber {
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    display: inline;
+    background-color: var(--accent-light-blue);
+    margin: -5px .25em -5px -.5em;
+    padding: 0 .5em;
+    border-radius: 15px;
 }
 
 .currentUser {
@@ -600,12 +618,19 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     cursor: default;
     color: var(--accent-light-grey);
     list-style-type: none;
-    width: 25%;
     float: left;
     font-size: 15px;
     position: relative;
     text-align: center;
     text-transform: uppercase;
+}
+
+.progresssteps.quarter li {
+    width: 25%;
+}
+
+.progresssteps.third li {
+    width: 33.33%;
 }
 
 .progresssteps li:before {
@@ -619,29 +644,23 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     margin: 0 auto 10px auto;
     border-radius: 50%;
     background-color: white;
+    font-family: "Material Icons", sans-serif;
 
     transition: background-color 0.1s ease-in-out;
 }
 
-.progresssteps li.confirmed:before {
-    font-family: "Material Icons", sans-serif;
-    content: "\e5ca";
-}
-
-.progresssteps li.sent:before {
-    font-family: "Material Icons", sans-serif;
-    content: "\e558";
-}
-
-.progresssteps li.analysis:before {
-    font-family: "Material Icons", sans-serif;
-    content: "\e8b6";
-}
-
-.progresssteps li.done:before {
-    font-family: "Material Icons", sans-serif;
-    content: "\e7f2";
-}
+.progresssteps li.confirmed:before {content: "\e5ca";}
+.progresssteps li.sent:before {content: "\e558";}
+.progresssteps li.analysis:before {content: "\e8b6";}
+.progresssteps li.done:before {content: "\e7f2";}
+.progresssteps li.extraction:before {content: "\e2c6";}
+.progresssteps li.incubate:before {content: "\e3b8";}
+.progresssteps li.insertion:before {content: "\e90d";}
+.progresssteps li.sickness:before {content: "\e8dc";}
+.progresssteps li.social:before {content: "\e7fb";}
+.progresssteps li.meiosis:before {content: "\e837";}
+.progresssteps li.embryo:before {content: "\eb42";}
+.progresssteps li.choiceready:before {content: "\e7e9";}
 
 .progresssteps li:after {
     /* Strich vor Punkt */
@@ -697,7 +716,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 }
 
 .progresssteps li.animate:after {
-    background: linear-gradient(to right, var(--accent-blue) 0%, white 20%, white 80%, var(--accent-blue) 100%);
+    background: linear-gradient(to right, var(--accent-blue) 0%, white 35%, white 65%, var(--accent-blue) 100%);
     background-size: 200% 100%;
     animation: slide 2s linear infinite;
 }
