@@ -206,8 +206,6 @@ HTML;
                     <label for="statusDone">Analyse fertiggestellt</label>
                 </div>
             </div>
-            
-            <button class="floatright" id="btnCommitChanges">Änderung bestätigen</button>
           </form>
         </section>
 HTML;
