@@ -631,21 +631,18 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     transition: background-color 0.1s ease-in-out;
 }
 
-.progresssteps li.confirmed:before {
-    content: "\e5ca";
-}
-
-.progresssteps li.sent:before {
-    content: "\e558";
-}
-
-.progresssteps li.analysis:before {
-    content: "\e8b6";
-}
-
-.progresssteps li.done:before {
-    content: "\e7f2";
-}
+.progresssteps li.confirmed:before {content: "\e5ca";}
+.progresssteps li.sent:before {content: "\e558";}
+.progresssteps li.analysis:before {content: "\e8b6";}
+.progresssteps li.done:before {content: "\e7f2";}
+.progresssteps li.extraction:before {content: "\e2c6";}
+.progresssteps li.incubate:before {content: "\e3b8";}
+.progresssteps li.insertion:before {content: "\e90d";}
+.progresssteps li.sickness:before {content: "\e8dc";}
+.progresssteps li.social:before {content: "\e7fb";}
+.progresssteps li.meiosis:before {content: "\e837";}
+.progresssteps li.embryo:before {content: "\eb42";}
+.progresssteps li.choiceready:before {content: "\e7e9";}
 
 .progresssteps li:after {
     /* Strich vor Punkt */
