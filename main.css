@@ -164,7 +164,7 @@ section {
     width: 50%;
     max-width: 50%;
     min-width: 500px;
-    padding: 1em 2em 1em 2em;
+    padding: 0 2em 1em 2em;
     margin: 1em auto 3em auto;
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
     border-radius: 15px;
@@ -177,11 +177,15 @@ section>p {
 }
 
 .sectionHeader {
-    padding: 1em 0 0 1em;
+    margin-top: 1em;
+    margin-bottom: .25em;
+    display: inline-block;
+    padding: .25em 1em;
     font-family: Raleway, sans-serif;
-    font-weight: 300;
+    font-weight: 900;
     font-size: 24px;
-    border-bottom: 1px solid var(--accent-black);
+    border-radius: 15px;
+    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
 }
 
 .currentUser {
