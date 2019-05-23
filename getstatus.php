@@ -57,8 +57,12 @@ class StatusHelper extends Page
      * @param String $userid id des Nutzers
      * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
      */
-    protected function getUserOrderStatus($userid)
+    protected function getUserOrderStatus()
     {
+        if (!isset($_SESSION["userid"])) {
+            die("User-ID Session Variable nicht gesetzt!");
+        }
+        $userid = $_SESSION["userid"];
         if (!$this->checkUserExists($userid)) {
             return null;
         }
@@ -97,12 +101,7 @@ class StatusHelper extends Page
      */
     protected function getStatus()
     {
-        if (!isset($_GET["userid"])) {
-            die("Bitte userid als GET-Parameter spezifizieren!");
-        }
-
-        $userid = $_GET["userid"];
-        $status = $this->getUserOrderStatus($userid);
+        $status = $this->getUserOrderStatus();
         echo json_encode($status);
     }
 
@@ -136,6 +135,7 @@ class StatusHelper extends Page
      */
     public static function main()
     {
+        session_start();
         header("Content-Type: application/json; charset=UTF-8");
         try {
             $page = new StatusHelper();
