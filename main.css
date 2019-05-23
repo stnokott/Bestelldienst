@@ -626,27 +626,24 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     margin: 0 auto 10px auto;
     border-radius: 50%;
     background-color: white;
+    font-family: "Material Icons", sans-serif;
 
     transition: background-color 0.1s ease-in-out;
 }
 
 .progresssteps li.confirmed:before {
-    font-family: "Material Icons", sans-serif;
     content: "\e5ca";
 }
 
 .progresssteps li.sent:before {
-    font-family: "Material Icons", sans-serif;
     content: "\e558";
 }
 
 .progresssteps li.analysis:before {
-    font-family: "Material Icons", sans-serif;
     content: "\e8b6";
 }
 
 .progresssteps li.done:before {
-    font-family: "Material Icons", sans-serif;
     content: "\e7f2";
 }
 
