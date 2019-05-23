@@ -704,7 +704,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
 }
 
 .progresssteps li.animate:after {
-    background: linear-gradient(to right, var(--accent-blue) 0%, white 20%, white 80%, var(--accent-blue) 100%);
+    background: linear-gradient(to right, var(--accent-blue) 0%, white 35%, white 65%, var(--accent-blue) 100%);
     background-size: 200% 100%;
     animation: slide 2s linear infinite;
 }
