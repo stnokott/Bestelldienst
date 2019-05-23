@@ -157,7 +157,7 @@ HTML;
                 </div>
 
                 <form action="phase2.php" method="get">
-                    <button type="submit" name="getGenoCheckResults" {$echo_button_attr}>Zu Ihren Ergebnissen</button>
+                    <button type="submit" name="getGenoCheckResults" id="getGenoCheckResults" {$echo_button_attr}>Zu Ihren Ergebnissen</button>
                 </form>
             </section>
 HTML;
