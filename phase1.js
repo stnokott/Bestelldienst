@@ -1,3 +1,5 @@
+loadStatus();
+
 window.setInterval (loadStatus, 5000);
 
 function loadStatus() {
