@@ -176,7 +176,7 @@ class Phase1Agent extends Page
         <section>
           <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
 
-          <form action="phase1_agent.php" name="statusOrderChange[]" method="post">
+          <form action="phase1_agent.php" name="statusOrderChange[]" id="statusOrderChange" method="post">
             <div class="dropdownWrapper">
               <select class="dropdown" name="genoCheckOrdersSelect" id="genoCheckOrdersSelect">
 HTML;
@@ -206,8 +206,6 @@ HTML;
                     <label for="statusDone">Analyse fertiggestellt</label>
                 </div>
             </div>
-            
-            <button class="floatright" id="btnCommitChanges">Änderung bestätigen</button>
           </form>
         </section>
 HTML;

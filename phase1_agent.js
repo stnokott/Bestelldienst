@@ -5,6 +5,11 @@ loadStatus();
 
 genoCheckOrdersSelect.addEventListener("change", loadStatus);
 
+let radioButtons = document.getElementById("phase1_radioWrapper").getElementsByTagName("input");
+for (let radioButton of radioButtons) {
+    radioButton.addEventListener("click", radioClicked);
+}
+
 function loadStatus() {
     sessionStorage.setItem('phase1_agent_selectedIndex', genoCheckOrdersSelect.selectedIndex);
 
@@ -64,4 +69,9 @@ function restoreSelectionFromSessionStorage() {
     if (selectedIndex < genoCheckOrdersSelect.getElementsByTagName("option").length) {
         genoCheckOrdersSelect.selectedIndex = selectedIndex;
     }
+}
+
+function radioClicked() {
+    document.forms['statusOrderChange'].submit();
+    console.log("submit");
 }
