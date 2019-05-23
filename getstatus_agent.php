@@ -98,11 +98,10 @@ class StatusHelper extends Page
     protected function getStatus()
     {
         if (!isset($_GET["userid"])) {
-            die("Bitte userid als GET-Parameter spezifizieren!");
+            die ("userid-GET-Parameter muss gesetzt sein!");
         }
 
-        $userid = $_GET["userid"];
-        $status = $this->getUserOrderStatus($userid);
+        $status = $this->getUserOrderStatus($_GET["userid"]);
         echo json_encode($status);
     }
 
@@ -136,6 +135,7 @@ class StatusHelper extends Page
      */
     public static function main()
     {
+        session_start();
         header("Content-Type: application/json; charset=UTF-8");
         try {
             $page = new StatusHelper();

@@ -30,7 +30,7 @@ function loadStatus() {
             setRadioGroupActive(selectedUserStatus);
         }
     };
-    xmlhttp.open("GET", "getstatus.php?userid="+selectedUserid, true);
+    xmlhttp.open("GET", "getstatus_agent.php?userid="+selectedUserid, true);
     xmlhttp.send();
 }
 

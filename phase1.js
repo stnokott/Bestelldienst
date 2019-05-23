@@ -1,8 +1,8 @@
+loadStatus();
+
+window.setInterval (loadStatus, 5000);
+
 function loadStatus() {
-    if (document.getElementById("genoCheckOrdersSelect").selectedOptions.length===0){
-      return;
-    }
-    let selectedUserid = document.getElementById("genoCheckOrdersSelect").selectedOptions[0].value;
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -12,40 +12,35 @@ function loadStatus() {
                 return;
             }
             // Status vorhanden
-            let selectedUserStatus = parseInt(statusJSON[0]);
-            setRadioGroupActive(selectedUserStatus);
+            let status = parseInt(statusJSON[0]);
+            setStatusActive(status);
         }
     };
-    xmlhttp.open("GET", "getstatus.php?userid="+selectedUserid, true);
+    xmlhttp.open("GET", "getstatus_session.php", true);
     xmlhttp.send();
 }
 //SETSTATUSINTERVAL nutzen
 /**
  * "active"-Klasse von allen radioButtons entfernen
- * @param index Integer Index of Status to activate (0=sent, 1=delivered, 2=analysis, 3=done)
+ * @param activeIndex Integer Index of Status to activate (0=sent, 1=delivered, 2=analysis, 3=done)
  */
-function setRadioGroupActive(index) {
-    let radioButtons = document.getElementsByClassName("inputRadioGroup");
+function setStatusActive(activeIndex) {
+    let progressItems = document.getElementsByClassName("progresssteps")[0].getElementsByTagName("li");
 
-    // alle RadioButtons deaktivieren
-    for (let i=0; i<radioButtons.length; i++) {
-        let radioButton = document.getElementsByClassName("inputRadioGroup")[index].querySelectorAll('[type="radio"]')[0];
-        radioButton.checked = false;
-    }
+    for (let i=0; i<progressItems.length; i++) {
+        let progressItem = progressItems[i];
+        let progressItemClasses = progressItem.classList;
 
-    // alle "active"-Klassen entfernen und radioButtons deaktivieren
-    for (let i=0; i<radioButtons.length; i++) {
-        let classList = radioButtons[i].classList;
-        if (i === index) {
-            if (!classList.contains("active")) {
-                // active-Klasse setzen
-                classList.add("active");
-            }
-            let radioButton = document.getElementsByClassName("inputRadioGroup")[index].querySelectorAll('[type="radio"]')[0];
-            radioButton.checked = true;
-        } else {
-            // active-Klasse entfernen
-            classList.remove("active");
+        progressItemClasses.remove("active");
+        progressItemClasses.remove("animate");
+
+        if (i <= activeIndex) {
+            progressItemClasses.add("active");
+        } else if (i===activeIndex+1) {
+            progressItemClasses.add("animate");
         }
     }
+
+    // Button aktivieren, wenn Status komplett
+    document.getElementById("getGenoCheckResults").disabled = (activeIndex !== progressItems.length-1);
 }
