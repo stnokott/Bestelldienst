@@ -29,9 +29,6 @@ class Phase1 extends Page
 {
     private $new_user = false;
 
-    // TO-DO: dynamisch bestimmen über Session
-    private $order_status; // 0 = confirmed, 1 = sent, 2 = analysis, 3 = done
-
     /**
      * Instantiates members (to be defined above).
      * Calls the constructor of the parent i.e. page class.
@@ -61,10 +58,7 @@ class Phase1 extends Page
      */
     protected function getViewData()
     {
-        if(isset($_SESSION["userid"])){
-            $this->order_status = $this->getUserOrderStatus($_SESSION["userid"]);
-        } else{
-            //Falls user nicht vorhaden, redirect auf Startseite
+        if(!isset($_SESSION["userid"])){
             header('Location: phase0.php');
         }
     }
@@ -104,64 +98,22 @@ HTML;
      */
     protected function generateGenoCheckProgress()
     {
-        echo "<section class=\"genoCheckStatus\">";
+        echo<<<HTML
+            <section class="genoCheckStatus">
+            <div class="progresssteps-container">
+                <ul class="progresssteps">
+                    <li class="confirmed">Bestellung bestätigt</li>
+                    <li class="sent">GenoCheck&trade; versandt</li>
+                    <li class="analysis">Labor-Analyse läuft</li>
+                    <li class="done">Analyse fertiggestellt</li>
+                </ul>
+            </div>
 
-        if ($this->order_status == null) {
-            echo<<<HTML
-            <p>
-                Status der Bestellung nicht verfügbar, bitte erneut versuchen.
-            </p>
+            <form action="phase2.php" method="get">
+                <button type="submit" name="getGenoCheckResults" id="getGenoCheckResults" disabled>Zu Ihren Ergebnissen</button>
+            </form>
+        </section>
 HTML;
-        } else {
-
-            // bestimme, welches li-Item von progresssteps die "active"-Klasse bekommt
-            $echo_confirmed = $echo_sent = $echo_analysis = $echo_done = null;
-            $echo_active = "active";
-            $echo_animate = "animate";
-            $echo_button_attr = "disabled";
-            switch ($this->order_status) {
-                case 0:
-                    $echo_confirmed = $echo_active;
-                    $echo_sent = $echo_animate;
-                    break;
-                case 1:
-                    $echo_confirmed = $echo_active;
-                    $echo_sent = $echo_active;
-                    $echo_analysis = $echo_animate;
-                    break;
-                case 2:
-                    $echo_confirmed = $echo_active;
-                    $echo_sent = $echo_active;
-                    $echo_analysis = $echo_active;
-                    $echo_done = $echo_animate;
-                    break;
-                case 3:
-                    $echo_confirmed = $echo_active;
-                    $echo_sent = $echo_active;
-                    $echo_analysis = $echo_active;
-                    $echo_done = $echo_active;
-
-                    $echo_button_attr = null; // aktiviere Button, wenn letzte Phase erreicht
-                    break;
-                default:
-            }
-
-            echo<<<HTML
-                <div class="progresssteps-container">
-                    <ul class="progresssteps">
-                        <li class="confirmed {$echo_confirmed}">Bestellung bestätigt</li>
-                        <li class="sent {$echo_sent}">GenoCheck&trade; versandt</li>
-                        <li class="analysis {$echo_analysis}">Labor-Analyse läuft</li>
-                        <li class="done {$echo_done}">Analyse fertiggestellt</li>
-                    </ul>
-                </div>
-
-                <form action="phase2.php" method="get">
-                    <button type="submit" name="getGenoCheckResults" id="getGenoCheckResults" {$echo_button_attr}>Zu Ihren Ergebnissen</button>
-                </form>
-            </section>
-HTML;
-        }
     }
 
     /**
