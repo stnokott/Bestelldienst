@@ -188,6 +188,10 @@ section>p {
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
 }
 
+.sectionHeader.disabled {
+    opacity: 0.3;
+}
+
 .sectionHeaderNumber {
     font-family: Roboto, sans-serif;
     font-weight: 300;
