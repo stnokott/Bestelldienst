@@ -156,7 +156,7 @@ protected function processReceivedData()
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-Phase1::main();
+Phase4::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).
