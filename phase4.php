@@ -7,6 +7,47 @@
  * @license  http://www.h-da.de  none
  */
 
+require_once './Page.php';
+
+/**
+ * This is a template for top level classes, which represent
+ * a complete web page and which are called directly by the user.
+ * Usually there will only be a single instance of such a class.
+ * The name of the template is supposed
+ * to be replaced by the name of the specific HTML page e.g. baker.
+ * The order of methods might correspond to the order of thinking
+ * during implementation.
+ *
+ * Angepasst für Bestelldienst
+ *
+ * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
+ * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
+ * @author   Ralf Hahn, <ralf.hahn@h-da.de>
+ */
+
+class Phase4 extends Page
+{
+    /**
+     * Instantiates members (to be defined above).
+     * Calls the constructor of the parent i.e. page class.
+     * So the database connection is established.
+     */
+    protected function __construct()
+    {
+        parent::__construct();
+        // to do: instantiate members representing substructures/blocks
+    }
+
+    /**
+     * Cleans up what ever is needed.
+     * Calls the destructor of the parent i.e. page class.
+     * So the database connection is closed.
+     */
+    protected function __destruct()
+    {
+        parent::__destruct();
+    }
+
 /*
 vgl post query usererstellung
 Post Argumente Validieren
@@ -110,3 +151,16 @@ protected function processReceivedData()
         header('Location: phase4.php');
     }
 }
+}
+
+
+// This call is starting the creation of the page.
+// That is input is processed and output is created.
+Phase1::main();
+
+// Zend standard does not like closing php-tag!
+// PHP doesn't require the closing tag (it is assumed when the file ends).
+// Not specifying the closing ? >  helps to prevent accidents
+// like additional whitespace which will cause session
+// initialization to fail ("headers already sent").
+//? >
