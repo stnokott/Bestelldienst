@@ -71,7 +71,7 @@ protected function createGenoChoiceOrder($userid, $kittype) {
     }
 }
 
-protected function createOrderOptional($optionaltype, $choiceid){
+protected function createOrderOptional($choiceid, $optionaltype){
   $query = $this->getMySQLInsertString(
       "orderoptionals",
       array("optionaltype","choiceid"),
@@ -124,7 +124,6 @@ protected function processReceivedData()
         // prüfe POST Parameter
         if (!$this->checkPostParameters()) {
             // redirect zu phase3.php
-            die("checkPostParameters falsch");
             header('Location: phase3.php');
             exit();
         }
