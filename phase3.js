@@ -151,39 +151,56 @@ function deleteShoppingCart(){
  */
 function sendOrder() {
     this.disabled = true;
-    let selectedOptionals = {};
+    let selectedOptionals = [];
     for (let i=0; i<shoppingCartOptionalItems.length; i++) {
         let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
         if (shoppingCartOptionalItem.style.display !== "none") {
-            selectedOptionals["kit"+i] = dictOptionalType[shoppingCartOptionalItem.id];
+            selectedOptionals[i] = dictOptionalType[shoppingCartOptionalItem.id];
         }
     }
 
+    /*
     let data = [{
         "kittype": selectedKitType,
     },
         selectedOptionals
     ];
+     */
 
+    let form = document.createElement('form');
+    document.body.appendChild(form);
+    form.method = 'post';
+    form.action = "phase4.php";
+    let inputKittype = document.createElement('input');
+    inputKittype.type = "hidden";
+    inputKittype.name = "kittype";
+    inputKittype.value = selectedKitType;
+    form.appendChild(inputKittype);
+
+    let inputOptionals = document.createElement("select");
+    inputOptionals.type = "hidden";
+    inputOptionals.name = "selectedoptionals[]";
+    inputOptionals.multiple = true;
+    form.appendChild(inputOptionals);
+
+    for (let optional in selectedOptionals) {
+        let inputOptionalsItem = document.createElement('option');
+        inputOptionalsItem.type = 'hidden';
+        console.log(optional);
+        inputOptionalsItem.value = optional;
+        inputOptionalsItem.innerHTML = optional;
+        inputOptionalsItem.selected = true;
+        inputOptionals.appendChild(inputOptionalsItem);
+    }
+    form.submit();
+
+    /*
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState === XMLHttpRequest.DONE ) {
             if(xmlhttp.status === 200){
                 console.log('POST-Request erfolgreich');
-                /*
-                var form = document.createElement('form');
-                document.body.appendChild(form);
-                form.method = 'post';
-                form.action = url;
-                for (var name in data) {
-                    var input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = name;
-                    input.value = data[name];
-                    form.appendChild(input);
-                }
-                form.submit();
-                 */
+
             }
             else if(xmlhttp.status === 400) {
                 console.log("Error-Code 400 bei POST-Request");
@@ -196,6 +213,7 @@ function sendOrder() {
 
     xmlhttp.open("post", "phase4.php", true);
     xmlhttp.send(JSON.stringify(data));
+     */
 
     this.disabled = false;
 }

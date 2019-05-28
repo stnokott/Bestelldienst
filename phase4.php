@@ -86,7 +86,7 @@ protected function createOrderOptional($optionaltype, $choiceid){
 
 protected function checkPostParameters() {
     // prüfe, ob alle Werte vorhanden
-    $check = array("kittype", "orderoptionals");
+    $check = array("kittype", "selectedoptionals");
     $valid = true;
 
     foreach ($check as $checkString) {
@@ -124,6 +124,7 @@ protected function processReceivedData()
         // prüfe POST Parameter
         if (!$this->checkPostParameters()) {
             // redirect zu phase3.php
+            die("checkPostParameters falsch");
             header('Location: phase3.php');
             exit();
         }
