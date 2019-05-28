@@ -192,7 +192,7 @@ function sendOrder() {
                 console.log("Nicht spezifizierter Error-Code bei POST-Request");
             }
         }
-    }
+    };
 
     xmlhttp.open("post", "phase4.php", true);
     xmlhttp.send(JSON.stringify(data));

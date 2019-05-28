@@ -58,7 +58,7 @@ Genochoiceordereintrag erstellen mit userid + post Info
 Für jede optional eintrag in die orderoptionalsdatenbank
 */
 
-protected function createGenochoiceOrder($userid, $kittype) {
+protected function createGenoChoiceOrder($userid, $kittype) {
     $query = $this->getMySQLInsertString(
         "genochoiceorder",
         array("userid","kittype"),
@@ -106,7 +106,7 @@ protected function checkUserHasGenoChoiceOrder($userid) {
     return !$result->fetch_assoc() == null;
 }
 
-protected function getCenoChoiceId($userid) {
+protected function getGenoChoiceId($userid) {
     $query = "SELECT choiceid FROM genochoiceorder WHERE userid='".$userid."'";
     $result = $this->_database->query($query);
 
@@ -135,13 +135,13 @@ protected function processReceivedData()
         //Erstellen der Order falls noch keine Bestellung vorhanden
         if (NULL == $this->checkUserHasGenoChoiceOrder($userid)) {
             // User ist neu und hat noch kein GenoCheck bestellt
-            $this->createGenochoiceOrder($userid, $kittype);
+            $this->createGenoChoiceOrder($userid, $kittype);
         }
 
-        $choiceid = $this->getCenoChoiceId($userid);
+        $choiceid = $this->getGenoChoiceId($userid);
 
         //Bestelloptionen hinzufügen
-        for($i=0; $i<sizeof($_POST["selectedoptionals"]; $i++){
+        for($i=0; $i<sizeof($_POST["selectedoptionals"]); $i++){
             $optionaltype = $_POST["selectedoptionals"][$i];
             $this->createOrderOptional($choiceid, $optionaltype);
        }
