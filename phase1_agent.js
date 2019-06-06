@@ -1,4 +1,4 @@
-let genoCheckOrdersSelect = document.getElementById("genoCheckOrdersSelect");
+let genoCheckOrdersSelect = document.getElementById("genoChoiceOrdersSelect");
 
 restoreSelectionFromSessionStorage();
 loadStatus();
@@ -7,6 +7,7 @@ genoCheckOrdersSelect.addEventListener("change", loadStatus);
 
 let radioButtons = document.getElementById("phase1_radioWrapper").getElementsByTagName("input");
 for (let radioButton of radioButtons) {
+    // TODO: Klick auf gesamtes Div verarbeiten
     radioButton.addEventListener("click", radioClicked);
 }
 
