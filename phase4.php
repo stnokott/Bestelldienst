@@ -150,6 +150,7 @@ HTML;
         $this->generatePageFooter("phase4.js");
     }
 
+//TODO Ausgewähltes Kit bzw Kittype auf Seite anzeigen
 
 /**####################DATA ACQUISITION#############################*/
 
