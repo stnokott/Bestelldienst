@@ -52,7 +52,7 @@ class StatusHelper extends Page
     }
 
     /**
-     * Gibt den Wert des status-Attributs der genocheckorder-Datenbank für den User mit der
+     * Gibt den Wert des status-Attributs der genochoiceorder-Datenbank für den User mit der
      * angegebenen Email-Adresse aus
      * @param String $userid id des Nutzers
      * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
@@ -67,8 +67,34 @@ class StatusHelper extends Page
             return null;
         }
 
-        $query = "SELECT status FROM genocheckorder WHERE userid='" . $userid . "'";
+        $query = "SELECT status FROM genochoiceorder WHERE userid='" . $userid . "'";
         $result = $this->_database->query($query);
+
+        if ($row = $result->fetch_assoc()) {
+            return $row["status"];
+        } else {
+            return null;
+        }
+    }
+
+    protected function getUserOrderOptionalsStatus()
+    {
+        if (!isset($_SESSION["userid"])) {
+            die("User-ID Session Variable nicht gesetzt!");
+        }
+        $userid = $_SESSION["userid"];
+        if (!$this->checkUserExists($userid)) {
+            return null;
+        }
+
+        $choiceid = "SELECT choiceid FROM genochoiceorder WHERE userid=$userid";
+
+        for($i=0; $i<3; $i++){
+            $query = "SELECT done FROM orderoptionals WHERE optionaltype=$i AND choiceid = $choiceid";
+       }
+
+
+
 
         if ($row = $result->fetch_assoc()) {
             return $row["status"];
@@ -112,7 +138,7 @@ class StatusHelper extends Page
      * If the page contains blocks, delegate processing of the
      * respective subsets of data to them.
      *
-     * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
+     * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden Genochoice-Auftrag
      *
      * @return void
      */
