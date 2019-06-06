@@ -7,8 +7,6 @@
  * @license  http://www.h-da.de  none
  */
 
-session_start();
-
 require_once './Page.php';
 
 class User
@@ -284,6 +282,7 @@ HTML;
      */
     public static function main()
     {
+        session_start();
         try {
             $page = new Phase1Agent();
             $page->processReceivedData();
