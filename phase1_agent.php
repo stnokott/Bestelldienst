@@ -8,52 +8,7 @@
  */
 
 require_once './Page.php';
-
-class User
-{
-    private $userid;
-    private $firstname;
-    private $lastname;
-    private $email;
-
-    public function __construct($userid, $firstname, $lastname, $email)
-    {
-        $this->userid = $userid;
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->email = $email;
-    }
-
-    public function __destruct()
-    {
-
-    }
-
-    public function getUserid()
-    {
-        return $this->userid;
-    }
-
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function toString()
-    {
-        return $this->firstname . " " . $this->lastname . " - " . $this->email;
-    }
-}
+require_once './User.php';
 
 /**
  * This is a template for top level classes, which represent
@@ -250,7 +205,7 @@ HTML;
             echo "Fehler bei der Verarbeitung der Daten: " . $e;
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // TO-DO in Javascript umlagern, um ohne Neuladen der Seite zu machen
+            // TODO: in Javascript umlagern, um ohne Neuladen der Seite zu machen
             // Wende Änderungen an
             $order_id = $_POST[$ordersSelectKey];
             $new_status = $_POST["statusOrder"];
