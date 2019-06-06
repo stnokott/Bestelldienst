@@ -48,15 +48,110 @@ class Phase4 extends Page
         parent::__destruct();
     }
 
-/*
-vgl post query usererstellung
-Post Argumente Validieren
-Genochoiceordereintrag erstellen mit userid + post Info
-  Post-Info:
-    kittype=0/1/2/3/4
-    optionals=[0/1/2, 0/1/2, ...]
-Für jede optional eintrag in die orderoptionalsdatenbank
+
+        /**
+         * Fetch all data that is necessary for later output.
+         * Data is stored in an easily accessible way e.g. as associative array.
+         *
+         * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+         *
+         * @return null
 */
+
+    /**
+     * Fetch all data that is necessary for later output.
+     * Data is stored in an easily accessible way e.g. as associative array.
+     *
+     * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+     *
+     * @return null
+     */
+    protected function getViewData()
+    {
+        if(!isset($_SESSION["userid"])){
+            header('Location: phase3.php');
+        }
+    }
+
+    /**
+     * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
+     */
+    protected function generatePageDescription()
+    {
+        echo<<<HTML
+        <section>
+          <div class="sectionHeader">Ihre GenoCheck&trade;-Ergebnisse</div>
+          <p>
+            Diese Übersicht zeigt den Fortschritt Ihrer persönlichen GenoChoice&trade;-Bestellung.<br>
+            Wir freuen uns, Sie bald mit ihrem neuen Familienmitglied zusammenbringen zu können.
+          </p>
+        </section>
+HTML;
+    }
+
+
+    /**
+     * Generiert Ansicht zur Verfolgung des GenoChoice-Fortschritts für den Nutzer
+     * Verwendet das order_status-Attribut zur (De-)Aktivierung der Elemente
+     */
+    protected function generateGenoChoiceProgress()
+    {
+        echo<<<HTML
+        <section class="genoChoiceStatus">
+            <div class="sectionHeader"><div class="sectionHeaderNumber">1</div>Vorbereitung</div>
+            <div class="progresssteps-container">
+                <ul class="progresssteps third">
+                    <li class="confirmed">Bestellung bestätigt</li>
+                    <li class="extraction">DNA-Extraktion aus GenoCheck&trade;</li>
+                    <li class="incubate">Inkubationsbehälter füllen</li>
+                </ul>
+            </div>
+            <div class="sectionHeader"><div class="sectionHeaderNumber">2</div>Optionale Schritte</div>
+            <div class="progresssteps-container">
+                <ul class="progresssteps third">
+                    <li class="insertion">Merkmalinsertion (CRISPR-cas9)</li>
+                    <li class="sickness">Krankheitspotential reduzieren</li>
+                    <li class="social">Soziale Bereiche verbessern</li>
+                </ul>
+            </div>
+            <div class="sectionHeader"><div class="sectionHeaderNumber">3</div>Produktion</div>
+            <div class="progresssteps-container">
+                <ul class="progresssteps quarter">
+                    <li class="meiosis">(Künstliche) Meiose initiieren</li>
+                    <li class="embryo">Embryonalstatus erreicht</li>
+                    <li class="analysis">Phänotypen prüfen</li>
+                    <li class="choiceready">Produktion fertiggestellt</li>
+                </ul>
+            </div>
+
+            <form action="" method="get">
+                <button type="submit" name="getGenoChoiceResults" id="getGenoChoiceResults" disabled>Produkt abholen</button>
+            </form>
+        </section>
+HTML;
+    }
+
+    /**
+     * First the necessary data is fetched and then the HTML is
+     * assembled for output. i.e. the header is generated, the content
+     * of the page ("view") is inserted and -if avaialable- the content of
+     * all views contained is generated.
+     * Finally the footer is added.
+     */
+    protected function generateView()
+    {
+        $this->getViewData();
+        $this->generatePageHeader('GenoChoice&trade; - Ihr GenoChoice&trade; Fortschritt');
+        $this->generatePageTitle();
+        $this->generatePageDescription();
+
+        $this->generateGenoCheckProgress();
+
+        $this->generatePageFooter("phase4.js");
+    }
+
+
+/**####################DATA ACQUISITION#############################*/
 
 protected function createGenoChoiceOrder($userid, $kittype) {
     $query = $this->getMySQLInsertString(
@@ -158,7 +253,8 @@ public static function main()
     try {
         $page = new Phase4();
         $page->processReceivedData();
-
+        $page->checkSessionPhase(4);
+        $page->generateView();
     } catch (Exception $e) {
         header("Content-type: text/plain; charset=UTF-8");
         echo $e->getMessage();
