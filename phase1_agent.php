@@ -207,15 +207,15 @@ HTML;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // TODO: in Javascript umlagern, um ohne Neuladen der Seite zu machen
             // Wende Änderungen an
-            $order_id = $_POST[$ordersSelectKey];
+            $userid = $_POST[$ordersSelectKey];
             $new_status = $_POST["statusOrder"];
-            $this->setStatusOrder($order_id, $new_status);
+            $this->setStatusOrder($userid, $new_status);
             header('Location: phase1_agent.php');
         }
     }
 
-    protected function setStatusOrder($order_id, $status) {
-        $query = "UPDATE genocheckorder SET status='" .$status. "' WHERE userid='" .$order_id. "'";
+    protected function setStatusOrder($userid, $status) {
+        $query = "UPDATE genocheckorder SET status='" .$status. "' WHERE userid='" .$userid. "'";
         $this->_database->query($query);
 
         if ($this->_database->error != "") {
