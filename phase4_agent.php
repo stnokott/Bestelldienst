@@ -10,6 +10,7 @@
 require_once './Page.php';
 require_once './User.php';
 
+
 /**
  * This is a template for top level classes, which represent
  * a complete web page and which are called directly by the user.
@@ -25,9 +26,10 @@ require_once './User.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-class Phase1Agent extends Page
+class Phase4Agent extends Page
 {
     private $users = []; // Liste der verfügbaren Nutzer
+    private $optionals = []; // Liste der gebuchten Optionals als optionaltypes
 
     /**
      * Instantiates members (to be defined above).
@@ -64,35 +66,22 @@ class Phase1Agent extends Page
      */
     protected function getViewData()
     {
-        // Dropdown -> User-Auswahl
-        $query = "SELECT userid, firstname, lastname, email FROM user";
+        // User für User-Auswahl Dropdown holen
+        $query = "SELECT userid, firstname, lastname, email FROM user
+                    WHERE userid IN (SELECT userid FROM genochoiceorder)";
         $result = $this->_database->query($query);
 
         while ($row = $result->fetch_assoc()) {
             $user = new User($row["userid"], $row["firstname"], $row["lastname"], $row["email"]);
             array_push($this->users, $user);
-        }
-    }
-
-    /**
-     * Prüft, ob empfangene POST-Parameter für die Erstellung eines neuen Nutzers valide sind
-     * @return Boolean Ob die empfangenen POST-Parameter valide sind
-     */
-    protected function checkPostParameters()
-    {
-        // prüfe, ob alle Werte vorhanden
-        $check = array("inputFirstName", "inputLastName", "inputStreet",
-            "inputCity", "inputZipcode", "inputEmail");
-
-        $valid = true;
-        foreach ($check as $checkString) {
-            if (!isset($_POST[$checkString])) {
-                $valid = false;
-                break;
+            $query_optionals = "SELECT optionaltype FROM orderoptionals
+                                JOIN genochoiceorder ON orderoptionals.choiceid = genochoiceorder.choiceid
+                                WHERE userid = '".$row["userid"]."'";
+            $result_optionals = $this->_database->query($query_optionals);
+            while ($row_optionals = $result_optionals->fetch_assoc()) {
+                array_push($this->optionals, $row_optionals["optionaltype"]);
             }
         }
-
-        return $valid;
     }
 
     /**
@@ -129,7 +118,7 @@ class Phase1Agent extends Page
         <section>
           <span class="sectionHeader"><i class="material-icons md-24">notifications_active</i> Offene Bestellungen</span>
 
-          <form action="phase1_agent.php" name="statusOrderChange[]" id="statusOrderChange" method="post">
+          <form action="phase4_agent.php" name="statusOrderChange[]" id="statusOrderChange" method="post">
             <div class="dropdownWrapper">
               <select class="dropdown" name="genoChoiceOrdersSelect" id="genoChoiceOrdersSelect">
 HTML;
@@ -137,28 +126,72 @@ HTML;
         foreach ($this->users as $user) {
             echo '<option value="' . htmlspecialchars($user->getUserId()) . '">' . htmlspecialchars($user->toString()) . '</option>';
         }
-        // <option value="443">443 - Max Musterhalfen</option>
-        echo<<<HTML
+
+        echo <<<HTML
                   </select>
                 </div>
-            <div id="phase1_radioWrapper">
-                <div class="inputRadioGroup">
-                    <input type="radio" name="statusOrder" id="statusOrderConfirmed" value="0">
-                    <label for="statusOrderConfirmed">Bestellung bestätigt</label>
+                <div id="phase4_radioWrapper1">
+                    <div class="inputRadioGroup">
+                      <input type="radio" name="statusOrder" id="statusOrderConfirmed" value="0">
+                      <label for="statusOrderConfirmed">Bestellung bestätigt</label>
+                    </div>
+                    <div class="inputRadioGroup">
+                      <input type="radio" name="statusOrder" id="statusExtraction" value="1">
+                      <label for="statusExtraction">DNA-Extraktion aus GenoCheck&trade;</label>
+                    </div>
+                    <div class="inputRadioGroup">
+                      <input type="radio" name="statusOrder" id="statusIncubation" value="2">
+                      <label for="statusIncubation">Inkubationsbehälter füllen</label>
+                    </div>
                 </div>
-                <div class="inputRadioGroup">
-                    <input type="radio" name="statusOrder" id="statusSent" value="1">
-                    <label for="statusSent">GenoCheck&trade; versandt</label>
+                <div id="phase4_checkWrapper">
+HTML;
+        if (in_array(0, $this->optionals)) {
+            echo <<< HTML
+                    <div class="inputCheckGroup">
+                      <input type="checkbox" name="statusOptionals[]" id="statusInsertion" value="0">
+                      <label for="statusInsertion">Merkmalinsertion (CRISPR-cas9)</label>
+                    </div>
+HTML;
+        }
+        if (in_array(1, $this->optionals)) {
+            echo <<< HTML
+                    <div class="inputCheckGroup">
+                      <input type="checkbox" name="statusOptionals[]" id="statusDisease" value="1">
+                      <label for="statusDisease">Krankheitspotential reduzieren (Immunomodifikation)</label>
+                    </div>
+HTML;
+        }
+        if (in_array(2, $this->optionals)) {
+            echo <<< HTML
+                    <div class="inputCheckGroup">
+                      <input type="checkbox" name="statusOptionals[]" id="statusSocial" value="2">
+                      <label for="statusSocial">Soziale Bereiche verbessern (kombinierte Methoden)</label>
+                    </div>
+HTML;
+        }
+        echo <<< HTML
                 </div>
-                <div class="inputRadioGroup">
-                    <input type="radio" name="statusOrder" id="statusAnalysis" value="2">
-                    <label for="statusAnalysis">Labor-Analyse läuft</label>
+                <div id="phase4_radioWrapper2">
+                    <div class="inputRadioGroup">
+                      <input type="radio" name="statusOrder" id="statusMeiosis" value="3">
+                      <label for="statusMeiosis">(Künstliche) Meiose initiieren</label>
+                    </div>
+                    <div class="inputRadioGroup">
+                      <input type="radio" name="statusOrder" id="statusEmbryo" value="4">
+                      <label for="statusEmbryo">Embryonalstatus erreicht</label>
+                    </div>
+                    <div class="inputRadioGroup">
+                      <input type="radio" name="statusOrder" id="statusCheck" value="5">
+                      <label for="statusCheck">Phänotypen prüfen</label>
+                    </div>
+                    <div class="inputRadioGroup">
+                      <input type="radio" name="statusOrder" id="statusDone" value="6">
+                      <label for="statusDone"><strong>Produktion fertiggestellt</strong></label>
+                    </div>
                 </div>
-                <div class="inputRadioGroup">
-                    <input type="radio" name="statusOrder" id="statusDone" value="3">
-                    <label for="statusDone">Analyse fertiggestellt</label>
-                </div>
-            </div>
+                
+                <button type="submit">Änderung bestätigen</button>
           </form>
         </section>
 HTML;
@@ -175,13 +208,12 @@ HTML;
      */
     protected function generateView()
     {
-        $this->getViewData();
-        $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent');
+        $this->generatePageHeader('GenoChoice&trade; - Bearbeiter');
         $this->generatePageTitle();
         $this->generateCurrentUser(true);
         $this->generateAgentMenu();
 
-        $this->generatePageFooter("phase1_agent.js");
+        $this->generatePageFooter("phase4_agent.js");
     }
 
     /**
@@ -206,20 +238,51 @@ HTML;
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // TODO: in Javascript umlagern, um ohne Neuladen der Seite zu machen
-            // Wende Änderungen an
+
+            // Wende Status-Änderungen an
             $userid = $_POST[$ordersSelectKey];
             $new_status = $_POST["statusOrder"];
             $this->setStatusOrder($userid, $new_status);
-            header('Location: phase1_agent.php');
+
+            $activated_optionaltypes = array();
+
+            foreach ($_POST["statusOptionals"] as $item) {
+                array_push($activated_optionaltypes, $item);
+            }
+            $this->setStatusOptionals($userid, $activated_optionaltypes);
+
+            // Wende Optionals-Änderungen an
+            header('Location: phase4_agent.php');
         }
     }
 
     protected function setStatusOrder($userid, $status) {
-        $query = "UPDATE genocheckorder SET status='" .$status. "' WHERE userid='" .$userid. "'";
+        $query = "UPDATE genochoiceorder SET status='" .$status. "' WHERE userid='" .$userid. "'";
         $this->_database->query($query);
 
         if ($this->_database->error != "") {
             echo $this->_database->error;
+        }
+    }
+
+    /**
+     * @param $userid int UserId des Users, dessen Optionals verändert werden sollen
+     * @param $activated_optionaltypes array Liste der aktivierten optionaltypes
+     */
+    protected function setStatusOptionals($userid, $activated_optionaltypes) {
+        // TODO: SQL vereinfachen?
+        foreach ($this->optionals as $optional_type) {
+            $is_active = in_array($optional_type, $activated_optionaltypes);
+            $query = "UPDATE orderoptionals SET done='".$is_active."'
+                      WHERE orderoptionals.choiceid IN
+                      (SELECT genochoiceorder.choiceid FROM genochoiceorder
+                      WHERE genochoiceorder.userid ='".$userid."')
+                      AND orderoptionals.optionaltype = '".$optional_type."'";
+            $this->_database->query($query);
+
+            if ($this->_database->error != "") {
+                echo $this->_database->error;
+            }
         }
     }
 
@@ -239,7 +302,8 @@ HTML;
     {
         session_start();
         try {
-            $page = new Phase1Agent();
+            $page = new Phase4Agent();
+            $page->getViewData();
             $page->processReceivedData();
             $page->generateView();
         } catch (Exception $e) {
@@ -251,7 +315,7 @@ HTML;
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-Phase1Agent::main();
+Phase4Agent::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).
