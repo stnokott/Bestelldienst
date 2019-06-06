@@ -145,7 +145,7 @@ HTML;
         $this->generatePageTitle();
         $this->generatePageDescription();
 
-        $this->generateGenoCheckProgress();
+        $this->generateGenoChoiceProgress();
 
         $this->generatePageFooter("phase4.js");
     }
