@@ -5,10 +5,10 @@ loadStatus();
 
 genoCheckOrdersSelect.addEventListener("change", loadStatus);
 
-let radioButtons = document.getElementById("phase1_radioWrapper").getElementsByTagName("input");
-for (let radioButton of radioButtons) {
-    // TODO: Klick auf gesamtes Div verarbeiten
-    radioButton.addEventListener("click", radioClicked);
+let radioGroups = document.getElementsByClassName("inputRadioGroup");
+for (let radioGroup of radioGroups) {
+    // Klick auf kompletten Div verarbeiten
+    radioGroup.addEventListener("click", submitForm);
 }
 
 function loadStatus() {
@@ -72,7 +72,8 @@ function restoreSelectionFromSessionStorage() {
     }
 }
 
-function radioClicked() {
+function submitForm(event) {
+    let associatedRadioButton = event.target.getElementsByTagName("input")[0];
+    associatedRadioButton.checked = true;
     document.forms['statusOrderChange'].submit();
-    console.log("submit");
 }

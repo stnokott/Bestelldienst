@@ -5,14 +5,11 @@ loadStatus();
 
 genoChoiceOrdersSelect.addEventListener("change", loadStatus);
 
-let groupList = ["phase4_radioWrapper1", "phase4_radioWrapper2"];
-groupList.forEach(function(element) {
-    let radioButtons = document.getElementById(element).getElementsByTagName("input");
-    for (let radioButton of radioButtons) {
-        // TODO: Klick auf gesamtes Div verarbeiten
-        radioButton.addEventListener("click", submitForm);
-    }
-});
+let radioGroups = document.getElementsByClassName("inputRadioGroup");
+for (let radioGroup of radioGroups) {
+    // Klick auf kompletten Div verarbeiten
+    radioGroup.addEventListener("click", submitForm);
+}
 let checkboxes = document.getElementById("phase4_checkWrapper").getElementsByTagName("input");
 for (let checkbox of checkboxes) {
     checkbox.addEventListener("click", submitForm);
@@ -87,6 +84,8 @@ function restoreSelectionFromSessionStorage() {
     }
 }
 
-function submitForm() {
+function submitForm(event) {
+    let associatedRadioButton = event.target.getElementsByTagName("input")[0];
+    associatedRadioButton.checked = true;
     document.forms['statusOrderChange'].submit();
 }
