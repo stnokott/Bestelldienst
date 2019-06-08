@@ -237,8 +237,6 @@ HTML;
             echo "Fehler bei der Verarbeitung der Daten: " . $e;
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // TODO: in Javascript umlagern, um ohne Neuladen der Seite zu machen
-
             // Wende Status-Änderungen an
             $userid = $_POST[$ordersSelectKey];
             $new_status = $_POST["statusOrder"];
