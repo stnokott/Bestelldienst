@@ -1,23 +1,27 @@
-let genoCheckOrdersSelect = document.getElementById("genoChoiceOrdersSelect");
+let genoChoiceOrdersSelect = document.getElementById("genoChoiceOrdersSelect");
 
 restoreSelectionFromSessionStorage();
 loadStatus();
 
-genoCheckOrdersSelect.addEventListener("change", loadStatus);
+genoChoiceOrdersSelect.addEventListener("change", loadStatus);
 
 let radioGroups = document.getElementsByClassName("inputRadioGroup");
 for (let radioGroup of radioGroups) {
     // Klick auf kompletten Div verarbeiten
     radioGroup.addEventListener("click", submitForm);
 }
+let checkboxes = document.getElementById("phase4_checkWrapper").getElementsByTagName("input");
+for (let checkbox of checkboxes) {
+    checkbox.addEventListener("click", submitForm);
+}
 
 function loadStatus() {
-    sessionStorage.setItem('phase1_agent_selectedIndex', genoCheckOrdersSelect.selectedIndex);
+    sessionStorage.setItem('phase4_agent_selectedIndex', genoChoiceOrdersSelect.selectedIndex);
 
-    if (genoCheckOrdersSelect.selectedOptions.length===0){
+    if (genoChoiceOrdersSelect.selectedOptions.length===0){
         return;
     }
-    let selectedUserid = genoCheckOrdersSelect.selectedOptions[0].value;
+    let selectedUserid = genoChoiceOrdersSelect.selectedOptions[0].value;
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -27,11 +31,12 @@ function loadStatus() {
                 return;
             }
             // Status vorhanden
-            let selectedUserStatus = parseInt(statusJSON[0]);
+            let selectedUserStatus = parseInt(statusJSON["status"]);
             setRadioGroupActive(selectedUserStatus);
+            setCheckboxesActive(statusJSON["optionals"]);
         }
     };
-    xmlhttp.open("GET", "getstatus_agent.php?userid="+selectedUserid, true);
+    xmlhttp.open("GET", "getstatuschoice_agent.php?userid="+selectedUserid, true);
     xmlhttp.send();
 }
 
@@ -65,10 +70,17 @@ function setRadioGroupActive(index) {
     }
 }
 
+function setCheckboxesActive(optionals_status_list) {
+    for (let checkbox of checkboxes) {
+        let optionaltype = checkbox.value;
+        checkbox.checked = (optionals_status_list[optionaltype] === "1");
+    }
+}
+
 function restoreSelectionFromSessionStorage() {
-    let selectedIndex = sessionStorage.getItem('phase1_agent_selectedIndex');
-    if (selectedIndex < genoCheckOrdersSelect.getElementsByTagName("option").length) {
-        genoCheckOrdersSelect.selectedIndex = selectedIndex;
+    let selectedIndex = sessionStorage.getItem('phase4_agent_selectedIndex');
+    if (selectedIndex < genoChoiceOrdersSelect.getElementsByTagName("option").length) {
+        genoChoiceOrdersSelect.selectedIndex = selectedIndex;
     }
 }
 
