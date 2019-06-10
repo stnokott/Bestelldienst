@@ -9,6 +9,16 @@
 
 require_once './Page.php';
 
+class JSONObject
+{
+    public $status;
+    public $optionals;
+
+    public function __construct()
+    {
+    }
+}
+
 /**
  * This is a template for top level classes, which represent
  * a complete web page and which are called directly by the user.
@@ -77,30 +87,17 @@ class StatusHelper extends Page
         }
     }
 
-    protected function getUserOrderOptionalsStatus()
-    {
-        if (!isset($_SESSION["userid"])) {
-            die("User-ID Session Variable nicht gesetzt!");
+    protected function getUserOrderOptionalsStatus(){}
+        $query = "SELECT optionaltype, done FROM orderoptionals
+                    JOIN genochoiceorder ON orderoptionals.choiceid = genochoiceorder.choiceid
+                    WHERE genochoiceorder.userid = '".$userid."'";
+        $result = $this->_database->query($query);
+
+        $optional_array = array();
+        while ($row = $result->fetch_assoc()) {
+            $optional_array[$row["optionaltype"]] = $row["done"];
         }
-        $userid = $_SESSION["userid"];
-        if (!$this->checkUserExists($userid)) {
-            return null;
-        }
-
-        $choiceid = "SELECT choiceid FROM genochoiceorder WHERE userid=$userid";
-
-        for($i=0; $i<3; $i++){
-            $query = "SELECT done FROM orderoptionals WHERE optionaltype=$i AND choiceid = $choiceid";
-       }
-
-
-
-
-        if ($row = $result->fetch_assoc()) {
-            return $row["status"];
-        } else {
-            return null;
-        }
+        return $optional_array;
     }
 
     /**
@@ -127,8 +124,20 @@ class StatusHelper extends Page
      */
     protected function getStatus()
     {
-        $status = $this->getUserOrderStatus();
-        echo json_encode($status);
+      if (!isset($_GET["userid"])) {
+          die ("userid-GET-Parameter muss gesetzt sein!");
+      }
+
+      if (!$this->checkUserExists($_GET["userid"])) {
+          die ("User existiert nicht");
+      }
+
+      $status = $this->getUserOrderStatus($_GET["userid"]);
+      $optionals = $this->getUserOrderOptionalsStatus($_GET["userid"]);
+      $jsonObject = new JSONObject();
+      $jsonObject->status = $status;
+      $jsonObject->optionals = $optionals;
+      echo json_encode($jsonObject);
     }
 
     /**
