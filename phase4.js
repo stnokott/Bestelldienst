@@ -43,7 +43,7 @@ function setStatusActive(activeIndex) {
     }
 
     //progresssteps 4-6 setzen
-    let progressItems = document.getElementsByClassName("progresssteps")[2].getElementsByTagName("li");
+    progressItems = document.getElementsByClassName("progresssteps")[2].getElementsByTagName("li");
 
     for (let i=0; i<progressItems.length; i++) {
         let progressItem = progressItems[i];
@@ -60,7 +60,7 @@ function setStatusActive(activeIndex) {
     }
 
     //Orderoptionals setzen
-    let progressItems = document.getElementsByClassName("progresssteps")[1].getElementsByTagName("li");
+    progressItems = document.getElementsByClassName("progresssteps")[1].getElementsByTagName("li");
 
     for (let i=0; i<progressItems.length; i++) {
         let progressItem = progressItems[i];
