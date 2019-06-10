@@ -87,7 +87,8 @@ class StatusHelper extends Page
         }
     }
 
-    protected function getUserOrderOptionalsStatus(){}
+    protected function getUserOrderOptionalsStatus(){
+      $userid = $_SESSION["userid"];
         $query = "SELECT optionaltype, done FROM orderoptionals
                     JOIN genochoiceorder ON orderoptionals.choiceid = genochoiceorder.choiceid
                     WHERE genochoiceorder.userid = '".$userid."'";
@@ -124,16 +125,17 @@ class StatusHelper extends Page
      */
     protected function getStatus()
     {
-      if (!isset($_GET["userid"])) {
-          die ("userid-GET-Parameter muss gesetzt sein!");
+      if (!isset($_SESSION["userid"])) {
+          die("User-ID Session Variable nicht gesetzt!");
       }
 
-      if (!$this->checkUserExists($_GET["userid"])) {
-          die ("User existiert nicht");
+      $userid = $_SESSION["userid"];
+      if (!$this->checkUserExists($userid)) {
+          return null;
       }
 
-      $status = $this->getUserOrderStatus($_GET["userid"]);
-      $optionals = $this->getUserOrderOptionalsStatus($_GET["userid"]);
+      $status = $this->getUserOrderStatus($_SESSION["userid"]);
+      $optionals = $this->getUserOrderOptionalsStatus($_SESSION["userid"]);
       $jsonObject = new JSONObject();
       $jsonObject->status = $status;
       $jsonObject->optionals = $optionals;
