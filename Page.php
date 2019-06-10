@@ -107,7 +107,7 @@ HTML;
     protected function generatePageTitle() {
 echo<<<HTML
       <header>
-        <span class="headerTitle">Genochoice</span><br>
+        <span class="headerTitle">Genochoice</span>
         <span class="headerSubtitle">Legacy by Design</span>
       </header>
 HTML;

@@ -12,6 +12,22 @@
     grid-template-columns: 50% 50%;
 }
 
+@media (max-width: 1400px) {
+    #optionalsContainer {
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media (max-width: 900px) {
+    #optionalsContainer {
+        grid-template-columns: 100%;
+    }
+
+    #kitContainer {
+        grid-template-columns: 100%;
+    }
+}
+
 #kitContainer > .bookable.stretched {
     grid-column: 1/-1;
 }
@@ -207,7 +223,7 @@
 .shoppingCart > .cartItem > .cartItemPrice {
     grid-column: 2/3;
     text-align: center;
-    font-size: 14pt;
+    font-size: 1.3vw;
     font-weight: bold;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -258,6 +274,7 @@
     padding-bottom: 10px;
     border: 3px dashed var(--accent-grey);
     border-radius: 15px;
+    font-size: 1.3vw;
 }
 
 button[value="continue"] {
