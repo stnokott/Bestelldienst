@@ -121,55 +121,47 @@ body {
 }
 
 header {
-    margin-top: 2em;
     padding: 1em;
     font-family: alien, sans-serif;
-    font-size: 15pt;
     text-align: center;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%); /* zentrieren */
+    font-size: 3vmin;   /* nie zu groß */
     z-index: -1;
-}
+    margin-top: 1vh;
+    margin-bottom: 2vh;
 
-header + section, header + .currentUser {
-    margin-top: 26vh;
-}
+    max-height: 100px;
 
-/* Header-Hintergrund */
-header::after {
-    content: "";
+    /* Hingetgrund-Bild */
     background: url("./img/header_bg.svg") no-repeat center top;
-    background-size: 30%;
-    opacity: .15;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
+    background-size: contain;
 }
 
 .headerTitle {
     letter-spacing: 10px;
     font-weight: bold;
     font-size: 4em;
+    display: block;
 }
 
 .headerSubtitle {
     font-size: 2em;
+    display: block;
 }
 
 section {
-    width: 50%;
-    max-width: 50%;
-    min-width: 500px;
+    width: 75%;
     padding: 0 2em 1em 2em;
     margin: 1em auto 3em auto;
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
     border-radius: 15px;
     overflow: hidden; /* verhindert, dass eine figure den border-radius überschreibt */
     background: white;
+}
+
+@media (min-width: 600px) {
+    section {
+        width: 50%;
+    }
 }
 
 section>p {
@@ -203,14 +195,20 @@ section>p {
 }
 
 .currentUser {
-    width: 50%;
-    max-width: 50%;
+    width: 75%;
     padding: 0 2em;
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
     border-radius: 15px;
     background: white;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+}
+
+@media (min-width: 600px) {
+    .currentUser {
+        width: 50%;
+    }
 }
 
 .currentUser > .userName {

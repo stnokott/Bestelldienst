@@ -8,7 +8,7 @@ genoCheckOrdersSelect.addEventListener("change", loadStatus);
 let radioGroups = document.getElementsByClassName("inputRadioGroup");
 for (let radioGroup of radioGroups) {
     // Klick auf kompletten Div verarbeiten
-    radioGroup.addEventListener("click", submitForm);
+    radioGroup.addEventListener("click", submitForm, false);
 }
 
 function loadStatus() {
@@ -73,7 +73,12 @@ function restoreSelectionFromSessionStorage() {
 }
 
 function submitForm(event) {
-    let associatedRadioButton = event.target.getElementsByTagName("input")[0];
-    associatedRadioButton.checked = true;
+    if (event.target.tagName === "DIV") {
+        let associatedRadioButton = event.target.getElementsByTagName("input")[0];
+        associatedRadioButton.checked = true;
+    } else if (event.target.tagName === "LABEL") {
+        let associatedRadioButton = event.target.previousElementSibling;
+        associatedRadioButton.checked = true;
+    }
     document.forms['statusOrderChange'].submit();
 }
