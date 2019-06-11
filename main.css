@@ -64,6 +64,7 @@ body {
     margin: 0 0 1em 0;
     font-family: Roboto, sans-serif;
     font-weight: 500; /* medium */
+    font-size: 14pt;
     background: linear-gradient(to bottom right, white 30%, var(--accent-lighter-blue) 100%) fixed;
     color: var(--accent-black);
 }
@@ -127,7 +128,7 @@ header {
     font-size: 3vmin;   /* nie zu groß */
     z-index: -1;
     margin-top: 1vh;
-    margin-bottom: 2vh;
+    margin-bottom: 4vh;
 
     max-height: 100px;
 
@@ -149,18 +150,19 @@ header {
 }
 
 section {
-    width: 75%;
+    width: 85vw;
     padding: 0 2em 1em 2em;
     margin: 1em auto 3em auto;
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
     border-radius: 15px;
+    font-size: 16pt;
     overflow: hidden; /* verhindert, dass eine figure den border-radius überschreibt */
     background: white;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1280px) {
     section {
-        width: 50%;
+        width: 50vw;
     }
 }
 
@@ -175,9 +177,19 @@ section>p {
     padding: 5px 1em;
     font-family: Raleway, sans-serif;
     font-weight: 900;
-    font-size: 24px;
+    font-size: 4vw;
     border-radius: 15px;
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+}
+
+.sectionHeader i {
+    vertical-align: middle;
+}
+
+@media (min-width: 1280px) {
+    .sectionHeader {
+        font-size: 2vw;
+    }
 }
 
 .sectionHeader.disabled {
@@ -195,7 +207,7 @@ section>p {
 }
 
 .currentUser {
-    width: 75%;
+    width: 85vw;
     padding: 0 2em;
     box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
     border-radius: 15px;
@@ -205,9 +217,9 @@ section>p {
     position: relative;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1280px) {
     .currentUser {
-        width: 50%;
+        width: 50vw;
     }
 }
 
@@ -314,10 +326,7 @@ button[type="submit"] {
 
 .inputTextGroup label {
     color: var(--accent-dark-grey);
-    font-size: 12pt;
-    position: absolute;
-    top: 10px;
-    left: 5px;
+    font-size: 3vmin;
     pointer-events: none;
 
     transition: all .2s ease;
@@ -325,13 +334,12 @@ button[type="submit"] {
 
 input[type="text"], input[type="email"] {
     font-family: Raleway, sans-serif;
-    font-size: 12pt;
+    font-size: 4vmin;
     display: block;
     font-weight: 500;
     width: 100%;
     box-sizing: content-box;
     margin: 0;
-    padding: 15px 3px 3px 5px;
     border: none;
     border-bottom: 2px solid var(--accent-grey);
 
@@ -343,11 +351,6 @@ input[type="text"], input[type="email"] {
     border-color: var(--accent-black);
 }
 
-.inputTextGroup input:focus + label, .inputTextGroup input:not(:placeholder-shown):not(:focus) + label {
-    font-size: 8pt;
-    top: 0;
-}
-
 input:invalid:not(:focus) {
     border-top: 0;
     border-right: 0;
@@ -355,6 +358,24 @@ input:invalid:not(:focus) {
     border-image: none;
     box-shadow: none;
     outline: none;
+}
+
+@media (min-width: 1280px) {
+    input[type="text"], input[type="email"] {
+        padding: 15px 3px 3px 5px;
+    }
+
+    .inputTextGroup label {
+        position: absolute;
+        top: 10px;
+        left: 5px;
+    }
+
+    /* TODO: auf Mobile placeholder-shown nie aktiv? */
+    .inputTextGroup input:focus + label, .inputTextGroup input:not(:placeholder-shown):not(:focus) + label {
+        font-size: 2vmin;
+        top: 0;
+    }
 }
 
 .dropdownWrapper {
@@ -390,9 +411,7 @@ select.dropdown {
 }
 
 ul.list {
-    max-height: 150px;
-    overflow-y: auto;
-    width: 50%;
+    width: 75%;
     list-style-type: none;
     position: relative;
     padding: 0;
@@ -465,10 +484,9 @@ ul.list li.disabled {
 
 
 button {
-    height: 40px;
     text-transform: uppercase;
     font-weight: 500;
-    font-size: 14pt;
+    font-size: 4vmin;
     width: 100%;
     border-radius: 10px;
     padding: 5px 15px;
@@ -539,25 +557,24 @@ button.nobackground:disabled {
 }
 
 meter {
-    -webkit-appearance: none;
     -moz-appearance: none;
-    /*noinspection CssBrowserCompatibilityForProperties*/
     appearance: none;
     width: 100%;
-    height: 20px;
+    height: 2.5vh;
     border-radius: 15px;
     padding: 5px;
 
     /* Firefox */
     background: var(--accent-light-grey);
-    /* box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset; */
 }
 
 meter + label {
+    height: 0.5vh;
     position: absolute;
-    top: 30px;
-    right: 0;
-    font-size: 12px;
+    top: calc(-2.5vh - 1.25vh);
+    right: 10px;
+    font-size: 2.5vh;
+    font-weight: bold;
 }
 
 /* WebKit */
@@ -617,7 +634,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     color: var(--accent-light-grey);
     list-style-type: none;
     float: left;
-    font-size: 15px;
+    font-size: 3.5vmin;
     position: relative;
     text-align: center;
     text-transform: uppercase;
@@ -631,92 +648,103 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     width: 33.33%;
 }
 
-.progresssteps li:before {
-    /* Icons */
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border: 2px solid var(--accent-grey);
-    display: block;
-    text-align: center;
-    margin: 0 auto 10px auto;
-    border-radius: 50%;
-    background-color: white;
-    font-family: "Material Icons", sans-serif;
-
-    transition: background-color 0.1s ease-in-out;
-}
-
-.progresssteps li.confirmed:before {content: "\e5ca";}
-.progresssteps li.sent:before {content: "\e558";}
-.progresssteps li.analysis:before {content: "\e8b6";}
-.progresssteps li.done:before {content: "\e7f2";}
-.progresssteps li.extraction:before {content: "\e2c6";}
-.progresssteps li.incubate:before {content: "\e3b8";}
-.progresssteps li.insertion:before {content: "\e90d";}
-.progresssteps li.sickness:before {content: "\e8dc";}
-.progresssteps li.social:before {content: "\e7fb";}
-.progresssteps li.meiosis:before {content: "\e837";}
-.progresssteps li.embryo:before {content: "\eb42";}
-.progresssteps li.choiceready:before {content: "\e7e9";}
-
-.progresssteps li:after {
-    /* Strich vor Punkt */
-    text-align: center;
-    margin-left: 17px;
-    margin-right: 17px;
-    width: calc(100% - 34px);
-    height: 2px;
-    content: '';
-    position: absolute;
-    background-color: var(--accent-light-grey);
-    top: 15px;
-    left: -50%;
-}
-
-.progresssteps li:first-child:after {
-    /* Linie vor erstem Item verbergen */
-    content: none;
-}
-
 .progresssteps li.active {
     color: var(--accent-blue);
 }
 
-.progresssteps li.active:hover::before {
-    color: white;
-    background-color: var(--accent-blue);
-}
+@media (min-width: 1280px) {
+    .progresssteps li:before {
+        /* Icons */
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border: 2px solid var(--accent-grey);
+        display: block;
+        text-align: center;
+        margin: 0 auto 10px auto;
+        border-radius: 50%;
+        background-color: white;
+        font-size: 1.5vw;
+        font-family: "Material Icons", sans-serif;
 
-.progresssteps li.active:before {
-    /* Ring-Farbe */
-    border-color: var(--accent-blue);
-    background-color: white;
-}
-
-.progresssteps li:not(.active)::before {
-    background-color: white;
-    border-color: var(--accent-light-grey);
-}
-
-.progresssteps li.active:after {
-    /* Strich nach active-Punkt */
-    background-color: var(--accent-blue);
-}
-
-@keyframes slide {
-    from {
-        background-position-x: 0;
+        transition: background-color 0.1s ease-in-out;
     }
-    to {
-        background-position-x: -200%;
-    }
-}
 
-.progresssteps li.animate:after {
-    background: linear-gradient(to right, var(--accent-blue) 0%, white 35%, white 65%, var(--accent-blue) 100%);
-    background-size: 200% 100%;
-    animation: slide 2s linear infinite;
+    .progresssteps li {
+        font-size: 15px;
+    }
+
+    .progresssteps li:before {
+        font-size: 20px;
+    }
+
+    .progresssteps li:after {
+        /* Strich vor Punkt */
+        text-align: center;
+        margin-left: 17px;
+        margin-right: 17px;
+        width: calc(100% - 34px);
+        height: 2px;
+        content: '';
+        position: absolute;
+        background-color: var(--accent-light-grey);
+        top: 15px;
+        left: -50%;
+    }
+
+    .progresssteps li:first-child:after {
+        /* Linie vor erstem Item verbergen */
+        content: none;
+    }
+
+    .progresssteps li.active:hover::before {
+        color: white;
+        background-color: var(--accent-blue);
+    }
+
+    .progresssteps li.active:before {
+        /* Ring-Farbe */
+        border-color: var(--accent-blue);
+        background-color: white;
+    }
+
+    .progresssteps li:not(.active)::before {
+        background-color: white;
+        border-color: var(--accent-light-grey);
+    }
+
+    .progresssteps li.active:after {
+        /* Strich nach active-Punkt */
+        background-color: var(--accent-blue);
+    }
+
+    @keyframes slide {
+        from {
+            background-position-x: 0;
+        }
+        to {
+            background-position-x: -200%;
+        }
+    }
+
+    .progresssteps li.animate:after {
+        background: linear-gradient(to right, var(--accent-blue) 0%, white 35%, white 65%, var(--accent-blue) 100%);
+        background-size: 200% 100%;
+        animation: slide 2s linear infinite;
+    }
+
+    .progresssteps li.confirmed:before {content: "\e5ca";}
+    .progresssteps li.sent:before {content: "\e558";}
+    .progresssteps li.analysis:before {content: "\e8b6";}
+    .progresssteps li.done:before {content: "\e7f2";}
+    .progresssteps li.extraction:before {content: "\e2c6";}
+    .progresssteps li.incubate:before {content: "\e3b8";}
+    .progresssteps li.insertion:before {content: "\e90d";}
+    .progresssteps li.sickness:before {content: "\e8dc";}
+    .progresssteps li.social:before {content: "\e7fb";}
+    .progresssteps li.meiosis:before {content: "\e837";}
+    .progresssteps li.embryo:before {content: "\eb42";}
+    .progresssteps li.choiceready:before {content: "\e7e9";}
 }
 
 .notfound {

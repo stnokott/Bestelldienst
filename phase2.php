@@ -125,7 +125,7 @@ HTML;
             <meter value="10" min="0" max="100" low="15" optimum="5" high="60"></meter>
             <label for="meterLungcancer">10% - unbedenklich</label>
           </div>
-          <h3>Exzessiver Drogenkonsum</h3>
+          <h3>Drogenkonsum</h3>
           <div class="disease">
             <meter value="3" min="0" max="100" low="15" optimum="5" high="60"></meter>
             <label for="meterLungcancer">3% - unbedenklich</label>
