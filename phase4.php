@@ -27,27 +27,9 @@ require_once './Page.php';
 
 class Phase4 extends Page
 {
-    /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
 
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
-
+    static $KEY_KITTYPE = "kittype";
+    static $SELECTEDOPTIONALS_KEY = "selectedoptionals";
 /*
 vgl post query usererstellung
 Post Argumente Validieren
@@ -61,7 +43,7 @@ Für jede optional eintrag in die orderoptionalsdatenbank
 protected function createGenoChoiceOrder($userid, $kittype) {
     $query = $this->getMySQLInsertString(
         "genochoiceorder",
-        array("userid","kittype"),
+        array("userid",self::$KEY_KITTYPE),
         array($this->_database->real_escape_string($userid),
               $this->_database->real_escape_string($kittype))
     );
@@ -86,7 +68,7 @@ protected function createOrderOptional($choiceid, $optionaltype){
 
 protected function checkPostParameters() {
     // prüfe, ob alle Werte vorhanden
-    $check = array("kittype", "selectedoptionals");
+    $check = array(self::$KEY_KITTYPE, self::$SELECTEDOPTIONALS_KEY);
     $valid = true;
 
     foreach ($check as $checkString) {
@@ -130,7 +112,7 @@ protected function processReceivedData()
 
         // weise Variablen zu
         $userid = $_SESSION["userid"];
-        $kittype = $_POST["kittype"];
+        $kittype = $_POST[self::$KEY_KITTYPE];
 
         //Erstellen der Order falls noch keine Bestellung vorhanden
         if (NULL == $this->checkUserHasGenoChoiceOrder($userid)) {
@@ -141,8 +123,8 @@ protected function processReceivedData()
         $choiceid = $this->getGenoChoiceId($userid);
 
         //Bestelloptionen hinzufügen
-        for($i=0; $i<sizeof($_POST["selectedoptionals"]); $i++){
-            $optionaltype = $_POST["selectedoptionals"][$i];
+        for($i=0; $i<sizeof($_POST[self::$SELECTEDOPTIONALS_KEY]); $i++){
+            $optionaltype = $_POST[self::$SELECTEDOPTIONALS_KEY][$i];
             $this->createOrderOptional($choiceid, $optionaltype);
        }
 

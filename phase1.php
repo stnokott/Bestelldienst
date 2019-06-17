@@ -29,26 +29,7 @@ class Phase1 extends Page
 {
     private $new_user = false;
 
-    /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
+    static $KEY_USERID = "userid";
 
     /**
      * Fetch all data that is necessary for later output.
@@ -58,7 +39,7 @@ class Phase1 extends Page
      */
     protected function getViewData()
     {
-        if(!isset($_SESSION["userid"])){
+        if(!isset($_SESSION[self::$KEY_USERID])){
             header('Location: phase0.php');
         }
     }
@@ -169,7 +150,7 @@ HTML;
         $result = $this->_database->query($query);
 
         if ($row = $result->fetch_assoc()) {
-            return $row["userid"];
+            return $row[self::$KEY_USERID];
         } else {
             return null;
         }
@@ -223,7 +204,7 @@ HTML;
     protected function createGenoCheckOrder($userid) {
         $query = $this->getMySQLInsertString(
             "genocheckorder",
-            array("userid"),
+            array(self::$KEY_USERID),
             array($userid)
         );
         $this->_database->query($query);
@@ -292,7 +273,7 @@ HTML;
 
             $userid = $this->getUserId($email);
 
-            $_SESSION["userid"] = $userid;
+            $_SESSION[self::$KEY_USERID] = $userid;
 
             if ($this->new_user && !$this->checkUserHasGenoCheckOrder($userid)) {
                 // User ist neu und hat noch kein GenoCheck bestellt

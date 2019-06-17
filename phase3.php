@@ -28,37 +28,10 @@ require_once './Page.php';
 class Phase3 extends Page
 {
     /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return null
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return null
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
-     *
-     * @return null
      */
     protected function getViewData()
     {
@@ -209,8 +182,6 @@ HTML;
      * of the page ("view") is inserted and -if avaialable- the content of
      * all views contained is generated.
      * Finally the footer is added.
-     *
-     * @return null
      */
     protected function generateView()
     {
@@ -236,7 +207,6 @@ HTML;
      *
      * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
      *
-     * @return null
      * @throws Exception Fehler, falls magic quotes an sind
      */
     protected function processReceivedData()
@@ -257,8 +227,6 @@ HTML;
      * indicate that function as the central starting point.
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
-     *
-     * @return null
      */
     public static function main()
     {

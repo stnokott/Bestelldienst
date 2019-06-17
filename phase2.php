@@ -28,33 +28,10 @@ require_once './Page.php';
 class Phase2 extends Page
 {
     /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
-     *
-     * @return null
      */
     protected function getViewData()
     {

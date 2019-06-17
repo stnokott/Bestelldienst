@@ -24,37 +24,11 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-class StatusHelper extends Page
+class StatusHelperSession extends Page
 {
-    /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return void
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return void
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
-
     /**
      * Gibt den Wert des status-Attributs der genocheckorder-Datenbank für den User mit der
      * angegebenen Email-Adresse aus
-     * @param String $userid id des Nutzers
      * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
      */
     protected function getUserOrderStatus()
@@ -138,7 +112,7 @@ class StatusHelper extends Page
         session_start();
         header("Content-Type: application/json; charset=UTF-8");
         try {
-            $page = new StatusHelper();
+            $page = new StatusHelperSession();
             $page->processReceivedData();
             $page->getStatus();
         } catch (Exception $e) {
@@ -150,7 +124,7 @@ class StatusHelper extends Page
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-StatusHelper::main();
+StatusHelperSession::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).

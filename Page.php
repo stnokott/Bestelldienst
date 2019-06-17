@@ -37,6 +37,13 @@ abstract class Page
      * accessed by all operations of the class.
      */
     protected $_database = null;
+    static $LOC_PHASE0 = "Location: phase0.php";
+    static $LOC_PHASE1 = "Location: phase1.php";
+    static $LOC_PHASE2 = "Location: phase2.php";
+    static $LOC_PHASE3 = "Location: phase3.php";
+    static $LOC_PHASE4 = "Location: phase4.php";
+
+    static $SESSION_KEY_PHASE = "phase";
 
     // --- OPERATIONS ---
 
@@ -214,7 +221,7 @@ HTML;
     protected function processReceivedData()
     {
         if (get_magic_quotes_gpc()) {
-            throw new Exception
+            throw new HttpInvalidParamException
                 ("Bitte schalten Sie magic_quotes_gpc in php.ini aus!");
         }
     }
@@ -234,12 +241,12 @@ HTML;
      * @param $requestedPhase Integer angeforderte Phasennummer
      */
     protected function checkSessionPhase($requestedPhase) {
-        if (!isset($_SESSION["phase"])) {
-            $_SESSION["phase"] = 0;
-            header("Location: phase0.php");
+        if (!isset($_SESSION[self::$SESSION_KEY_PHASE])) {
+            $_SESSION[self::$SESSION_KEY_PHASE] = 0;
+            header(self::$LOC_PHASE0);
             exit(1);
         }
-        $curPhase = $_SESSION["phase"];
+        $curPhase = $_SESSION[self::$SESSION_KEY_PHASE];
         if ($requestedPhase != $curPhase) {
             $this->redirectToPhase($curPhase);
         }
@@ -248,22 +255,22 @@ HTML;
     protected function redirectToPhase($phaseNum) {
         switch($phaseNum) {
             case 0:
-                header("Location: phase0.php");
+                header(self::$LOC_PHASE0);
                 break;
             case 1:
-                header("Location: phase1.php");
+                header(self::$LOC_PHASE1);
                 break;
             case 2:
-                header("Location: phase2.php");
+                header(self::$LOC_PHASE2);
                 break;
             case 3:
-                header("Location: phase3.php");
+                header(self::$LOC_PHASE3);
                 break;
             case 4:
-                header("Location: phase4.php");
+                header(self::$LOC_PHASE4);
                 break;
             default:
-                header("Location: phase0.php");
+                header(self::$LOC_PHASE0);
         }
     }
 } // end of class

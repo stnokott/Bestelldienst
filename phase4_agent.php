@@ -31,30 +31,7 @@ class Phase4Agent extends Page
     private $users = []; // Liste der verfügbaren Nutzer
     private $optionals = []; // Liste der gebuchten Optionals als optionaltypes
 
-    /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return void
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return void
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
+    static $KEY_USERID = "userid";
 
     /**
      * Fetch all data that is necessary for later output.
@@ -72,11 +49,11 @@ class Phase4Agent extends Page
         $result = $this->_database->query($query);
 
         while ($row = $result->fetch_assoc()) {
-            $user = new User($row["userid"], $row["firstname"], $row["lastname"], $row["email"]);
+            $user = new User($row[self::$KEY_USERID], $row["firstname"], $row["lastname"], $row["email"]);
             array_push($this->users, $user);
             $query_optionals = "SELECT optionaltype FROM orderoptionals
                                 JOIN genochoiceorder ON orderoptionals.choiceid = genochoiceorder.choiceid
-                                WHERE userid = '".$row["userid"]."'";
+                                WHERE userid = '".$row[self::$KEY_USERID]."'";
             $result_optionals = $this->_database->query($query_optionals);
             while ($row_optionals = $result_optionals->fetch_assoc()) {
                 array_push($this->optionals, $row_optionals["optionaltype"]);
@@ -106,7 +83,7 @@ class Phase4Agent extends Page
         $result = $this->_database->query($query);
 
         if ($row = $result->fetch_assoc()) {
-            return $row["userid"];
+            return $row[self::$KEY_USERID];
         } else {
             return null;
         }
