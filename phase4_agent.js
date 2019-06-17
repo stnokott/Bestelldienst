@@ -16,6 +16,7 @@ for (let checkbox of checkboxes) {
 }
 
 function loadStatus() {
+    "use strict";
     sessionStorage.setItem('phase4_agent_selectedIndex', genoChoiceOrdersSelect.selectedIndex);
 
     if (genoChoiceOrdersSelect.selectedOptions.length===0){
@@ -45,6 +46,7 @@ function loadStatus() {
  * @param index Integer Index of Status to activate (0=sent, 1=delivered, 2=analysis, 3=done)
  */
 function setRadioGroupActive(index) {
+    "use strict";
     let radioButtons = document.getElementsByClassName("inputRadioGroup");
 
     // alle RadioButtons deaktivieren
@@ -71,6 +73,7 @@ function setRadioGroupActive(index) {
 }
 
 function setCheckboxesActive(optionals_status_list) {
+    "use strict";
     for (let checkbox of checkboxes) {
         let optionaltype = checkbox.value;
         checkbox.checked = (optionals_status_list[optionaltype] === "1");
@@ -78,6 +81,7 @@ function setCheckboxesActive(optionals_status_list) {
 }
 
 function restoreSelectionFromSessionStorage() {
+    "use strict";
     let selectedIndex = sessionStorage.getItem('phase4_agent_selectedIndex');
     if (selectedIndex < genoChoiceOrdersSelect.getElementsByTagName("option").length) {
         genoChoiceOrdersSelect.selectedIndex = selectedIndex;
@@ -85,6 +89,7 @@ function restoreSelectionFromSessionStorage() {
 }
 
 function submitForm(event) {
+    "use strict";
     if (event.target.tagName === "DIV") {
         let associatedRadioButton = event.target.getElementsByTagName("input")[0];
         associatedRadioButton.checked = true;

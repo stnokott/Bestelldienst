@@ -12,6 +12,7 @@ for (let radioGroup of radioGroups) {
 }
 
 function loadStatus() {
+    "use strict";
     sessionStorage.setItem('phase1_agent_selectedIndex', genoCheckOrdersSelect.selectedIndex);
 
     if (genoCheckOrdersSelect.selectedOptions.length===0){
@@ -40,6 +41,7 @@ function loadStatus() {
  * @param index Integer Index of Status to activate (0=sent, 1=delivered, 2=analysis, 3=done)
  */
 function setRadioGroupActive(index) {
+    "use strict";
     let radioButtons = document.getElementsByClassName("inputRadioGroup");
 
     // alle RadioButtons deaktivieren
@@ -66,6 +68,7 @@ function setRadioGroupActive(index) {
 }
 
 function restoreSelectionFromSessionStorage() {
+    "use strict";
     let selectedIndex = sessionStorage.getItem('phase1_agent_selectedIndex');
     if (selectedIndex < genoCheckOrdersSelect.getElementsByTagName("option").length) {
         genoCheckOrdersSelect.selectedIndex = selectedIndex;
@@ -73,6 +76,7 @@ function restoreSelectionFromSessionStorage() {
 }
 
 function submitForm(event) {
+    "use strict";
     if (event.target.tagName === "DIV") {
         let associatedRadioButton = event.target.getElementsByTagName("input")[0];
         associatedRadioButton.checked = true;

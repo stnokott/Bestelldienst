@@ -74,6 +74,7 @@ document.getElementById("deleteCart").addEventListener("click", deleteShoppingCa
 document.getElementById("confirmGenoCheckOrder").addEventListener("click", sendOrder);
 
 function handleKitButtonPress() {
+    "use strict";
     shoppingCartKitItem.className = "cartItem "+dictKitClass[this.value];
     document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName[this.value];
     document.getElementsByClassName("cartItemPrice")[0].innerHTML = this.innerHTML;
@@ -87,6 +88,7 @@ function handleKitButtonPress() {
 }
 
 function handleOptionalButtonPress() {
+    "use strict";
     let cartItem = shoppingCart.querySelector("#"+this.value);
     cartItem.style.display = "grid";
     this.disabled = true;
@@ -95,6 +97,7 @@ function handleOptionalButtonPress() {
 }
 
 function handleOptionalRemoveButtonPress() {
+    "use strict";
     let cartItem = this.parentElement;
     document.getElementById("optionalsContainer").querySelector('button[value="'+cartItem.id+'"]').disabled = false;
     cartItem.style.display = "none";
@@ -103,10 +106,12 @@ function handleOptionalRemoveButtonPress() {
 }
 
 function handleKitChangeButtonPress() {
+    "use strict";
     document.getElementById("chooseKitHeader").scrollIntoView({ left: 0, block: 'start', behavior: 'smooth' });
 }
 
 function calculateTotal() {
+    "use strict";
     let total = 0.0;
     let iterationCount = shoppingCart.children.length;
     for (let i=0; i<iterationCount; i++) {
@@ -120,6 +125,7 @@ function calculateTotal() {
 
 //Shoppingcart löschen
 function deleteShoppingCart(){
+    "use strict";
     //Entfernen der Optionals
     for (let i = 0; i < shoppingCartOptionalItems.length; i++){
       let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
@@ -150,6 +156,7 @@ function deleteShoppingCart(){
  *  Die Values sind jeweils die IDs des Kits / der Optionals, siehe Dictionary am Anfang der Datei
  */
 function sendOrder() {
+    "use strict";
     this.disabled = true;
     let selectedOptionals = [];
     for (let i=0; i<shoppingCartOptionalItems.length; i++) {
@@ -193,27 +200,6 @@ function sendOrder() {
         inputOptionals.appendChild(inputOptionalsItem);
     }
     form.submit();
-
-    /*
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState === XMLHttpRequest.DONE ) {
-            if(xmlhttp.status === 200){
-                console.log('POST-Request erfolgreich');
-
-            }
-            else if(xmlhttp.status === 400) {
-                console.log("Error-Code 400 bei POST-Request");
-            }
-            else {
-                console.log("Nicht spezifizierter Error-Code bei POST-Request");
-            }
-        }
-    };
-
-    xmlhttp.open("post", "phase4.php", true);
-    xmlhttp.send(JSON.stringify(data));
-     */
 
     this.disabled = false;
 }

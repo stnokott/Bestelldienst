@@ -3,6 +3,7 @@ loadStatus();
 window.setInterval (loadStatus, 5000);
 
 function loadStatus() {
+    "use strict";
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -25,6 +26,7 @@ function loadStatus() {
  * @param activeIndex Integer Index of Status to activate (0=sent, 1=delivered, 2=analysis, 3=done)
  */
 function setStatusActive(activeIndex) {
+    "use strict";
     let progressItems = document.getElementsByClassName("progresssteps")[0].getElementsByTagName("li");
 
     for (let i=0; i<progressItems.length; i++) {
