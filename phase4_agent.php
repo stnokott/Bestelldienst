@@ -89,6 +89,9 @@ class Phase4Agent extends Page
         }
     }
 
+    /**
+     * Generiere Menü für User-Auswahl und Status-Auswahl
+     */
     protected function generateAgentMenu()
     {
         echo <<<HTML
@@ -231,6 +234,11 @@ HTML;
         }
     }
 
+    /**
+     * Setzt Status für bestimmten Nutzer in DB
+     * @param $userid int ID des Nutzers, dessen Status modifiziert werden soll
+     * @param $status int Status der Bestellung
+     */
     protected function setStatusOrder($userid, $status) {
         $query = "UPDATE genochoiceorder SET status='" .$status. "' WHERE userid='" .$userid. "'";
         $this->_database->query($query);

@@ -4,7 +4,6 @@
  * @package  Bestelldienst
  * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
  * @author   Max Klosterhalfen, <max.klosterhalfen@stud.h-da.de>
- * @license  http://www.h-da.de  none
  */
 
 require_once './Page.php';

