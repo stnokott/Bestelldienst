@@ -1,6 +1,6 @@
 loadStatus();
 
-window.setInterval (loadStatus, 5000);
+window.setInterval (loadStatus, 5000);  // AJAX
 
 function loadStatus() {
     "use strict";

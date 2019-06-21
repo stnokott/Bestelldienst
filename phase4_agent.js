@@ -5,6 +5,8 @@ loadStatus();
 
 genoChoiceOrdersSelect.addEventListener("change", loadStatus);
 
+window.setInterval(function() {location.reload(true)}, 5000);
+
 let radioGroups = document.getElementsByClassName("inputRadioGroup");
 for (let radioGroup of radioGroups) {
     // Klick auf kompletten Div verarbeiten
