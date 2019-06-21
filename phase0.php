@@ -39,7 +39,6 @@ class Phase0 extends Page
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
-     *
      * @return void
      */
     protected function generatePageDescription()
@@ -61,7 +60,6 @@ HTML;
 
     /**
      * Generiert <form> zur Eingabe der Daten, die für die GenoCheck-Bestellung nötig sind
-     *
      * @return void
      */
     protected function generateGenoCheckForm()

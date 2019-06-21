@@ -25,32 +25,81 @@ require_once './Page.php';
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
 
+/**
+ * Container-Klasse für aus der DB abgerufene
+ * verfügbare Kits
+ */
 class Kit
 {
+    /**
+     * @var int ID des Kits in der Datenbank
+     */
     public $kitid;
+
+    /**
+     * @var string Name des Kits
+     */
     public $name;
+
+    /**
+     * @var int Preis des Kits
+     */
     public $price;
+
+    /**
+     * @var string Erster Beschreibungsstickpunkt
+     */
     public $desc1;
+
+    /**
+     * @var string Zweiter Beschreibungsstichpunkt
+     */
     public $desc2;
+
+    /**
+     * @var string Dritter Beschreibungsstichpunkt
+     */
     public $desc3;
+
+    /**
+     * @var resource Hintergrund-Bild für Kit als SVG (als Blob in DB hinterlegt)
+     */
     public $bg;
+
+    /**
+     * @var string Zu verwendende CSS-Klasse für Kit
+     */
     public $cssclass;
+
+    /**
+     * @var int Definiert, ob der Container im Browser alle verfügbaren Spalten nutzen soll
+     */
     public $stretched;
 
+    /**
+     * Kit constructor
+     */
     public function __construct()
     {
     }
 }
 
+/**
+ * Klasse für Phase 3
+ */
 class Phase3 extends Page
 {
-    private $kitList = array();
+    /**
+     * @var array Liste der verfügbaren Kits in der DB
+     */
+    private $kitList = [];
 
     /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+     * @return void
      */
     protected function getViewData()
     {
@@ -62,6 +111,10 @@ class Phase3 extends Page
         $this->updateKitList();
     }
 
+    /**
+     * Rufe die verfügbaren Kits aus der Datenbank ab und speichere sie in &$this->kitList
+     * @return void
+     */
     protected function updateKitList() {
         $query = "SELECT * FROM kit ORDER BY kitid";
         $result = $this->_database->query($query);
@@ -81,6 +134,10 @@ class Phase3 extends Page
         }
     }
 
+    /**
+     * Generiere Anfang der Kit-section
+     * @return void
+     */
     protected function generateSectionStart() {
         echo<<<HTML
             <section>
@@ -89,6 +146,10 @@ HTML;
 
     }
 
+    /**
+     * Generiere alle in der DB verfügbaren Kits aus &$this->kitList
+     * @return void
+     */
     protected function generateAvailableKits() {
         echo '<div id="kitContainer">';
         foreach ($this->kitList as $kit) {
@@ -117,6 +178,11 @@ HTML;
         echo '</div>';
     }
 
+    /**
+     * Generiere alle verfügbaren Optionals.
+     * Diese werden nicht aus der DB abgerufen
+     * @return void
+     */
     protected function generateAvailableOptionals() {
         echo <<<HTML
             <div class="sectionHeader" id="chooseOptionalsHeader">Optionale Zusatzpakete buchen</div>
@@ -150,6 +216,11 @@ HTML;
 HTML;
     }
 
+    /**
+     * Generiere den Einkaufswagen mit dem Basic Kit als Default.
+     * Alle Optionals sind bereits versteckt vorhanden und werden bei Bedarf gezeigt bzw. wieder versteckt
+     * @return void
+     */
     protected function generateShoppingCart() {
         echo <<<HTML
             <div class="sectionHeader">Bestellung prüfen</div>
@@ -188,6 +259,10 @@ HTML;
 HTML;
     }
 
+    /**
+     * Generiere das Ende der Bestelluns-Section
+     * @return void
+     */
     protected function generateSectionEnd() {
         echo <<<HTML
             <button id="confirmGenoCheckOrder" class="floatright">Bestellen <i class="material-icons">forward</i></button>
@@ -202,6 +277,7 @@ HTML;
      * of the page ("view") is inserted and -if avaialable- the content of
      * all views contained is generated.
      * Finally the footer is added.
+     * @return void
      */
     protected function generateView()
     {
@@ -228,6 +304,7 @@ HTML;
      * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
      *
      * @throws Exception Fehler, falls magic quotes an sind
+     * @return void
      */
     protected function processReceivedData()
     {

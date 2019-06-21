@@ -31,7 +31,8 @@ class Phase2 extends Page
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
-     * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+     * Prüft, ob User berechtigt ist, diese Seite zu sehen (userid ist gesetzt)
+     * @return void
      */
     protected function getViewData()
     {
@@ -42,6 +43,7 @@ class Phase2 extends Page
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
+     * @return void
      */
     protected function generatePageDescription()
     {
@@ -56,6 +58,11 @@ class Phase2 extends Page
 HTML;
     }
 
+    /**
+     * Generiere die verfügbaren Genotypen.
+     * Alles hardcoded, keine dynamischen Inhalte.
+     * @return void
+     */
     protected function generateGenoTypes() {
         echo<<<HTML
         <section class="genoCheckResultsGenotypes">
@@ -81,6 +88,11 @@ HTML;
 
     }
 
+    /**
+     * Generiere die möglichen Risiken bei Verwendung des aktuellen Genpools.
+     * Alles hardcoded, keine dynamischen Inhalte
+     * @return void
+     */
     protected function generateRisks() {
         echo<<<HTML
         <section class="genoCheckResultsRisks">
@@ -117,6 +129,10 @@ HTML;
 
     }
 
+    /**
+     * Generiere Button zum Fortfahren im nächsten Abschnitt
+     * @return void
+     */
     protected function generateContinueButton() {
         echo <<<HTML
         <section>
