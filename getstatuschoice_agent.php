@@ -34,7 +34,7 @@ class JSONObject
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-class StatusHelper extends Page
+class ChoiceStatusHelper extends Page
 {
     /**
      * Instantiates members (to be defined above).
@@ -65,18 +65,10 @@ class StatusHelper extends Page
      * Gibt den Wert des status-Attributs der genochoiceorder-Datenbank für den User mit der
      * angegebenen Email-Adresse aus
      * @param String $userid id des Nutzers
-     * @return Int Bestellungsstatus (0=bestätigt, 1=gesendet, 2=im Labor, 3=fertig)
+     * @return Int Bestellungsstatus (0=bestätigt, usw.)
      */
-    protected function getUserOrderStatus()
+    protected function getUserOrderStatus($userid)
     {
-        if (!isset($_SESSION["userid"])) {
-            die("User-ID Session Variable nicht gesetzt!");
-        }
-        $userid = $_SESSION["userid"];
-        if (!$this->checkUserExists($userid)) {
-            return null;
-        }
-
         $query = "SELECT status FROM genochoiceorder WHERE userid='" . $userid . "'";
         $result = $this->_database->query($query);
 
@@ -87,8 +79,7 @@ class StatusHelper extends Page
         }
     }
 
-    protected function getUserOrderOptionalsStatus(){
-      $userid = $_SESSION["userid"];
+    protected function getUserOrderStatusOptionals($userid) {
         $query = "SELECT optionaltype, done FROM orderoptionals
                     JOIN genochoiceorder ON orderoptionals.choiceid = genochoiceorder.choiceid
                     WHERE genochoiceorder.userid = '".$userid."'";
@@ -123,24 +114,23 @@ class StatusHelper extends Page
      *
      * @return void
      */
-     
-     protected function getStatus()
-     {
-         if (!isset($_GET["userid"])) {
-             die ("userid-GET-Parameter muss gesetzt sein!");
-         }
+    protected function getStatus()
+    {
+        if (!isset($_GET["userid"])) {
+            die ("userid-GET-Parameter muss gesetzt sein!");
+        }
 
-         if (!$this->checkUserExists($_GET["userid"])) {
-             die ("User existiert nicht");
-         }
+        if (!$this->checkUserExists($_GET["userid"])) {
+            die ("User existiert nicht");
+        }
 
-         $status = $this->getUserOrderStatus($_GET["userid"]);
-         $optionals = $this->getUserOrderStatusOptionals($_GET["userid"]);
-         $jsonObject = new JSONObject();
-         $jsonObject->status = $status;
-         $jsonObject->optionals = $optionals;
-         echo json_encode($jsonObject);
-     }
+        $status = $this->getUserOrderStatus($_GET["userid"]);
+        $optionals = $this->getUserOrderStatusOptionals($_GET["userid"]);
+        $jsonObject = new JSONObject();
+        $jsonObject->status = $status;
+        $jsonObject->optionals = $optionals;
+        echo json_encode($jsonObject);
+    }
 
     /**
      * Processes the data that comes via GET or POST i.e. CGI.
@@ -149,7 +139,7 @@ class StatusHelper extends Page
      * If the page contains blocks, delegate processing of the
      * respective subsets of data to them.
      *
-     * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden Genochoice-Auftrag
+     * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
      *
      * @return void
      */
@@ -175,7 +165,7 @@ class StatusHelper extends Page
         session_start();
         header("Content-Type: application/json; charset=UTF-8");
         try {
-            $page = new StatusHelper();
+            $page = new ChoiceStatusHelper();
             $page->processReceivedData();
             $page->getStatus();
         } catch (Exception $e) {
@@ -187,7 +177,7 @@ class StatusHelper extends Page
 
 // This call is starting the creation of the page.
 // That is input is processed and output is created.
-StatusHelper::main();
+ChoiceStatusHelper::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends).
