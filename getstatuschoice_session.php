@@ -123,7 +123,7 @@ class StatusHelper extends Page
      *
      * @return void
      */
-     
+
      protected function getStatus()
      {
          if (!isset($_GET["userid"])) {
@@ -135,7 +135,7 @@ class StatusHelper extends Page
          }
 
          $status = $this->getUserOrderStatus($_GET["userid"]);
-         $optionals = $this->getUserOrderStatusOptionals($_GET["userid"]);
+         $optionals = $this->getUserOrderOptionalsStatus($_GET["userid"]);
          $jsonObject = new JSONObject();
          $jsonObject->status = $status;
          $jsonObject->optionals = $optionals;
