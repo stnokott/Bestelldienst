@@ -1,42 +1,7 @@
-let dictKitType = {
-    "basic": 0,
-    "comfort": 1,
-    "social": 2,
-    "premium": 3,
-    "custom": 4
-};
 let dictOptionalType = {
     "clinic": 0,
     "drone": 1,
     "insurance": 2
-};
-let dictKitClass = {
-    "basic": "kitBasic",
-    "comfort": "kitComfort",
-    "social": "kitSocial",
-    "premium": "kitPremium",
-    "custom": "kitCustom"
-};
-let dictKitName = {
-    "basic": "Basic Kit",
-    "comfort": "Comfort Kit",
-    "social": "Social Kit",
-    "premium": "Premium Kit",
-    "custom": "Custom Kit"
-};
-let dictKitSVGName = {
-    "basic": "wrench",
-    "comfort": "couch",
-    "social": "laugh",
-    "premium": "trophy",
-    "custom": "growth"
-};
-let dictKitPrice = {
-  "basic": "5999.99€",
-  "comfort": "7999.99€",
-  "social": "8499.99€",
-  "premium": "14999.99€",
-  "custom": "24999.99€"
 };
 
 let shoppingCart = document.getElementsByClassName("shoppingCart")[0];
@@ -75,11 +40,11 @@ document.getElementById("confirmGenoCheckOrder").addEventListener("click", sendO
 
 function handleKitButtonPress() {
     "use strict";
-    shoppingCartKitItem.className = "cartItem "+dictKitClass[this.value];
-    document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName[this.value];
-    document.getElementsByClassName("cartItemPrice")[0].innerHTML = this.innerHTML;
-    shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName[this.value]+".svg";
-    selectedKitType = dictKitType[this.value];
+    shoppingCartKitItem.className = "cartItem "+this.dataset.cssclass;
+    document.getElementsByClassName("cartItemName")[0].innerHTML = this.dataset.name;
+    document.getElementsByClassName("cartItemPrice")[0].innerHTML = this.dataset.price+"€";
+    shoppingCartKitItem.getElementsByTagName("img")[0].src = "data:image/svg+xml;utf8,"+this.dataset.bg;
+    selectedKitType = this.dataset.kitid;
 
     // zu Optionals scrollen
     document.getElementById("chooseOptionalsHeader").scrollIntoView({ left: 0, block: 'start', behavior: 'smooth' });
@@ -134,7 +99,7 @@ function deleteShoppingCart(){
     }
 
     //Zurücksetzen auf BasicKit
-    shoppingCartKitItem.className = "cartItem "+dictKitClass["basic"];
+    shoppingCartKitItem.className = "cartItem kitBasic";
     document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName["basic"];
     document.getElementsByClassName("cartItemPrice")[0].innerHTML = dictKitPrice["basic"];
     shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName["basic"]+".svg";
@@ -166,26 +131,18 @@ function sendOrder() {
         }
     }
 
-    /*
-    let data = [{
-        "kittype": selectedKitType,
-    },
-        selectedOptionals
-    ];
-     */
-
     let form = document.createElement('form');
     document.body.appendChild(form);
     form.method = 'post';
     form.action = "phase4.php";
     let inputKittype = document.createElement('input');
-    inputKittype.type = "hidden";
+    inputKittype.setAttribute("type", "hidden");
     inputKittype.name = "kittype";
     inputKittype.value = selectedKitType;
     form.appendChild(inputKittype);
 
     let inputOptionals = document.createElement("select");
-    inputOptionals.type = "hidden";
+    inputOptionals.setAttribute("type", "hidden");
     inputOptionals.name = "selectedoptionals[]";
     inputOptionals.multiple = true;
     form.appendChild(inputOptionals);

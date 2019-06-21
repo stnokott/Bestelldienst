@@ -25,8 +25,27 @@ require_once './Page.php';
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
 
+class Kit
+{
+    public $kitid;
+    public $name;
+    public $price;
+    public $desc1;
+    public $desc2;
+    public $desc3;
+    public $bg;
+    public $cssclass;
+    public $stretched;
+
+    public function __construct()
+    {
+    }
+}
+
 class Phase3 extends Page
 {
+    private $kitList = array();
+
     /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
@@ -37,6 +56,28 @@ class Phase3 extends Page
     {
         if(!isset($_SESSION["userid"])){
             header('Location: phase0.php');
+        }
+
+        // Kits aus Datenbank holen
+        $this->updateKitList();
+    }
+
+    protected function updateKitList() {
+        $query = "SELECT * FROM kit ORDER BY kitid";
+        $result = $this->_database->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            $kit = new Kit();
+            $kit->kitid = htmlspecialchars($row["kitid"]);
+            $kit->name = htmlspecialchars($row["name"]);
+            $kit->price = htmlspecialchars($row["price"]);
+            $kit->desc1 = htmlspecialchars($row["desc1"]);
+            $kit->desc2 = htmlspecialchars($row["desc2"]);
+            $kit->desc3 = htmlspecialchars($row["desc3"]);
+            $kit->bg = $row["bg"];
+            $kit->cssclass = htmlspecialchars($row["cssclass"]);
+            $kit->stretched = $row["cssstretched"]; // nicht nötig, da nur für If benötigt
+            array_push($this->kitList, $kit);
         }
     }
 
@@ -49,52 +90,31 @@ HTML;
     }
 
     protected function generateAvailableKits() {
-        echo<<<HTML
-            <div id="kitContainer">
-                <div class="bookable">
-                    <div class="bookableHeader kitBasic"><img src="img/wrench.svg" alt=""/>Basic Kit</div>
+        echo '<div id="kitContainer">';
+        foreach ($this->kitList as $kit) {
+            $stretched = $kit->stretched == 1 ? "stretched" : "";
+            echo<<<HTML
+                <div class="bookable {$stretched}">
+                    <div class="bookableHeader {$kit->cssclass}"><img src="data:image/svg+xml;utf8,{$kit->bg}" alt=""/>{$kit->name}</div>
                     <ul>
-                        <li>Attribute aus naturgegebenem Genpool</li>
-                        <li>Kein Einfluss auf negative Attribute</li>
-                    </ul>
-                    <button class="noshadow" value="basic">5999.99€</button>
-                </div>
-                <div class="bookable">
-                    <div class="bookableHeader kitComfort"><img src="img/couch.svg" alt=""/>Comfort Kit</div>
-                    <ul>
-                        <li>Visuelle Attribute individuell wählbar</li>
-                        <li>Reduzierte Krankheitswahrscheinlichkeiten</li>
-                    </ul>
-                    <button class="noshadow" value="comfort">7999.99€</button>
-                </div>
-                <div class="bookable">
-                    <div class="bookableHeader kitSocial"><img src="img/laugh.svg" alt=""/>Social Kit</div>
-                    <ul>
-                        <li>Visuelle Attribute individuell wählbar</li>
-                        <li>Erhöhte Werte in sozial anerkannten Bereichen</li>
-                    </ul>
-                    <button class="noshadow" value="social">8499.99€</button>
-                </div>
-                <div class="bookable">
-                    <div class="bookableHeader kitPremium"><img src="img/trophy.svg" alt=""/>Premium Kit</div>
-                    <ul>
-                        <li>Visuelle Attribute individuell wählbar</li>
-                        <li>Inkl. Comfort Kit</li>
-                        <li>Inkl. Social Kit</li>
-                    </ul>
-                    <button class="noshadow" value="premium">14499.99€</button>
-                </div>
-                <div class="bookable stretched">
-                    <div class="bookableHeader kitCustom"><img src="img/growth.svg" alt=""/>Custom Kit</div>
-                    <ul>
-                        <li>Visuelle Attribute individuell wählbar</li>
-                        <li>Charakter-Attribute individuell wählbar</li>
-                        <li>Krankheiten eliminiert</li>
-                    </ul>
-                    <button class="noshadow" value="custom">24499.99€</button>
-                </div>
-            </div>
 HTML;
+            if ($kit->desc1 != "") {
+                echo '<li>'.$kit->desc1.'</li>';
+            }
+            if ($kit->desc2 != "") {
+                echo '<li>'.$kit->desc2.'</li>';
+            }
+            if ($kit->desc3 != "") {
+                echo '<li>'.$kit->desc3.'</li>';
+            }
+            echo<<<HTML
+                    </ul>
+                    <button class="noshadow" data-kitid="{$kit->kitid}" data-name="{$kit->name}" data-price="{$kit->price}" data-bg="{$kit->bg}" data-cssclass="{$kit->cssclass}">{$kit->price}€</button>
+                </div>
+HTML;
+
+        }
+        echo '</div>';
     }
 
     protected function generateAvailableOptionals() {
