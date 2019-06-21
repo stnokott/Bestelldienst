@@ -27,13 +27,16 @@ require_once './User.php';
  */
 class Phase1Agent extends Page
 {
-    private $users = []; // Liste der verfügbaren Nutzer
+    /**
+     * @var array Liste der verfügbaren Nutzer in der DB
+     */
+    private $users = [];
 
     /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
-     * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+     * Ruft die verfügbaren Nutzer aus der DB ab und speichert sie in &$this->users
      *
      * @return void
      */
@@ -98,6 +101,10 @@ class Phase1Agent extends Page
         }
     }
 
+    /**
+     * Generiere Dropwdown-Liste der User und RadioButtons zur Auswahl des Status
+     * @return void
+     */
     protected function generateAgentMenu()
     {
         echo <<<HTML
@@ -188,6 +195,11 @@ HTML;
         }
     }
 
+    /**
+     * @param $userid int ID des Users, dessen Status modifiziert werden soll
+     * @param $status int Einzufügender Status (0 = bestätigt, 1 = verarbeitet usw.)
+     * @return void
+     */
     protected function setStatusOrder($userid, $status) {
         $query = "UPDATE genocheckorder SET status='" .$status. "' WHERE userid='" .$userid. "'";
         $this->_database->query($query);
