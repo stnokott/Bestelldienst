@@ -99,10 +99,11 @@ function deleteShoppingCart(){
     }
 
     //Zurücksetzen auf BasicKit
-    shoppingCartKitItem.className = "cartItem kitBasic";
-    document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName["basic"];
-    document.getElementsByClassName("cartItemPrice")[0].innerHTML = dictKitPrice["basic"];
-    shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName["basic"]+".svg";
+    let defaultKitButton = document.getElementById("kitContainer").getElementsByClassName("bookable")[0].getElementsByTagName("button")[0];
+    shoppingCartKitItem.className = "cartItem "+defaultKitButton.dataset.cssclass;
+    document.getElementsByClassName("cartItemName")[0].innerHTML = defaultKitButton.dataset.name;
+    document.getElementsByClassName("cartItemPrice")[0].innerHTML = defaultKitButton.dataset.price;
+    shoppingCartKitItem.getElementsByTagName("img")[0].src = "data:image/svg+xml;utf8,"+defaultKitButton.dataset.bg;
 
     calculateTotal();
 }
