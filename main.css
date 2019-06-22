@@ -685,7 +685,7 @@ div.genoChoiceChosenKit #chosenKitName {
     background-color: var(--accent-light-indigo);
 }
 .kitSocial {
-    color: var(--accent-black);
+    color: white;
     background-color: var(--accent-light-yellow);
 }
 .kitPremium {
