@@ -198,27 +198,6 @@
     }
 }
 
-.shoppingCart > .cartItem.kitBasic {
-    color: var(--accent-black);
-    background-color: var(--accent-light-grey);
-}
-.shoppingCart > .cartItem.kitComfort {
-    color: white;
-    background-color: var(--accent-light-indigo);
-}
-.shoppingCart > .cartItem.kitSocial {
-    color: var(--accent-black);
-    background-color: var(--accent-light-yellow);
-}
-.shoppingCart > .cartItem.kitPremium {
-    color: white;
-    background-color: var(--accent-light-green);
-}
-.shoppingCart > .cartItem.kitCustom {
-    color: white;
-    background-color: var(--accent-light-pink);
-}
-
 .shoppingCart > .cartItem > img {
     opacity: .1;
     position: absolute;

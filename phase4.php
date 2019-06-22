@@ -31,6 +31,8 @@ class Phase4 extends Page
     static $KEY_KITTYPE = "kittype";
     static $SELECTEDOPTIONALS_KEY = "selectedoptionals";
     private $optionals = []; // Liste der gebuchten Optionals als optionaltypes
+    private $kitname = "Unbekannt";
+    private $kitclass = "";
 
     /*
     vgl post query usererstellung
@@ -54,6 +56,15 @@ class Phase4 extends Page
     {
         if(!isset($_SESSION["userid"])){
             header('Location: phase3.php');
+        }
+
+        $query = "SELECT name, cssclass FROM kit
+                    JOIN genochoiceorder ON userid = '".$_SESSION["userid"]."' 
+                    WHERE kittype = kitid";
+        $result = $this->_database->query($query);
+        if ($row = $result->fetch_assoc()) {
+            $this->kitname = $row["name"];
+            $this->kitclass = $row["cssclass"];
         }
 
         // Gebuchte Optionals aus Datenbank holen
@@ -83,6 +94,11 @@ class Phase4 extends Page
 HTML;
     }
 
+    private function generateChosenKit() {
+        echo '<div class="genoChoiceChosenKit">';
+        echo 'Gewähltes Kit: <span id="chosenKitName" class="'.$this->kitclass.'">'.$this->kitname.'</span>';
+        echo '</div><br>';
+    }
 
     /**
      * Generiert Ansicht zur Verfolgung des GenoChoice-Fortschritts für den Nutzer
@@ -90,8 +106,9 @@ HTML;
      */
     protected function generateGenoChoiceProgress()
     {
+        echo '<section class="genoChoiceStatus">';
+        $this->generateChosenKit();
         echo<<<HTML
-        <section class="genoChoiceStatus">
             <div class="sectionHeader"><div class="sectionHeaderNumber">1</div>Vorbereitung</div>
             <div class="progresssteps-container">
                 <ul class="progresssteps third statuskit">
@@ -177,8 +194,6 @@ HTML;
 
         $this->generatePageFooter("phase4.js");
     }
-
-//TODO Ausgewähltes Kit bzw Kittype auf Seite anzeigen
 
 /**####################DATA ACQUISITION#############################*/
 

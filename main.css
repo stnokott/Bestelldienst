@@ -661,7 +661,23 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     }
 }
 
+div.genoChoiceChosenKit {
+    display: inline-block;
+    width: auto;
+    padding: 0.5vh 0.5vw;
+    box-shadow: 0 5px 25px 0 rgba(48,112,205,0.15);
+    border-radius: 15px;
+    background: white;
+    margin-top: 3vh;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+div.genoChoiceChosenKit #chosenKitName {
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 15px;
+}
 
 /* FORTSCHRITTSANZEIGE */
 
@@ -825,4 +841,25 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     i.material-icons {
         font-size: 36px;
     }
+}
+
+.kitBasic {
+    color: var(--accent-black);
+    background-color: var(--accent-light-grey);
+}
+.kitComfort {
+    color: white;
+    background-color: var(--accent-light-indigo);
+}
+.kitSocial {
+    color: var(--accent-black);
+    background-color: var(--accent-light-yellow);
+}
+.kitPremium {
+    color: white;
+    background-color: var(--accent-light-green);
+}
+.kitCustom {
+    color: white;
+    background-color: var(--accent-light-pink);
 }
