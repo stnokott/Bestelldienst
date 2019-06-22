@@ -45,13 +45,18 @@ class ChoiceStatusHelper extends Page
         }
     }
 
+    /**
+     * Ruft den Status der OrderOptionals des Nutzers von der Datenbank ab
+     * @param $userid int User-ID des Nutzers
+     * @return array Liste der Optionals mit optionaltype als Key und Done-Boolean als Int-Wert
+     */
     protected function getUserOrderStatusOptionals($userid) {
         $query = "SELECT optionaltype, done FROM orderoptionals
                     JOIN genochoiceorder ON orderoptionals.choiceid = genochoiceorder.choiceid
                     WHERE genochoiceorder.userid = '".$userid."'";
         $result = $this->_database->query($query);
 
-        $optional_array = array();
+        $optional_array = [];
         while ($row = $result->fetch_assoc()) {
             $optional_array[$row["optionaltype"]] = $row["done"];
         }
