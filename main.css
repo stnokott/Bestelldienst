@@ -649,6 +649,14 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
     width: 33.33%;
 }
 
+.progresssteps.half li {
+    width: 50%;
+}
+
+.progresssteps.full li {
+    width: 100%;
+}
+
 .progresssteps li.active {
     color: var(--accent-blue);
 }
@@ -675,7 +683,7 @@ meter::-webkit-meter-even-less-good-value, meter:-moz-meter-sub-sub-optimum::-mo
         font-size: 15px;
     }
 
-    .progresssteps li:after {
+    .progresssteps:not(.statusoptionals) li:after {
         /* Strich vor Punkt */
         text-align: center;
         margin-left: 17px;
