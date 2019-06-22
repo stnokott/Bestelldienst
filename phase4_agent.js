@@ -81,7 +81,12 @@ function setCheckboxesActive(optionals_status_list) {
     "use strict";
     for (let checkbox of checkboxes) {
         let optionaltype = checkbox.value;
-        checkbox.checked = (optionals_status_list[optionaltype] === "1");
+        if (optionals_status_list[optionaltype] != null) {
+            checkbox.parentElement.hidden = false;
+            checkbox.checked = (optionals_status_list[optionaltype] === "1");
+        } else {
+            checkbox.parentElement.hidden = true;
+        }
     }
 }
 

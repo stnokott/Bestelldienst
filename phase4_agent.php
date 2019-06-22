@@ -125,32 +125,18 @@ HTML;
                     </div>
                 </div>
                 <div id="phase4_checkWrapper">
-HTML;
-        if (in_array(0, $this->optionals)) {
-            echo <<< HTML
                     <div class="inputCheckGroup">
                       <input type="checkbox" name="statusOptionals[]" id="statusInsertion" value="0">
                       <label for="statusInsertion">Merkmalinsertion (CRISPR-cas9)</label>
                     </div>
-HTML;
-        }
-        if (in_array(1, $this->optionals)) {
-            echo <<< HTML
                     <div class="inputCheckGroup">
                       <input type="checkbox" name="statusOptionals[]" id="statusDisease" value="1">
                       <label for="statusDisease">Krankheitspotential reduzieren (Immunomodifikation)</label>
                     </div>
-HTML;
-        }
-        if (in_array(2, $this->optionals)) {
-            echo <<< HTML
                     <div class="inputCheckGroup">
                       <input type="checkbox" name="statusOptionals[]" id="statusSocial" value="2">
                       <label for="statusSocial">Soziale Bereiche verbessern (kombinierte Methoden)</label>
                     </div>
-HTML;
-        }
-        echo <<< HTML
                 </div>
                 <div id="phase4_radioWrapper2">
                     <div class="inputRadioGroup">
