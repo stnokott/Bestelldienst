@@ -4,7 +4,6 @@
  * @package  Bestelldienst
  * @author   Noah Kottenhahn, <noah.kottenhahn@stud.h-da.de>
  * @author   Max Klosterhalfen, <max.klosterhalfen@stud.h-da.de>
- * @license  http://www.h-da.de  none
  */
 
 require_once './Page.php';
@@ -36,30 +35,7 @@ class JSONObject
  */
 class ChoiceStatusHelper extends Page
 {
-    /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return void
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return void
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
+    static $GET_KEY_USERID = "userid";
 
     /**
      * Gibt den Wert des status-Attributs der genochoiceorder-Datenbank für den User mit der
@@ -116,16 +92,16 @@ class ChoiceStatusHelper extends Page
      */
     protected function getStatus()
     {
-        if (!isset($_GET["userid"])) {
+        if (!isset($_GET[self::$GET_KEY_USERID])) {
             die ("userid-GET-Parameter muss gesetzt sein!");
         }
 
-        if (!$this->checkUserExists($_GET["userid"])) {
+        if (!$this->checkUserExists($_GET[self::$GET_KEY_USERID])) {
             die ("User existiert nicht");
         }
 
-        $status = $this->getUserOrderStatus($_GET["userid"]);
-        $optionals = $this->getUserOrderStatusOptionals($_GET["userid"]);
+        $status = $this->getUserOrderStatus($_GET[self::$GET_KEY_USERID]);
+        $optionals = $this->getUserOrderStatusOptionals($_GET[self::$GET_KEY_USERID]);
         $jsonObject = new JSONObject();
         $jsonObject->status = $status;
         $jsonObject->optionals = $optionals;

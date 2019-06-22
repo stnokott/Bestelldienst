@@ -24,41 +24,28 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
-
 class Phase1 extends Page
 {
+    /**
+     * @var bool Definiert, ob beim Aufruf ein neuer User erstellt wurde
+     */
     private $new_user = false;
 
     /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
+     * @var string Konstante für Datenbankspaltenname
      */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
+    static $KEY_USERID = "userid";
 
     /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+     * @return void
      */
     protected function getViewData()
     {
-        if(!isset($_SESSION["userid"])){
+        if(!isset($_SESSION[self::$KEY_USERID])){
             header('Location: phase0.php');
         }
     }
@@ -66,6 +53,7 @@ class Phase1 extends Page
     /**
      * Generiert kurze <section>, um zu zeigen, dass beim Aufruf dieser Seite mit Hilfe der
      * POST-Parameter ein neuer User erstellt wurde
+     * @return void
      */
     protected function generateNewUser()
     {
@@ -78,6 +66,7 @@ HTML;
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
+     * @return void
      */
     protected function generatePageDescription()
     {
@@ -95,6 +84,7 @@ HTML;
     /**
      * Generiert Ansicht zur Verfolgung des GenoCheck-Fortschritts für den Nutzer
      * Verwendet das order_status-Attribut zur (De-)Aktivierung der Elemente
+     * @return void
      */
     protected function generateGenoCheckProgress()
     {
@@ -169,7 +159,7 @@ HTML;
         $result = $this->_database->query($query);
 
         if ($row = $result->fetch_assoc()) {
-            return $row["userid"];
+            return $row[self::$KEY_USERID];
         } else {
             return null;
         }
@@ -200,6 +190,7 @@ HTML;
      * @param  String $address1  Straße & Hausnummer des Nutzers
      * @param  String $address2  Stadt des Nutzers
      * @param  String $address3  PLZ des Nutzers
+     * @return void
      */
     protected function createUser($email, $firstname, $lastname, $address1, $address2, $address3) {
 
@@ -220,10 +211,15 @@ HTML;
         $this->new_user = true;
     }
 
+    /**
+     * Erstellt GenoCheckOrder für einen User
+     * @param $userid User-ID in DB, für den GenoCheckOrder erstellt werden soll
+     * @return void
+     */
     protected function createGenoCheckOrder($userid) {
         $query = $this->getMySQLInsertString(
             "genocheckorder",
-            array("userid"),
+            array(self::$KEY_USERID),
             array($userid)
         );
         $this->_database->query($query);
@@ -238,6 +234,7 @@ HTML;
      * of the page ("view") is inserted and -if avaialable- the content of
      * all views contained is generated.
      * Finally the footer is added.
+     * @return void
      */
     protected function generateView()
     {
@@ -264,6 +261,7 @@ HTML;
      *
      * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
      * @throws Exception Fehler, falls magic quotes an sind
+     * @return void
      */
     protected function processReceivedData()
     {
@@ -292,7 +290,7 @@ HTML;
 
             $userid = $this->getUserId($email);
 
-            $_SESSION["userid"] = $userid;
+            $_SESSION[self::$KEY_USERID] = $userid;
 
             if ($this->new_user && !$this->checkUserHasGenoCheckOrder($userid)) {
                 // User ist neu und hat noch kein GenoCheck bestellt
@@ -314,6 +312,7 @@ HTML;
      * indicate that function as the central starting point.
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
+     * @return void
      */
     public static function main()
     {

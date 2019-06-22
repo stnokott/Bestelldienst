@@ -7,55 +7,8 @@
  * @license  http://www.h-da.de  none
  */
 
-session_start();
-
 require_once './Page.php';
-
-class User
-{
-    private $userid;
-    private $firstname;
-    private $lastname;
-    private $email;
-
-    public function __construct($userid, $firstname, $lastname, $email)
-    {
-        $this->userid = $userid;
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->email = $email;
-    }
-
-    public function __destruct()
-    {
-
-    }
-
-    public function getUserid()
-    {
-        return $this->userid;
-    }
-
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function toString()
-    {
-        return $this->firstname . " " . $this->lastname . " - " . $this->email;
-    }
-}
+require_once './User.php';
 
 /**
  * This is a template for top level classes, which represent
@@ -74,38 +27,16 @@ class User
  */
 class Phase1Agent extends Page
 {
-    private $users = []; // Liste der verfügbaren Nutzer
-
     /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return void
+     * @var array Liste der verfügbaren Nutzer in der DB
      */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return void
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
+    private $users = [];
 
     /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
-     * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
+     * Ruft die verfügbaren Nutzer aus der DB ab und speichert sie in &$this->users
      *
      * @return void
      */
@@ -170,6 +101,10 @@ class Phase1Agent extends Page
         }
     }
 
+    /**
+     * Generiere Dropwdown-Liste der User und RadioButtons zur Auswahl des Status
+     * @return void
+     */
     protected function generateAgentMenu()
     {
         echo <<<HTML
@@ -178,7 +113,7 @@ class Phase1Agent extends Page
 
           <form action="phase1_agent.php" name="statusOrderChange[]" id="statusOrderChange" method="post">
             <div class="dropdownWrapper">
-              <select class="dropdown" name="genoCheckOrdersSelect" id="genoCheckOrdersSelect">
+              <select class="dropdown" name="genoChoiceOrdersSelect" id="genoChoiceOrdersSelect">
 HTML;
         // verfügbare Bestellungen in <select> einfügen
         foreach ($this->users as $user) {
@@ -244,7 +179,7 @@ HTML;
      */
     protected function processReceivedData()
     {
-        $ordersSelectKey = "genoCheckOrdersSelect";
+        $ordersSelectKey = "genoChoiceOrdersSelect";
 
         try {
             parent::processReceivedData();
@@ -252,17 +187,21 @@ HTML;
             echo "Fehler bei der Verarbeitung der Daten: " . $e;
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // TO-DO in Javascript umlagern, um ohne Neuladen der Seite zu machen
             // Wende Änderungen an
-            $order_id = $_POST[$ordersSelectKey];
+            $userid = $_POST[$ordersSelectKey];
             $new_status = $_POST["statusOrder"];
-            $this->setStatusOrder($order_id, $new_status);
+            $this->setStatusOrder($userid, $new_status);
             header('Location: phase1_agent.php');
         }
     }
 
-    protected function setStatusOrder($order_id, $status) {
-        $query = "UPDATE genocheckorder SET status='" .$status. "' WHERE userid='" .$order_id. "'";
+    /**
+     * @param $userid int ID des Users, dessen Status modifiziert werden soll
+     * @param $status int Einzufügender Status (0 = bestätigt, 1 = verarbeitet usw.)
+     * @return void
+     */
+    protected function setStatusOrder($userid, $status) {
+        $query = "UPDATE genocheckorder SET status='" .$status. "' WHERE userid='" .$userid. "'";
         $this->_database->query($query);
 
         if ($this->_database->error != "") {
@@ -284,6 +223,7 @@ HTML;
      */
     public static function main()
     {
+        session_start();
         try {
             $page = new Phase1Agent();
             $page->processReceivedData();

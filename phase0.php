@@ -27,31 +27,6 @@ require_once './Page.php';
 class Phase0 extends Page
 {
     /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return void
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return void
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
@@ -64,7 +39,6 @@ class Phase0 extends Page
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
-     *
      * @return void
      */
     protected function generatePageDescription()
@@ -86,7 +60,6 @@ HTML;
 
     /**
      * Generiert <form> zur Eingabe der Daten, die für die GenoCheck-Bestellung nötig sind
-     *
      * @return void
      */
     protected function generateGenoCheckForm()

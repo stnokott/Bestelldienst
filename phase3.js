@@ -1,42 +1,7 @@
-let dictKitType = {
-    "basic": 0,
-    "comfort": 1,
-    "social": 2,
-    "premium": 3,
-    "custom": 4
-};
 let dictOptionalType = {
     "clinic": 0,
     "drone": 1,
     "insurance": 2
-};
-let dictKitClass = {
-    "basic": "kitBasic",
-    "comfort": "kitComfort",
-    "social": "kitSocial",
-    "premium": "kitPremium",
-    "custom": "kitCustom"
-};
-let dictKitName = {
-    "basic": "Basic Kit",
-    "comfort": "Comfort Kit",
-    "social": "Social Kit",
-    "premium": "Premium Kit",
-    "custom": "Custom Kit"
-};
-let dictKitSVGName = {
-    "basic": "wrench",
-    "comfort": "couch",
-    "social": "laugh",
-    "premium": "trophy",
-    "custom": "growth"
-};
-let dictKitPrice = {
-  "basic": "5999.99€",
-  "comfort": "7999.99€",
-  "social": "8499.99€",
-  "premium": "14999.99€",
-  "custom": "24999.99€"
 };
 
 let shoppingCart = document.getElementsByClassName("shoppingCart")[0];
@@ -74,11 +39,12 @@ document.getElementById("deleteCart").addEventListener("click", deleteShoppingCa
 document.getElementById("confirmGenoCheckOrder").addEventListener("click", sendOrder);
 
 function handleKitButtonPress() {
-    shoppingCartKitItem.className = "cartItem "+dictKitClass[this.value];
-    document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName[this.value];
-    document.getElementsByClassName("cartItemPrice")[0].innerHTML = this.innerHTML;
-    shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName[this.value]+".svg";
-    selectedKitType = dictKitType[this.value];
+    "use strict";
+    shoppingCartKitItem.className = "cartItem "+this.dataset.cssclass;
+    document.getElementsByClassName("cartItemName")[0].innerHTML = this.dataset.name;
+    document.getElementsByClassName("cartItemPrice")[0].innerHTML = this.dataset.price+"€";
+    shoppingCartKitItem.getElementsByTagName("img")[0].src = "data:image/svg+xml;utf8,"+this.dataset.bg;
+    selectedKitType = this.dataset.kitid;
 
     // zu Optionals scrollen
     document.getElementById("chooseOptionalsHeader").scrollIntoView({ left: 0, block: 'start', behavior: 'smooth' });
@@ -87,6 +53,7 @@ function handleKitButtonPress() {
 }
 
 function handleOptionalButtonPress() {
+    "use strict";
     let cartItem = shoppingCart.querySelector("#"+this.value);
     cartItem.style.display = "grid";
     this.disabled = true;
@@ -95,6 +62,7 @@ function handleOptionalButtonPress() {
 }
 
 function handleOptionalRemoveButtonPress() {
+    "use strict";
     let cartItem = this.parentElement;
     document.getElementById("optionalsContainer").querySelector('button[value="'+cartItem.id+'"]').disabled = false;
     cartItem.style.display = "none";
@@ -103,10 +71,12 @@ function handleOptionalRemoveButtonPress() {
 }
 
 function handleKitChangeButtonPress() {
+    "use strict";
     document.getElementById("chooseKitHeader").scrollIntoView({ left: 0, block: 'start', behavior: 'smooth' });
 }
 
 function calculateTotal() {
+    "use strict";
     let total = 0.0;
     let iterationCount = shoppingCart.children.length;
     for (let i=0; i<iterationCount; i++) {
@@ -120,6 +90,7 @@ function calculateTotal() {
 
 //Shoppingcart löschen
 function deleteShoppingCart(){
+    "use strict";
     //Entfernen der Optionals
     for (let i = 0; i < shoppingCartOptionalItems.length; i++){
       let shoppingCartOptionalItem = shoppingCartOptionalItems[i];
@@ -128,10 +99,11 @@ function deleteShoppingCart(){
     }
 
     //Zurücksetzen auf BasicKit
-    shoppingCartKitItem.className = "cartItem "+dictKitClass["basic"];
-    document.getElementsByClassName("cartItemName")[0].innerHTML = dictKitName["basic"];
-    document.getElementsByClassName("cartItemPrice")[0].innerHTML = dictKitPrice["basic"];
-    shoppingCartKitItem.getElementsByTagName("img")[0].src = "img/"+dictKitSVGName["basic"]+".svg";
+    let defaultKitButton = document.getElementById("kitContainer").getElementsByClassName("bookable")[0].getElementsByTagName("button")[0];
+    shoppingCartKitItem.className = "cartItem "+defaultKitButton.dataset.cssclass;
+    document.getElementsByClassName("cartItemName")[0].innerHTML = defaultKitButton.dataset.name;
+    document.getElementsByClassName("cartItemPrice")[0].innerHTML = defaultKitButton.dataset.price;
+    shoppingCartKitItem.getElementsByTagName("img")[0].src = "data:image/svg+xml;utf8,"+defaultKitButton.dataset.bg;
 
     calculateTotal();
 }
@@ -150,6 +122,7 @@ function deleteShoppingCart(){
  *  Die Values sind jeweils die IDs des Kits / der Optionals, siehe Dictionary am Anfang der Datei
  */
 function sendOrder() {
+    "use strict";
     this.disabled = true;
     let selectedOptionals = [];
     for (let i=0; i<shoppingCartOptionalItems.length; i++) {
@@ -159,26 +132,18 @@ function sendOrder() {
         }
     }
 
-    /*
-    let data = [{
-        "kittype": selectedKitType,
-    },
-        selectedOptionals
-    ];
-     */
-
     let form = document.createElement('form');
     document.body.appendChild(form);
     form.method = 'post';
-    form.action = "phase4.php";
+    form.action = "https://enlx6f766q8jc.x.pipedream.net";
     let inputKittype = document.createElement('input');
-    inputKittype.type = "hidden";
+    inputKittype.setAttribute("type", "hidden");
     inputKittype.name = "kittype";
     inputKittype.value = selectedKitType;
     form.appendChild(inputKittype);
 
     let inputOptionals = document.createElement("select");
-    inputOptionals.type = "hidden";
+    inputOptionals.setAttribute("type", "hidden");
     inputOptionals.name = "selectedoptionals[]";
     inputOptionals.multiple = true;
     form.appendChild(inputOptionals);
@@ -193,27 +158,6 @@ function sendOrder() {
         inputOptionals.appendChild(inputOptionalsItem);
     }
     form.submit();
-
-    /*
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState === XMLHttpRequest.DONE ) {
-            if(xmlhttp.status === 200){
-                console.log('POST-Request erfolgreich');
-
-            }
-            else if(xmlhttp.status === 400) {
-                console.log("Error-Code 400 bei POST-Request");
-            }
-            else {
-                console.log("Nicht spezifizierter Error-Code bei POST-Request");
-            }
-        }
-    };
-
-    xmlhttp.open("post", "phase4.php", true);
-    xmlhttp.send(JSON.stringify(data));
-     */
 
     this.disabled = false;
 }

@@ -25,48 +25,119 @@ require_once './Page.php';
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
 
+/**
+ * Container-Klasse für aus der DB abgerufene
+ * verfügbare Kits
+ */
+class Kit
+{
+    /**
+     * @var int ID des Kits in der Datenbank
+     */
+    public $kitid;
+
+    /**
+     * @var string Name des Kits
+     */
+    public $name;
+
+    /**
+     * @var int Preis des Kits
+     */
+    public $price;
+
+    /**
+     * @var string Erster Beschreibungsstickpunkt
+     */
+    public $desc1;
+
+    /**
+     * @var string Zweiter Beschreibungsstichpunkt
+     */
+    public $desc2;
+
+    /**
+     * @var string Dritter Beschreibungsstichpunkt
+     */
+    public $desc3;
+
+    /**
+     * @var resource Hintergrund-Bild für Kit als SVG (als Blob in DB hinterlegt)
+     */
+    public $bg;
+
+    /**
+     * @var string Zu verwendende CSS-Klasse für Kit
+     */
+    public $cssclass;
+
+    /**
+     * @var int Definiert, ob der Container im Browser alle verfügbaren Spalten nutzen soll
+     */
+    public $stretched;
+
+    /**
+     * Kit constructor
+     */
+    public function __construct()
+    {
+    }
+}
+
+/**
+ * Klasse für Phase 3
+ */
 class Phase3 extends Page
 {
     /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return null
+     * @var array Liste der verfügbaren Kits in der DB
      */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return null
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
+    private $kitList = [];
 
     /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
-     *
-     * @return null
+     * @return void
      */
     protected function getViewData()
     {
         if(!isset($_SESSION["userid"])){
             header('Location: phase0.php');
         }
+
+        // Kits aus Datenbank holen
+        $this->updateKitList();
     }
 
+    /**
+     * Rufe die verfügbaren Kits aus der Datenbank ab und speichere sie in &$this->kitList
+     * @return void
+     */
+    protected function updateKitList() {
+        $query = "SELECT * FROM kit ORDER BY kitid";
+        $result = $this->_database->query($query);
+
+        while ($row = $result->fetch_assoc()) {
+            $kit = new Kit();
+            $kit->kitid = htmlspecialchars($row["kitid"]);
+            $kit->name = htmlspecialchars($row["name"]);
+            $kit->price = htmlspecialchars($row["price"]);
+            $kit->desc1 = htmlspecialchars($row["desc1"]);
+            $kit->desc2 = htmlspecialchars($row["desc2"]);
+            $kit->desc3 = htmlspecialchars($row["desc3"]);
+            $kit->bg = $row["bg"];
+            $kit->cssclass = htmlspecialchars($row["cssclass"]);
+            $kit->stretched = $row["cssstretched"]; // nicht nötig, da nur für If benötigt
+            array_push($this->kitList, $kit);
+        }
+    }
+
+    /**
+     * Generiere Anfang der Kit-section
+     * @return void
+     */
     protected function generateSectionStart() {
         echo<<<HTML
             <section>
@@ -75,55 +146,43 @@ HTML;
 
     }
 
+    /**
+     * Generiere alle in der DB verfügbaren Kits aus &$this->kitList
+     * @return void
+     */
     protected function generateAvailableKits() {
-        echo<<<HTML
-            <div id="kitContainer">
-                <div class="bookable">
-                    <div class="bookableHeader kitBasic"><img src="img/wrench.svg" alt=""/>Basic Kit</div>
+        echo '<div id="kitContainer">';
+        foreach ($this->kitList as $kit) {
+            $stretched = $kit->stretched == 1 ? "stretched" : "";
+            echo<<<HTML
+                <div class="bookable {$stretched}">
+                    <div class="bookableHeader {$kit->cssclass}"><img src="data:image/svg+xml;utf8,{$kit->bg}" alt=""/>{$kit->name}</div>
                     <ul>
-                        <li>Attribute aus naturgegebenem Genpool</li>
-                        <li>Kein Einfluss auf negative Attribute</li>
-                    </ul>
-                    <button class="noshadow" value="basic">5999.99€</button>
-                </div>
-                <div class="bookable">
-                    <div class="bookableHeader kitComfort"><img src="img/couch.svg" alt=""/>Comfort Kit</div>
-                    <ul>
-                        <li>Visuelle Attribute individuell wählbar</li>
-                        <li>Reduzierte Krankheitswahrscheinlichkeiten</li>
-                    </ul>
-                    <button class="noshadow" value="comfort">7999.99€</button>
-                </div>
-                <div class="bookable">
-                    <div class="bookableHeader kitSocial"><img src="img/laugh.svg" alt=""/>Social Kit</div>
-                    <ul>
-                        <li>Visuelle Attribute individuell wählbar</li>
-                        <li>Erhöhte Werte in sozial anerkannten Bereichen</li>
-                    </ul>
-                    <button class="noshadow" value="social">8499.99€</button>
-                </div>
-                <div class="bookable">
-                    <div class="bookableHeader kitPremium"><img src="img/trophy.svg" alt=""/>Premium Kit</div>
-                    <ul>
-                        <li>Visuelle Attribute individuell wählbar</li>
-                        <li>Inkl. Comfort Kit</li>
-                        <li>Inkl. Social Kit</li>
-                    </ul>
-                    <button class="noshadow" value="premium">14499.99€</button>
-                </div>
-                <div class="bookable stretched">
-                    <div class="bookableHeader kitCustom"><img src="img/growth.svg" alt=""/>Custom Kit</div>
-                    <ul>
-                        <li>Visuelle Attribute individuell wählbar</li>
-                        <li>Charakter-Attribute individuell wählbar</li>
-                        <li>Krankheiten eliminiert</li>
-                    </ul>
-                    <button class="noshadow" value="custom">24499.99€</button>
-                </div>
-            </div>
 HTML;
+            if ($kit->desc1 != "") {
+                echo '<li>'.$kit->desc1.'</li>';
+            }
+            if ($kit->desc2 != "") {
+                echo '<li>'.$kit->desc2.'</li>';
+            }
+            if ($kit->desc3 != "") {
+                echo '<li>'.$kit->desc3.'</li>';
+            }
+            echo<<<HTML
+                    </ul>
+                    <button class="noshadow" data-kitid="{$kit->kitid}" data-name="{$kit->name}" data-price="{$kit->price}" data-bg="{$kit->bg}" data-cssclass="{$kit->cssclass}">{$kit->price}€</button>
+                </div>
+HTML;
+
+        }
+        echo '</div>';
     }
 
+    /**
+     * Generiere alle verfügbaren Optionals.
+     * Diese werden nicht aus der DB abgerufen
+     * @return void
+     */
     protected function generateAvailableOptionals() {
         echo <<<HTML
             <div class="sectionHeader" id="chooseOptionalsHeader">Optionale Zusatzpakete buchen</div>
@@ -157,6 +216,11 @@ HTML;
 HTML;
     }
 
+    /**
+     * Generiere den Einkaufswagen mit dem Basic Kit als Default.
+     * Alle Optionals sind bereits versteckt vorhanden und werden bei Bedarf gezeigt bzw. wieder versteckt
+     * @return void
+     */
     protected function generateShoppingCart() {
         echo <<<HTML
             <div class="sectionHeader">Bestellung prüfen</div>
@@ -195,6 +259,10 @@ HTML;
 HTML;
     }
 
+    /**
+     * Generiere das Ende der Bestelluns-Section
+     * @return void
+     */
     protected function generateSectionEnd() {
         echo <<<HTML
             <button id="confirmGenoCheckOrder" class="floatright">Bestellen <i class="material-icons">forward</i></button>
@@ -209,8 +277,7 @@ HTML;
      * of the page ("view") is inserted and -if avaialable- the content of
      * all views contained is generated.
      * Finally the footer is added.
-     *
-     * @return null
+     * @return void
      */
     protected function generateView()
     {
@@ -236,8 +303,8 @@ HTML;
      *
      * Führt Parameter-Prüfungen durch, erstellt Nutzer und einen passenden GenoCheck-Auftrag
      *
-     * @return null
      * @throws Exception Fehler, falls magic quotes an sind
+     * @return void
      */
     protected function processReceivedData()
     {
@@ -257,8 +324,6 @@ HTML;
      * indicate that function as the central starting point.
      * To make it simpler this is a static function. That is you can simply
      * call it without first creating an instance of the class.
-     *
-     * @return null
      */
     public static function main()
     {

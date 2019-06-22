@@ -28,33 +28,11 @@ require_once './Page.php';
 class Phase2 extends Page
 {
     /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    /**
      * Fetch all data that is necessary for later output.
      * Data is stored in an easily accessible way e.g. as associative array.
      *
-     * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
-     *
-     * @return null
+     * Prüft, ob User berechtigt ist, diese Seite zu sehen (userid ist gesetzt)
+     * @return void
      */
     protected function getViewData()
     {
@@ -65,6 +43,7 @@ class Phase2 extends Page
 
     /**
      * Generiert erste <section>, die den Inhalt dieser Seite beschreibt
+     * @return void
      */
     protected function generatePageDescription()
     {
@@ -79,6 +58,11 @@ class Phase2 extends Page
 HTML;
     }
 
+    /**
+     * Generiere die verfügbaren Genotypen.
+     * Alles hardcoded, keine dynamischen Inhalte.
+     * @return void
+     */
     protected function generateGenoTypes() {
         echo<<<HTML
         <section class="genoCheckResultsGenotypes">
@@ -104,6 +88,11 @@ HTML;
 
     }
 
+    /**
+     * Generiere die möglichen Risiken bei Verwendung des aktuellen Genpools.
+     * Alles hardcoded, keine dynamischen Inhalte
+     * @return void
+     */
     protected function generateRisks() {
         echo<<<HTML
         <section class="genoCheckResultsRisks">
@@ -125,7 +114,7 @@ HTML;
             <meter value="10" min="0" max="100" low="15" optimum="5" high="60"></meter>
             <label for="meterLungcancer">10% - unbedenklich</label>
           </div>
-          <h3>Exzessiver Drogenkonsum</h3>
+          <h3>Drogenkonsum</h3>
           <div class="disease">
             <meter value="3" min="0" max="100" low="15" optimum="5" high="60"></meter>
             <label for="meterLungcancer">3% - unbedenklich</label>
@@ -140,6 +129,10 @@ HTML;
 
     }
 
+    /**
+     * Generiere Button zum Fortfahren im nächsten Abschnitt
+     * @return void
+     */
     protected function generateContinueButton() {
         echo <<<HTML
         <section>

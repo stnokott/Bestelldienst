@@ -1,5 +1,0 @@
-Analyseergebnisse zufällig machen und in Datenbank speichern
-
-Empfehlungen für Kits, abhängig von Analyseergebnissen bei Phase davor
-
-Rezensionen
