@@ -126,7 +126,7 @@ HTML;
         $this->generatePageDescription();
         $this->generateGenoCheckForm();
 
-        $this->generatePageFooter(null);
+        $this->generatePageFooter("phase0.js");
     }
 
     /**

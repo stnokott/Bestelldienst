@@ -38,6 +38,9 @@ document.getElementById("deleteCart").addEventListener("click", deleteShoppingCa
 // Listener für Fortfahren-Button
 document.getElementById("confirmGenoCheckOrder").addEventListener("click", sendOrder);
 
+// Listener für Navbar-Responsive
+document.getElementById("btnWrapNavbar").addEventListener("click", toggleNavbarResponsive);
+
 function handleKitButtonPress() {
     "use strict";
     shoppingCartKitItem.className = "cartItem "+this.dataset.cssclass;
@@ -160,4 +163,13 @@ function sendOrder() {
     form.submit();
 
     this.disabled = false;
+}
+
+function toggleNavbarResponsive() {
+    let navbar = document.getElementsByClassName("navlist")[0];
+    if (navbar.classList.contains("responsive")) {
+        navbar.classList.remove("responsive");
+    } else {
+        navbar.classList.add("responsive");
+    }
 }

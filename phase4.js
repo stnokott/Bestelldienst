@@ -17,6 +17,9 @@ loadStatus();
 
 window.setInterval (loadStatus, 5000);
 
+// Listener für Navbar-Responsive
+document.getElementById("btnWrapNavbar").addEventListener("click", toggleNavbarResponsive);
+
 //Orderoptionals setzen
 let optionalItems = document.getElementsByClassName("statusoptionals")[0].getElementsByTagName("li");
 
@@ -92,4 +95,13 @@ function checkAllIsDone() {
     }
 
     document.getElementById("getGenoChoiceResults").disabled = !done;
+}
+
+function toggleNavbarResponsive() {
+    let navbar = document.getElementsByClassName("navlist")[0];
+    if (navbar.classList.contains("responsive")) {
+        navbar.classList.remove("responsive");
+    } else {
+        navbar.classList.add("responsive");
+    }
 }

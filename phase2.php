@@ -163,7 +163,7 @@ HTML;
         $this->generateRisks();
         $this->generateContinueButton();
 
-        $this->generatePageFooter(null);
+        $this->generatePageFooter("phase2.js");
     }
 
     /**

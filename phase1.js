@@ -2,6 +2,9 @@ loadStatus();
 
 window.setInterval (loadStatus, 5000);  // AJAX
 
+// Listener für Navbar-Responsive
+document.getElementById("btnWrapNavbar").addEventListener("click", toggleNavbarResponsive);
+
 function loadStatus() {
     "use strict";
     let xmlhttp = new XMLHttpRequest();
@@ -45,4 +48,13 @@ function setStatusActive(activeIndex) {
 
     // Button aktivieren, wenn Status komplett
     document.getElementById("getGenoCheckResults").disabled = (activeIndex !== progressItems.length-1);
+}
+
+function toggleNavbarResponsive() {
+    let navbar = document.getElementsByClassName("navlist")[0];
+    if (navbar.classList.contains("responsive")) {
+        navbar.classList.remove("responsive");
+    } else {
+        navbar.classList.add("responsive");
+    }
 }

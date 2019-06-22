@@ -13,6 +13,9 @@ for (let radioGroup of radioGroups) {
     radioGroup.addEventListener("click", submitForm, false);
 }
 
+// Listener für Navbar-Responsive
+document.getElementById("btnWrapNavbar").addEventListener("click", toggleNavbarResponsive);
+
 function loadStatus() {
     "use strict";
     sessionStorage.setItem('phase1_agent_selectedIndex', genoCheckOrdersSelect.selectedIndex);
@@ -87,4 +90,13 @@ function submitForm(event) {
         associatedRadioButton.checked = true;
     }
     document.forms['statusOrderChange'].submit();
+}
+
+function toggleNavbarResponsive() {
+    let navbar = document.getElementsByClassName("navlist")[0];
+    if (navbar.classList.contains("responsive")) {
+        navbar.classList.remove("responsive");
+    } else {
+        navbar.classList.add("responsive");
+    }
 }
