@@ -84,10 +84,6 @@ body {
     top: 0;
 }
 
-.navlist.responsive {
-    position: relative;
-}
-
 .navlist ~ header {
     margin-top: 10vh;
 }
@@ -112,13 +108,6 @@ body {
     display: none;
 }
 
-.navlist.responsive li#btnWrapNavbar {
-    position: absolute;
-    height: auto;
-    right: 0;
-    top: 0;
-}
-
 .navlist li#btnWrapNavbar:hover {
     cursor: pointer;
 }
@@ -127,12 +116,6 @@ body {
     display: block;
     line-height: 50px;
     text-align: center;
-}
-
-.navlist.responsive li {
-    display: block;
-    margin-right: 0;
-    width: 100%;
 }
 
 .navlist:not(.responsive) li:not(#btnWrapNavbar):hover {
@@ -723,6 +706,23 @@ div.genoChoiceChosenKit #chosenKitName {
 
     .navlist li:not(.active) {
         display: none;
+    }
+
+    .navlist.responsive li {
+        display: block;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .navlist.responsive {
+        position: relative;
+    }
+
+    .navlist.responsive li#btnWrapNavbar {
+        position: absolute;
+        height: auto;
+        right: 0;
+        top: 0;
     }
 }
 
