@@ -1,4 +1,4 @@
-<?php	// UTF-8 marker äöüÄÖÜß€
+<?php // UTF-8 marker äöüÄÖÜß€
 /**
  * Class Page for the exercises of the EWA lecture
  * Demonstrates use of PHP including class and OO.
@@ -27,6 +27,17 @@
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
  * @author   Ralf Hahn, <ralf.hahn@h-da.de>
  */
+
+class JSONObject
+{
+    public $status;
+    public $optionals;
+
+    public function __construct()
+    {
+    }
+}
+
 abstract class Page
 {
     /** @var mysqli Reference to the MySQLi-Database that is accessed by all operations of the class. */

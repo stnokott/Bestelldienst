@@ -30,6 +30,8 @@ class Phase4 extends Page
 
     static $KEY_KITTYPE = "kittype";
     static $SELECTEDOPTIONALS_KEY = "selectedoptionals";
+    private $optionals = []; // Liste der gebuchten Optionals als optionaltypes
+
     /*
     vgl post query usererstellung
     Post Argumente Validieren
@@ -46,12 +48,22 @@ class Phase4 extends Page
      *
      * Speichert den Bestellstatus des aktuell angemeldeten Nutzers
      *
-     * @return null
+     * @return void
      */
     protected function getViewData()
     {
         if(!isset($_SESSION["userid"])){
             header('Location: phase3.php');
+        }
+
+        // Gebuchte Optionals aus Datenbank holen
+        // Verhindert, dass Optionals angezeigt werden, die nicht gebucht wurden
+        $query = "SELECT optionaltype FROM orderoptionals
+                            JOIN genochoiceorder ON orderoptionals.choiceid = genochoiceorder.choiceid
+                            WHERE userid = '".$_SESSION["userid"]."'";
+        $result = $this->_database->query($query);
+        while ($row_optionals = $result->fetch_assoc()) {
+            array_push($this->optionals, $row_optionals["optionaltype"]);
         }
     }
 
@@ -82,23 +94,56 @@ HTML;
         <section class="genoChoiceStatus">
             <div class="sectionHeader"><div class="sectionHeaderNumber">1</div>Vorbereitung</div>
             <div class="progresssteps-container">
-                <ul class="progresssteps third">
+                <ul class="progresssteps third statuskit">
                     <li class="confirmed">Bestellung bestätigt</li>
                     <li class="extraction">DNA-Extraktion aus GenoCheck&trade;</li>
                     <li class="incubate">Inkubationsbehälter füllen</li>
                 </ul>
             </div>
-            <div class="sectionHeader"><div class="sectionHeaderNumber">2</div>Optionale Schritte</div>
-            <div class="progresssteps-container">
-                <ul class="progresssteps third">
-                    <li class="insertion">Merkmalinsertion (CRISPR-cas9)</li>
-                    <li class="sickness">Krankheitspotential reduzieren</li>
-                    <li class="social">Soziale Bereiche verbessern</li>
+HTML;
+        if (sizeof($this->optionals) > 0) {
+            switch (sizeof($this->optionals)) {
+                case 1:
+                    $progressstepsclass = "full";
+                    break;
+                case 2:
+                    $progressstepsclass = "half";
+                    break;
+                case 3:
+                    $progressstepsclass = "third";
+                    break;
+                default:
+                    die("Unmögliche Optionals-Größe festgestellt");
+            }
+
+            echo<<<HTML
+                <div class="sectionHeader"><div class="sectionHeaderNumber">2</div>Optionale Schritte</div>
+                <div class="progresssteps-container">
+                    <ul class="progresssteps {$progressstepsclass} statusoptionals">
+HTML;
+
+            if (in_array(0, $this->optionals)) {
+                echo '<li class="insertion">Merkmalinsertion (CRISPR-cas9)</li>';
+            }
+
+            if (in_array(1, $this->optionals)) {
+                echo '<li class="sickness">Krankheitspotential reduzieren</li>';
+            }
+
+            if (in_array(2, $this->optionals)) {
+                echo '<li class="social">Soziale Bereiche verbessern</li>';
+            }
+
+            echo<<<HTML
                 </ul>
             </div>
-            <div class="sectionHeader"><div class="sectionHeaderNumber">3</div>Produktion</div>
+HTML;
+        }
+        $nextheadernum = sizeof($this->optionals) == 0 ? 2 : 3; // Header-Nummer muss 2 sein, falls keine Optionals angezeigt werden
+        echo<<<HTML
+            <div class="sectionHeader"><div class="sectionHeaderNumber">{$nextheadernum}</div>Produktion</div>
             <div class="progresssteps-container">
-                <ul class="progresssteps quarter">
+                <ul class="progresssteps quarter statuskit">
                     <li class="meiosis">(Künstliche) Meiose initiieren</li>
                     <li class="embryo">Embryonalstatus erreicht</li>
                     <li class="analysis">Phänotypen prüfen</li>
@@ -136,6 +181,11 @@ HTML;
 
 /**####################DATA ACQUISITION#############################*/
 
+    /**
+     * GenoChoice-Order für User erstellen
+     * @param $userid int User, für den die Bestellung erstellt werden soll
+     * @param $kittype int Vom User gewählte Kit-ID
+     */
 protected function createGenoChoiceOrder($userid, $kittype) {
     $query = $this->getMySQLInsertString(
         "genochoiceorder",
@@ -143,6 +193,7 @@ protected function createGenoChoiceOrder($userid, $kittype) {
         array($this->_database->real_escape_string($userid),
               $this->_database->real_escape_string($kittype))
     );
+
     $this->_database->query($query);
     if ($this->_database->errno != 0) {
         exit("Fehler beim Erstellen der GenoChoice-Bestellung: ".$this->_database->error);
@@ -211,7 +262,7 @@ protected function processReceivedData()
         $kittype = $_POST[self::$KEY_KITTYPE];
 
         //Erstellen der Order falls noch keine Bestellung vorhanden
-        if (NULL == $this->checkUserHasGenoChoiceOrder($userid)) {
+        if (!$this->checkUserHasGenoChoiceOrder($userid)) {
             // User ist neu und hat noch kein GenoCheck bestellt
             $this->createGenoChoiceOrder($userid, $kittype);
         }
