@@ -189,6 +189,7 @@ HTML;
     protected function generateView()
     {
         $this->generatePageHeader('GenoChoice&trade; - Bearbeiter');
+        $this->generateNavigationBarAgent(1);
         $this->generatePageTitle();
         $this->generateCurrentUser(true);
         $this->generateAgentMenu();

@@ -143,7 +143,7 @@ HTML;
      * @param $active_index int Index des aktiven Navigationselements
      * @return void
      */
-    protected function generateNavigationBar($active_index)
+    protected function generateNavigationBarUser($active_index)
     {
         $active = " class=\"active\"";
         echo "<ul class=\"navlist\">";
@@ -153,6 +153,15 @@ HTML;
         echo    "<li".(($active_index == 3)?$active:"")."><a href=\"phase3.php\">Phase 4</a></li>";
         echo    "<li".(($active_index == 4)?$active:"")."><a href=\"phase4.html\">Phase 5</a></li>";
         echo "</ul>";
+    }
+
+    protected function generateNavigationBarAgent($active_index)
+    {
+        $active = " class=\"active\"";
+        echo '<ul class="navlist">';
+        echo    "<li".(($active_index == 0)?$active:"")."><a href=\"phase1_agent.php\">Phase 1</a></li>";
+        echo    "<li".(($active_index == 1)?$active:"")."><a href=\"phase4_agent.php\">Phase 4</a></li>";
+        echo '</ul>';
     }
 
     /**

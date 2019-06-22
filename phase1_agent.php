@@ -159,6 +159,7 @@ HTML;
     {
         $this->getViewData();
         $this->generatePageHeader('GenoChoice&trade; - GenoCheck&trade; Agent');
+        $this->generateNavigationBarAgent(0);
         $this->generatePageTitle();
         $this->generateCurrentUser(true);
         $this->generateAgentMenu();

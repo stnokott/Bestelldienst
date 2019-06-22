@@ -169,6 +169,7 @@ HTML;
     {
         $this->getViewData();
         $this->generatePageHeader('GenoChoice&trade; - Ihr GenoChoice&trade; Fortschritt');
+        $this->generateNavigationBarUser(4);
         $this->generatePageTitle();
         $this->generatePageDescription();
 
