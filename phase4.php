@@ -168,8 +168,8 @@ HTML;
                 </ul>
             </div>
 
-            <form action="" method="get">
-                <button type="submit" name="getGenoChoiceResults" id="getGenoChoiceResults" disabled>Produkt abholen</button>
+            <form action="phase_final.html" method="get">
+                <button type="submit" id="getGenoChoiceResults" disabled>Produkt abholen</button>
             </form>
         </section>
 HTML;
