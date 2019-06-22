@@ -159,6 +159,8 @@ HTML;
         $this->generateNavigationBarUser(2);
         $this->generatePageTitle();
         $this->generatePageDescription();
+
+        $this->generateCurrentUser(false);
         $this->generateGenoTypes();
         $this->generateRisks();
         $this->generateContinueButton();

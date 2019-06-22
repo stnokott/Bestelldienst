@@ -286,6 +286,7 @@ HTML;
         $this->generateNavigationBarUser(3);
         $this->generatePageTitle();
 
+        $this->generateCurrentUser(false);
         $this->generateSectionStart();
         $this->generateAvailableKits();
         $this->generateAvailableOptionals();

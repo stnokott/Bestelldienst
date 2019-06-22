@@ -190,6 +190,7 @@ HTML;
         $this->generatePageTitle();
         $this->generatePageDescription();
 
+        $this->generateCurrentUser(false);
         $this->generateGenoChoiceProgress();
 
         $this->generatePageFooter("phase4.js");
