@@ -9,16 +9,6 @@
 
 require_once './Page.php';
 
-class JSONObject
-{
-    public $status;
-    public $optionals;
-
-    public function __construct()
-    {
-    }
-}
-
 /**
  * This is a template for top level classes, which represent
  * a complete web page and which are called directly by the user.
