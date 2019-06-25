@@ -207,7 +207,7 @@ HTML;
         if (isset($jspath)) {
             echo "<script src=\"$jspath\"></script>";
         }
-        echo "</html";
+        echo "</html>";
     }
 
     /**
