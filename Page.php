@@ -151,7 +151,7 @@ HTML;
         echo    "<li".(($active_index == 1)?$active:"")."><a href=\"phase1.php\">Phase 1</a></li>";
         echo    "<li".(($active_index == 2)?$active:"")."><a href=\"phase2.php\">Phase 2</a></li>";
         echo    "<li".(($active_index == 3)?$active:"")."><a href=\"phase3.php\">Phase 3</a></li>";
-        echo    "<li".(($active_index == 4)?$active:"")."><a href=\"phase4.html\">Phase 4</a></li>";
+        echo    "<li".(($active_index == 4)?$active:"")."><a href=\"phase4.php\">Phase 4</a></li>";
         echo    '<li id="btnWrapNavbar"><i class="material-icons">menu</i></li>';
         echo "</ul>";
     }

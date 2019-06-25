@@ -223,7 +223,6 @@ HTML;
      */
     protected function generateShoppingCart() {
         echo <<<HTML
-            <div class="sectionHeader">Bestellung prüfen</div>
             <div class="shoppingCartHeader">Warenkorb</div>
             <div class="shoppingCart">
                 <div class="cartItem kitBasic" id="shoppingCartKit">
