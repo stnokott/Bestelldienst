@@ -69,6 +69,11 @@ body {
     color: var(--accent-black);
 }
 
+body.splash {
+    background: url("./img/splash.jpg");
+    background-size: 100%;
+}
+
 .navlist {
     /*noinspection CssBrowserCompatibilityForProperties*/
     backdrop-filter: blur(6px);
