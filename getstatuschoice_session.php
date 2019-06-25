@@ -26,33 +26,6 @@ require_once './Page.php';
  */
 class StatusHelper extends Page
 {
-
-
-    /**
-     * Instantiates members (to be defined above).
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return void
-     */
-    protected function __construct()
-    {
-        parent::__construct();
-        // to do: instantiate members representing substructures/blocks
-    }
-
-    /**
-     * Cleans up what ever is needed.
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return void
-     */
-    protected function __destruct()
-    {
-        parent::__destruct();
-    }
-
     /**
      * Gibt den Wert des status-Attributs der genochoiceorder-Datenbank für den User mit der
      * angegebenen Email-Adresse aus
