@@ -203,10 +203,10 @@ HTML;
     protected function generatePageFooter($jspath)
     {
         $this->generateClearSessionButton();
-        echo "</body>";
         if (isset($jspath)) {
             echo "<script src=\"$jspath\"></script>";
         }
+        echo "</body>";
         echo "</html>";
     }
 
