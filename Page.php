@@ -202,7 +202,7 @@ HTML;
      */
     protected function generatePageFooter($jspath)
     {
-        $this->generateClearSessionButton();
+        //$this->generateClearSessionButton();
         if (isset($jspath)) {
             echo "<script src=\"$jspath\"></script>";
         }
