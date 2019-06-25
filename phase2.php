@@ -106,23 +106,23 @@ HTML;
 
           <h3>Lungenkrebs</h3>
           <div class="disease">
-            <meter value="45" min="0" max="100" low="15" optimum="5" high="60"></meter>
+            <meter value="45" min="0" max="100" low="15" optimum="5" high="60" id="meterLungcancer"></meter>
             <label for="meterLungcancer">45% - bedenklich</label>
           </div>
           <h3>Alkoholismus</h3>
           <div class="disease">
-            <meter value="10" min="0" max="100" low="15" optimum="5" high="60"></meter>
-            <label for="meterLungcancer">10% - unbedenklich</label>
+            <meter value="10" min="0" max="100" low="15" optimum="5" high="60" id="meterAlcoholism"></meter>
+            <label for="meterAlcoholism">10% - unbedenklich</label>
           </div>
           <h3>Drogenkonsum</h3>
           <div class="disease">
-            <meter value="3" min="0" max="100" low="15" optimum="5" high="60"></meter>
-            <label for="meterLungcancer">3% - unbedenklich</label>
+            <meter value="3" min="0" max="100" low="15" optimum="5" high="60" id="meterDrugs"></meter>
+            <label for="meterDrugs">3% - unbedenklich</label>
           </div>
           <h3>Ametropie (Fehlsichtigkeit)</h3>
           <div class="disease">
-            <meter value="80" min="0" max="100" low="15" optimum="5" high="60"></meter>
-            <label for="meterLungcancer">80% - kritisch</label>
+            <meter value="80" min="0" max="100" low="15" optimum="5" high="60" id="meterAmetropy"></meter>
+            <label for="meterAmetropy">80% - kritisch</label>
           </div>
         </section>
 HTML;
